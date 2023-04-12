@@ -1,11 +1,7 @@
 const express = require('express');
-const dotenv = require('dotenv');
+require('dotenv').config();
 const path = require('path');
 const routes = require('./routes/index');
-
-if (process.env.NODE_ENV && process.env.NODE_ENV !== 'production') {
-  dotenv.config();
-}
 
 const app = express();
 app.use(express.json());
