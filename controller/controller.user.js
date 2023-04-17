@@ -12,9 +12,9 @@ async function getUser() {
   }
 }
 
-async function getUserById(id) {
+async function getUserByPhone(phone) {
   try {
-    const user = await userModel.getUserById(id);
+    const user = await userModel.getUserByPhone(phone);
     return { success: true, data: user };
   }
   catch (err) {
@@ -26,5 +26,5 @@ async function getUserById(id) {
 
 module.exports = {
   getUser,
-  getUserById
+  getUserByPhone
 };

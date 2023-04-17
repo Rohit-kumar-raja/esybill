@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const userConroller = require('../controller/controller.user');
+const { sendOTP, verifyOTPMiddleware } = require('../lib/otp');
 
-router.get('/', async (req, res) => {
-  const result = await userConroller.getUser();
+router.get('/me', async (req, res) => {
+  const { phone } = req.user;
+  const result = await userConroller.getUserByPhone(phone);
   if (result.success) {
     res.json(result.data);
   }
@@ -11,15 +13,13 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const result = await userConroller.getUserById(id);
-  if (result.success) {
-    res.json(result.data);
-  }
-  else {
-    res.status(result.status).send(result.message);
-  }
+router.get('/otp', async (req, res) => {
+  sendOTP(req.body.email, req.body.number);
+  res.sendStatus(200);
+});
+
+router.post('/register', verifyOTPMiddleware(), async (req, res) => {
+  const { user, properties } = req.body;
 });
 
 module.exports = router;

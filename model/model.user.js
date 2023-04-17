@@ -6,13 +6,13 @@ async function getUser() {
   return users[0];
 }
 
-async function getUserById(id) {
+async function getUserByPhone(phone) {
   const connection = await db();
-  const users = await connection.execute('SELECT * FROM tblmastercustomer WHERE id=?', [id]);
+  const users = await connection.execute('SELECT * FROM tblmastercustomer WHERE RegMobile=?', [phone]);
   return users[0];
 }
 
 module.exports = {
   getUser,
-  getUserById
+  getUserByPhone
 };
