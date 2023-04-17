@@ -46,7 +46,7 @@ const Stepper = () => {
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center mt-12'>
         <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>01</span>
-        <div class=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
         </div>
       
       </div>
@@ -56,7 +56,7 @@ const Stepper = () => {
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
         <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>02</span>
-        <div class=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
         </div>
       </div>
     </li>
@@ -64,7 +64,7 @@ const Stepper = () => {
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
         <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>03</span>
-        <div class=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
         </div>
       </div>
     </li>
@@ -72,7 +72,7 @@ const Stepper = () => {
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
         <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>04</span>
-        <div class=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
         </div>
       </div>
     </li>
@@ -80,7 +80,7 @@ const Stepper = () => {
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
         <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>05</span>
-        <div class=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
         </div>
       </div>
     </li>

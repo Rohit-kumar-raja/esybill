@@ -6,8 +6,6 @@ const PersonalDetailsForm = () => {
   return (
     <>
     <div className='flex flex-col px-6'>
-   
-  
    <form className="rounded-md px-2 md:px-6 py-6 shadow-xl">
    <div className='px-6 text-center'>
     <h1 className='text-[15px] font-normal text-[#464646]'>Personal</h1>
@@ -26,7 +24,7 @@ const PersonalDetailsForm = () => {
               value={name} onChange={(e)=> setName(e.target.value)} />
           </div>
 
-          <div class="grid grid-cols-4 md:mb-3 md:mt-3">
+          <div className="grid grid-cols-4 md:mb-3 md:mt-3">
           <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">
             <label className="block tracking-wide text-[#464646] 
             text-[16px] font-normal mb-2" htmlFor="grid-first-name">
@@ -46,7 +44,7 @@ const PersonalDetailsForm = () => {
               State*
             </label>
 
-<select id="states" class="bg-gray-50  block 
+<select id="states" className="bg-gray-50  block 
 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
   w-full px-2.5 h-[42px]">
