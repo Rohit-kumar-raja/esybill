@@ -2,7 +2,8 @@
     import {IoCaretBackCircleOutline,IoAddCircleOutline} from 'react-icons/io5';
 
     import { stateList } from '../constants/stateList';
-    const PropertyOneForm = ({setUserRegistrationData,  setActivateSecondProperty,setActivateFirstProperty}) => {
+    const PropertyOneForm = ({setUserRegistrationData,
+         setActivateSecondProperty,setActivateFirstProperty,setActivateSecondPropertyStepper}) => {
 
         const [propertyType, setPropertyType] = useState('')
         const [propertyName, setPropertyName] = useState('')
@@ -15,11 +16,13 @@
 
         useEffect(()=>{
             setActivateSecondProperty(false)
+             
         },[])
 
         const moveToSecondPropertyToggleHandler = () => {
              setActivateSecondProperty(true)
              setActivateFirstProperty(false)
+             setActivateSecondPropertyStepper(true)
            }
 
         const propertyOneSubmitHandler = (e) => {

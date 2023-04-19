@@ -3,18 +3,20 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 import { stateList } from '../constants/stateList'
 
-const PersonalDetailsForm = ({setActivateFirstProperty,setUserRegistrationData}) => {
+const PersonalDetailsForm = ({setActivateFirstProperty,setUserRegistrationData,
+  setActivateFirstPropertyStepper}) => {
   const [username, setUsername] = useState('')
   const [usermobilenumber, setUserMobileNumber] = useState('')
   const [userstate, setUserState] = useState('')
   const [usercountry, setUserCountry] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [captchaToken, setCaptchaToken] = useState(false)
-  const captchaRef = useRef(null)
+  const captchaRef = useRef(null) 
 
   useEffect(()=>{
     setActivateFirstProperty(false)
-  },[])
+    setActivateFirstPropertyStepper(false)
+  },[]) 
 
   
   useEffect(()=>{
@@ -24,13 +26,14 @@ const PersonalDetailsForm = ({setActivateFirstProperty,setUserRegistrationData})
       setDisabled(false)
     }
     else setDisabled(true)
-  },[username, usermobilenumber, userstate, captchaToken ])
+  },[username, usermobilenumber, userstate, captchaToken])
 
   const userDetailSubmitHandler = (e) => {
     e.preventDefault()
     let user = {username, usermobilenumber, userstate, usercountry}
     console.log(user)
     setActivateFirstProperty(true)
+    setActivateFirstPropertyStepper(true)
     setUserRegistrationData(user)
     // setUsername('')
     // setUserMobileNumber('')
