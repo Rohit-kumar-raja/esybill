@@ -1,29 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 
-const PersonalDetailsForm = ({setActFirstProp}) => {
+import { stateList } from '../constants/stateList'
+
+const PersonalDetailsForm = ({setActivateFirstProperty,setUserRegistrationData}) => {
   const [username, setUsername] = useState('')
   const [usermobilenumber, setUserMobileNumber] = useState('')
   const [userstate, setUserState] = useState('')
   const [usercountry, setUserCountry] = useState('')
   const [disabled, setDisabled] = useState(true)
-  useEffect(()=>{
-    setActFirstProp(false)
-  },[])
+  const [captchaToken, setCaptchaToken] = useState(false)
+  const captchaRef = useRef(null)
 
   useEffect(()=>{
-    if(username !=='' && usermobilenumber!=='' && userstate !==''){
+    setActivateFirstProperty(false)
+  },[])
+
+  
+  useEffect(()=>{
+    if(username !=='' && usermobilenumber!=='' && userstate !==''
+     //&& captchaToken
+      ){
       setDisabled(false)
     }
     else setDisabled(true)
-  },[username, usermobilenumber, userstate])
+  },[username, usermobilenumber, userstate, captchaToken ])
 
   const userDetailSubmitHandler = (e) => {
     e.preventDefault()
-    console.log(username, usermobilenumber, userstate, usercountry)
-    setUsername('')
-    setUserMobileNumber('')
-    setUserState('')
+    let user = {username, usermobilenumber, userstate, usercountry}
+    console.log(user)
+    setActivateFirstProperty(true)
+    setUserRegistrationData(user)
+    // setUsername('')
+    // setUserMobileNumber('')
+    // setUserState('')
   }
   return (
     <>
@@ -70,11 +81,13 @@ const PersonalDetailsForm = ({setActFirstProp}) => {
 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
   w-full px-2.5 h-[42px]" defaultValue={userstate} onChange={(e)=> setUserState(e.target.value)} >
-  <option selected>Choose a state</option>
-  <option value="US">United States</option>
-  <option value="CA">Canada</option>
-  <option value="FR">France</option>
-  <option value="DE">Germany</option>
+     <option selected>Choose a state</option>
+    {
+      stateList.map((stateList) => {
+        return (<option value={stateList}>{stateList}</option>)
+        
+      })
+    }
 </select>
 
 
@@ -85,7 +98,8 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
         </div>
         <div className='flex flex-col items-center'>
 
-        <ReCAPTCHA  sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}/>
+        {/* <ReCAPTCHA  sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}   ref={captchaRef} 
+         onChange={useCallback(() => setCaptchaToken(true))}/> */}
         <button className={`font-normal  bg-[#800080] text-[white] rounded-md w-full py-3 px-6 my-6 
         ${disabled ? `cursor-not-allowed opacity-50` : `cursor-pointer opacity-100`} `}>Save & Next Step</button>
         <span className='text-[#B3B3B3] text-[12px] font-normal text-center'>Already have an account? <span className='text-[#5E5E5E]'> Sign in</span></span>

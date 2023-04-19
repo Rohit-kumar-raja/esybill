@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-const Stepper = ({actFirstProp}) => {
- 
+const Stepper = ({activateFirstProperty, actFirstProp, setActivateFirstProperty, activateSecondProperty}) => {
+ const moveToRegistrationToggleHandler = () => {
+  setActivateFirstProperty(false)
+ }
   return (
     <>
     <div className='flex justify-center md:justify-normal gap-0 md:gap-6'>
@@ -46,9 +48,11 @@ const Stepper = ({actFirstProp}) => {
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center mt-12'>
-        <span className="rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]">01</span>
+        <span className="rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px] 
+        cursor-pointer "
+        onClick={moveToRegistrationToggleHandler} >01</span>
         <div className={`h-[70px] w-1 opacity-100 dark:opacity-50 
-        ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`}
+        ${activateFirstProperty ? `bg-[#800080]`  : `bg-[#EFE8E8]`}
         `}></div>
         </div>
       </div> 
@@ -58,10 +62,10 @@ const Stepper = ({actFirstProp}) => {
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
         <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
-          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`}
+          ${activateSecondProperty ? `bg-[#800080]`  : `bg-[#EFE8E8]`}
          `}>02</span>
         <div className={`h-[70px] w-1 opacity-100 dark:opacity-50  
-          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
+          ${activateSecondProperty ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
         </div>
       </div>
     </li>

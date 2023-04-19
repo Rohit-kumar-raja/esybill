@@ -1,12 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import RegistrationForm from "./pages/RegistrationForm";
+import { store } from "./store";
+import { Provider } from 'react-redux';
 
 function App() {
   return (
     <>
-     <RegistrationForm/>
+    <Provider store={store}>
+    <RegistrationForm/>
+    </Provider>
+    
     </>
   );
 }
