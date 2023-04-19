@@ -1,8 +1,12 @@
-const userModel = require('../model/model.user');
-
+const customerModel = require('../model/model.customer');
+const { sendOTP } = require('../lib/otp');
+/**
+ *
+ * @returns Object
+ */
 async function getUser() {
   try {
-    const users = await userModel.getUser();
+    const users = await customerModel.getUser();
     return { success: true, data: users };
   }
   catch (err) {
@@ -11,11 +15,61 @@ async function getUser() {
     return { success: false, status: 500, message: 'Internal Server Error' };
   }
 }
-
+/**
+ *
+ * @param {Number} phone
+ * @returns Object
+ */
 async function getUserByPhone(phone) {
   try {
-    const user = await userModel.getUserByPhone(phone);
+    const user = await customerModel.getUserByPhone(phone);
     return { success: true, data: user };
+  }
+  catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+/**
+ *
+ * @param {Number} phone
+ * @returns Object
+ */
+async function sendLoginOtp(phone) {
+  try {
+    const user = await customerModel.getUserByPhone(phone);
+    let result = { success: false, status: 500, message: 'Internal Server Error' };
+    const responses = await Promise.allSettled([
+      sendOTP({ number: user.RegMobile, type: 'login' }),
+      sendOTP({ email: user.RegEmail, type: 'verify' })
+    ]);
+    responses.forEach((response) => {
+      if (response.status) {
+        result = { success: true };
+      }
+    });
+    return result;
+  }
+  catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+
+/**
+ *
+ * @param {String} email
+ * @param {Number} phone
+ * @returns Object
+ */
+async function sendVerifyOtp(email, phone) {
+  try {
+    if (await sendOTP(email, phone)) {
+      return { success: true };
+    }
+    return { success: false, status: 500, message: 'Internal Server Error' };
   }
   catch (err) {
     // eslint-disable-next-line
@@ -26,5 +80,7 @@ async function getUserByPhone(phone) {
 
 module.exports = {
   getUser,
-  getUserByPhone
+  getUserByPhone,
+  sendLoginOtp,
+  sendVerifyOtp
 };
