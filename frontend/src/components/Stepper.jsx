@@ -1,5 +1,6 @@
-import React from 'react'
-const Stepper = () => {
+import React, { useState } from 'react'
+const Stepper = ({actFirstProp}) => {
+ 
   return (
     <>
     <div className='flex justify-center md:justify-normal gap-0 md:gap-6'>
@@ -45,42 +46,52 @@ const Stepper = () => {
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center mt-12'>
-        <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>01</span>
-        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <span className="rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]">01</span>
+        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50 
+        ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`}
+        `}></div>
         </div>
-      
-      </div>
+      </div> 
     </li>
   
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
-        <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>02</span>
-        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
+          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`}
+         `}>02</span>
+        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50  
+          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
         </div>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
-        <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>03</span>
-        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
+          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}>03</span>
+        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50   
+          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
         </div>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
-        <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>04</span>
-        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
+          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}>04</span>
+        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50 
+          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
         </div>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
-        <span className='rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px]'>05</span>
-        <div className=" h-[70px] w-1 bg-[#800080] opacity-100 dark:opacity-50"></div>
+        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
+          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}>05</span>
+        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50  
+          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
         </div>
       </div>
     </li>

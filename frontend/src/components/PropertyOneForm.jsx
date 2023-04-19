@@ -1,10 +1,14 @@
     import React from 'react'
     import {IoCaretBackCircleOutline,IoAddCircleOutline} from 'react-icons/io5';
-    const PropertyOneForm = () => {
+    const PropertyOneForm = ({setActFirstProp}) => {
+        const submitHandler = (e) => {
+            e.preventDefault()
+            setActFirstProp(true)
+        }
     return (
         <>
         <div className='flex flex-col px-6'>
-    <form className="rounded-md px-2 md:px-6 py-6 shadow-xl">
+    <form className="rounded-md px-2 md:px-6 py-6 shadow-xl" onSubmit={submitHandler}>
     <div className='px-6 text-center'>
         <h1 className='text-[15px] font-normal text-[#464646]'>Property</h1>
     <h1 className='text-[30px] font-semibold text-[#464646]'>One</h1>
