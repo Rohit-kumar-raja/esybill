@@ -1,16 +1,51 @@
 import React, { useState } from 'react'
 const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstProp,setActivateSecondPropertyStepper,
-   setActivateFirstProperty, setActivateThirdProperty, setActivateSecondProperty, activateSecondPropertyStepper}) => {
+   setActivateFirstProperty, setActivateThirdProperty,  setActivateThirdPropertyStepper, setActivateSecondProperty, 
+   activateFourthPropertyStepper,setActivateFourthPropertyStepper, setActivateFirstPropertyStepper,
+   setActivateFourthProperty,
+   activateSecondPropertyStepper,activateThirdPropertyStepper}) => {
  const moveToRegistrationToggleHandler = () => {
   setActivateFirstProperty(false)
   setActivateSecondProperty(false)
   setActivateThirdProperty(false)
   setActivateSecondPropertyStepper(false)
+  setActivateThirdPropertyStepper(false)
  }
  const moveToPropertyOneToggleHandler = () => {
-  setActivateFirstProperty(true)
+  setActivateFirstProperty(true) 
+  setActivateFirstPropertyStepper(true)
   setActivateSecondProperty(false)
   setActivateSecondPropertyStepper(false)
+  setActivateThirdPropertyStepper(false)
+  setActivateFourthPropertyStepper(false)
+ }
+ const moveToPropertyTwoToggleHandler = () =>{
+  setActivateFirstProperty(false) 
+  setActivateSecondProperty(true)
+  setActivateThirdProperty(false)
+  setActivateSecondPropertyStepper(true)
+  setActivateThirdPropertyStepper(false)
+  setActivateFourthPropertyStepper(false)
+ }
+ const moveToPropertyThreeToggleHandler = () =>{
+  setActivateFirstProperty(false) 
+  setActivateSecondProperty(false)
+  setActivateThirdProperty(true)
+  setActivateFourthProperty(false)
+  setActivateFirstPropertyStepper(true)
+  setActivateSecondPropertyStepper(true)
+  setActivateThirdPropertyStepper(false)
+  setActivateFourthPropertyStepper(false)
+ }
+ const moveToPropertyFourToggleHandler = () =>{
+  setActivateFirstProperty(false) 
+  setActivateSecondProperty(false)
+  setActivateThirdProperty(false)
+  setActivateFourthProperty(true)
+  setActivateFirstPropertyStepper(true)
+  setActivateSecondPropertyStepper(true)
+  setActivateThirdPropertyStepper(true)
+  setActivateFourthPropertyStepper(true)
  }
   return ( 
     <>
@@ -82,9 +117,10 @@ const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstPro
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
         <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
-          ${activateSecondPropertyStepper? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}>03</span>
+          ${activateSecondPropertyStepper? `bg-[#800080]`  : `bg-[#EFE8E8]`} `} 
+          onClick={moveToPropertyTwoToggleHandler}>03</span>
         <div className={`h-[70px] w-1 opacity-100 dark:opacity-50   
-          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
+          ${activateThirdPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
         </div>
       </div>
     </li>
@@ -92,9 +128,10 @@ const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstPro
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
         <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
-          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}>04</span>
+          ${activateThirdPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `} 
+          onClick={moveToPropertyThreeToggleHandler}>04</span>
         <div className={`h-[70px] w-1 opacity-100 dark:opacity-50 
-          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
+          ${activateFourthPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
         </div>
       </div>
     </li>
@@ -102,9 +139,11 @@ const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstPro
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
         <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
-          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}>05</span>
+          ${activateFourthPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `} 
+          onClick={moveToPropertyFourToggleHandler}>05</span>
         <div className={`h-[70px] w-1 opacity-100 dark:opacity-50  
-          ${actFirstProp ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
+          ${activateFourthPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}>
+        </div>
         </div>
       </div>
     </li>

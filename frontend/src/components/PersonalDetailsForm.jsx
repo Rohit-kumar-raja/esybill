@@ -13,7 +13,7 @@ const PersonalDetailsForm = ({setActivateFirstProperty,setUserRegistrationData,
   const [captchaToken, setCaptchaToken] = useState(false)
   const captchaRef = useRef(null) 
 
-  useEffect(()=>{
+  useEffect(()=>{  
     setActivateFirstProperty(false)
     setActivateFirstPropertyStepper(false)
   },[]) 

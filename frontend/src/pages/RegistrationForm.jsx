@@ -5,6 +5,9 @@ import PersonalDetailsForm from '../components/PersonalDetailsForm';
 import PropertyOneForm from '../components/PropertyOneForm';
 import PropertyTwoForm from '../components/PropertyTwoForm';
 import PropertyThreeForm from '../components/PropertyThreeForm';
+import PropertyFourForm from '../components/PropertyFourForm';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../registrationSlice';
 const RegistrationForm = () => {
    // const steps = ['Customer Registration', 'Property Registration'];
    const [actFirstProp, setActFirstProp] = useState(false)
@@ -12,20 +15,31 @@ const RegistrationForm = () => {
    const [activateFirstPropertyStepper, setActivateFirstPropertyStepper] = useState(false)
    const [activateSecondProperty, setActivateSecondProperty] = useState(false)
    const [activateSecondPropertyStepper, setActivateSecondPropertyStepper] = useState(false)
-
+   
    const [activateThirdProperty, setActivateThirdProperty] = useState(false)
+   const [activateThirdPropertyStepper, setActivateThirdPropertyStepper] = useState(false)
+
+   const [activateFourthProperty, setActivateFourthProperty] = useState(false)
+   const [activateFourthPropertyStepper, setActivateFourthPropertyStepper] = useState(false)
+
    const [userRegistrationData, setUserRegistrationData] = useState('') 
+   const dispatch = useDispatch()
   //  const toggleStepper = () => {
   //     setActivateFirstProperty(prevState =>)
   //  }
   useEffect(()=>{
   console.log(userRegistrationData)
+  dispatch(addUser(userRegistrationData))
+  
   },[userRegistrationData])
+  useEffect(()=>{
+    console.log("setActivateFourthPropertyStepper", activateFourthPropertyStepper)
+  }, activateFourthPropertyStepper)
   return (
     <>
     <Navbar/>
 
-    <div className="grid grid-cols-4 md:grid-cols-12">
+    <div className="grid grid-cols-4 md:grid-cols-12 md:my-12">
     <div className="md:col-span-1"></div>
     <div className="col-span-4 md:col-span-10">
     <div className="grid grid-cols-4">
@@ -43,6 +57,11 @@ const RegistrationForm = () => {
             setActivateSecondPropertyStepper={setActivateSecondPropertyStepper}
 
             setActivateThirdProperty={setActivateThirdProperty}
+            activateThirdPropertyStepper={activateThirdPropertyStepper}
+            setActivateThirdPropertyStepper={setActivateThirdPropertyStepper}
+            setActivateFourthProperty={setActivateFourthProperty}
+            activateFourthPropertyStepper={activateFourthPropertyStepper}
+            setActivateFourthPropertyStepper={setActivateFourthPropertyStepper}
             />
         </div>
         <div className="col-span-3">
@@ -62,8 +81,22 @@ const RegistrationForm = () => {
           setActivateThirdProperty={setActivateThirdProperty}
           setActivateSecondProperty={setActivateSecondProperty}
           setActivateSecondPropertyStepper={setActivateSecondPropertyStepper}
+          setActivateThirdPropertyStepper={setActivateThirdPropertyStepper}
            /> : 
-           activateThirdProperty ? <PropertyThreeForm/> : 
+           activateThirdProperty ? <PropertyThreeForm 
+           setUserRegistrationData={setUserRegistrationData}  
+           setActivateThirdPropertyStepper={setActivateThirdPropertyStepper}
+           activateFourthPropertyStepper={activateFourthPropertyStepper}
+           setActivateFourthProperty={setActivateFourthProperty}
+           setActivateFourthPropertyStepper={setActivateFourthPropertyStepper}
+           setActivateThirdProperty={setActivateThirdProperty}
+          
+           /> :  
+           activateFourthProperty ? <PropertyFourForm  
+           userRegistrationData={userRegistrationData}
+           setUserRegistrationData={setUserRegistrationData}  
+           setActivateFourthPropertyStepper={setActivateFourthPropertyStepper}
+           /> :
            <PersonalDetailsForm 
             setActivateFirstProperty={setActivateFirstProperty} 
             setUserRegistrationData={setUserRegistrationData} 

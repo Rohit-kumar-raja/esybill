@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {IoCaretBackCircleOutline,IoAddCircleOutline} from 'react-icons/io5';
 
 import { stateList } from '../constants/stateList';
-const PropertyTwoForm = ({setUserRegistrationData,  setActivateThirdProperty,
+const PropertyTwoForm = ({setUserRegistrationData,  setActivateThirdProperty,setActivateThirdPropertyStepper,
     setActivateSecondProperty
     }) => {
 
@@ -17,10 +17,11 @@ const PropertyTwoForm = ({setUserRegistrationData,  setActivateThirdProperty,
 
     // useEffect(()=>{
     //     setActivateSecondProperty(false)
-    // },[])
+    // },[]) 
 
     const moveToThirdPropertyToggleHandler = () => {
       setActivateThirdProperty(true)
+      setActivateThirdPropertyStepper(true)
       setActivateSecondProperty(false)
         //  setActivateSecondProperty(true)
         //  setActivateFirstProperty(false)
