@@ -60,7 +60,8 @@ return (
     <>
     {
       showModal ? <OTPVerificationModal  setShowModal={setShowModal} 
-      userRegistrationData={userRegistrationData}  setUserRegistrationData={setUserRegistrationData}/> : null
+      userRegistrationData={userRegistrationData} 
+       setUserRegistrationData={setUserRegistrationData}/> : null
     }
 <div className='flex flex-col px-6'>
 <form className="rounded-md px-2 md:px-6 py-6 shadow-xl" onSubmit={propertyFourSubmitHandler}>
