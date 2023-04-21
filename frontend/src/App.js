@@ -9,23 +9,31 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import LoginForm from "./pages/LoginForm";
+import background from "./assets/BG.png";
+import Dashboard from "./pages/Dashboard";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RegistrationForm/>,
-    // loader: rootLoader,
   },
   {
     path:"/login",
     element:<LoginForm/>
+  },
+  {
+    path:"/dashboard",
+    element:<Dashboard/>
   }
 ]);
 
 function App() {
   return (
     <>
+   
     <Provider store={store}>
+    <div style={{ backgroundImage: `url(${background})` }}>
     <RouterProvider router={router} />
+    </div>
     </Provider>
     
     </>

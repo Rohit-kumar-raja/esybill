@@ -21,9 +21,7 @@ const PersonalDetailsForm = ({setActivateFirstProperty,setUserRegistrationData,
 
   
   useEffect(()=>{
-    if(username !=='' && usermobilenumber!=='' && userstate !==''
-     //&& captchaToken
-      ){
+    if(username !=='' && usermobilenumber!=='' && userstate !=='' && captchaToken){
       setDisabled(false)
     }
     else setDisabled(true)
@@ -102,8 +100,8 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
         </div>
         <div className='flex flex-col items-center'>
 
-        {/* <ReCAPTCHA  sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}   ref={captchaRef} 
-         onChange={useCallback(() => setCaptchaToken(true))}/> */}
+        <ReCAPTCHA  sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}   ref={captchaRef} 
+         onChange={useCallback(() => setCaptchaToken(true))}/>
         <button className={`font-normal  bg-[#800080] text-[white] rounded-md w-full py-3 px-6 my-6 
         ${disabled ? `cursor-not-allowed opacity-50` : `cursor-pointer opacity-100`} `}>Save & Next Step</button>
         <span className='text-[#B3B3B3] text-[12px] font-normal text-center'>Already have an account?

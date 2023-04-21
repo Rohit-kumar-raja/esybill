@@ -14,7 +14,7 @@ const LoginForm = () => {
       }
 
       useEffect(()=>{
-        if(usermobilenumber!==''){ 
+        if(usermobilenumber!==''){  
           setDisabled(false)
         }
         else setDisabled(true)
@@ -53,8 +53,10 @@ const LoginForm = () => {
         <span className='text-[#B3B3B3] text-[12px] font-normal text-center'>Dont have an account?
         By continuing, I agree to the Terms of Use & Privacy Policy
 </span>
+
 <button className={`font-normal  bg-[#800080] text-[white] rounded-md w-full py-3 px-6 my-6 
 ${disabled ? `cursor-not-allowed opacity-50` : `cursor-pointer opacity-100`} `}>Save & Next Step</button>
+
 <span className='text-[#B3B3B3] text-[12px] font-normal text-center'>Dont have an account?
 <Link to='/'><span className='text-[#5E5E5E]'> Sign up</span></Link>
 </span>
