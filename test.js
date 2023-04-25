@@ -1,10 +1,7 @@
-const model = require('./model/model.otp');
-require('dotenv').config();
+const qr = require('./lib/qr');
 
-model.insert('channel', 1234567890123)
-  .then((res) => {
-    console.log('res ', JSON.stringify(res));
-  })
-  .catch((err) => {
-    console.log('err ', JSON.stringify(err));
-  });
+qr.generateQR('hello', 'test2').then(() => {
+  console.log('done');
+}).catch((err) => {
+  console.log(err);
+});

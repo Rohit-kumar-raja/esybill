@@ -13,7 +13,7 @@ router.get('/me', async (req, res) => {
   }
 });
 
-router.get('/otp', async (req, res) => {
+router.post('/otp', async (req, res) => {
   if (req.body.type === 'login') {
     const result = await userConroller.sendLoginOtp(req.body.number);
     if (result.success) {

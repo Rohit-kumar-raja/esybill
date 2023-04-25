@@ -1,4 +1,5 @@
 const customerModel = require('../model/model.customer');
+const propertyModel = require('../model/model.property');
 const { sendOTP } = require('../lib/otp');
 /**
  *
@@ -78,9 +79,23 @@ async function sendVerifyOtp(email, phone) {
   }
 }
 
+async function login(user, properties) {
+  try {
+    await customerModel.insert(user);
+    await propertyModel.bulkInsert(properties);
+    return { success: true };
+  }
+  catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+
 module.exports = {
   getUser,
   getUserByPhone,
   sendLoginOtp,
-  sendVerifyOtp
+  sendVerifyOtp,
+  login
 };
