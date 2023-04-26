@@ -1,4 +1,6 @@
-const router = require('express').Router();
+const express = require('express');
+
+const router = express.Router();
 const userConroller = require('../controller/controller.user');
 const { verifyOTPMiddleware } = require('../lib/otp');
 
@@ -37,8 +39,13 @@ router.post('/otp', async (req, res) => {
   }
 });
 
-router.post('/login', verifyOTPMiddleware(), async (req, res) => {
+router.post('/register', verifyOTPMiddleware, async (req, res) => {
   const { user, properties } = req.body;
+  const result = await userConroller.register(user, properties);
+  if (result.success) {
+    return res.sendStatus(200);
+  }
+  return res.status(result.status).json(result.message);
 });
 
 module.exports = router;

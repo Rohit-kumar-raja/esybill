@@ -1,3 +1,4 @@
+const mysql = require('mysql2/promise');
 const db = require('../lib/db');
 
 async function getUserByPhone(phone) {
@@ -12,10 +13,20 @@ async function updateUser(user, phone) {
   return users[0];
 }
 
-async function insert(channel, otp) {
+async function insert(user) {
   const connection = await db();
-  await connection.execute('INSERT INTO ezybill.tblmastercustomer() VALUES()');
-  return true;
+  let custNo = await connection.execute('select max(CustomerNo) as custNo from tblmastercustomer;');
+  if (custNo[0][0].custNo) {
+    custNo = custNo[0][0].custNo + 10;
+  }
+  else {
+    custNo = 10;
+  }
+  // eslint-disable-next-line
+  user.CustomerNo = custNo;
+  const query = mysql.format('INSERT INTO tblmastercustomer SET ?', user);
+  await connection.query(query);
+  return custNo;
 }
 
 module.exports = {

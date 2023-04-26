@@ -1,6 +1,8 @@
 const customerModel = require('../model/model.customer');
 const propertyModel = require('../model/model.property');
 const { sendOTP } = require('../lib/otp');
+const qr = require('../lib/qr');
+
 /**
  *
  * @returns Object
@@ -79,15 +81,26 @@ async function sendVerifyOtp(email, phone) {
   }
 }
 
-async function login(user, properties) {
+async function register(user, properties) {
   try {
-    await customerModel.insert(user);
-    await propertyModel.bulkInsert(properties);
+    const custId = await customerModel.insert(user);
+    for (const property of properties) {
+      property.CustomerNo = custId;
+      const PropertyMenuName = `${property.PropName.trim().replace(' ', '-')}-${new Date().getTime()}`;
+      property.PropertyMenuName = PropertyMenuName;
+      qr.generateQR(`${process.env.MENU_URL}/${PropertyMenuName}`, PropertyMenuName);
+      property.QRLocation = `${process.env.URL}/assets/qrcodes/${PropertyMenuName}.png`;
+      // eslint-disable-next-line
+      await propertyModel.insert(property);
+    }
     return { success: true };
   }
   catch (err) {
     // eslint-disable-next-line
     console.log(err);
+    if (err.code === 'ER_DUP_ENTRY') {
+      return { success: false, status: 400, message: 'Phone already registered' };
+    }
     return { success: false, status: 500, message: 'Internal Server Error' };
   }
 }
@@ -97,5 +110,5 @@ module.exports = {
   getUserByPhone,
   sendLoginOtp,
   sendVerifyOtp,
-  login
+  register
 };

@@ -12,6 +12,8 @@
     "one-var": ["off"],
     "import/no-extraneous-dependencies": ["warn"],
     "no-plusplus": ["off"],
-    "max-len": "off"
+    "max-len": "off",
+    "no-param-reassign": "warn",
+    "no-restricted-syntax": "off"
   }
 }
