@@ -17,6 +17,13 @@ async function insert(property) {
   return true;
 }
 
+async function getAll(custNo) {
+  const connection = await db();
+  const result = await connection.query('select * from tblmasterproperty where CustomerNo=?'[custNo]);
+  return result[0];
+}
+
 module.exports = {
-  insert
+  insert,
+  getAll
 };
