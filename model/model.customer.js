@@ -3,14 +3,19 @@ const db = require('../lib/db');
 
 async function getUserByPhone(phone) {
   const connection = await db();
-  const users = await connection.execute('SELECT * FROM tblmastercustomer WHERE RegMobile=?', [phone]);
-  return users[0];
+  const users = await connection.query('SELECT * FROM tblmastercustomer WHERE RegMobile=? AND isActive=1', [phone]);
+  if (users[0].length < 1) {
+    const err = new Error('No Such User');
+    err.code = 'ERR_NO_USER';
+    throw err;
+  }
+  return users[0][0];
 }
 
 async function updateUser(user, phone) {
   const connection = await db();
-  const users = await connection.execute('UPDATE ezydiner.tblmastercustomer SET CustomerName=?, RegMobile=?, RegEmail=?, State=?, Country=? WHERE RegMobile=?', [phone]);
-  return users[0];
+  const query = mysql.format('UPDATE tblmastercustomer SET ? WHERE RegMobile=?', [user, phone]);
+  await connection.query(query);
 }
 
 async function insert(user) {

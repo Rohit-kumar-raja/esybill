@@ -2,22 +2,8 @@ const customerModel = require('../model/model.customer');
 const propertyModel = require('../model/model.property');
 const { sendOTP } = require('../lib/otp');
 const qr = require('../lib/qr');
+const { getToken } = require('../lib/token');
 
-/**
- *
- * @returns Object
- */
-async function getUser() {
-  try {
-    const users = await customerModel.getUser();
-    return { success: true, data: users };
-  }
-  catch (err) {
-  // eslint-disable-next-line
-  console.log(err);
-    return { success: false, status: 500, message: 'Internal Server Error' };
-  }
-}
 /**
  *
  * @param {Number} phone
@@ -29,6 +15,9 @@ async function getUserByPhone(phone) {
     return { success: true, data: user };
   }
   catch (err) {
+    if (err.code === 'ERR_NO_USER') {
+      return { success: false, status: 400, message: err.code };
+    }
     // eslint-disable-next-line
     console.log(err);
     return { success: false, status: 500, message: 'Internal Server Error' };
@@ -55,6 +44,9 @@ async function sendLoginOtp(phone) {
     return result;
   }
   catch (err) {
+    if (err.code === 'ERR_NO_USER') {
+      return { success: false, status: 400, message: err.code };
+    }
     // eslint-disable-next-line
     console.log(err);
     return { success: false, status: 500, message: 'Internal Server Error' };
@@ -81,6 +73,12 @@ async function sendVerifyOtp(email, phone) {
   }
 }
 
+/**
+ *
+ * @param {Object} user
+ * @param {Array} properties
+ * @returns Object
+ */
 async function register(user, properties) {
   try {
     const custId = await customerModel.insert(user);
@@ -105,10 +103,47 @@ async function register(user, properties) {
   }
 }
 
+/**
+ *
+ * @param {Number} phone
+ * @returns Object
+ */
+async function login(phone) {
+  try {
+    const details = await customerModel.getUserByPhone(phone);
+    const token = await getToken({ RegMobile: details.RegMobile, CustomerName: details.CustomerName, CustomerNo: details.CustomerNo });
+    if (token) {
+      return { success: true, accessToken: token };
+    }
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+  catch (err) {
+    if (err.code === 'ERR_NO_USER') {
+      return { success: false, status: 400, message: err.code };
+    }
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+
+async function update(user) {
+  try {
+    await customerModel.updateUser(user, user.RegMobile);
+    return { success: true };
+  }
+  catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+
 module.exports = {
-  getUser,
   getUserByPhone,
   sendLoginOtp,
   sendVerifyOtp,
-  register
+  register,
+  login,
+  update
 };

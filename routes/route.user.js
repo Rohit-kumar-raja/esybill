@@ -3,49 +3,59 @@ const express = require('express');
 const router = express.Router();
 const userConroller = require('../controller/controller.user');
 const { verifyOTPMiddleware } = require('../lib/otp');
+const { verifyTokenMiddleware } = require('../lib/token');
 
-router.get('/me', async (req, res) => {
-  const { phone } = req.user;
-  const result = await userConroller.getUserByPhone(phone);
+router.get('/', verifyTokenMiddleware, async (req, res) => {
+  const { RegMobile } = req.user;
+  const result = await userConroller.getUserByPhone(RegMobile);
   if (result.success) {
-    res.json(result.data);
+    return res.json(result.data);
   }
-  else {
-    res.status(result.status).send(result.message);
-  }
+  return res.status(result.status).send(result.message);
 });
 
 router.post('/otp', async (req, res) => {
   if (req.body.type === 'login') {
     const result = await userConroller.sendLoginOtp(req.body.number);
     if (result.success) {
-      res.sendStatus(200);
+      return res.sendStatus(200);
     }
-    else {
-      res.status(result.status).send(result.message);
-    }
+    return res.status(result.status).send(result.message);
   }
-  else if (req.body.type === 'verify') {
+  if (req.body.type === 'verify') {
     const result = await userConroller.sendVerifyOtp(req.body.email, req.body.number);
     if (result.success) {
-      res.sendStatus(200);
+      return res.sendStatus(200);
     }
-    else {
-      res.status(result.status).send(result.message);
-    }
+    return res.status(result.status).send(result.message);
   }
-  else {
-    res.sendStatus(400);
-  }
+  return res.sendStatus(400);
 });
 
-router.post('/register', verifyOTPMiddleware, async (req, res) => {
+router.post('/', verifyOTPMiddleware, async (req, res) => {
   const { user, properties } = req.body;
   const result = await userConroller.register(user, properties);
   if (result.success) {
     return res.sendStatus(200);
   }
   return res.status(result.status).json(result.message);
+});
+
+router.post('/login', verifyOTPMiddleware, async (req, res) => {
+  const result = await userConroller.login(req.body.phone);
+  if (result.success) {
+    return res.status(200).json({ accessToken: result.accessToken });
+  }
+  return res.status(result.status).send(result.message);
+});
+
+router.patch('/', verifyTokenMiddleware, async (req, res) => {
+  const { user } = req;
+  const result = await userConroller.update(user);
+  if (result.success) {
+    return res.sendStatus(200);
+  }
+  return res.status(result.status).send(result.message);
 });
 
 module.exports = router;
