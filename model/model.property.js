@@ -54,13 +54,13 @@ async function getItemCategoriesByProperty(propertyNo) {
 
 async function getItemsByProperty(propertyNo) {
   const connection = await db();
-  const query = mysql.format('SELECT * FROM tblitemname WHERE PropertyNo=?', [propertyNo]);
+  const query = mysql.format('SELECT * from tblitemname JOIN tblitemcategory WHERE PropertyNo=?', [propertyNo]);
   await connection.query(query);
 }
 
 async function getProductsByProperty(propertyNo) {
   const connection = await db();
-  const query = mysql.format('SELECT * FROM tblproductname WHERE PropertyNo=?', [propertyNo]);
+  const query = mysql.format('SELECT * from tblitemname JOIN tblitemcategory JOIN tblproductname WHERE PropertyNo=?', [propertyNo]);
   await connection.query(query);
 }
 
