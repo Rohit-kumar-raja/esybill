@@ -22,4 +22,20 @@ router.post('/', async (req, res) => {
   return res.status(result.status).json(result.message);
 });
 
+router.get('/:propId', async (req, res) => {
+  const result = await propertyController.getPropertyById(req.params.propId, req.user.CustomerNo);
+  if (result.success) {
+    return res.json(result.property);
+  }
+  return res.status(result.status).json(result.message);
+});
+
+router.patch('/:propId', async (req, res) => {
+  const result = await propertyController.updateProperty(req.body, req.params.propId, req.user.CustomerNo);
+  if (result.success) {
+    return res.json(result.property);
+  }
+  return res.status(result.status).json(result.message);
+});
+
 module.exports = router;

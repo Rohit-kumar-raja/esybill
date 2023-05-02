@@ -12,9 +12,9 @@ async function getUserByPhone(phone) {
   return users[0][0];
 }
 
-async function updateUser(user, phone) {
+async function updateUser(user, customerNo) {
   const connection = await db();
-  const query = mysql.format('UPDATE tblmastercustomer SET ? WHERE RegMobile=?', [user, phone]);
+  const query = mysql.format('UPDATE tblmastercustomer SET ? WHERE CustomerNo=?', [user, customerNo]);
   await connection.query(query);
 }
 

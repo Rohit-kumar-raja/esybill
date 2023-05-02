@@ -97,7 +97,15 @@ async function register(user, properties) {
     // eslint-disable-next-line
     console.log(err);
     if (err.code === 'ER_DUP_ENTRY') {
-      return { success: false, status: 400, message: 'Phone already registered' };
+      if (err.message.includes('ph_un')) {
+        return { success: false, status: 400, message: 'ERR_DUP_PHONE' };
+      }
+      if (err.message.includes('em_un')) {
+        return { success: false, status: 400, message: 'ERR_DUP_EMAIL' };
+      }
+      // eslint-disable-next-line
+      console.log(err);
+      return { success: false, status: 500, message: 'Internal Server Error' };
     }
     return { success: false, status: 500, message: 'Internal Server Error' };
   }
@@ -127,9 +135,9 @@ async function login(phone) {
   }
 }
 
-async function update(user) {
+async function update(user, customerNo) {
   try {
-    await customerModel.updateUser(user, user.RegMobile);
+    await customerModel.updateUser(user, customerNo);
     return { success: true };
   }
   catch (err) {

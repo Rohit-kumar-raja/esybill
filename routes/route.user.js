@@ -49,9 +49,9 @@ router.post('/login', verifyOTPMiddleware, async (req, res) => {
   return res.status(result.status).send(result.message);
 });
 
-router.patch('/', verifyTokenMiddleware, async (req, res) => {
-  const { user } = req;
-  const result = await userConroller.update(user);
+router.patch('/', verifyTokenMiddleware, verifyOTPMiddleware, async (req, res) => {
+  const { user } = req.body;
+  const result = await userConroller.update(user, req.user.CustomerNo);
   if (result.success) {
     return res.sendStatus(200);
   }
