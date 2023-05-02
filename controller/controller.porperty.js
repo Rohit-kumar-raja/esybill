@@ -64,9 +64,61 @@ async function updateProperty(property, propertyNo, customerNo) {
   }
 }
 
+async function deleteProperty(property, propertyNo, customerNo) {
+  try {
+    await propertyModel.deleteProperty(property, propertyNo, customerNo);
+    return { success: true };
+  }
+  catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+
+async function getItemCategoriesByProperty(propertyNo) {
+  try {
+    const itemCategories = await propertyModel.getItemCategoriesByProperty(propertyNo);
+    return { success: true, itemCategories };
+  }
+  catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+
+async function getItemsByProperty(propertyNo) {
+  try {
+    const items = await propertyModel.getItemsByProperty(propertyNo);
+    return { success: true, items };
+  }
+  catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+
+async function getProductsByProperty(propertyNo) {
+  try {
+    const products = await propertyModel.getProductsByProperty(propertyNo);
+    return { success: true, products };
+  }
+  catch (err) {
+    // eslint-disable-next-line
+    console.log(err);
+    return { success: false, status: 500, message: 'Internal Server Error' };
+  }
+}
+
 module.exports = {
   getAllProperties,
   createProperty,
   getPropertyById,
-  updateProperty
+  updateProperty,
+  deleteProperty,
+  getItemCategoriesByProperty,
+  getItemsByProperty,
+  getProductsByProperty
 };

@@ -33,7 +33,39 @@ router.get('/:propId', async (req, res) => {
 router.patch('/:propId', async (req, res) => {
   const result = await propertyController.updateProperty(req.body, req.params.propId, req.user.CustomerNo);
   if (result.success) {
-    return res.json(result.property);
+    return res.sendStatus(200);
+  }
+  return res.status(result.status).json(result.message);
+});
+
+router.delete('/:propId', async (req, res) => {
+  const result = await propertyController.deleteProperty(req.params.propId, req.user.CustomerNo);
+  if (result.success) {
+    return res.sendStatus(204);
+  }
+  return res.status(result.status).json(result.message);
+});
+
+router.get('/:propId/itemCategory', async (req, res) => {
+  const result = await propertyController.getItemCategoriesByProperty(req.params.propId);
+  if (result.success) {
+    return res.json(result.itemCategories);
+  }
+  return res.status(result.status).json(result.message);
+});
+
+router.get('/:propId/item', async (req, res) => {
+  const result = await propertyController.getItemsByProperty(req.params.propId);
+  if (result.success) {
+    return res.json(result.items);
+  }
+  return res.status(result.status).json(result.message);
+});
+
+router.get('/:propId/product', async (req, res) => {
+  const result = await propertyController.getProductsByProperty(req.params.propId);
+  if (result.success) {
+    return res.json(result.products);
   }
   return res.status(result.status).json(result.message);
 });

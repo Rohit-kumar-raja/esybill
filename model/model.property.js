@@ -36,7 +36,31 @@ async function getPropertyById(propertyNo, customerNo) {
 
 async function updateProperty(property, propertyNo, customerNo) {
   const connection = await db();
-  const query = mysql.format('UPDATE tblmasterproperty SET ? WHERE CustomerNo=? and propertyNo=?', [property, customerNo, propertyNo]);
+  const query = mysql.format('UPDATE tblmasterproperty SET ? WHERE CustomerNo=? and PropertyNo=?', [property, customerNo, propertyNo]);
+  await connection.query(query);
+}
+
+async function deleteProperty(propertyNo, customerNo) {
+  const connection = await db();
+  const query = mysql.format('DELETE FROM tblmasterproperty WHERE CustomerNo=? and PropertyNo=?', [customerNo, propertyNo]);
+  await connection.query(query);
+}
+
+async function getItemCategoriesByProperty(propertyNo) {
+  const connection = await db();
+  const query = mysql.format('SELECT * FROM tblitemcategory WHERE PropertyNo=?', [propertyNo]);
+  await connection.query(query);
+}
+
+async function getItemsByProperty(propertyNo) {
+  const connection = await db();
+  const query = mysql.format('SELECT * FROM tblitemname WHERE PropertyNo=?', [propertyNo]);
+  await connection.query(query);
+}
+
+async function getProductsByProperty(propertyNo) {
+  const connection = await db();
+  const query = mysql.format('SELECT * FROM tblproductname WHERE PropertyNo=?', [propertyNo]);
   await connection.query(query);
 }
 
@@ -44,5 +68,9 @@ module.exports = {
   insert,
   getAllProperties,
   getPropertyById,
-  updateProperty
+  updateProperty,
+  deleteProperty,
+  getItemCategoriesByProperty,
+  getItemsByProperty,
+  getProductsByProperty
 };
