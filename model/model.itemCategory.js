@@ -7,7 +7,7 @@ async function insertItemCategory(itemCategory) {
   await connection.query(query);
 }
 
-async function update(itemCategory, categoryRN, propertyNo) {
+async function updateItemCategory(itemCategory, categoryRN, propertyNo) {
   const connection = await db.connect();
   const query = mysql.format('UPDATE tblitemcategory SET ? WHERE CategoryRN=? AND PropertyNo=?', [itemCategory, categoryRN, propertyNo]);
   await connection.query(query);
@@ -35,7 +35,7 @@ async function getItemsByItemCategory(categoryRN, propertyNo) {
 
 module.exports = {
   insertItemCategory,
-  update,
+  updateItemCategory,
   deleteItemCategory,
   getItemCategoriesByProperty,
   getItemsByItemCategory
