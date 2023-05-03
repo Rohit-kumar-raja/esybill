@@ -89,7 +89,7 @@ async function register(user, properties) {
       qr.generateQR(`${process.env.MENU_URL}/${PropertyMenuName}`, PropertyMenuName);
       property.QRLocation = `${process.env.URL}/assets/qrcodes/${PropertyMenuName}.png`;
       // eslint-disable-next-line
-      await propertyModel.insert(property);
+      await propertyModel.insertPropert(property);
     }
     return { success: true };
   }

@@ -16,7 +16,7 @@ async function createProperty(property, customerNo) {
   try {
     // eslint-disable-next-line
     property.CustomerNo = customerNo;
-    await propertyModel.insert(property);
+    await propertyModel.insertPropert(property);
     return { success: true };
   }
   catch (err) {

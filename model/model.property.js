@@ -1,7 +1,7 @@
 const mysql = require('mysql2/promise');
 const db = require('../lib/db');
 
-async function insert(property) {
+async function insertPropert(property) {
   const connection = await db();
   let PropertyNo = await connection.query('select max(PropertyNo) as propNo from tblmasterproperty;');
   if (PropertyNo[0][0].propNo) {
@@ -14,7 +14,6 @@ async function insert(property) {
   property.PropertyNo = PropertyNo;
   const query = mysql.format('INSERT INTO tblmasterproperty SET ?', property);
   await connection.query(query);
-  return true;
 }
 
 async function getAllProperties(customerNo) {
@@ -49,23 +48,26 @@ async function deleteProperty(propertyNo, customerNo) {
 async function getItemCategoriesByProperty(propertyNo) {
   const connection = await db();
   const query = mysql.format('SELECT * FROM tblitemcategory WHERE PropertyNo=?', [propertyNo]);
-  await connection.query(query);
+  const result = await connection.query(query);
+  return result[0];
 }
 
 async function getItemsByProperty(propertyNo) {
   const connection = await db();
   const query = mysql.format('SELECT * from tblitemname JOIN tblitemcategory WHERE PropertyNo=?', [propertyNo]);
-  await connection.query(query);
+  const result = await connection.query(query);
+  return result[0];
 }
 
 async function getProductsByProperty(propertyNo) {
   const connection = await db();
   const query = mysql.format('SELECT * from tblitemname JOIN tblitemcategory JOIN tblproductname WHERE PropertyNo=?', [propertyNo]);
-  await connection.query(query);
+  const result = await connection.query(query);
+  return result[0];
 }
 
 module.exports = {
-  insert,
+  insert: insertPropert,
   getAllProperties,
   getPropertyById,
   updateProperty,
