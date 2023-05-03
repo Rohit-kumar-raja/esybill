@@ -1,7 +1,9 @@
 const itemCategoryModel = require('../model/model.itemCategory');
 
-async function insertItemCategory(Itemcategory) {
+async function insertItemCategory(Itemcategory, PropertyNo) {
   try {
+    // eslint-disable-next-line
+    Itemcategory.PropertyNo = PropertyNo;
     await itemCategoryModel.insertItemCategory(Itemcategory);
     return { success: true };
   }
@@ -50,8 +52,8 @@ async function getItemCategoriesByProperty(PropertyNo) {
 
 async function getItemsByItemCategory(CategoryRN, PropertyNo) {
   try {
-    const item = await itemCategoryModel.getItemsByItemCategory(CategoryRN, PropertyNo);
-    return { success: true, item };
+    const items = await itemCategoryModel.getItemsByItemCategory(CategoryRN, PropertyNo);
+    return { success: true, items };
   }
   catch (err) {
     // eslint-disable-next-line
