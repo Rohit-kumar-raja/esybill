@@ -1,8 +1,14 @@
 const productModel = require('../model/model.product');
 
-async function insertProduct(item) {
+async function insertProduct(product, CategoryRN, PropertyNo, ItemNameRN) {
   try {
-    await productModel.insertProduct(item);
+    // eslint-disable-next-line
+    product.PropertyNo = PropertyNo;
+    // eslint-disable-next-line
+    product.CategoryRN = CategoryRN;
+    // eslint-disable-next-line
+    product.ItemNameRN = ItemNameRN;
+    await productModel.insertProduct(product);
     return { success: true };
   }
   catch (err) {

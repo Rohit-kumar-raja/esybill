@@ -8,9 +8,9 @@ const itemRoute = require('./route.item');
 const productRoute = require('./route.product');
 
 router.use('/user', userRoute);
-router.use('/property/:prodId/itemCtegory/:catId/item/itemId', productRoute);
-router.use('/property/:prodId/itemCtegory/:catId/item', itemRoute);
-router.use('/property/:prodId/itemCtegory', itemCategoryRoute);
+router.use('/property/:PropertyNo/itemCtegory/:CategoryRN/item/:ItemNameRN/product', productRoute);
+router.use('/property/:PropertyNo/itemCtegory/:CategoryRN/item', itemRoute);
+router.use('/property/:PropertyNo/itemCtegory', itemCategoryRoute);
 router.use('/property', propertyRoute);
 
 module.exports = router;

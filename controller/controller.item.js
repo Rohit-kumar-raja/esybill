@@ -1,7 +1,11 @@
 const itemModel = require('../model/model.item');
 
-async function insertItem(item) {
+async function insertItem(item, PropertyNo, CategoryRN) {
   try {
+    // eslint-disable-next-line
+    item.PropertyNo = PropertyNo;
+    // eslint-disable-next-line
+    item.CategoryRN = CategoryRN;
     await itemModel.insertItem(item);
     return { success: true };
   }
