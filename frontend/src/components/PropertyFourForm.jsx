@@ -3,57 +3,78 @@ import {IoCaretBackCircleOutline,IoAddCircleOutline} from 'react-icons/io5';
 
 import { stateList } from '../constants/stateList';
 import OTPVerificationModal from './OTPVerificationModal';
-const PropertyFourForm = ({setUserRegistrationData, setActivateThirdPropertyStepper,
+import { addProperty } from '../registrationSlice';
+import { useDispatch, useSelector } from 'react-redux';
+const PropertyFourForm = ({setActivateThirdPropertyStepper,
     setActivateFourthPropertyStepper, userRegistrationData
     // setActivateThirdProperty,
     // setActivateSecondProperty
     }) => {
 
-    const [propertyType, setPropertyType] = useState('')
-    const [propertyName, setPropertyName] = useState('') 
-    const [propertyEmail, setPropertyEmail] = useState('')
-    const [propertyAddress, setPropertyAddress] = useState('')
-    const [propertyMobile, setPropertyMobile] = useState('')
-    const [propertyState, setPropertyState] = useState('')
-    const [propertyCountry, setPropertyCountry] = useState('')
+    const [PropType, setPropType] = useState('')
+    const [PropName, setPropName] = useState('') 
+    const [PropEmail, setPropEmail] = useState('') 
+    const [PropAddress, setPropAddress] = useState('')
+    const [PropPhone, setPropPhone] = useState('')
+    const [PropState, setPropState] = useState('')
+    const [PropCountry, setPropCountry] = useState('')
     const [disabled, setDisabled] = useState(true)
     const [showModal, setShowModal] = useState(false)
+    const [addPropBtn, setAddPropBtn] = useState(true)
+    const dispatch = useDispatch()
+    const propertyDetails = useSelector(store => store.register?.properties)
 
-    // useEffect(()=>{
-    //   setActivateFourthPropertyStepper(true)
-    // },[])
+    useEffect(()=>{
+        console.log(propertyDetails)
+    },[propertyDetails])
+
+    useEffect(()=>{
+        if(propertyDetails.length > 3) 
+        {
+            PropType === '' && setPropType(propertyDetails[3].PropType) 
+            PropName === '' && setPropName(propertyDetails[3].PropName) 
+            PropEmail === '' && setPropEmail(propertyDetails[3].PropEmail) 
+            PropAddress === '' && setPropAddress(propertyDetails[3].PropAddress) 
+            PropPhone === '' && setPropPhone(propertyDetails[3].PropPhone)
+            PropState === '' && setPropState(propertyDetails[3].PropState)
+            PropCountry === '' && setPropCountry(propertyDetails[3].PropCountry)   
+        }
+      },[PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, 
+        PropCountry, propertyDetails])
+    
 
     const moveToFourthPropertyToggleHandler = () => {
         setActivateFourthPropertyStepper(true)
-    //   setActivateThirdProperty(true)
-    //   setActivateSecondProperty(false)
-        //  setActivateSecondProperty(true)
-        //  setActivateFirstProperty(false)
+    
        }
 
     const propertyFourSubmitHandler = (e) => {
         e.preventDefault() 
         setShowModal(true)
-        let propertyDetails = [
-          {
-            propertyType, propertyEmail, propertyAddress, propertyMobile, propertyState, propertyCountry
+        let propertyFourDetails = {
+            PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, PropCountry
         }
-      ]
-    //   setStudentData(prevState => ({...prevState,courseDetails:[...prevState.courseDetails,{course, duration, details, ids} ]})) 
-      setUserRegistrationData(prevState => ({...prevState, propertyDetails:[...prevState.propertyDetails, {
-          propertyType, propertyEmail, propertyAddress, propertyMobile, propertyState, propertyCountry
-      }]}))
+        dispatch(addProperty({number : 3, value:propertyFourDetails}))
+       // let propertyDetails = [
+    //       {
+    //         PropType, PropEmail, PropAddress, PropPhone, PropState, PropCountry
+    //     }
+    //   ]
+    //   setUserRegistrationData(prevState => ({...prevState, propertyDetails:[...prevState.propertyDetails, {
+    //       PropType, PropEmail, PropAddress, PropPhone, PropState, PropCountry
+    //   }]}))
+
         
     }
 
     useEffect(()=>{
-        if(propertyType!=='' && propertyName !=='' && propertyEmail!=='' && propertyAddress !==''
-         && propertyMobile !=='' && propertyState!=='' && propertyCountry!==''
+        if(PropType!=='' && PropName !=='' && PropEmail!=='' && PropAddress !==''
+         && PropPhone !=='' && PropState!=='' && PropCountry!==''
           ){
           setDisabled(false)
         }
         else setDisabled(true)
-      },[propertyType,propertyName,propertyEmail,propertyAddress,propertyMobile,propertyState,propertyCountry])
+      },[PropType,PropName,PropEmail,PropAddress,PropPhone,PropState,PropCountry])
 
       
 return (
@@ -61,7 +82,8 @@ return (
     {
       showModal ? <OTPVerificationModal  setShowModal={setShowModal} 
       userRegistrationData={userRegistrationData} 
-       setUserRegistrationData={setUserRegistrationData}/> : null
+    
+       /> : null
     }
 <div className='flex flex-col px-6'>
 <form className="rounded-md px-2 md:px-6 py-6 shadow-xl" onSubmit={propertyFourSubmitHandler}>
@@ -79,7 +101,7 @@ return (
             <select id="states" className="bg-gray-50  block 
             border-2 border-[#DDDDDD] rounded-md focus:outline-none 
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
-            w-full px-2.5 h-[42px]" defaultValue={propertyType} onChange={(e)=> setPropertyType(e.target.value)}>
+            w-full px-2.5 h-[42px]" defaultValue={PropType} onChange={(e)=> setPropType(e.target.value)}>
             <option selected>Choose a type</option>
             <option value="Hotel">Hotel</option>
             <option value="Restaurant">Restaurant</option>
@@ -94,7 +116,7 @@ return (
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyName} onChange={(e)=> setPropertyName(e.target.value)} />
+            value={PropName} onChange={(e)=> setPropName(e.target.value)} />
         </div>
         <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
             <label className="block tracking-wide text-[#464646]
@@ -105,7 +127,7 @@ return (
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyEmail} onChange={(e)=> setPropertyEmail(e.target.value)} />
+            value={PropEmail} onChange={(e)=> setPropEmail(e.target.value)} />
         </div>
         <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
             <label className="block tracking-wide text-[#464646]
@@ -116,7 +138,7 @@ return (
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyAddress} onChange={(e)=> setPropertyAddress(e.target.value)} />
+            value={PropAddress} onChange={(e)=> setPropAddress(e.target.value)} />
         </div>
         <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
             <label className="block tracking-wide text-[#464646]
@@ -127,7 +149,7 @@ return (
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyCountry} onChange={(e)=> setPropertyCountry(e.target.value)} />
+            value={PropCountry} onChange={(e)=> setPropCountry(e.target.value)} />
         </div>
             
         <div className="grid grid-cols-4 md:mb-3 md:mt-3">
@@ -141,7 +163,7 @@ return (
             w-full h-[42px]
             rounded-md  px-4 mb-3 leading-tight focus:outline-none"
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyMobile} onChange={(e)=> setPropertyMobile(e.target.value)} />
+            value={PropPhone} onChange={(e)=> setPropPhone(e.target.value)} />
         </div>
         <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">
         
@@ -153,7 +175,7 @@ return (
 <select id="states" className="bg-gray-50  block 
 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
-w-full px-2.5 h-[42px]" defaultValue={propertyState} onChange={(e)=> setPropertyState(e.target.value)}>
+w-full px-2.5 h-[42px]" defaultValue={PropState} onChange={(e)=> setPropState(e.target.value)}>
 <option selected>Choose a state</option>
 {
   stateList.map((stateList) => {
@@ -161,7 +183,7 @@ w-full px-2.5 h-[42px]" defaultValue={propertyState} onChange={(e)=> setProperty
   })
 }
 </select>
-
+ 
 
         </div>
         </div>

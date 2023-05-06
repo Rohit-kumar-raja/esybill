@@ -3,17 +3,35 @@ import { createSlice } from "@reduxjs/toolkit";
 const registrationSlice = createSlice({
     name:'register',
     initialState:{
-        userDetails:[]
+        user:{},
+        properties:[],
+        otp:'',
+        phone:""
     },
+    
     reducers:{
         addUser:(state, action) => {
-            state = state.userDetails.splice(0,1,action.payload)
+            state.user = action.payload
          },
          addProperty:(state, action) => {
-             state.userDetails.push(action.payload)
+            // state = state.property.splice(0,1,action.payload)
+            //state = state.property.push(action.payload)
+           state.properties[(action.payload.number)] = action.payload.value
+           console.log(action.payload)
+         }, 
+         addOtp:(state, action) => {
+            state.otp = action.payload
          },
-    }
+         addPhone:(state,action) => {
+            state.phone = action.payload
+         },
+         // updateProperty:(state, action) => {
+         //    if(state.property[action.payload.number] !== null){
+         //       state.property[action.payload.number] = action.payload.value
+         //    }
+         // }
+    } 
 })
 
-export const {addUser, addProperty} = registrationSlice.actions 
+export const {addUser, addProperty, addOtp, addPhone, updateProperty} = registrationSlice.actions 
 export default registrationSlice.reducer

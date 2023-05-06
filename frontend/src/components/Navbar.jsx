@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaBars } from 'react-icons/fa';
-import logo from '../assets/logo.png'
+import logo from '../assets/logo/logo.png'
 export default function Navbar({ fixed , viewPropertyButton, setViewAllProperty }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const togglePropertyHandler = () => {

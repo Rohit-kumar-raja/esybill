@@ -1,9 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import {MdOutlineMobileFriendly} from 'react-icons/md'
+import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from 'react-toastify';
-  import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
+import registrationSlice, { addOtp } from "../registrationSlice";
+import axios from '../api/axios';
 
-export const OTPVerificationModal = ({setShowModal, userRegistrationData, setUserRegistrationData}) => {
+
+const OTP_VERIFICATION = '/api/user/otp';
+
+export const OTPVerificationModal = ({setShowModal, userRegistrationData}) => {
     const [timer, setTimer] = useState(10)
     const [loader, setLoader] = useState(false)
     const [firstNum, setfirstNum] = useState('') 
@@ -12,34 +18,62 @@ export const OTPVerificationModal = ({setShowModal, userRegistrationData, setUse
     const [fourthNum, setfourthNum] = useState('')
     const [submit, setsubmit] = useState(false)
     const [border, setborder] = useState(false)
-    //const otpDefaultValue = useSelector(store => store.login.otpDefault)
-    //const result = useSelector(store => store.login.result)
+    const dispatch = useDispatch()
+    const dataresult = useSelector(store => store.register)
+    const otp = useSelector(store => store.register?.otp)
+    const registrationDetails = useSelector(store => store.register) 
+    const phoneNumber = useSelector(store => store.register?.phone)
     const result = false
-    // const dispatch = useDispatch()
-    // const navigate = useNavigate()
     const firstNumRef = useRef()
     const secondNumRef = useRef()
     const thirdNumRef  = useRef()
     const fourthNumRef = useRef()
-  
+    // dataresult && console.log(dataresult)
     useEffect(()=>{
       if(firstNum!=='' && secondNum!=='' && thirdNum!=='' && fourthNum!==''){
        setsubmit(true)
-     
       }
     },[firstNum, secondNum, thirdNum, fourthNum,timer, border])
   
     useEffect(()=>{
       let number = [firstNum,secondNum, thirdNum, fourthNum]
-      //submit && dispatch(validateOtp([...number]))
-      console.log(number)
       let otpval = [...number]
-      console.log(Number(otpval.join('')))
-      submit && setUserRegistrationData(prevState => ({...prevState, otpval:Number(otpval.join(''))}))
-    
+      submit && dispatch(addOtp(Number(otpval.join(''))))
     },[submit,timer])
   
 
+   
+    useEffect(()=>{
+      // if(otp.toString().length === 4){
+        console.log({ type:"verify", phone: phoneNumber })
+
+        const handleSubmit = async () => {
+          try {
+            const response = await axios.post(OTP_VERIFICATION,
+                JSON.stringify( { type: "verify", phone: phoneNumber }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+        
+              console.log(response)
+          } catch (err) {
+            console.log(err) 
+              // if (!err?.response) {
+              //   console.log(err)
+              //    // setErrMsg('No Server Response');
+              // } else if (err.response?.status === 409) {
+              //     // setErrMsg('Username Taken');
+              // } else {
+              //     console.log(err)
+              // }
+              //errRef.current.focus();
+          }
+      }
+      handleSubmit()
+      //}
+    },[])
     //UNCOMMENT IF OTP MATCHES
 
     // useEffect(()=>{
@@ -91,11 +125,15 @@ export const OTPVerificationModal = ({setShowModal, userRegistrationData, setUse
        setborder(false)
       },1000)
     }
+    const otpSubmitHandler = (e) =>{
+      e.preventDefault()
+      console.log('hi')
+    }
+    // const BACKEND_API = import.meta.env.BACKEND_API
   return (
     <>
-    <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
+    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+    >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
 <div className='flex justify-center bg-pink-50 items-center'>
  <div className="w-full max-w-xs ">
@@ -106,7 +144,7 @@ export const OTPVerificationModal = ({setShowModal, userRegistrationData, setUse
   focus:outline-none">
   ×</span>
   </button>
-  <form className="b rounded px-8 py-8 mb-4 flex flex-col items-center">
+  <form className="b rounded px-8 py-8 mb-4 flex flex-col items-center" onSubmit={otpSubmitHandler}>
   <MdOutlineMobileFriendly size={40} className="text-blue-900" />
     <div className="">
       <label className="block text-blue-900 text-md font-semibold my-4" htmlFor="username">

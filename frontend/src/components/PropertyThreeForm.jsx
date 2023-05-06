@@ -2,36 +2,57 @@ import React, { useEffect, useState } from 'react'
 import {IoCaretBackCircleOutline,IoAddCircleOutline} from 'react-icons/io5';
 
 import { stateList } from '../constants/stateList';
-const PropertyThreeForm = ({setUserRegistrationData, setActivateThirdPropertyStepper,
+import { addProperty } from '../registrationSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import OTPVerificationModal from './OTPVerificationModal';
+const PropertyThreeForm = ({setActivateThirdPropertyStepper,
     setActivateFourthProperty,setActivateThirdProperty, activateFourthPropertyStepper,
     setActivateFourthPropertyStepper
     // setActivateThirdProperty,
     // setActivateSecondProperty
     }) => {
 
-    const [propertyType, setPropertyType] = useState('')
-    const [propertyName, setPropertyName] = useState('')
-    const [propertyEmail, setPropertyEmail] = useState('')
-    const [propertyAddress, setPropertyAddress] = useState('')
-    const [propertyMobile, setPropertyMobile] = useState('')
-    const [propertyState, setPropertyState] = useState('')
-    const [propertyCountry, setPropertyCountry] = useState('')
+    const [PropType, setPropType] = useState('')
+    const [PropName, setPropName] = useState('')
+    const [PropEmail, setPropEmail] = useState('')
+    const [PropAddress, setPropAddress] = useState('')
+    const [PropPhone, setPropPhone] = useState('')
+    const [PropState, setPropState] = useState('')
+    const [PropCountry, setPropCountry] = useState('')
     const [disabled, setDisabled] = useState(true)
+    const [addPropBtn, setAddPropBtn] = useState(true)
+    const [showModal, setShowModal] = useState(false)
+    const propertyDetails = useSelector(store => store.register?.properties)
+    const dispatch = useDispatch()
 
-    // useEffect(()=>{
-    //     setActivateSecondProperty(false)
-    // },[])
     useEffect(()=>{
         console.log("setActivateFourthPropertyStepper", activateFourthPropertyStepper)
     }, [activateFourthPropertyStepper])
     
+    useEffect(()=>{
+        if(propertyDetails.length > 2)
+        {
+            PropType === '' && setPropType(propertyDetails[2].PropType) 
+            PropName === '' && setPropName(propertyDetails[2].PropName) 
+            PropEmail === '' && setPropEmail(propertyDetails[2].PropEmail) 
+            PropAddress === '' && setPropAddress(propertyDetails[2].PropAddress) 
+            PropPhone === '' && setPropPhone(propertyDetails[2].PropPhone)
+            PropState === '' && setPropState(propertyDetails[2].PropState)
+            PropCountry === '' && setPropCountry(propertyDetails[2].PropCountry)   
+        }
+      },[PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, 
+        PropCountry, propertyDetails])
 
-    const moveToFourthPropertyToggleHandler = () => {
+    const moveToFourthPropertyToggleHandler = () => { 
        
+        let propertyThreeDetails = {
+            PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, PropCountry
+        }
+      
         setActivateFourthPropertyStepper(true)
-        setActivateFourthProperty(true)
+        setActivateFourthProperty(true) 
         setActivateThirdProperty(false)
-         
+        dispatch(addProperty({number : 2, value:propertyThreeDetails}))
     //   setActivateThirdProperty(true)
     //   setActivateSecondProperty(false)
         //  setActivateSecondProperty(true)
@@ -40,30 +61,44 @@ const PropertyThreeForm = ({setUserRegistrationData, setActivateThirdPropertySte
 
     const propertyThreeSubmitHandler = (e) => {
         e.preventDefault() 
-        let propertyDetails = [
-          {
-            propertyType, propertyEmail, propertyAddress, propertyMobile, propertyState, propertyCountry
-        }
-      ]
+        setAddPropBtn(true)
+    //     let propertyThreeDetails = [
+    //       {
+    //         PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, PropCountry
+    //     }
+    //   ]
     //   setStudentData(prevState => ({...prevState,courseDetails:[...prevState.courseDetails,{course, duration, details, ids} ]})) 
-      setUserRegistrationData(prevState => ({...prevState, propertyDetails:[...prevState.propertyDetails, {
-          propertyType, propertyEmail, propertyAddress, propertyMobile, propertyState, propertyCountry
-      }]}))
+    //   setUserRegistrationData(prevState => ({...prevState, propertyDetails:[...prevState.propertyDetails, {
+    //       PropType, PropEmail, PropAddress, PropPhone, PropState, PropCountry
+    //   }]}))
+    let propertyThreeDetails = {
+          PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, PropCountry
+      }
+      dispatch(addProperty({number : 2, value:propertyThreeDetails}))
+    setShowModal(true)
         
     }
 
     useEffect(()=>{
-        if(propertyType!=='' && propertyName !=='' && propertyEmail!=='' && propertyAddress !==''
-         && propertyMobile !=='' && propertyState!=='' && propertyCountry!==''
+        if(PropType!=='' && PropName !=='' && PropEmail!=='' && PropAddress !==''
+         && PropPhone !=='' && PropState!=='' && PropCountry!==''
           ){
           setDisabled(false)
+          setAddPropBtn(false)
         }
-        else setDisabled(true)
-      },[propertyType,propertyName,propertyEmail,propertyAddress,propertyMobile,propertyState,propertyCountry])
+        else 
+        {
+            setDisabled(true)
+            setAddPropBtn
+        }
+      },[PropType,PropName,PropEmail,PropAddress,PropPhone,PropState,PropCountry])
 
       
 return (
     <>
+    {
+      showModal ? <OTPVerificationModal  setShowModal={setShowModal} /> : null
+    }
 <div className='flex flex-col px-6'>
 <form className="rounded-md px-2 md:px-6 py-6 shadow-xl" onSubmit={propertyThreeSubmitHandler}>
 <div className='px-6 text-center'>
@@ -80,7 +115,7 @@ return (
             <select id="states" className="bg-gray-50  block 
             border-2 border-[#DDDDDD] rounded-md focus:outline-none 
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
-            w-full px-2.5 h-[42px]" defaultValue={propertyType} onChange={(e)=> setPropertyType(e.target.value)}>
+            w-full px-2.5 h-[42px]" defaultValue={PropType} onChange={(e)=> setPropType(e.target.value)}>
             <option selected>Choose a type</option>
             <option value="Hotel">Hotel</option>
             <option value="Restaurant">Restaurant</option>
@@ -95,7 +130,7 @@ return (
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyName} onChange={(e)=> setPropertyName(e.target.value)} />
+            value={PropName} onChange={(e)=> setPropName(e.target.value)} />
         </div>
         <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
             <label className="block tracking-wide text-[#464646]
@@ -106,7 +141,7 @@ return (
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyEmail} onChange={(e)=> setPropertyEmail(e.target.value)} />
+            value={PropEmail} onChange={(e)=> setPropEmail(e.target.value)} />
         </div>
         <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
             <label className="block tracking-wide text-[#464646]
@@ -117,7 +152,7 @@ return (
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyAddress} onChange={(e)=> setPropertyAddress(e.target.value)} />
+            value={PropAddress} onChange={(e)=> setPropAddress(e.target.value)} />
         </div>
         <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
             <label className="block tracking-wide text-[#464646]
@@ -128,7 +163,7 @@ return (
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyCountry} onChange={(e)=> setPropertyCountry(e.target.value)} />
+            value={PropCountry} onChange={(e)=> setPropCountry(e.target.value)} />
         </div>
             
         <div className="grid grid-cols-4 md:mb-3 md:mt-3">
@@ -142,7 +177,7 @@ return (
             w-full h-[42px]
             rounded-md  px-4 mb-3 leading-tight focus:outline-none"
             id="grid-first-name" type="text" placeholder="" 
-            value={propertyMobile} onChange={(e)=> setPropertyMobile(e.target.value)} />
+            value={PropPhone} onChange={(e)=> setPropPhone(e.target.value)} />
         </div>
         <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">
         
@@ -154,7 +189,7 @@ return (
 <select id="states" className="bg-gray-50  block 
 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
-w-full px-2.5 h-[42px]" defaultValue={propertyState} onChange={(e)=> setPropertyState(e.target.value)}>
+w-full px-2.5 h-[42px]" defaultValue={PropState} onChange={(e)=> setPropState(e.target.value)}>
 <option selected>Choose a state</option>
 {
   stateList.map((stateList) => {
@@ -162,19 +197,12 @@ w-full px-2.5 h-[42px]" defaultValue={propertyState} onChange={(e)=> setProperty
   })
 }
 </select>
-
-
         </div>
         </div>
-
-        
         </div>
         <div className='flex gap-2 items-center justify-evenly'>
-
-        <IoCaretBackCircleOutline size='31px'/>
         <button className={`font-normal flex gap-2 items-center bg-[#800080] text-[white] rounded-md py-3 px-8 my-6 
-         
-         ${disabled ? `cursor-not-allowed opacity-50` : `cursor-pointer opacity-100`} `} 
+         ${addPropBtn ? `cursor-not-allowed opacity-50` : `cursor-pointer opacity-100`} `} 
          onClick={moveToFourthPropertyToggleHandler}>
             Add Property 
             <IoAddCircleOutline size='20px' />

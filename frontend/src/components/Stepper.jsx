@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstProp,setActivateSecondPropertyStepper,
    setActivateFirstProperty, setActivateThirdProperty,  setActivateThirdPropertyStepper, setActivateSecondProperty, 
    activateFourthPropertyStepper,setActivateFourthPropertyStepper, setActivateFirstPropertyStepper,
@@ -8,9 +9,11 @@ const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstPro
   setActivateFirstProperty(false)
   setActivateSecondProperty(false)
   setActivateThirdProperty(false)
+  setActivateFourthProperty(false)
   setActivateSecondPropertyStepper(false)
   setActivateThirdPropertyStepper(false)
- }
+  setActivateFourthPropertyStepper(false)
+ } 
  const moveToPropertyOneToggleHandler = () => {
   setActivateFirstProperty(true) 
   setActivateFirstPropertyStepper(true)
@@ -47,6 +50,19 @@ const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstPro
   setActivateThirdPropertyStepper(true)
   setActivateFourthPropertyStepper(true)
  }
+
+ const property = useSelector(store => store?.register?.properties)
+
+ useEffect(()=>{
+
+  if(property.length === 4){
+    setActivateFirstPropertyStepper(true)
+    setActivateSecondPropertyStepper(true)
+    setActivateThirdPropertyStepper(true)
+    setActivateFourthPropertyStepper(true)
+  }
+ },[property, moveToRegistrationToggleHandler, moveToPropertyOneToggleHandler, moveToPropertyTwoToggleHandler, 
+  moveToPropertyThreeToggleHandler, moveToPropertyFourToggleHandler])
   return ( 
     <>
     <div className='flex justify-center md:justify-normal gap-0 md:gap-6'>
@@ -60,29 +76,38 @@ const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstPro
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
-      <span className="text-[#464646] leading-[22px] font-semibold text-[13px] w-[218px] text-center
-      h-fit py-3 px-10 rounded-lg border border-[#800080]">
+      <span className={`text-[#464646] leading-[22px] font-semibold text-[13px] w-[218px] text-center
+      h-fit py-3 px-10 rounded-lg 
+      border border-[#800080]  
+      ${activateFirstPropertyStepper? `opacity-1`  : `opacity-0`}
+      `}>
         Property One</span>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
-      <span className="text-[#464646] leading-[22px] font-semibold text-[13px] w-[218px] text-center
-      h-fit py-3 px-10 rounded-lg border border-[#800080]">
+      <span className={`text-[#464646] leading-[22px] font-semibold text-[13px] w-[218px] text-center
+      h-fit py-3 px-10 rounded-lg border border-[#800080] 
+      ${activateSecondPropertyStepper? `opacity-1`  : `opacity-0`}
+      `}>
         Property Two</span>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
-      <span className="text-[#464646] leading-[22px] font-semibold text-[13px] w-[218px] text-center
-      h-fit py-3 px-10 rounded-lg border border-[#800080]">
+      <span className={`text-[#464646] leading-[22px] font-semibold text-[13px] w-[218px] text-center
+      h-fit py-3 px-10 rounded-lg border border-[#800080]  
+      ${activateThirdPropertyStepper ? `opacity-1`  : `opacity-0`}
+      `}>
         Property Three</span>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
-      <span className="text-[#464646] leading-[22px] font-semibold text-[13px] w-[218px] text-center
-      h-fit py-3 px-10 rounded-lg border border-[#800080]">
+      <span className={`text-[#464646] leading-[22px] font-semibold text-[13px] w-[218px] text-center
+      h-fit py-3 px-10 rounded-lg border border-[#800080]  
+      ${activateFourthPropertyStepper ? `opacity-1`  : `opacity-0`}
+      `}>
         Property Four</span>
       </div>
     </li>
@@ -93,10 +118,10 @@ const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstPro
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center mt-12'>
         <span className="rounded-full bg-[#800080] py-[0.15rem] px-[0.30rem] text-white text-[11px] 
-        cursor-pointer "
+        cursor-pointer"
         onClick={moveToRegistrationToggleHandler} >01</span>
-        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50 
-        ${activateFirstPropertyStepper? `bg-[#800080]`  : `bg-[#EFE8E8]`}
+        <div className={`h-[70px] w-1 bg-[#800080] 
+        ${activateFirstPropertyStepper? `opacity-1`  : `opacity-0`}
         `}></div>
         </div>
       </div> 
@@ -105,49 +130,58 @@ const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstPro
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
-        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] cursor-pointer
-          ${activateFirstPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`}
+        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white bg-[#800080] text-[11px]
+         cursor-pointer
+          ${activateFirstPropertyStepper ? `opacity-1`  : `opacity-0`}
          `}   onClick={moveToPropertyOneToggleHandler}>02</span>
-        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50  
-          ${activateSecondPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
+        <div className={`h-[70px] w-1   bg-[#800080]
+          ${activateSecondPropertyStepper ? `opacity-1`  : `opacity-0`}
+          `}>
+          </div>
         </div>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
-        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
-          ${activateSecondPropertyStepper? `bg-[#800080]`  : `bg-[#EFE8E8]`} `} 
+        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] bg-[#800080]
+         cursor-pointer ${activateSecondPropertyStepper? `opacity-1`  : `opacity-0`}
+          `} 
           onClick={moveToPropertyTwoToggleHandler}>03</span>
-        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50   
-          ${activateThirdPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
+        <div className={`h-[70px] w-1  bg-[#800080]
+          ${activateThirdPropertyStepper ? `opacity-1`  : `opacity-0`}
+          `}></div>
         </div>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
-        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
-          ${activateThirdPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `} 
+        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] bg-[#800080] cursor-pointer
+          ${activateThirdPropertyStepper ? `opacity-1`  : `opacity-0`}
+          `} 
           onClick={moveToPropertyThreeToggleHandler}>04</span>
-        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50 
-          ${activateFourthPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}></div>
+        <div className={`h-[70px] w-1 bg-[#800080]
+          ${activateFourthPropertyStepper ? `opacity-1`  : `opacity-0`}
+          `}></div>
         </div>
       </div>
     </li>
     <li className="  ">            
       <div className='flex h-auto gap-6'>
         <div className=' flex flex-col items-center justify-center'>
-        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] 
-          ${activateFourthPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `} 
+        <span className={`rounded-full py-[0.15rem] px-[0.30rem] text-white text-[11px] bg-[#800080]  cursor-pointer
+          ${activateFourthPropertyStepper ? `opacity-1`  : `opacity-0`}
+           `} 
           onClick={moveToPropertyFourToggleHandler}>05</span>
-        <div className={`h-[70px] w-1 opacity-100 dark:opacity-50  
-          ${activateFourthPropertyStepper ? `bg-[#800080]`  : `bg-[#EFE8E8]`} `}>
+        <div className={`h-[70px] w-1  bg-[#800080]
+          ${activateFourthPropertyStepper ? `opacity-1`  : `opacity-0`}
+           `}>
         </div>
         </div>
       </div>
     </li>
-</ol>
+</ol> 
     </div>
 
 

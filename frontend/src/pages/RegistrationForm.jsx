@@ -22,19 +22,19 @@ const RegistrationForm = () => {
    const [activateFourthProperty, setActivateFourthProperty] = useState(false)
    const [activateFourthPropertyStepper, setActivateFourthPropertyStepper] = useState(false)
 
-   const [userRegistrationData, setUserRegistrationData] = useState('') 
+   const [userRegistrationData, setUserRegistrationData] = useState({}) 
    const dispatch = useDispatch()
   //  const toggleStepper = () => {
   //     setActivateFirstProperty(prevState =>)
   //  }
-  useEffect(()=>{
-  console.log(userRegistrationData)
-  dispatch(addUser(userRegistrationData))
+  // useEffect(()=>{
+  // console.log(userRegistrationData)
+  // dispatch(addUser(userRegistrationData))
   
-  },[userRegistrationData])
-  useEffect(()=>{
-    console.log("setActivateFourthPropertyStepper", activateFourthPropertyStepper)
-  }, activateFourthPropertyStepper)
+  // },[userRegistrationData])
+  // useEffect(()=>{
+  //   console.log("setActivateFourthPropertyStepper", activateFourthPropertyStepper)
+  // }, activateFourthPropertyStepper)
   return (
     <>
     <Navbar/>
@@ -93,13 +93,13 @@ const RegistrationForm = () => {
           
            /> :  
            activateFourthProperty ? <PropertyFourForm  
-           userRegistrationData={userRegistrationData}
+           userRegistrationData={userRegistrationData} 
            setUserRegistrationData={setUserRegistrationData}  
            setActivateFourthPropertyStepper={setActivateFourthPropertyStepper}
            /> :
            <PersonalDetailsForm 
             setActivateFirstProperty={setActivateFirstProperty} 
-            setUserRegistrationData={setUserRegistrationData} 
+            // setUserRegistrationData={setUserRegistrationData} 
             setActivateFirstPropertyStepper={setActivateFirstPropertyStepper} />
             }
           
