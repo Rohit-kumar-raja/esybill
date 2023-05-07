@@ -67,9 +67,12 @@ async function updateProperty(property, propertyNo, customerNo) {
   }
 }
 
-async function deleteProperty(property, propertyNo, customerNo) {
+async function deleteProperty(propertyNo, customerNo) {
   try {
-    await propertyModel.deleteProperty(property, propertyNo, customerNo);
+    await productModel.deleteProductByPropertyNo(propertyNo);
+    await itemModel.deleteItemByPropertyNo(propertyNo);
+    await itemCategoryModel.deleteItemByPropertyNo(propertyNo);
+    await propertyModel.deleteProperty(propertyNo, customerNo);
     return { success: true };
   }
   catch (err) {

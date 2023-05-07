@@ -32,7 +32,7 @@ async function updateProduct(product, CategoryRN, PropertyNo, ItemNameRN, Produc
 
 async function deleteProduct(CategoryRN, PropertyNo, ItemNameRN, ProductNameRN) {
   try {
-    await productModel.deleteProduct(CategoryRN, PropertyNo, ItemNameRN, ProductNameRN);
+    await productModel.deleteProductById(CategoryRN, PropertyNo, ItemNameRN, ProductNameRN);
     return { success: true };
   }
   catch (err) {

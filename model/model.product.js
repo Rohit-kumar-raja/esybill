@@ -16,7 +16,7 @@ async function updateProduct(product, categoryRN, propertyNo, itemNameRN, produc
   await connection.query(query);
 }
 
-async function deleteProduct(categoryRN, propertyNo, itemNameRN, productNameRN) {
+async function deleteProductById(categoryRN, propertyNo, itemNameRN, productNameRN) {
   const connection = await db();
   const query = mysql.format(
     'DELETE FROM tblproductname WHERE CategoryRN=? AND PropertyNo=? AND ItemNameRN=? AND ProductNameRN=?',
@@ -39,10 +39,40 @@ async function getProductsByProperty(propertyNo) {
   return result[0];
 }
 
+async function deleteProductByItemNameRN(categoryRN, propertyNo, itemNameRN) {
+  const connection = await db();
+  const query = mysql.format(
+    'DELETE FROM tblproductname WHERE CategoryRN=? AND PropertyNo=? AND ItemNameRN=?',
+    [categoryRN, propertyNo, itemNameRN]
+  );
+  await connection.query(query);
+}
+
+async function deleteProductByCategoryRN(categoryRN, propertyNo) {
+  const connection = await db();
+  const query = mysql.format(
+    'DELETE FROM tblproductname WHERE CategoryRN=? AND PropertyNo=?',
+    [categoryRN, propertyNo]
+  );
+  await connection.query(query);
+}
+
+async function deleteProductByPropertyNo(propertyNo) {
+  const connection = await db();
+  const query = mysql.format(
+    'DELETE FROM tblproductname WHERE PropertyNo=?',
+    [propertyNo]
+  );
+  await connection.query(query);
+}
+
 module.exports = {
   insertProduct,
   updateProduct,
-  deleteProduct,
+  deleteProductById,
   getProductsByItem,
-  getProductsByProperty
+  getProductsByProperty,
+  deleteProductByItemNameRN,
+  deleteProductByCategoryRN,
+  deleteProductByPropertyNo
 };

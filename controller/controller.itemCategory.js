@@ -1,5 +1,6 @@
 const itemCategoryModel = require('../model/model.itemCategory');
 const itemModel = require('../model/model.item');
+const productModel = require('../model/model.product');
 
 async function insertItemCategory(Itemcategory, PropertyNo) {
   try {
@@ -29,6 +30,8 @@ async function updateItemCategory(Itemcategory, CategoryRN, PropertyNo) {
 
 async function deleteItemCategory(CategoryRN, PropertyNo) {
   try {
+    await productModel.deleteProductByCategoryRN(CategoryRN, PropertyNo);
+    await itemModel.deleteItemByCategoryRN(CategoryRN, PropertyNo);
     await itemCategoryModel.deleteItemCategory(CategoryRN, PropertyNo);
     return { success: true };
   }

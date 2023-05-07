@@ -31,6 +31,7 @@ async function updateItem(item, CategoryRN, PropertyNo, ItemNameRN) {
 
 async function deleteItem(CategoryRN, PropertyNo, ItemNameRN) {
   try {
+    await productModel.deleteProductByItemNameRN(CategoryRN, PropertyNo, ItemNameRN);
     await itemModel.deleteItem(CategoryRN, PropertyNo, ItemNameRN);
     return { success: true };
   }

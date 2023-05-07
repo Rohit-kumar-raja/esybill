@@ -26,9 +26,16 @@ async function getItemCategoriesByProperty(propertyNo) {
   return result[0];
 }
 
+async function deleteItemCategoryByPropertyNo(propertyNo) {
+  const connection = await db();
+  const query = mysql.format('DELETE FROM tblitemcategory WHERE PropertyNo=?', [propertyNo]);
+  await connection.query(query);
+}
+
 module.exports = {
   insertItemCategory,
   updateItemCategory,
   deleteItemCategory,
-  getItemCategoriesByProperty
+  getItemCategoriesByProperty,
+  deleteItemCategoryByPropertyNo
 };
