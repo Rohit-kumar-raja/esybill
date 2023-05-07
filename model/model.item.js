@@ -26,9 +26,9 @@ async function getItemsByItemCategory(categoryRN, propertyNo) {
   return result[0];
 }
 
-async function getProductsByItem(propertyNo, categoryRN, itemNameRN) {
+async function getItemsByProperty(propertyNo) {
   const connection = await db();
-  const query = mysql.format('SELECT * from tblproductname WHERE PropertyNo=? AND CategoryRN=? AND ItemNameRN=?', [propertyNo, categoryRN, itemNameRN]);
+  const query = mysql.format('SELECT * from tblitemname JOIN tblitemcategory WHERE PropertyNo=?', [propertyNo]);
   const result = await connection.query(query);
   return result[0];
 }
@@ -38,5 +38,5 @@ module.exports = {
   updateItem,
   deleteItem,
   getItemsByItemCategory,
-  getProductsByItem
+  getItemsByProperty
 };

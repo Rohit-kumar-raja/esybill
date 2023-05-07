@@ -26,17 +26,9 @@ async function getItemCategoriesByProperty(propertyNo) {
   return result[0];
 }
 
-async function getItemsByItemCategory(categoryRN, propertyNo) {
-  const connection = await db();
-  const query = mysql.format('SELECT * from tblitemname WHERE PropertyNo=? AND CategoryRN=?', [propertyNo, categoryRN]);
-  const result = await connection.query(query);
-  return result[0];
-}
-
 module.exports = {
   insertItemCategory,
   updateItemCategory,
   deleteItemCategory,
-  getItemCategoriesByProperty,
-  getItemsByItemCategory
+  getItemCategoriesByProperty
 };

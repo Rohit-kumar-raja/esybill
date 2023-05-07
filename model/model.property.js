@@ -45,34 +45,10 @@ async function deleteProperty(propertyNo, customerNo) {
   await connection.query(query);
 }
 
-async function getItemCategoriesByProperty(propertyNo) {
-  const connection = await db();
-  const query = mysql.format('SELECT * FROM tblitemcategory WHERE PropertyNo=?', [propertyNo]);
-  const result = await connection.query(query);
-  return result[0];
-}
-
-async function getItemsByProperty(propertyNo) {
-  const connection = await db();
-  const query = mysql.format('SELECT * from tblitemname JOIN tblitemcategory WHERE PropertyNo=?', [propertyNo]);
-  const result = await connection.query(query);
-  return result[0];
-}
-
-async function getProductsByProperty(propertyNo) {
-  const connection = await db();
-  const query = mysql.format('SELECT * from tblitemname JOIN tblitemcategory JOIN tblproductname WHERE PropertyNo=?', [propertyNo]);
-  const result = await connection.query(query);
-  return result[0];
-}
-
 module.exports = {
   insert: insertPropert,
   getAllProperties,
   getPropertyById,
   updateProperty,
-  deleteProperty,
-  getItemCategoriesByProperty,
-  getItemsByProperty,
-  getProductsByProperty
+  deleteProperty
 };

@@ -1,4 +1,5 @@
 const itemModel = require('../model/model.item');
+const productModel = require('../model/model.product');
 
 async function insertItem(item, PropertyNo, CategoryRN) {
   try {
@@ -54,7 +55,7 @@ async function getItemsByItemCategory(CategoryRN, PropertyNo) {
 
 async function getProductsByItem(PropertyNo, CategoryRN, ItemNameRN) {
   try {
-    const products = await itemModel.getProductsByItem(PropertyNo, CategoryRN, ItemNameRN);
+    const products = await productModel.getProductsByItem(PropertyNo, CategoryRN, ItemNameRN);
     return { success: true, products };
   }
   catch (err) {

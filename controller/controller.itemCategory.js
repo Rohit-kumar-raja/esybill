@@ -1,4 +1,5 @@
 const itemCategoryModel = require('../model/model.itemCategory');
+const itemModel = require('../model/model.item');
 
 async function insertItemCategory(Itemcategory, PropertyNo) {
   try {
@@ -52,7 +53,7 @@ async function getItemCategoriesByProperty(PropertyNo) {
 
 async function getItemsByItemCategory(CategoryRN, PropertyNo) {
   try {
-    const items = await itemCategoryModel.getItemsByItemCategory(CategoryRN, PropertyNo);
+    const items = await itemModel.getItemsByItemCategory(CategoryRN, PropertyNo);
     return { success: true, items };
   }
   catch (err) {

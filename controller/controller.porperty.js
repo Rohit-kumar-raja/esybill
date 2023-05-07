@@ -1,4 +1,7 @@
 const propertyModel = require('../model/model.property');
+const itemCategoryModel = require('../model/model.itemCategory');
+const itemModel = require('../model/model.item');
+const productModel = require('../model/model.product');
 
 async function getAllProperties(customerNo) {
   try {
@@ -78,7 +81,7 @@ async function deleteProperty(property, propertyNo, customerNo) {
 
 async function getItemCategoriesByProperty(propertyNo) {
   try {
-    const itemCategories = await propertyModel.getItemCategoriesByProperty(propertyNo);
+    const itemCategories = await itemCategoryModel.getItemCategoriesByProperty(propertyNo);
     return { success: true, itemCategories };
   }
   catch (err) {
@@ -90,7 +93,7 @@ async function getItemCategoriesByProperty(propertyNo) {
 
 async function getItemsByProperty(propertyNo) {
   try {
-    const items = await propertyModel.getItemsByProperty(propertyNo);
+    const items = await itemModel.getItemsByProperty(propertyNo);
     return { success: true, items };
   }
   catch (err) {
@@ -102,7 +105,7 @@ async function getItemsByProperty(propertyNo) {
 
 async function getProductsByProperty(propertyNo) {
   try {
-    const products = await propertyModel.getProductsByProperty(propertyNo);
+    const products = await productModel.getProductsByProperty(propertyNo);
     return { success: true, products };
   }
   catch (err) {
