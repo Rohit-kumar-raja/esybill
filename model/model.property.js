@@ -18,7 +18,8 @@ async function insertPropert(property) {
 
 async function getAllProperties(customerNo) {
   const connection = await db();
-  const result = await connection.query('select * from tblmasterproperty where CustomerNo=?'[customerNo]);
+  const query = mysql.format('select * from tblmasterproperty where CustomerNo=?', [customerNo]);
+  const result = await connection.query(query);
   return result[0];
 }
 
