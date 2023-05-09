@@ -2,13 +2,13 @@ const mysql = require('mysql2/promise');
 const db = require('../lib/db');
 
 async function insertItem(item) {
-  const connection = await db.connect();
+  const connection = await db();
   const query = mysql.format('INSERT INTO tblitemname SET ?', item);
   await connection.query(query);
 }
 
 async function updateItem(item, categoryRN, propertyNo, itemNameRN) {
-  const connection = await db.connect();
+  const connection = await db();
   const query = mysql.format('UPDATE tblitemname SET ? WHERE CategoryRN=? AND PropertyNo=? AND ItemNameRN=?', [item, categoryRN, propertyNo, itemNameRN]);
   await connection.query(query);
 }
