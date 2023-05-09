@@ -1,9 +1,13 @@
 const express = require('express');
+var cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const routes = require('./routes/index');
 
 const app = express();
+if (process.env.NODE_ENV.toString().toLowerCase() !== 'production') {
+  app.use(cors());
+}
 app.use(express.json());
 app.listen(process.env.NODE_PORT || 4000, () => {
   // eslint-disable-next-line
