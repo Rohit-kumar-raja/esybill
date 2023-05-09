@@ -3,7 +3,7 @@ const db = require('../lib/db');
 
 async function insertItemCategory(itemCategory) {
   const connection = await db();
-  const query = mysql.format('INSERT INTO tblitemcategory SET ?', [itemCategory]);
+  const query = mysql.format('INSERT INTO tblitemcategory SET ?', itemCategory);
   await connection.query(query);
 }
 

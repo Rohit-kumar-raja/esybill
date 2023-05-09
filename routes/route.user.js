@@ -1,6 +1,6 @@
 const express = require('express');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const userConroller = require('../controller/controller.user');
 const { verifyOTPMiddleware } = require('../lib/otp');
 const { verifyTokenMiddleware } = require('../lib/token');

@@ -1,6 +1,6 @@
 const express = require('express');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const userRoute = require('./route.user');
 const propertyRoute = require('./route.property');
 const itemCategoryRoute = require('./route.itemCategory');
