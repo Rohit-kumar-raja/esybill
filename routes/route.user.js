@@ -16,14 +16,14 @@ router.get('/', verifyTokenMiddleware, async (req, res) => {
 
 router.post('/otp', async (req, res) => {
   if (req.body.type === 'login') {
-    const result = await userConroller.sendLoginOtp(req.body.number);
+    const result = await userConroller.sendLoginOtp(req.body.phone);
     if (result.success) {
       return res.sendStatus(200);
     }
     return res.status(result.status).send(result.message);
   }
   if (req.body.type === 'verify') {
-    const result = await userConroller.sendVerifyOtp(req.body.email, req.body.number);
+    const result = await userConroller.sendVerifyOtp(req.body.email, req.body.phone);
     if (result.success) {
       return res.sendStatus(200);
     }
