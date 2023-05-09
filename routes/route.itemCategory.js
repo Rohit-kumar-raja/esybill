@@ -39,12 +39,4 @@ router.get('/', async (req, res) => {
   return res.status(result.status).json(result.message);
 });
 
-router.get('/:CategoryRN/item', async (req, res) => {
-  const result = await itemCategoryController.getItemsByItemCategory(req.params.CategoryRN, req.params.PropertyNo);
-  if (result.success) {
-    return res.json(result.items);
-  }
-  return res.status(result.status).json(result.message);
-});
-
 module.exports = router;

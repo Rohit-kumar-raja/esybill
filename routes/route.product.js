@@ -7,7 +7,7 @@ const productController = require('../controller/controller.product');
 router.use(verifyTokenMiddleware);
 
 router.post('/', async (req, res) => {
-  const result = await productController.insertProduct(req.body, req.params.CategoryRN, req.params.PropertyNo);
+  const result = await productController.insertProduct(req.body, req.params.CategoryRN, req.params.PropertyNo, req.params.ItemNameRN);
   if (result.success) {
     return res.sendStatus(201);
   }
@@ -33,7 +33,7 @@ router.delete('/:ProductNameRN', async (req, res) => {
 router.get('/', async (req, res) => {
   const result = await productController.getProductsByItem(req.params.PropertyNo, req.params.CategoryRN, req.params.ItemNameRN);
   if (result.success) {
-    return res.json(result.items);
+    return res.json(result.products);
   }
   return res.status(result.status).json(result.message);
 });

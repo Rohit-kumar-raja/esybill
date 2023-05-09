@@ -33,14 +33,6 @@ router.delete('/:ItemNameRN', async (req, res) => {
 router.get('/', async (req, res) => {
   const result = await itemController.getItemsByItemCategory(req.params.CategoryRN, req.params.PropertyNo);
   if (result.success) {
-    return res.json(result.itemCategory);
-  }
-  return res.status(result.status).json(result.message);
-});
-
-router.get('/:ItemNameRN/product', async (req, res) => {
-  const result = await itemController.getProductsByItem(req.params.PropertyNo, req.params.CategoryRN, req.params.ItemNameRN);
-  if (result.success) {
     return res.json(result.items);
   }
   return res.status(result.status).json(result.message);
