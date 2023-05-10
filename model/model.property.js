@@ -1,7 +1,7 @@
 const mysql = require('mysql2/promise');
 const db = require('../lib/db');
 
-async function insertPropert(property) {
+async function insertProperty(property) {
   const connection = await db();
   let PropertyNo = await connection.query('select max(PropertyNo) as propNo from tblmasterproperty;');
   if (PropertyNo[0][0].propNo) {
@@ -47,7 +47,7 @@ async function deleteProperty(propertyNo, customerNo) {
 }
 
 module.exports = {
-  insert: insertPropert,
+  insertProperty,
   getAllProperties,
   getPropertyById,
   updateProperty,
