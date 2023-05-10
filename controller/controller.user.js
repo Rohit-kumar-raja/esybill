@@ -31,10 +31,11 @@ async function getUserByPhone(phone) {
 async function sendLoginOtp(phone) {
   try {
     const user = await customerModel.getUserByPhone(phone);
+    console.log(user);
     let result = { success: false, status: 500, message: 'Internal Server Error' };
     const responses = await Promise.allSettled([
       sendOTP({ number: user.RegMobile, type: 'login' }),
-      sendOTP({ email: user.RegEmail, type: 'verify' })
+      sendOTP({ email: user.RegEmail, type: 'login' })
     ]);
     responses.forEach((response) => {
       if (response.status) {
@@ -61,7 +62,7 @@ async function sendLoginOtp(phone) {
  */
 async function sendVerifyOtp(email, phone) {
   try {
-    if (await sendOTP(email, phone)) {
+    if (await sendOTP({ email, number: phone, type: 'verify' })) {
       return { success: true };
     }
     return { success: false, status: 500, message: 'Internal Server Error' };

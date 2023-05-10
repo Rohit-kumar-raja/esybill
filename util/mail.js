@@ -9,20 +9,25 @@ const transporter = nodeMailer.createTransport({
     pass: 'password_here'
   }
 });
+// function sendMail(email, subject, body) {
+//   return new Promise((resolve, reject) => {
+//     const mailOptions = {
+//       from: 'email@domain.com',
+//       to: email,
+//       subject,
+//       html: body
+//     };
+//     transporter.sendMail(mailOptions, (err, info) => {
+//       if (err) {
+//         return reject(err);
+//       }
+//       return resolve();
+//     });
+//   });
+// }
 function sendMail(email, subject, body) {
   return new Promise((resolve, reject) => {
-    const mailOptions = {
-      from: 'email@domain.com',
-      to: email,
-      subject,
-      html: body
-    };
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) {
-        return reject(err);
-      }
-      return resolve();
-    });
+    resolve();
   });
 }
 
