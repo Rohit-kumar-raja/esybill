@@ -2,6 +2,7 @@ const propertyModel = require('../model/model.property');
 const itemCategoryModel = require('../model/model.itemCategory');
 const itemModel = require('../model/model.item');
 const productModel = require('../model/model.product');
+const qr = require('../lib/qr');
 
 async function getAllProperties(customerNo) {
   try {
@@ -19,7 +20,13 @@ async function createProperty(property, customerNo) {
   try {
     // eslint-disable-next-line
     property.CustomerNo = customerNo;
-    await propertyModel.insert(property);
+    const PropertyMenuName = `${property.PropName.trim().replace(' ', '-')}-${new Date().getTime()}`;
+    // eslint-disable-next-line
+    property.PropertyMenuName = PropertyMenuName;
+    qr.generateQR(`${process.env.MENU_URL}/${PropertyMenuName}`, PropertyMenuName);
+    // eslint-disable-next-line
+    property.QRLocation = `${process.env.URL}/assets/qrcodes/${PropertyMenuName}.png`;
+    await propertyModel.insertProperty(property);
     return { success: true };
   }
   catch (err) {

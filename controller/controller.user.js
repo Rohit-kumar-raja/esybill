@@ -31,7 +31,6 @@ async function getUserByPhone(phone) {
 async function sendLoginOtp(phone) {
   try {
     const user = await customerModel.getUserByPhone(phone);
-    console.log(user);
     let result = { success: false, status: 500, message: 'Internal Server Error' };
     const responses = await Promise.allSettled([
       sendOTP({ number: user.RegMobile, type: 'login' }),
