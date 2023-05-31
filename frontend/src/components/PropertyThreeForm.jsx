@@ -97,7 +97,7 @@ const PropertyThreeForm = ({setActivateThirdPropertyStepper,
 return (
     <>
     {
-      showModal ? <OTPVerificationModal  setShowModal={setShowModal} /> : null
+      showModal ? <OTPVerificationModal  setShowModal={setShowModal}   type="verify"/> : null
     }
 <div className='flex flex-col px-6'>
 <form className="rounded-md px-2 md:px-6 py-6 shadow-xl" onSubmit={propertyThreeSubmitHandler}>

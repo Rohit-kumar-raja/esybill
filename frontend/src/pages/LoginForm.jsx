@@ -1,17 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import OTPVerificationModal from '../components/OTPVerificationModal'
+import { useDispatch, useSelector } from 'react-redux'
 
 const LoginForm = () => {
     const [disabled, setDisabled] = useState(true)
     const [usermobilenumber, setUserMobileNumber] = useState('')
     const [showModal, setShowModal] = useState(false)
+    const dispatch = useDispatch()
+    const userData = useSelector(store => store.login.userData)
+    const accessToken = useSelector(store => store?.login?.userData[0])
+    const navigate = useNavigate()
 
     const userDetailSubmitHandler = (e) => {
         e.preventDefault()
         setShowModal(true)
       }
+
+    useEffect(()=>{
+      console.log("Accesstoken",accessToken)
+    },[accessToken])
+    useEffect(()=>{
+      if(accessToken !== null ){
+        navigate('/dashboard')
+      }
+    },[])
+
+    // useEffect(()=>{
+    //   console.log(accessToken)
+    // },[accessToken])
 
       useEffect(()=>{
         if(usermobilenumber!==''){  
@@ -19,11 +37,19 @@ const LoginForm = () => {
         }
         else setDisabled(true)
       },[usermobilenumber])
-    
+      
+      // useEffect(()=>{
+      //   if(accessToken){ 
+      //     navigate('/dashboard')
+      //   }
+      //   else navigate('/login')
+      // },[accessToken, navigate])
+
   return (
     <>
      {
-      showModal ? <OTPVerificationModal  setShowModal={setShowModal} 
+      showModal ? <OTPVerificationModal  setShowModal={setShowModal} usermobilenumber={usermobilenumber}
+      type="login"
     //   userRegistrationData={userRegistrationData} 
     //    setUserRegistrationData={setUserRegistrationData}
        /> : null
@@ -58,7 +84,7 @@ const LoginForm = () => {
 ${disabled ? `cursor-not-allowed opacity-50` : `cursor-pointer opacity-100`} `}>Save & Next Step</button>
 
 <span className='text-[#B3B3B3] text-[12px] font-normal text-center'>Dont have an account?
-<Link to='/'><span className='text-[#5E5E5E]'> Sign up</span></Link>
+{/* <Link to='/'><span className='text-[#5E5E5E]'> Sign up</span></Link> */}
 </span>
 </div>
     </form>

@@ -5,20 +5,30 @@ import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import registrationSlice, { addOtp } from "../registrationSlice";
 import axios from '../api/axios';
+import { useNavigate } from "react-router-dom";
+import { userProfile } from "../loginSlice";
+
+
+
 
 
 const OTP_VERIFICATION = '/api/user/otp';
+const USER_REGISTRATION = '/api/user'
+const USER_LOGIN = '/api/user/login'
 
-export const OTPVerificationModal = ({setShowModal, userRegistrationData}) => {
+const OTPVerificationModal = ({setShowModal, userRegistrationData, type, usermobilenumber}) => {
     const [timer, setTimer] = useState(10)
     const [loader, setLoader] = useState(false)
     const [firstNum, setfirstNum] = useState('') 
     const [secondNum, setsecondNum] = useState('')
     const [thirdNum, setthirdNum] = useState('')
     const [fourthNum, setfourthNum] = useState('')
+    const [fifthNum, setfifthum] = useState('')
+    const [sixthNum, setSixthNum] = useState('')
     const [submit, setsubmit] = useState(false)
     const [border, setborder] = useState(false)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const dataresult = useSelector(store => store.register)
     const otp = useSelector(store => store.register?.otp)
     const registrationDetails = useSelector(store => store.register) 
@@ -28,52 +38,133 @@ export const OTPVerificationModal = ({setShowModal, userRegistrationData}) => {
     const secondNumRef = useRef()
     const thirdNumRef  = useRef()
     const fourthNumRef = useRef()
+    const fifthNumRef  = useRef()
+    const sixthNumRef = useRef()
+    const accesstoken = useSelector(store => store?.login?.userData[0]?.accessToken)
     // dataresult && console.log(dataresult)
     useEffect(()=>{
-      if(firstNum!=='' && secondNum!=='' && thirdNum!=='' && fourthNum!==''){
+      if(firstNum!=='' && secondNum!=='' && thirdNum!=='' && fourthNum!=='' && fifthNum!=='' && sixthNum!==''){
        setsubmit(true)
       }
-    },[firstNum, secondNum, thirdNum, fourthNum,timer, border])
+    },[firstNum, secondNum, thirdNum, fourthNum,timer, border, fifthNum, sixthNum])
   
     useEffect(()=>{
-      let number = [firstNum,secondNum, thirdNum, fourthNum]
+      let number = [firstNum,secondNum, thirdNum, fourthNum, fifthNum,sixthNum ]
       let otpval = [...number]
       submit && dispatch(addOtp(Number(otpval.join(''))))
+     // submit  && console.log('OTP', otp) 
     },[submit,timer])
   
 
-   
     useEffect(()=>{
-      // if(otp.toString().length === 4){
-        console.log({ type:"verify", phone: phoneNumber })
+      const {user, otp, phone, properties} = registrationDetails
+      console.log(user, otp, phone,properties)
+    }, [registrationDetails])
+    
+   useEffect(()=>{
+    if(otp.toString().length === 6){
+     if(type === "verify"){
+      //user registration
+      const {user, otp, phone, properties} = registrationDetails
+      const handleSubmit = async () => {
+        try {
+          const response = await axios.post(USER_REGISTRATION,
+             { otp, phone, user, properties },
+          );
+            console.log(response)
+            if (response?.status == '200') {
+              toast.success("Registration successful!", {
+                position: toast.POSITION.TOP_CENTER
+              });
+               setTimeout(()=>{navigate('/login')},1500)
+              
+            }
+        } catch (err) {
+          console.log(err?.response?.data?.message) 
+          toast.error(err?.response?.data?.message, {
+            position: toast.POSITION.TOP_CENTER
+          });
+        }
+      }
+       handleSubmit()
+     }
+     else {
+      //login
+      const handleSubmit = async () => {
+        try {
+          const response = await axios.post(USER_LOGIN,
+            { otp: otp, phone: usermobilenumber },
+          );
+            console.log(response)
+            //let responseBody = await response.json()
+            if (response?.status == '200') {
+              toast.success("Login successful!", {
+                position: toast.POSITION.TOP_CENTER
+              });
+          let accessToken = response?.data?.accessToken
+          sessionStorage.setItem("userToken", JSON.stringify(accessToken))
+          dispatch(userProfile(accessToken))
+          setTimeout(()=>{
+            navigate('/dashboard')
+          },1000)
+         }
+        } catch (err) {
+          console.log(err) 
+          toast.error(err?.response?.data?.message, {
+            position: toast.POSITION.TOP_CENTER
+          });
+        }
+      }
+       handleSubmit()
+     }
+    }
+   },[otp])
 
+   
+
+    useEffect(()=>{
+      //for otp verification if type = verify
+      if(type === "verify")
+      {
         const handleSubmit = async () => {
           try {
             const response = await axios.post(OTP_VERIFICATION,
-                JSON.stringify( { type: "verify", phone: phoneNumber }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
+                { type: type, phone: phoneNumber },
             );
         
               console.log(response)
           } catch (err) {
             console.log(err) 
-              // if (!err?.response) {
-              //   console.log(err)
-              //    // setErrMsg('No Server Response');
-              // } else if (err.response?.status === 409) {
-              //     // setErrMsg('Username Taken');
-              // } else {
-              //     console.log(err)
-              // }
-              //errRef.current.focus();
+            toast.error("Mobile number verification failed!", {
+              position: toast.POSITION.TOP_CENTER
+            });
           }
-      }
+          }
       handleSubmit()
-      //}
+      }
+      else {
+         //for otp verification if type = login
+      if(type === "login")
+      {
+        const handleSubmit = async () => {
+          try {
+            const response = await axios.post(OTP_VERIFICATION,
+                { type: type, phone: usermobilenumber },
+            );
+        
+              console.log(response)
+          } catch (err) {
+            console.log(err) 
+          }
+          }
+      handleSubmit()
+      }
+      }
+        
     },[])
+
+
+   
     //UNCOMMENT IF OTP MATCHES
 
     // useEffect(()=>{
@@ -100,30 +191,75 @@ export const OTPVerificationModal = ({setShowModal, userRegistrationData}) => {
         return () => clearInterval(interval)
     },[])
   
-   useEffect(()=>{
-    if(submit)
-    {
-      if (!result){
-        toast.error("Verification failed, incorrect OTP!", {
-          position: toast.POSITION.TOP_CENTER
-        });
-      }}
-   },[result, submit])
+  //  useEffect(()=>{
+  //   if(submit)
+  //   {
+  //     if (!result){
+  //       toast.error("Verification failed, incorrect OTP!", {
+  //         position: toast.POSITION.TOP_CENTER
+  //       });
+  //     }}
+  //  },[result, submit])
     
     const resendHandler = () => {
-      toast.success("OTP resent successfully!", {
-        position: toast.POSITION.TOP_CENTER
-      });
-      setLoader(true)
-      setTimeout(()=>{
-        setLoader(false)
+
         setfirstNum('')
         setsecondNum('')
         setthirdNum('') 
         setfourthNum('')
-       setTimer(10)
-       setborder(false)
-      },1000)
+        setfifthum('') 
+        setSixthNum('')
+       if(type === "verify")
+       {
+         const handleSubmit = async () => {
+           try {
+             const response = await axios.post(OTP_VERIFICATION,
+                 { type: type, phone: phoneNumber },
+             );
+                 console.log(response)
+               if(response?.status == '200'){
+                toast.success("OTP resent successfully!", {
+                  position: toast.POSITION.TOP_CENTER
+                });
+               }
+           } catch (err) {
+             console.log(err) 
+             toast.error("Mobile number verification failed!", {
+               position: toast.POSITION.TOP_CENTER
+             });
+           }
+           }
+       handleSubmit()
+       }
+       else {
+       if(type === "login")
+       {
+         const handleSubmit = async () => {
+           try {
+             const response = await axios.post(OTP_VERIFICATION,
+                 { type: type, phone: usermobilenumber },
+             );
+         
+               console.log(response)
+           } catch (err) {
+             console.log(err) 
+           }
+           }
+       handleSubmit()
+       }
+       }
+      // setLoader(true)
+      // setTimeout(()=>{
+      //   setLoader(false)
+      //   setfirstNum('')
+      //   setsecondNum('')
+      //   setthirdNum('') 
+      //   setfourthNum('')
+      //   setfifthum('') 
+      //   setSixthNum('')
+      //  setTimer(10)
+      //  setborder(false)
+      // },1000)
     }
     const otpSubmitHandler = (e) =>{
       e.preventDefault()
@@ -160,11 +296,11 @@ export const OTPVerificationModal = ({setShowModal, userRegistrationData}) => {
         setfirstNum(e.target.value) 
         if (e.target.maxLength >= 1)
         secondNumRef.current.focus(); 
-      }} 
+      }}  
       onKeyDown={(e)=> {
         if(e.key === 'Backspace'){
-          fourthNumRef.current.focus();
-          setfourthNum('')
+          sixthNumRef.current.focus();
+          setSixthNum('')
         }
        }} 
       />
@@ -208,7 +344,7 @@ export const OTPVerificationModal = ({setShowModal, userRegistrationData}) => {
        onChange={(e)=>{
         setfourthNum(e.target.value)
         if (e.target.maxLength >= 1)
-        firstNumRef.current.focus();
+        fifthNumRef.current.focus();
        }} 
        onKeyDown={(e)=> {
         if(e.key === 'Backspace'){
@@ -217,6 +353,38 @@ export const OTPVerificationModal = ({setShowModal, userRegistrationData}) => {
         }
        }} 
        />
+       <input type="text"className = {`text-center focus:shadow-outline rounded-sm border-2 
+       text-gray-500 leading-tight focus:outline-none focus:shadow-outline w-10 h-10 p-1 mr-2       
+       ${result ? `border-slate-500`  : ( border ? `border-red-500`: `border-slate-500`)  }`} 
+        value={fifthNum} maxLength="1"  ref = {fifthNumRef}
+        onChange={(e)=>{
+         setfifthum(e.target.value)
+         if (e.target.maxLength >= 1)
+         sixthNumRef.current.focus();
+        }} 
+        onKeyDown={(e)=> {
+         if(e.key === 'Backspace'){
+           fourthNumRef.current.focus();
+           setfourthNum('')
+         }
+        }} 
+        />
+        <input type="text"className = {`text-center focus:shadow-outline rounded-sm border-2 
+        text-gray-500 leading-tight focus:outline-none focus:shadow-outline w-10 h-10 p-1 mr-2       
+        ${result ? `border-slate-500`  : ( border ? `border-red-500`: `border-slate-500`)  }`} 
+         value={sixthNum} maxLength="1"  ref = {sixthNumRef}
+         onChange={(e)=>{
+          setSixthNum(e.target.value)
+          if (e.target.maxLength >= 1)
+          firstNumRef.current.focus();
+         }} 
+         onKeyDown={(e)=> {
+          if(e.key === 'Backspace'){
+            fifthNumRef.current.focus();
+            setSixthNum('')
+          }
+         }} 
+         />
     </div>
     <div className='flex flex-col items-center gap-6'>
       <p className='font-semibold text-sm text-slate-400'>

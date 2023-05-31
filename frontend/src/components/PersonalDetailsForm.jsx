@@ -108,7 +108,9 @@ useEffect(()=>{
 <select id="states" className="bg-gray-50  block 
 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
-  w-full px-2.5 h-[42px]" defaultValue={State} onChange={(e)=> setState(e.target.value)} >
+  w-full px-2.5 h-[42px]" 
+  defaultValue={State} 
+  onChange={(e)=> setState(e.target.value)} >
      <option selected>Choose a state</option>
     {
       stateList.map((stateList) => {

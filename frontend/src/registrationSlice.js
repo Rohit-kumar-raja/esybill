@@ -8,8 +8,8 @@ const registrationSlice = createSlice({
         otp:'',
         phone:""
     },
-    
-    reducers:{
+     
+    reducers:{  
         addUser:(state, action) => {
             state.user = action.payload
          },
@@ -18,6 +18,9 @@ const registrationSlice = createSlice({
             //state = state.property.push(action.payload)
            state.properties[(action.payload.number)] = action.payload.value
            console.log(action.payload)
+         }, 
+         addMoreProperty:(state, action) => {
+           // state.properties[(action.payload.len)] = action.payload.propertyDetails
          }, 
          addOtp:(state, action) => {
             state.otp = action.payload
@@ -33,5 +36,5 @@ const registrationSlice = createSlice({
     } 
 })
 
-export const {addUser, addProperty, addOtp, addPhone, updateProperty} = registrationSlice.actions 
+export const {addUser, addProperty, addOtp, addPhone, updateProperty,addMoreProperty} = registrationSlice.actions 
 export default registrationSlice.reducer

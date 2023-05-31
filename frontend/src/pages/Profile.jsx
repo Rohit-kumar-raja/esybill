@@ -1,5 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { stateList } from '../constants/stateList'
+import axios from '../api/axios';
+import { useSelector } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
+const USER_DETAILS = '/api/user';
+
 const Profile = () => {
   const customerDetails = {
     CustomerName:'Namrata',
@@ -7,11 +14,74 @@ const Profile = () => {
     State:'Assam',
     Country:'India'
   }
-  const [CustomerName, setCustomerName] = useState(customerDetails.CustomerName)
-  const [RegMobile, setRegMobile] = useState(customerDetails.RegMobile)
-  const [State, setState] = useState(customerDetails.State)
-  const [Country, setCountry] = useState(customerDetails.Country)
+
+  const [profile, setProfile] = useState('')
+  useEffect(()=>{
+    const getProfileData = async () => {
+     try {
+       const options = {
+         headers: {
+           'Authorization': `Bearer ${accessToken}`
+         }}
+       const response = await axios.get("/api/user", options);
+       console.log(response, response?.data);
+       setProfile(response?.data)
+     }
+     catch (error) {
+       console.log(error);
+     }
+    }
+    getProfileData()
+   },[])
+   
+  const [CustomerName, setCustomerName] = useState('')
+  const [RegMobile, setRegMobile] = useState('')
+  const [State, setState] = useState('')
+  const [Country, setCountry] = useState('')
   const [editDetails, seteditDetails] = useState(false)
+  const [customerDetail, setCustomerDetail] = useState([])
+  
+  const accessToken = useSelector(store => store?.login?.userData[0])
+  useEffect(()=>{
+    const handleSubmit = async () => {
+      try {
+        const response = await axios.get(USER_DETAILS
+          //   { 
+          //     headers: { 'Content-Type': 'application/json', 
+          //     'Authorization': `Bearer ${getCookieByName('SUDA_TOKEN')}` },
+          //  }
+        );
+    
+          console.log(response)
+          let responseBody = null
+          
+          responseBody = await response.json()
+          if (response?.status == '200') {
+            console.log('200', response, responseBody)
+            setCustomerDetail(responseBody)
+          } else {
+              // setIsReceipLoaded(false)
+          }
+      } catch (err) {
+        console.log(err) 
+          // if (!err?.response) {
+          //   console.log(err)
+          //    // setErrMsg('No Server Response');
+          // } else if (err.response?.status === 409) {
+          //     // setErrMsg('Username Taken');
+          // } else {
+          //     console.log(err)
+          // }
+          //errRef.current.focus();
+      }
+  }
+  handleSubmit()
+  },[])
+  
+   useEffect(()=>{
+    console.log(profile,profile[0])
+   },[profile])
+
   const editDetailsHandler = (e,id) => {
     if(id.includes("CustomerName")){
       setCustomerName(e.target.value)
@@ -32,31 +102,59 @@ const Profile = () => {
 
   const cancelEditHandler = (e) => {
     e.preventDefault()
-    setCustomerName(customerDetails.CustomerName)
-    setRegMobile(customerDetails.RegMobile)
-    setState(customerDetails.State)
-    setCountry(customerDetails.Country)
+    setCustomerName(profile?.CustomerName)
+    setRegMobile(profile?.RegMobile)
+    setState(profile?.State)
+    setCountry(profile?.Country)
   }
   const saveEditHandler = (e) => {
     e.preventDefault()
     let editDetails = {}
-    if(CustomerName !== customerDetails.CustomerName){
+    if(CustomerName !== profile?.CustomerName){
       editDetails.CustomerName = CustomerName
     }
-    if(RegMobile !== customerDetails.RegMobile){
+    if(RegMobile !== profile?.RegMobile){
       editDetails.RegMobile = RegMobile
     }
-    if(State !== customerDetails.State){
+    if(State !== profile?.State){
       editDetails.State = State
     }
-    if(Country !== customerDetails.Country){
+    if(Country !== profile?.Country){
       editDetails.Country = Country
     }
     console.log(editDetails)
+    try {
+      const options = {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }}
+      const response = axios.patch(`/api/user`,
+          { ...editDetails }, options
+      );
+          console.log(response)
+        if(response?.status == '200'){
+         toast.success("Profile edited successfully!", {
+           position: toast.POSITION.TOP_CENTER
+         });
+        }
+    } catch (err) {
+      console.log(err) 
+      toast.error("Update failed, please try later!", {
+        position: toast.POSITION.TOP_CENTER
+      });
+    }
   }
+  useEffect(()=>{
+     if(profile !==''){
+       setCustomerName(profile?.CustomerName)
+       setRegMobile(profile?.RegMobile)
+       setState(profile?.State) 
+       setCountry(profile?.Country)
+     }
+  },[profile])
   return (
    <>
-   
+     <ToastContainer autoClose={2000}/>
       <form className="rounded-md px-2 md:px-6 py-6" 
       //</>onSubmit={userDetailSubmitHandler}
       >
@@ -126,7 +224,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
           <div className='flex  items-center gap-3 px-2'>
         {
           editDetails ? 
-          <>
+          <> 
      
        <button className="font-normal  bg-red-400 text-[white] flex items-center 
       rounded-md py-2 my-6 text-[13px] px-3 cursor-pointer opacity-100" 

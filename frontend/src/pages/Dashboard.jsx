@@ -11,19 +11,52 @@ import AddSubCategory from './AddSubCategory';
 import AddProduct from './AddProduct';
 import Profile from './Profile';
 import MyProperties from './MyProperties';
+import { useSelector } from 'react-redux';
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const [sidebarTabs, setSidebarTabs] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
+  const accessToken = useSelector(store => store?.login?.userData[0]?.accessToken)
+  const menuType = useSelector(store => store?.property?.menuType)
   useEffect(()=>{
     navigate('/dashboard/properties')
+   console.log(location)
   },[])
+  useEffect(()=>{
+  if(sidebarTabs){
+    navigate('/dashboard/propertydetails')
+  }
+  else{
+    navigate('/dashboard/properties')
+    setSidebarTabs(false)
+  }
+  },[sidebarTabs])
+
+  // useEffect(()=> {
+  //  setSidebarTabs(false)
+  //  console.log('sidebar tabs')
+  // },[])
+
+  // useEffect(()=>{
+  //   if(!accessToken){ 
+  //     navigate('/login')
+  //   }
+   
+  // },[accessToken, navigate])
+
+  // useEffect(()=>{
+  //   if(accessToken){ 
+  //     navigate('/dashboard/properties')
+  //   }
+  //   else navigate('/login')
+  // },[accessToken, navigate])
+
   return ( 
     <>
      <div className="flex">
       <div
-        className={` ${
+        className={`${
           open ? "w-72" : "w-20 "
         } bg-[#FFFFFF] min-h-screen p-5  pt-8 relative duration-300 shadow-2xl`}
       >
@@ -51,7 +84,8 @@ const Dashboard = () => {
         <ul className="pt-6">
           <Link to='/dashboard/profile'>
             <li
-              className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white
+               text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
               <img src={profile} />
               <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
@@ -73,7 +107,7 @@ const Dashboard = () => {
               sidebarTabs ?
               <>
                <Link to='/dashboard/propertydetails'>
-            <li
+              <li
               className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
               <img src={profile} />
@@ -92,6 +126,19 @@ const Dashboard = () => {
               </span>
             </li>
             </Link>
+            {
+              menuType === 'Image menu' ? 
+              <Link to='/dashboard/category'>
+            <li
+              className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              mt-2 bg-light-white">
+              <img src={profile} />
+              <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
+              Image Category 
+              </span>
+            </li>
+            </Link> 
+            :  menuType === 'Text menu' ? <>
             <Link to='/dashboard/category'>
             <li
               className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
@@ -122,6 +169,38 @@ const Dashboard = () => {
               </span>
             </li>
             </Link>
+            </> : null
+            }
+            {/* <Link to='/dashboard/category'>
+            <li
+              className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              mt-2 bg-light-white">
+              <img src={profile} />
+              <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
+              Add Category 
+              </span>
+            </li>
+            </Link> 
+            <Link to='/dashboard/subcategory'>
+            <li
+              className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              mt-2 bg-light-white">
+              <img src={profile} />
+              <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
+              Add Sub-category
+              </span>
+            </li>
+            </Link>
+            <Link to='/dashboard/product'>
+            <li
+              className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              mt-2 bg-light-white">
+              <img src={profile} />
+              <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
+              Add product
+              </span>
+            </li>
+            </Link> */}
               </> : ''
             }
            
@@ -129,7 +208,7 @@ const Dashboard = () => {
       </div>
       <div className="items-center mx-auto p-7">
       {location.pathname?.toString().split("/").map(text => {
-          return text === "propertydetails" ? <PropertyDetails/> : text === "addproperty" ? 
+          return text === "propertydetails" ? <PropertyDetails  /> : text === "addproperty" ? 
           <AddProperty/> : text === "category" ? <AddCategory/> : text === "subcategory" ? 
           <AddSubCategory/> : text === "product" ? <AddProduct/> : text === "profile" ? <Profile/> : 
           text === "properties" ? <MyProperties  setSidebarTabs={setSidebarTabs}/> : ''  ;

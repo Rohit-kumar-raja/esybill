@@ -68,7 +68,7 @@
               ){
               setDisabled(false)
               setAddPropBtn(false)
-            }
+            } 
             else 
             {
                 setDisabled(true)
@@ -80,7 +80,8 @@
     return (
         <>
          {
-      showModal ? <OTPVerificationModal  setShowModal={setShowModal} 
+      showModal ? <OTPVerificationModal  setShowModal={setShowModal}  
+      type="verify"
     //   userRegistrationData={userRegistrationData} 
     //    setUserRegistrationData={setUserRegistrationData}
        /> : null

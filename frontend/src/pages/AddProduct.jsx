@@ -6,6 +6,7 @@ import CategoryModal from '../components/CategoryModal';
 import { useState } from 'react';
 import SubCategoryModal from '../components/SubCategoryModal';
 import ProductModal from '../components/ProductModal';
+import ProductCardComponent from '../components/ProductCardComponent';
 const columns = [
     {
         name: 'Property Name',
@@ -56,14 +57,22 @@ const AddSubCategory = () => {
     <button className="font-normal  bg-[#800080] text-[white] flex items-center 
       rounded-md py-2 my-6 text-[13px] px-3 ml-auto cursor-pointer opacity-100" 
       onClick={ createCategoryHandler}>Create Product</button>
-    <DataTable
+    {/* <DataTable
         columns={columns}
         data={tableDummyData}
         pagination
-			//paginationServer
-		//paginationComponentOptions={paginationComponentOptions}
-    />
-
+    /> */}
+      <div className="grid grid-cols-3 gap-3 px-2 py-3 md:px-6">
+        <div>
+        <ProductCardComponent/>
+        </div>
+        <div>
+        <ProductCardComponent/>
+        </div>
+        <div>
+        <ProductCardComponent/>
+        </div>
+    </div>
     </>
    
 );

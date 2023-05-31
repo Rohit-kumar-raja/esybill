@@ -80,7 +80,7 @@ const PropertyFourForm = ({setActivateThirdPropertyStepper,
 return (
     <>
     {
-      showModal ? <OTPVerificationModal  setShowModal={setShowModal} 
+      showModal ? <OTPVerificationModal  setShowModal={setShowModal}  type="verify"
       userRegistrationData={userRegistrationData} 
     
        /> : null
