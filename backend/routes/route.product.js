@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
   return res.status(result.status).json(result.message);
 });
 
-router.patch('/:ProductNameRN', async (req, res) => {
+router.put('/:ProductNameRN', async (req, res) => {
   const result = await productController.updateProduct(req.body, req.params.CategoryRN, req.params.PropertyNo, req.params.ItemNameRN, req.params.ProductNameRN);
   if (result.success) {
     return res.sendStatus(200);

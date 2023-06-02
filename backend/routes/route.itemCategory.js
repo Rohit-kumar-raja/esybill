@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
   return res.status(result.status).json(result.message);
 });
 
-router.patch('/:CategoryRN', async (req, res) => {
+router.put('/:CategoryRN', async (req, res) => {
   const result = await itemCategoryController.updateItemCategory(req.body, req.params.CategoryRN, req.params.PropertyNo);
   if (result.success) {
     return res.sendStatus(200);
