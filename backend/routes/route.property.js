@@ -30,7 +30,7 @@ router.get('/:propId', async (req, res) => {
   return res.status(result.status).json(result.message);
 });
 
-router.patch('/:propId', async (req, res) => {
+router.put('/:propId', async (req, res) => {
   const result = await propertyController.updateProperty(req.body, req.params.propId, req.user.CustomerNo);
   if (result.success) {
     return res.sendStatus(200);
