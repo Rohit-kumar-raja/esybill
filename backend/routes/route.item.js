@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
   return res.status(result.status).json(result.message);
 });
 
-router.pui('/:ItemNameRN', async (req, res) => {
+router.put('/:ItemNameRN', async (req, res) => {
   const result = await itemController.updateItem(req.body, req.params.CategoryRN, req.params.PropertyNo, req.params.ItemNameRN);
   if (result.success) {
     return res.sendStatus(200);

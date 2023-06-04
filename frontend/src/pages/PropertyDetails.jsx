@@ -42,9 +42,9 @@ const PropertyDetails = () => {
       else  if(id.includes("PropName")){
         setPropName(e.target.value)
       }
-      else  if(id.includes("PropMenu")){
-        setMenu(e.target.value)
-      }
+      // else  if(id.includes("PropMenu")){
+      //   setMenu(e.target.value)
+      // }
       else  if(id.includes("PropEmail")){
         setPropEmail(e.target.value)
       }
@@ -79,7 +79,7 @@ const PropertyDetails = () => {
       setPropState(propertyDetail[0].PropState)
       setPropCountry(propertyDetail[0].PropCountry)
     }
-    const saveEditHandler = (e) => {
+    const saveEditHandler = async (e) => {
       e.preventDefault()
       console.log(propertyDetail)
        let editDetails = {}
@@ -112,11 +112,12 @@ const PropertyDetails = () => {
             headers: {
               'Authorization': `Bearer ${accessToken}`
             }}
-          const response = axios.patch(`/api/property/${no}`,
+          const response = await axios.put(`/api/property/${no}`,
               { ...editDetails }, options
           );
-              console.log(response)
-            if(response?.status == '200'){
+       
+              console.log(response, response?.status)
+            if(response?.status === 200){
              toast.success("Details edited successfully!", {
                position: toast.POSITION.TOP_CENTER
              });

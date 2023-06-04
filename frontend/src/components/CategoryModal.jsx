@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import axios from '../api/axios';
@@ -20,14 +20,17 @@ const CategoryModal = ({setShowModal,setfetchCategory}) => {
             }}
           const response = await axios.post(`/api/property/${PropertyNo}/itemCtegory`,
           {
-            ItemCategory
+            ItemCategory 
            }, options
           );
       
             console.log(response)
-            toast.success("Category created successfully!", {
-              position: toast.POSITION.TOP_CENTER
-            });
+            if(response?.status === 201){
+              toast.success("Category created successfully!", {
+                position: toast.POSITION.TOP_CENTER
+              });
+              setfetchCategory(true)
+            } 
         } catch (err) {
           console.log(err) 
           toast.error("Category creation failed!", {
@@ -37,8 +40,11 @@ const CategoryModal = ({setShowModal,setfetchCategory}) => {
         }
     handleSubmit()
     setShowModal(false)
-    setfetchCategory(true)
+    setfetchCategory(false)
     }
+
+
+    
   return (
    <> 
     <ToastContainer autoClose={2000}/>
