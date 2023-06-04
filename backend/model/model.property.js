@@ -3,6 +3,13 @@ const db = require('../lib/db');
 
 async function insertProperty(property) {
   const connection = await db();
+  const AllotedPropertyQuota = await connection.query('SELECT AllotedPropertyQuota from tblmastercustomer where CustomerNo=?', property.CustomerNo);
+  const propertyCount = await connection.query('SELECT count(PropertyNo) from tblmasterproperty where CustomerNo=?', property.CustomerNo);
+  if (propertyCount >= AllotedPropertyQuota) {
+    const err = new Error('Property Quota Exhausted');
+    err.code = 'ERR_QOUTA_EXHAUSTED';
+    throw err;
+  }
   let PropertyNo = await connection.query('select max(PropertyNo) as propNo from tblmasterproperty;');
   if (PropertyNo[0][0].propNo) {
     PropertyNo = PropertyNo[0][0].propNo + 10;

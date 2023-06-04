@@ -41,6 +41,9 @@ async function createProperty(property, customerNo) {
       console.log(err);
       return { success: false, status: 500, message: 'Internal Server Error' };
     }
+    if (err.code === 'ERR_QOUTA_EXHAUSTED') {
+      return { success: false, status: 406, message: 'ERR_QOUTA_EXHAUSTED' };
+    }
     // eslint-disable-next-line
     console.log(err);
     return { success: false, status: 500, message: 'Internal Server Error' };
