@@ -26,20 +26,20 @@ const EditCategory = (props) => {
       //setEdit(false)
       }
 
-    const saveEditHandler = (e) => {
+    const saveEditHandler = async (e) => {
         e.preventDefault()
         let editDetails = {} 
         if(ItemCategory !== categoryDetails?.ItemCategory){
           editDetails.ItemCategory = ItemCategory
         }
-       
+        
         console.log(editDetails)
         try {
           const options = {
             headers: {
               'Authorization': `Bearer ${accessToken}`
             }}
-          const response = axios.put(`/api/property/${categoryDetails?.PropertyNo}/${ItemCategory}/${categoryDetails?.CategoryRN}`,
+          const response = await axios.put(`/api/property/${categoryDetails?.PropertyNo}/itemCtegory/${categoryDetails?.CategoryRN}`,
               { ...editDetails }, options
           );
               console.log(response)
@@ -47,7 +47,7 @@ const EditCategory = (props) => {
              toast.success("Category edited successfully!", {
                position: toast.POSITION.TOP_CENTER 
              });
-           
+             props.setfetchCategory(true)
             }
         } catch (err) {
           console.log(err) 
@@ -55,7 +55,7 @@ const EditCategory = (props) => {
             position: toast.POSITION.TOP_CENTER
           });
         }
-          
+        props.setfetchCategory(false)
       }
   return (
     <>

@@ -113,7 +113,7 @@ const AddCategory = () => {
       }
      }
      getCategoryData()
-   },[fetchCategory])
+   },[fetchCategory]) 
 
    useEffect(()=>{
     console.log("Category....",category)
@@ -138,7 +138,7 @@ const AddCategory = () => {
       <EditCategory 
       category={category} 
       indCategory={indCategory}  
-    
+      setfetchCategory={setfetchCategory}
       setEdit={fun}
      />
      </div> 

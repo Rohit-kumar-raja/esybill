@@ -21,6 +21,7 @@ const Dashboard = () => {
   const menuType = useSelector(store => store?.property?.menuType)
   useEffect(()=>{
     navigate('/dashboard/properties')
+
    console.log(location)
   },[])
   useEffect(()=>{

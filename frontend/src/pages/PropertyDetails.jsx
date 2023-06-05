@@ -146,6 +146,8 @@ const PropertyDetails = () => {
     <h1 className='text-[30px] font-semibold text-[#464646]'>Property Details</h1>
         </div>
         <img src={propertyDetail[0]?.QRLocation} alt='Qr scanner' className='w-20 h-20 mx-auto my-2'/>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col mb-6">
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
                 <label className="block tracking-wide text-[#464646]
@@ -199,6 +201,8 @@ const PropertyDetails = () => {
                 value={PropEmail}
                 onChange ={(e)=> propertyEditHandler(e,"PropEmail")}  />
             </div>
+            </div>
+            <div className="flex flex-col mb-6">
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
                 <label className="block tracking-wide text-[#464646]
                 text-[16px] font-normal mb-2" htmlFor="grid-first-name">
@@ -211,44 +215,43 @@ const PropertyDetails = () => {
                 value={PropAddress}
                 onChange ={(e)=> propertyEditHandler(e,"PropAddress")}/>
             </div>
+            
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
                 <label className="block tracking-wide text-[#464646]
                 text-[16px] font-normal mb-2" htmlFor="grid-first-name">
                 Property Country*
                 </label>
-                <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
-                focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
-                rounded-md h-[42px] px-4 mb-3 leading-tight " required
+                <input className="bg-gray-50  block 
+                border-2 border-[#DDDDDD] rounded-md focus:outline-none 
+                focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
+                w-full px-2.5 h-[42px]" required
                 id="grid-first-name" type="text" placeholder="" 
                 value={PropCountry}
                 onChange ={(e)=> propertyEditHandler(e,"PropCountry")} />
             </div>
                 
-            <div className="grid grid-cols-4 md:mb-3 md:mt-3">
-            <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">
-                <label className="block tracking-wide text-[#464646] 
-                text-[16px] font-normal mb-2" htmlFor="grid-first-name">
+            {/* <div className="grid grid-cols-4 md:mb-3 md:mt-3"> */}
+            <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
+                <label className="block tracking-wide text-[#464646]
+                text-[16px] font-normal mb-2" htmlFor="mobilenumber">
                 Mobile Number*
                 </label>
-                <input className="appearance-none block  border-2 border-[#DDDDDD]
-                focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
-                w-full h-[42px]
-                rounded-md  px-4 mb-3 leading-tight focus:outline-none"
-                id="grid-first-name" type="text" placeholder="" 
+                <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
+                focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
+                rounded-md h-[42px] px-4 mb-3 leading-tight "
+                id="mobilenumber" type="text" placeholder="" 
                 value={PropPhone} 
                 onChange ={(e)=> propertyEditHandler(e,"PropPhone")}  />
             </div>
-            <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">
-            
-    <label className="block tracking-wide text-[#464646]
-                text-[16px] font-normal mb-2" htmlFor='states'>
+            <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
+                <label className="block tracking-wide text-[#464646]
+                text-[16px] font-normal mb-2" htmlFor="states">
                 State*
-                </label>
-
+            </label>
     <select id="states" className="bg-gray-50  block 
-    border-2 border-[#DDDDDD] rounded-md focus:outline-none 
-    focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
-    w-full px-2.5 h-[42px]" 
+                border-2 border-[#DDDDDD] rounded-md focus:outline-none 
+                focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
+                w-full px-2.5 h-[42px]" 
     value={PropState} 
     onChange ={(e)=> propertyEditHandler(e,"PropState")} >
     <option selected>Choose a state</option>
@@ -258,8 +261,14 @@ const PropertyDetails = () => {
       })
     }
     </select>
-            </div>
-            </div>
+          </div>
+        {/* </div> */}
+      </div>
+   </div>
+
+            <div className="flex flex-col mb-6">
+           
+          
             <div className='flex  items-center gap-3 px-2'>
         {
           editDetails ? 
