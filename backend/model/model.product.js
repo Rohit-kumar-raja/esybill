@@ -34,7 +34,12 @@ async function getProductsByItem(propertyNo, categoryRN, itemNameRN) {
 
 async function getProductsByProperty(propertyNo) {
   const connection = await db();
-  const query = mysql.format('SELECT * from tblitemname JOIN tblitemcategory JOIN tblproductname WHERE tblproductname.PropertyNo=?', [propertyNo]);
+  const query = mysql.format(`SELECT tblproductname.*,tblitemcategory.ItemCategory,tblitemcategory.NoteOnItemCategory,tblitemname.ItemName,tblitemname.NoteOnItem 
+                              FROM tblitemcategory JOIN tblitemname 
+                                ON tblitemname.PropertyNo=tblitemcategory.PropertyNo and tblitemcategory.CategoryRN =tblitemname.CategoryRN 
+                              JOIN tblproductname 
+                                ON tblitemname.PropertyNo=tblproductname.PropertyNo and tblitemname.CategoryRN =tblproductname.CategoryRN and tblitemname.ItemNameRN =tblproductname.ItemNameRN 
+                              WHERE tblproductname.PropertyNo=?`, [propertyNo]);
   const result = await connection.query(query);
   return result[0];
 }
