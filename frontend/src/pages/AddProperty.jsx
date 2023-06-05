@@ -112,8 +112,8 @@ return (
 <div className='flex flex-col px-6'>
 <form className="rounded-md px-2 md:px-6 py-6 shadow-xl" onSubmit={propertyTwoSubmitHandler}>
 <div className='px-6 text-center'>
-    <h1 className='text-[15px] font-normal text-[#464646]'>Property</h1>
-<h1 className='text-[30px] font-semibold text-[#464646]'>Two</h1>
+    <h1 className='text-[15px] font-normal text-[#464646]'>Add</h1>
+<h1 className='text-[30px] font-semibold text-[#464646]'>Property</h1>
     </div>
         <div className="flex flex-col mb-6">
             

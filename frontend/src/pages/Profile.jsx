@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { stateList } from '../constants/stateList'
 import axios from '../api/axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import OTPVerificationModal from '../components/OTPVerificationModal';
+import { addPhone } from '../registrationSlice';
+import { useLocation } from 'react-router-dom';
 
 const USER_DETAILS = '/api/user';
 
@@ -16,6 +19,8 @@ const Profile = () => {
   }
 
   const [profile, setProfile] = useState('')
+  const [path, setPath] = useState('')
+  const location = useLocation()
   useEffect(()=>{
     const getProfileData = async () => {
      try {
@@ -34,13 +39,30 @@ const Profile = () => {
     getProfileData()
    },[])
    
+   useEffect(()=>{
+    console.log(location?.pathname)
+    if(location)
+    {
+      setPath(location?.pathname)
+    }
+   },[])
+
+
   const [CustomerName, setCustomerName] = useState('')
+  const [user, setUser] = useState({
+    // CustomerName: '',
+    // RegMobile: '',
+    // RegEmail: '',
+    // State: '',
+    // Country: ''
+  })
   const [RegMobile, setRegMobile] = useState('')
   const [State, setState] = useState('')
   const [Country, setCountry] = useState('')
   const [editDetails, seteditDetails] = useState(false)
   const [customerDetail, setCustomerDetail] = useState([])
-  
+  const [showModal, setShowModal] = useState(false)
+ const dispatch = useDispatch()
   const accessToken = useSelector(store => store?.login?.userData[0])
   useEffect(()=>{
     const handleSubmit = async () => {
@@ -107,53 +129,75 @@ const Profile = () => {
     setState(profile?.State)
     setCountry(profile?.Country)
   }
+
+
   const saveEditHandler = (e) => {
     e.preventDefault()
-    let editDetails = {}
+    setShowModal(true)
+
+   console.log(CustomerName, profile.CustomerName)
     if(CustomerName !== profile?.CustomerName){
-      editDetails.CustomerName = CustomerName
+      setUser(prevState => {
+        return { ...prevState, CustomerName }
+    })
     }
     if(RegMobile !== profile?.RegMobile){
-      editDetails.RegMobile = RegMobile
+      setUser(prevState => {
+        return { ...prevState, RegMobile }
+    })
     }
     if(State !== profile?.State){
-      editDetails.State = State
+      setUser(prevState => {
+        return { ...prevState, State }
+    })
     }
     if(Country !== profile?.Country){
-      editDetails.Country = Country
+      setUser(prevState => {
+        return { ...prevState, Country }
+    })
     }
-    console.log(editDetails)
-    try {
-      const options = {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`
-        }}
-      const response = axios.patch(`/api/user`,
-          { ...editDetails }, options
-      );
-          console.log(response)
-        if(response?.status == '200'){
-         toast.success("Profile edited successfully!", {
-           position: toast.POSITION.TOP_CENTER
-         });
-        }
-    } catch (err) {
-      console.log(err) 
-      toast.error("Update failed, please try later!", {
-        position: toast.POSITION.TOP_CENTER
-      });
-    }
+    console.log(user)
+  //   try {
+  //     const options = {
+  //       headers: {
+  //         'Authorization': `Bearer ${accessToken}`
+  //       }}
+  //     const response = axios.patch(`/api/user`,
+  //         { ...editDetails }, options
+  //     );
+  //         console.log(response)
+  //       if(response?.status == '200'){
+  //        toast.success("Profile edited successfully!", {
+  //          position: toast.POSITION.TOP_CENTER
+  //        });
+  //       }
+  //   } catch (err) {
+  //     console.log(err) 
+  //     toast.error("Update failed, please try later!", {
+  //       position: toast.POSITION.TOP_CENTER
+  //     });
+  //   }
   }
+
+
   useEffect(()=>{
      if(profile !==''){
        setCustomerName(profile?.CustomerName)
        setRegMobile(profile?.RegMobile)
        setState(profile?.State) 
        setCountry(profile?.Country)
+       dispatch(addPhone(profile?.RegMobile))
      }
   },[profile])
   return (
    <>
+     {
+      showModal ? <OTPVerificationModal  setShowModal={setShowModal}  user={user}
+      type="verify" path={path}
+      // userRegistrationData={userRegistrationData} 
+    
+       /> : null
+    }
      <ToastContainer autoClose={2000}/>
       <form className="rounded-md px-2 md:px-6 py-6" 
       //</>onSubmit={userDetailSubmitHandler}

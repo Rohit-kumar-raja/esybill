@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 import OTPVerificationModal from '../components/OTPVerificationModal'
 import { useDispatch, useSelector } from 'react-redux'
+import { addOtp } from '../registrationSlice'
 
 const LoginForm = () => {
     const [disabled, setDisabled] = useState(true)
@@ -16,6 +17,7 @@ const LoginForm = () => {
     const userDetailSubmitHandler = (e) => {
         e.preventDefault()
         setShowModal(true)
+        dispatch(addOtp(''))
       }
 
     useEffect(()=>{
