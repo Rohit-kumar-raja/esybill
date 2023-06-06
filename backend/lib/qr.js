@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 const QRLogo = require('../util/qrcode');
 
 async function generateQR(data, name, logo = '../assets/logos/logo.png') {
