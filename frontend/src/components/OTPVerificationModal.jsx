@@ -92,7 +92,7 @@ const OTPVerificationModal = ({
             try {
               const options = {
                 headers: {
-                  Authorization: `Bearer ${accessToken}`,
+                  Authorization: `Bearer ${accessToken}`, 
                 },
               };
               const response = await axios.put(
