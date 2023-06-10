@@ -66,15 +66,15 @@ const ProductCardComponent = ({setSidebarTabs, product,setEdit,setfetchProduct,
       <ToastContainer autoClose={2000}/>
       <div className='rounded-md p-5 shadow-md'>
         <div className='flex flex-col gap-3'>
-          <div className='flex text-[15px] font-normal justify-between'>
+          <div className='flex text-[15px] font-normal justify-between flex-wrap'>
             <h5 className='text-[#B3B3B3] flex items-center gap-2'><TbBuildingEstate/>Category</h5>
             <h5 className='text-[#464646] '>{product?.ItemCategory}</h5>
           </div>
-          <div className='flex text-[15px] font-normal justify-between gap-2'>
+          <div className='flex text-[15px] font-normal justify-between gap-2 flex-wrap'>
             <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Subcategory</h5>
             <h5 className='text-[#464646]'>{product?.ItemName}</h5>
           </div>
-          <div className='flex text-[15px] font-normal justify-between gap-2'>
+          <div className='flex text-[15px] font-normal justify-between gap-2 flex-wrap'>
             <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Product</h5>
             <h5 className='text-[#464646]'>{product?.ProductName}</h5>
           </div>
