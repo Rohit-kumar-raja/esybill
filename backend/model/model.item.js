@@ -31,7 +31,7 @@ async function getItemsByProperty(propertyNo) {
   const query = mysql.format(`SELECT tblitemname.*,tblitemcategory.ItemCategory,tblitemcategory.NoteOnItemCategory
                               FROM tblitemname INNER JOIN tblitemcategory 
                                 ON tblitemname.PropertyNo=tblitemcategory.PropertyNo and tblitemcategory.CategoryRN=tblitemname.CategoryRN 
-                              WHERE tblitemname.PropertyNo=?`, propertyNo);
+                              WHERE tblitemname.PropertyNo=?`, [propertyNo]);
   const result = await connection.query(query);
   return result[0];
 }

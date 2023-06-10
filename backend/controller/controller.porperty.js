@@ -81,7 +81,7 @@ async function deleteProperty(propertyNo, customerNo) {
   try {
     await productModel.deleteProductByPropertyNo(propertyNo);
     await itemModel.deleteItemByPropertyNo(propertyNo);
-    await itemCategoryModel.deleteItemByPropertyNo(propertyNo);
+    await itemCategoryModel.deleteItemCategoryByPropertyNo(propertyNo);
     await propertyModel.deleteProperty(propertyNo, customerNo);
     return { success: true };
   }
