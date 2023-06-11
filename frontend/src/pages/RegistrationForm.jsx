@@ -110,7 +110,7 @@ const RegistrationForm = () => {
       </div>
     </div>
     <div className="md:col-span-1"></div>
-    </div>
+    </div> 
     </>
   )
 }

@@ -12,6 +12,7 @@ import AddProduct from "./AddProduct";
 import Profile from "./Profile";
 import MyProperties from "./MyProperties";
 import { useSelector } from "react-redux";
+import AddImage from "./AddImage";
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const [sidebarTabs, setSidebarTabs] = useState(false)
@@ -58,7 +59,7 @@ const Dashboard = () => {
       <div className="flex">
         <div
           className={`${
-            open ? "w-72" : "w-20 "
+            open ? "w-62 md:w-72" : "w-20 "
           } bg-[#FFFFFF] min-h-screen p-5  pt-8 relative duration-300 shadow-2xl`}
         >
           <img
@@ -129,7 +130,7 @@ const Dashboard = () => {
                   </Link>
                   {
                     menuType === "Image menu" ? 
-                      <Link to='/dashboard/category'>
+                      <Link to='/dashboard/image'>
                         <li
                           className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
@@ -206,7 +207,7 @@ const Dashboard = () => {
             </Link> */}
                 </> : ""
             }
-           
+            
           </ul> 
         </div>
         <div className="items-center mx-auto p-7">
@@ -214,7 +215,8 @@ const Dashboard = () => {
             return text === "propertydetails" ? <PropertyDetails  /> : text === "addproperty" ? 
               <AddProperty/> : text === "category" ? <AddCategory/> : text === "subcategory" ? 
                 <AddSubCategory/> : text === "product" ? <AddProduct/> : text === "profile" ? <Profile/> : 
-                  text === "properties" ? <MyProperties  setSidebarTabs={setSidebarTabs}/> : ""  ;
+                  text === "properties" ? <MyProperties  setSidebarTabs={setSidebarTabs}/> : 
+                    text === "image" ? <AddImage/> : "" ;
           })}
         </div>
       </div>

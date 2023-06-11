@@ -62,11 +62,11 @@ const CategoryCardComponent= ({setSidebarTabs, category, setEdit, setIndCategory
       <ToastContainer autoClose={2000}/>
       <div className='rounded-md p-5 shadow-md'>
         <div className='flex flex-col gap-3'>
-          <div className='flex text-[14px] font-normal justify-between'>
+          <div className='flex text-[14px] font-normal justify-between flex-wrap'>
             <h5 className='text-[#B3B3B3] flex items-center gap-2'><TbBuildingEstate/>Property No</h5>
             <h5 className='text-[#464646] '>{category?.PropertyNo}</h5>
           </div>
-          <div className='flex text-[14px] font-normal justify-between'>
+          <div className='flex text-[14px] font-normal justify-between flex-wrap'>
             <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Category Name</h5>
             <h5 className='text-[#464646]'>{category?.ItemCategory}</h5>
           </div>

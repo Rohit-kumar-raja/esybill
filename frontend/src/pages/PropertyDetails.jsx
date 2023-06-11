@@ -149,12 +149,12 @@ const PropertyDetails = () => {
   return (
     <>
       <ToastContainer autoClose={2000}/>
-      <form className="rounded-md px-2 md:px-6 py-6"
+      <form className="rounded-md px-2 md:px-6 py-6 mt-3 md:mt-0"
         //onSubmit={propertyOneSubmitHandler} 
       >
         <div className='px-6 text-center'>
    
-          <h1 className='text-[30px] font-semibold text-[#464646]'>Property Details</h1>
+          <h1 className='text-[25px] md:text-[30px] font-semibold text-[#464646]'>Property Details</h1>
         </div>
         <img src={propertyDetail[0]?.QRLocation} alt='Qr scanner' className='w-20 h-20 mx-auto my-2'/>
 
