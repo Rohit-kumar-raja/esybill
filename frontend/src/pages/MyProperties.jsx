@@ -10,6 +10,8 @@ import { addFetchedProperties } from "../propertySlice";
 const MyProperties = ({setSidebarTabs}) => {
   const accessToken = useSelector(store => store?.login?.userData[0])
   const [properties, setProperties] = useState(null)
+  const [deletePopup, setDeletePopup] = useState(false) 
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   useEffect(()=>{
@@ -41,6 +43,24 @@ const MyProperties = ({setSidebarTabs}) => {
   },[])
 
   useEffect(()=>{
+    const getPropertyData = async () => {
+      try {
+        const options = {
+          headers: {
+            "Authorization": `Bearer ${accessToken}`
+          }}
+        const response = await axios.get("/api/property", options);
+        console.log(response?.data);
+        setProperties(response?.data)
+      }
+      catch (error) {
+        console.log(error);
+      } 
+    }
+    getPropertyData()
+  },[deletePopup])
+
+  useEffect(()=>{ 
     if(properties?.length){
       dispatch(addFetchedProperties(properties))
     }
@@ -53,7 +73,7 @@ const MyProperties = ({setSidebarTabs}) => {
             <>
               <div>
                 <PropertyCardComponent setSidebarTabs={setSidebarTabs} property={property} 
-                  propNo={property?.PropNo}/>
+                  propNo={property?.PropNo} deletePopup={deletePopup} setDeletePopup={setDeletePopup} />
               </div>
             </>
           ))
