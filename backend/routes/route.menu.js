@@ -7,4 +7,12 @@ const imageMenuController = require('../controller/controller.imageMenu');
 
 router.use(verifyTokenMiddleware);
 
+router.get('/', async (req, res) => {
+  const result = await imageMenuController.getImageMenu(req.params.PropertyNo);
+  if (result.success) {
+    return res.json(result.imageMenu);
+  }
+  return res.status(result.status).json(result.message);
+});
+
 module.exports = router;
