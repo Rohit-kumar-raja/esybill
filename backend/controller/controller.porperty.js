@@ -67,6 +67,10 @@ async function getPropertyById(propertyNo, customerNo) {
 
 async function updateProperty(property, propertyNo, customerNo) {
   try {
+    const propertyDetail = await propertyModel.getPropertyById(propertyNo, customerNo);
+    if (propertyDetail[0].hasActiveDesktopLicense) {
+      return { success: false, status: 403, message: 'ERR_LICENSED_PROPERTY' };
+    }
     await propertyModel.updateProperty(property, propertyNo, customerNo);
     return { success: true };
   }
