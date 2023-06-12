@@ -1,7 +1,7 @@
 const mysql = require('mysql2/promise');
 
 async function connect() {
-  const connection = mysql.createConnection({
+  const connection = mysql.createPool({
     namedPlaceholders: true,
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -15,5 +15,6 @@ async function connect() {
   });
   return connection;
 }
+const connection = connect();
 
-module.exports = connect;
+module.exports = () => connection;
