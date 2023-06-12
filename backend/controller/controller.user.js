@@ -33,8 +33,8 @@ async function sendLoginOtp(phone) {
     const user = await customerModel.getUserByPhone(phone);
     let result = { success: false, status: 500, message: 'Internal Server Error' };
     const responses = await Promise.allSettled([
-      sendOTP({ number: user.RegMobile, type: 'login' }),
-      sendOTP({ email: user.RegEmail, type: 'login' })
+      sendOTP({ email: user.RegEmail, number: user.RegMobile, type: 'login' })
+      // sendOTP({ email: user.RegEmail, type: 'login' })
     ]);
     responses.forEach((response) => {
       if (response.status) {

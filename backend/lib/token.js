@@ -15,23 +15,24 @@ async function getToken(data, expiresIn = '6h') {
 
 async function verifyTokenMiddleware(req, res, next) {
   try {
+    if (!req.headers.authorization || req.headers.authorization.indexOf('Bearer') < 0) {
+      return res.status(401).send({ message: 'No Token', code: 'NOT_LOGGED_IN' });
+    }
     const token = req.headers.authorization.substring(7, req.headers.authorization.length);
     const data = jwt.verify(token, JWT_PRIVATE_KEY);
     req.user = data;
-    next();
+    return next();
   }
   catch (err) {
     if (err.name === 'TokenExpiredError') {
-      res.status(401).send({ message: 'Token Expired', code: 'NOT_LOGGED_IN' });
+      return res.status(401).send({ message: 'Token Expired', code: 'NOT_LOGGED_IN' });
     }
-    else if (err.name === 'JsonWebTokenError') {
-      res.status(401).send({ message: 'Invalid Token', code: 'NOT_LOGGED_IN' });
+    if (err.name === 'JsonWebTokenError') {
+      return res.status(401).send({ message: 'Invalid Token', code: 'NOT_LOGGED_IN' });
     }
-    else {
-      // eslint-disable-next-line
+    // eslint-disable-next-line
       console.log(err);
-      res.sendStatus(500);
-    }
+    return res.sendStatus(500);
   }
 }
 
