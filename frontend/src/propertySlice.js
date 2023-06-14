@@ -18,7 +18,8 @@ const propertySlice = createSlice({
       state = state.propertyDetails.splice(0,1,action.payload)
     }, 
     addFetchedProperties:(state, action) => {
-      state = state.fetchedProperties.push(action.payload)
+      // state = state.fetchedProperties.push(action.payload)
+      state = state.fetchedProperties.splice(0,1,action.payload)
       // state.fetchedProperties[(action.payload.val)] = action.payload.propertyDetail
     }, 
     addFetchedProperty:(state, action) => {

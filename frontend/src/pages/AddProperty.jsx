@@ -21,7 +21,7 @@ const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
   const [PropAddress, setPropAddress] = useState("") 
   const [PropPhone, setPropPhone] = useState("")
   const [PropState, setPropState] = useState("")
-  const [PropCountry, setPropCountry] = useState("") 
+  const [PropCountry, setPropCountry] = useState("")  
   const [disabled, setDisabled] = useState(true)
  
   const [addPropBtn, setAddPropBtn] = useState(true) 
@@ -46,18 +46,22 @@ const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
   //    }
  
   useEffect(()=>{
-    let val = fetchedProperties.length
+    let val = fetchedProperties[0].length
     console.log(fetchedProperties,val)
     setLength(val)
      
   },[fetchedProperties])
 
   useEffect(()=>{
+    console.log(propertyCount, length)
+  },[propertyCount, length]) 
+
+  useEffect(()=>{
     console.log(propertyCount)
     if(propertyCount === ""){
       const getProfileData = async () => {
         try {
-          const options = {
+          const options = { 
             headers: {
               "Authorization": `Bearer ${accessToken}`
             }}
@@ -72,42 +76,43 @@ const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
       getProfileData()
     }
   },[propertyCount])
-  const propertyTwoSubmitHandler = (e) => {
+
+  const propertyTwoSubmitHandler = async (e) => {
     e.preventDefault() 
     let propertyDetail= {
       PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, PropCountry
     }
     //  let val = propertyDetails[0]?.length
-    console.log(propertyCount)
+    console.log(propertyCount, length)
     dispatch( addFetchedProperty({propertyDetail,length}))
     if(length === propertyCount){
       setLimit(true)
     }
     else {
-      const handleSubmit = async () => {
-        try {
-          const options = {
-            headers: {
-              "Authorization": `Bearer ${accessToken}`
-            }}
-          const response = await axios.post("/api/property",
-            {
-              PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, PropCountry
-            }, options
-          );
+      // const handleSubmit = async () => {
+      try {
+        const options = {
+          headers: {
+            "Authorization": `Bearer ${accessToken}`
+          }}
+        const response = await axios.post("/api/property",
+          {
+            PropType, PropName, PropEmail, PropAddress, PropPhone, PropState, PropCountry
+          }, options
+        );
           
-          console.log(response)
-          toast.success("Property created successfully!", {
-            position: toast.POSITION.TOP_CENTER
-          });
-        } catch (err) {
-          console.log(err) 
-          toast.error("Property creation failed!", {
-            position: toast.POSITION.TOP_CENTER
-          });
-        }
+        console.log(response)
+        toast.success("Property created successfully!", {
+          position: toast.POSITION.TOP_CENTER
+        });
+      } catch (err) {
+        console.log(err) 
+        toast.error("Property creation failed!", {
+          position: toast.POSITION.TOP_CENTER
+        });
       }
-      handleSubmit()
+      // }
+      // handleSubmit()
     }
     
     setPropType("")
