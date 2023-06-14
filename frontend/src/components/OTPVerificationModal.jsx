@@ -324,21 +324,22 @@ const OTPVerificationModal = ({
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
         <div className="relative w-auto my-6 mx-auto">
           <div className="flex justify-center bg-pink-50 items-center">
-            <div className="w-full max-w-xs ">
+            <div className="w-full">
               <button
-                className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl 
+                className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl 
  leading-none font-semibold outline-none focus:outline-none"
                 onClick={() => setShowModal(false)}
               >
                 <span
-                  className="bg-transparent text-blue-900  h-6 w-6 text-2xl block outline-none 
+                  className="bg-transparent 
+                  text-blue-900  h-6 w-6 text-2xl block outline-none 
   focus:outline-none"
                 >
                   ×
                 </span>
               </button>
               <form
-                className="b rounded px-8 py-8 mb-4 flex flex-col items-center"
+                className="b rounded px-8 py-8 mb-4 flex flex-col items-center w-full"
                 onSubmit={otpSubmitHandler}
               >
                 <MdOutlineMobileFriendly size={40} className="text-blue-900" />

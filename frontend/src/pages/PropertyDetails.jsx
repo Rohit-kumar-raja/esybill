@@ -33,8 +33,21 @@ const PropertyDetails = () => {
   const [PropCountry, setPropCountry] = useState(propertyDetail[0]?.PropCountry)
   const [editDetails, seteditDetails] = useState(false)
   const [menu, setMenu] = useState("")
-
+  const [disabledText, setDisabledText] = useState(false)
+  const [disabledMenu, setDisabledMenu] = useState(false)
     
+  useEffect(()=> {
+    if(propertyDetail[0]?.hasActiveDesktopLicense === 1){
+      setDisabledText(true)
+      if(propertyDetail[0]?.MenuType !== "Image menu")
+      {
+        setDisabledMenu(true)
+      }
+      else{
+        setDisabledMenu(false)
+      }
+    }
+  },[disabledText])
   const propertyEditHandler = (e,id) => {
     if(id.includes("PropType")){
       setPropType(e.target.value)
@@ -44,7 +57,7 @@ const PropertyDetails = () => {
     }
     // else  if(id.includes("PropMenu")){
     //   setMenu(e.target.value)
-    // }
+    // } 
     else  if(id.includes("PropEmail")){
       setPropEmail(e.target.value)
     }
@@ -167,7 +180,7 @@ const PropertyDetails = () => {
               </label>
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
-                rounded-md h-[42px] px-4 mb-3 leading-tight " required
+                rounded-md h-[42px] px-4 mb-3 leading-tight " required disabled={disabledText}
               id="grid-first-name" type="text" placeholder="" 
               value={PropType} 
               onChange ={(e)=> propertyEditHandler(e,"PropType")}/>   
@@ -181,7 +194,7 @@ const PropertyDetails = () => {
                 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
                 w-full px-2.5 h-[42px]" 
-              value={menu} 
+              value={menu} disabled={disabledMenu}
               onChange ={(e)=> propertyEditHandler(e,"MenuType")}>   
                 
                
@@ -218,7 +231,7 @@ const PropertyDetails = () => {
               </label>
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
-                rounded-md h-[42px] px-4 mb-3 leading-tight " required
+                rounded-md h-[42px] px-4 mb-3 leading-tight " required disabled={disabledText}
               id="grid-first-name" type="text" placeholder="" 
               value={PropName}  
               onChange ={(e)=> propertyEditHandler(e,"PropName")} />
@@ -230,7 +243,7 @@ const PropertyDetails = () => {
               </label>
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
-                rounded-md h-[42px] px-4 mb-3 leading-tight " required
+                rounded-md h-[42px] px-4 mb-3 leading-tight " required disabled={disabledText}
               id="grid-first-name" type="email" placeholder="" 
               value={PropEmail}
               onChange ={(e)=> propertyEditHandler(e,"PropEmail")}  />
@@ -244,7 +257,7 @@ const PropertyDetails = () => {
               </label>
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
-                rounded-md h-[42px] px-4 mb-3 leading-tight " required
+                rounded-md h-[42px] px-4 mb-3 leading-tight " required disabled={disabledText}
               id="grid-first-name" type="text" placeholder="" 
               value={PropAddress}
               onChange ={(e)=> propertyEditHandler(e,"PropAddress")}/>
@@ -258,7 +271,7 @@ const PropertyDetails = () => {
               <input className="bg-gray-50  block 
                 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
-                w-full px-2.5 h-[42px]" required
+                w-full px-2.5 h-[42px]" required disabled={disabledText}
               id="grid-first-name" type="text" placeholder="" 
               value={PropCountry}
               onChange ={(e)=> propertyEditHandler(e,"PropCountry")} />
@@ -273,7 +286,7 @@ const PropertyDetails = () => {
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
                 rounded-md h-[42px] px-4 mb-3 leading-tight "
-              id="mobilenumber" type="text" placeholder="" 
+              id="mobilenumber" type="text" placeholder=""  disabled={disabledText}
               value={PropPhone} 
               onChange ={(e)=> propertyEditHandler(e,"PropPhone")}  />
             </div>
@@ -286,7 +299,7 @@ const PropertyDetails = () => {
                 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
                 w-full px-2.5 h-[42px]" 
-              value={PropState} 
+              value={PropState}  disabled={disabledText}
               onChange ={(e)=> propertyEditHandler(e,"PropState")} >
                 <option selected>Choose a state</option>
                 {

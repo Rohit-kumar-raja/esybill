@@ -118,7 +118,7 @@ const SubCategoryModal= ({setShowModal, setfetchSubCategory}) => {
         focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
         w-full px-2.5 h-[42px]" defaultValue={selectedCategory} 
                 onChange={(e)=> setselectedCategory(e.target.value)} >
-                  <option selected>Choose a state</option>
+                  <option selected>Choose a category</option>
                   { 
                     category?.map((selectedCategory) => {
                       // setRn(selectedCategory?.CategoryRN)
@@ -131,12 +131,13 @@ const SubCategoryModal= ({setShowModal, setfetchSubCategory}) => {
                   }
                 </select>
               </div>
-              <div className='flex justify-center items-center gap-3'>
+              <div className='flex justify-center items-center gap-3 flex-auto'>
                 <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
               Sub category
                 </label>
-                <input className="appearance-none block  border-2 border-[#DDDDDD] required  w-[15rem] md:w-80
+                <input className="appearance-none block  border-2 border-[#DDDDDD] required 
+                  w-full
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                 id="grid-first-name" type="text" placeholder="" 

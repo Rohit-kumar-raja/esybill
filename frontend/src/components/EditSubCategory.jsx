@@ -50,10 +50,10 @@ const EditSubCategory = (props) => {
   return (
     <>
       <ToastContainer autoClose={2000}/>
-      <form>    
+      <form className="md:w-[30rem] mx-auto">    
         <div className='rounded-md p-5 shadow-md'>
           <div className='flex flex-col gap-3'>
-            <div className='flex text-[14px] font-normal justify-between'>
+            <div className='flex text-[14px] font-normal justify-between flex-col md:flex-row'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>SubCategory Name</h5>
               <input type='text' value={SubCategory} onChange={(e) => setSubCategoryName(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]

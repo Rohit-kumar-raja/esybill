@@ -9,6 +9,7 @@ import { addFetchedProperties } from "../propertySlice";
 
 const MyProperties = ({setSidebarTabs}) => {
   const accessToken = useSelector(store => store?.login?.userData[0])
+  
   const [properties, setProperties] = useState(null)
   const [deletePopup, setDeletePopup] = useState(false) 
 
@@ -16,7 +17,7 @@ const MyProperties = ({setSidebarTabs}) => {
   const navigate = useNavigate()
   useEffect(()=>{
     if(accessToken === ""){ 
-      navigate("/login")
+      navigate("/login") 
     }
    
   },[accessToken, navigate])
@@ -67,21 +68,20 @@ const MyProperties = ({setSidebarTabs}) => {
   },[properties])
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-3 px-2 py-3 md:px-6">
-        {
-          properties?.map(property => (
-            <>
-              <div>
-                <PropertyCardComponent setSidebarTabs={setSidebarTabs} property={property} 
-                  propNo={property?.PropNo} deletePopup={deletePopup} setDeletePopup={setDeletePopup} />
-              </div>
-            </>
-          ))
-        }
-       
-        
+      <div className="w-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-3 px-2 py-3 md:px-6">
+          {
+            properties?.map(property => (
+              <>
+                <div>
+                  <PropertyCardComponent setSidebarTabs={setSidebarTabs} property={property} 
+                    propNo={property?.PropNo} deletePopup={deletePopup} setDeletePopup={setDeletePopup} />
+                </div>
+              </>
+            ))
+          }
+        </div>
       </div>
-
     </>
   ) 
 }

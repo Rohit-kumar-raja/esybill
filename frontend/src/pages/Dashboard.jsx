@@ -105,6 +105,16 @@ const Dashboard = () => {
                 </span>
               </li>
             </Link>
+            <Link to='/dashboard/addproperty'>
+              <li
+                className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              mt-2 bg-light-white">
+                <img src={profile} />
+                <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
+              Add Property
+                </span>
+              </li>
+            </Link>
             {
               sidebarTabs ?
                 <>
@@ -118,16 +128,7 @@ const Dashboard = () => {
                       </span>
                     </li>
                   </Link>
-                  <Link to='/dashboard/addproperty'>
-                    <li
-                      className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-              mt-2 bg-light-white">
-                      <img src={profile} />
-                      <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
-              Add Property
-                      </span>
-                    </li>
-                  </Link>
+                 
                   {
                     menuType === "Image menu" ? 
                       <Link to='/dashboard/image'>
@@ -136,7 +137,7 @@ const Dashboard = () => {
               mt-2 bg-light-white">
                           <img src={profile} />
                           <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
-              Image Category 
+              Image Menu
                           </span>
                         </li>
                       </Link> 
@@ -148,7 +149,7 @@ const Dashboard = () => {
               mt-2 bg-light-white">
                               <img src={profile} />
                               <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
-              Add Category 
+              Category 
                               </span>
                             </li>
                           </Link> 
@@ -158,7 +159,7 @@ const Dashboard = () => {
               mt-2 bg-light-white">
                               <img src={profile} />
                               <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
-              Add Sub-category
+              Sub-category
                               </span>
                             </li>
                           </Link>
@@ -168,7 +169,7 @@ const Dashboard = () => {
               mt-2 bg-light-white">
                               <img src={profile} />
                               <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
-              Add product
+              Product
                               </span>
                             </li>
                           </Link>
@@ -210,7 +211,7 @@ const Dashboard = () => {
             
           </ul> 
         </div>
-        <div className="items-center mx-auto p-7">
+        <div className="items-center mx-auto p-7 w-screen">
           {location.pathname?.toString().split("/").map(text => {
             return text === "propertydetails" ? <PropertyDetails  /> : text === "addproperty" ? 
               <AddProperty/> : text === "category" ? <AddCategory/> : text === "subcategory" ? 

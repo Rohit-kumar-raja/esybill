@@ -9,6 +9,7 @@ const propertySlice = createSlice({
     categoryDetails:"",
     subcategoryDetails:"",
     productDetails:"",
+    propertyCount:"",
     menuType:""
   },
   reducers:{
@@ -39,10 +40,13 @@ const propertySlice = createSlice({
     }, 
     addMenuType:(state, action) => { 
       state.menuType  = action.payload
+    },
+    addPropertyCount:(state, action) => { 
+      state.propertyCount  = action.payload
     } 
   } 
 
 })
 export const {addPropertyDetails, addMenuType,addFetchedProperties, addFetchedProperty,getCategory,getSubCategory,
-  addPropertyNumber, getProduct} = propertySlice.actions
+  addPropertyNumber, getProduct, addPropertyCount} = propertySlice.actions
 export default propertySlice.reducer   

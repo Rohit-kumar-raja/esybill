@@ -69,19 +69,20 @@ const CategoryModal = ({setShowModal,setfetchCategory}) => {
                 <span className="bg-transparent text-black  
                     h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
-                </span>
+                </span> 
               </button>
             </div> 
             {/*body*/}
             <form onSubmit={createCategoryHandler}>
               <div className="relative p-6 flex-auto">
                 <input className="appearance-none block  border-2 border-[#DDDDDD] required
-                w-[15rem] md:w-80
-            focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
+                w-full
+            focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none 
+            focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                 id="grid-first-name" type="text" placeholder="" 
                 value={ItemCategory} onChange={(e)=> setItemCategory(e.target.value)} />
-                <button className="font-normal  bg-[#800080] text-[white] flex rounded-md py-2 my-6 
+                <button className="font-normal  bg-[#800080] text-[white] flex rounded-md py-2 my-6
               text-[13px] px-3 mx-auto cursor-pointer opacity-100" type='submit'>Submit</button>
               </div>
             </form>
