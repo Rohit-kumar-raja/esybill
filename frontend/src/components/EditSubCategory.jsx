@@ -48,7 +48,7 @@ const EditSubCategory = (props) => {
     //props.setfetchSubCategory(false)
   }
   return (
-    <>
+    <> 
       <ToastContainer autoClose={2000}/>
       <form className="md:w-[30rem] mx-auto">    
         <div className='rounded-md p-5 shadow-md'>

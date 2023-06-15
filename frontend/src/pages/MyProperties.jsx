@@ -61,11 +61,12 @@ const MyProperties = ({setSidebarTabs}) => {
     getPropertyData()
   },[deletePopup])
 
-  useEffect(()=>{ 
+  useEffect(()=>{  
     if(properties?.length){
       dispatch(addFetchedProperties(properties))
     }
   },[properties])
+  
   return (
     <>
       <div className="w-auto">

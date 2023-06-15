@@ -17,6 +17,7 @@ const OTPVerificationModal = ({
   userRegistrationData,
   type,
   usermobilenumber,
+  seteditDetails,
   path,
   user,
 }) => {
@@ -105,6 +106,8 @@ const OTPVerificationModal = ({
                 toast.success("Profile edited successfully!", {
                   position: toast.POSITION.TOP_CENTER,
                 });
+                setShowModal(false)
+                seteditDetails(false)
               }
             } catch (err) {
               console.log(err);
@@ -370,6 +373,7 @@ const OTPVerificationModal = ({
                       setfirstNum(e.target.value);
                       if (e.target.maxLength >= 1) secondNumRef.current.focus();
                     }}
+                    onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
                         sixthNumRef.current.focus();
@@ -395,6 +399,7 @@ const OTPVerificationModal = ({
                       setsecondNum(e.target.value);
                       if (e.target.maxLength >= 1) thirdNumRef.current.focus();
                     }}
+                    onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
                         firstNumRef.current.focus();
@@ -420,6 +425,7 @@ const OTPVerificationModal = ({
                       setthirdNum(e.target.value);
                       if (e.target.maxLength >= 1) fourthNumRef.current.focus();
                     }}
+                    onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
                         secondNumRef.current.focus();
@@ -446,6 +452,7 @@ const OTPVerificationModal = ({
                       setfourthNum(e.target.value);
                       if (e.target.maxLength >= 1) fifthNumRef.current.focus();
                     }}
+                    onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
                         thirdNumRef.current.focus();
@@ -471,6 +478,7 @@ const OTPVerificationModal = ({
                       setfifthum(e.target.value);
                       if (e.target.maxLength >= 1) sixthNumRef.current.focus();
                     }}
+                    onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
                         fourthNumRef.current.focus();
@@ -496,6 +504,7 @@ const OTPVerificationModal = ({
                       setSixthNum(e.target.value);
                       if (e.target.maxLength >= 1) firstNumRef.current.focus();
                     }}
+                    onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
                         fifthNumRef.current.focus();

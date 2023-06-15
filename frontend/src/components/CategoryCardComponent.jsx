@@ -28,7 +28,7 @@ const CategoryCardComponent= ({setSidebarTabs, category, setEdit, setIndCategory
   // }
   // },[category])
   const categoryDeleteHandler = () => {
-    console.log("del")
+    console.log("del") 
     setDeletePopup(true)
     
   } 

@@ -116,6 +116,7 @@ const Profile = () => {
 
   const cancelEditHandler = (e) => {
     e.preventDefault()
+    seteditDetails(false)
     setCustomerName(profile?.CustomerName)
     setRegMobile(profile?.RegMobile)
     setState(profile?.State)
@@ -186,7 +187,7 @@ const Profile = () => {
     <>
       {
         showModal ? <OTPVerificationModal  setShowModal={setShowModal}  user={user}
-          type="verify" path={path}
+          type="verify" path={path} seteditDetails={seteditDetails}
           // userRegistrationData={userRegistrationData} 
     
         /> : null
@@ -251,9 +252,9 @@ const Profile = () => {
 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
   w-full px-2.5 h-[42px]" defaultValue={State}  onChange={(e)=>editDetailsHandler(e,"State")} >
-                  <option selected>Choose a state</option>
+                  <option selected value={State}>{State}</option>
                   {
-                    stateList.map((stateList) => {
+                    stateList?.map((stateList) => {
                       return (<option value={stateList}>{stateList}</option>)
         
                     })
