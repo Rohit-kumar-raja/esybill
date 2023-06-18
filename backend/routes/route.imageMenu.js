@@ -8,7 +8,7 @@ const imageMenuController = require('../controller/controller.imageMenu');
 router.use(verifyTokenMiddleware);
 
 router.get('/', async (req, res) => {
-  const result = await imageMenuController.getImageMenu(req.params.PropertyNo);
+  const result = await imageMenuController.deleteImage(req.params.PropertyNo, req.body);
   if (result.success) {
     return res.json(result.imageMenu);
   }
@@ -24,7 +24,7 @@ router.delete('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const result = await imageMenuController.getImageMenu(req.params.PropertyNo);
+  const result = await imageMenuController.upsertImageMenu(req.params.PropertyNo, req.file, req.body);
   if (result.success) {
     return res.json(result.imageMenu);
   }
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  const result = await imageMenuController.getImageMenu(req.params.PropertyNo);
+  const result = await imageMenuController.updateImageMenu(req.params.PropertyNo, req.body);
   if (result.success) {
     return res.json(result.imageMenu);
   }
