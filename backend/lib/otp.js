@@ -28,7 +28,6 @@ async function sendOTP({ email, number, type }) {
     let msg;
     if (type === 'login') msg = loginMsg;
     else if (type === 'verify') msg = regMsg;
-    console.log(email);
     if (email && email != null) {
       if (await otpModel.insert(email, otp)) {
         await mail.sendMail(msg, email);

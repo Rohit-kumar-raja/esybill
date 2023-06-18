@@ -6,7 +6,7 @@ const propertyRoute = require('./route.property');
 const itemCategoryRoute = require('./route.itemCategory');
 const itemRoute = require('./route.item');
 const productRoute = require('./route.product');
-const menuRoute = require('./route.menu');
+const menuRoute = require('./route.imageMenu');
 
 router.use('/user', userRoute);
 router.use('/property/:PropertyNo/itemCtegory/:CategoryRN/item/:ItemNameRN/product', productRoute);
