@@ -46,7 +46,7 @@ const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
   //    }
  
   useEffect(()=>{
-    let val = fetchedProperties[0].length
+    let val = fetchedProperties[0]?.length
     console.log(fetchedProperties,val)
     setLength(val)
      

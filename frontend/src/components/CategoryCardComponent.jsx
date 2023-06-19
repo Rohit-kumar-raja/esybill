@@ -46,6 +46,7 @@ const CategoryCardComponent= ({setSidebarTabs, category, setEdit, setIndCategory
           toast.success("Category deleted successfully!", {
             position: toast.POSITION.TOP_CENTER
           });
+          setDeletePopup(false)
         }
       }
       catch (error) {
@@ -53,6 +54,7 @@ const CategoryCardComponent= ({setSidebarTabs, category, setEdit, setIndCategory
           position: toast.POSITION.TOP_CENTER
         });
         console.log(error);
+        setDeletePopup(false)
       }
     }
     deleteCategory()

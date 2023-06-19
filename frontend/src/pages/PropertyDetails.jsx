@@ -24,30 +24,53 @@ const PropertyDetails = () => {
   }
 
 
-  const [PropType, setPropType] = useState(propertyDetail[0]?.PropType)
-  const [PropName, setPropName] = useState(propertyDetail[0]?.PropName)
-  const [PropEmail, setPropEmail] = useState(propertyDetail[0]?.PropEmail)
-  const [PropAddress, setPropAddress] = useState(propertyDetail[0]?.PropAddress)
-  const [PropPhone, setPropPhone] = useState(propertyDetail[0]?.PropPhone)
-  const [PropState, setPropState] = useState(propertyDetail[0]?.PropState)
-  const [PropCountry, setPropCountry] = useState(propertyDetail[0]?.PropCountry)
+  const [PropType, setPropType] = useState("")
+  const [PropName, setPropName] = useState("")
+  const [PropEmail, setPropEmail] = useState("")
+  const [PropAddress, setPropAddress] = useState("")
+  const [PropPhone, setPropPhone] = useState("")
+  const [PropState, setPropState] = useState("")
+  const [PropCountry, setPropCountry] = useState("")
+  const [image, setImage] = useState("")
   const [editDetails, seteditDetails] = useState(false)
   const [menu, setMenu] = useState("")
+  const [fetchedMenu, setfetchedMenu] = useState("")
   const [disabledText, setDisabledText] = useState(false)
   const [disabledMenu, setDisabledMenu] = useState(false)
-    
+  const [license, setLicense] = useState("")
   useEffect(()=> {
-    if(propertyDetail[0]?.hasActiveDesktopLicense === 1){
-      setDisabledText(true)
-      if(propertyDetail[0]?.MenuType !== "Image menu")
-      {
-        setDisabledMenu(true)
-      }
-      else{
-        setDisabledMenu(false)
+    if(propertyDetail?.length > 0){
+      if(propertyDetail[0]?.hasActiveDesktopLicense === 1){
+       
+        setDisabledText(true)
+        if(propertyDetail[0]?.MenuType !== "Image menu")
+        {
+          setDisabledMenu(true)
+        }
+        else{
+          setDisabledMenu(false)
+        }
       }
     }
-  },[disabledText])
+  
+  },[disabledText,propertyDetail])
+
+  useEffect(()=>{
+    if(propertyDetail?.length > 0){
+      setPropType(propertyDetail[0]?.PropType)
+      setPropName(propertyDetail[0]?.PropName)
+      setPropEmail(propertyDetail[0]?.PropEmail)
+      setPropAddress(propertyDetail[0]?.PropAddress)
+      setPropPhone(propertyDetail[0]?.PropPhone)
+      setPropState(propertyDetail[0]?.PropState)
+      setPropCountry(propertyDetail[0]?.PropCountry)
+      setImage(propertyDetail[0]?.QRLocation)
+      setfetchedMenu(propertyDetail[0]?.MenuType)
+      setLicense(propertyDetail[0]?.hasActiveDesktopLicense)
+   
+
+    }
+  },[propertyDetail])
   const propertyEditHandler = (e,id) => {
     if(id.includes("PropType")){
       setPropType(e.target.value)
@@ -84,7 +107,7 @@ const PropertyDetails = () => {
   }
   
   useEffect(()=>{
-    if(propertyDetail[0]?.MenuType)
+    if(propertyDetail?.length > 0)
     {
       let menu = propertyDetail[0]?.MenuType
       dispatch(addMenuType(menu))
@@ -156,9 +179,7 @@ const PropertyDetails = () => {
   }
 
 
-  useEffect(()=>{
-    console.log(propertyDetail, propertyDetail[0]?.MenuType)
-  },[propertyDetail])
+  
   return (
     <>
       <ToastContainer autoClose={2000}/>
@@ -169,7 +190,7 @@ const PropertyDetails = () => {
    
           <h1 className='text-[25px] md:text-[30px] font-semibold text-[#464646]'>Property Details</h1>
         </div>
-        <img src={propertyDetail[0]?.QRLocation} alt='Qr scanner' className='w-20 h-20 mx-auto my-2'/>
+        <img src={image} alt='Qr scanner' className='w-20 h-20 mx-auto my-2'/>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col mb-6">
@@ -199,20 +220,20 @@ const PropertyDetails = () => {
                 
                
                 {
-                  propertyDetail[0]?.MenuType === "text" ?  
+                  fetchedMenu === "text" ?  
                     <>
                       <option value="Text menu" selected>Text menu</option> 
                       <option value="Image menu">Image menu</option>
                     </>
                    
                     :  
-                    propertyDetail[0]?.MenuType === "Image menu" ?  
+                    fetchedMenu === "Image menu" ?  
                       <>
                         <option value="Image menu" selected>Image menu</option> 
                         <option value="Text menu">Text menu</option>
                       </>
                       :
-                      propertyDetail[0]?.MenuType === "Text menu" ?  
+                      fetchedMenu === "Text menu" ?  
                         <>
                           <option value="Text menu" selected>Text menu</option> 
                           <option value="Image menu">Image menu</option>
