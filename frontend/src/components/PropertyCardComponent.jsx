@@ -71,6 +71,7 @@ const PropertyCardComponent = ({setSidebarTabs, property, propNo, deletePopup, s
           toast.success("Property deleted successfully!", {
             position: toast.POSITION.TOP_CENTER
           });
+          setDeletePopup(false)
         }
       }
       catch (error) {

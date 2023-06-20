@@ -13,6 +13,7 @@ import Profile from "./Profile";
 import MyProperties from "./MyProperties";
 import { useSelector } from "react-redux";
 import AddImage from "./AddImage";
+import { addMenuType } from "../propertySlice";
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const [sidebarTabs, setSidebarTabs] = useState(false)
@@ -23,18 +24,25 @@ const Dashboard = () => {
   useEffect(()=>{
     navigate("/dashboard/properties")
 
-    console.log(location)
+    console.log("location", location.pathname)
   },[])
-  useEffect(()=>{
-    if(sidebarTabs){
+  useEffect(()=>{ 
+    if(sidebarTabs){ 
       navigate("/dashboard/propertydetails")
     }
     else{
-      navigate("/dashboard/properties")
+      navigate("/dashboard/properties") 
       setSidebarTabs(false)
     }
   },[sidebarTabs])
 
+  // useEffect(()=>{
+  //   console.log("loaded")
+  //   if(location === "/dashboard/addproperty")
+  //   {
+  //     addMenuType("")
+  //   }
+  // },[])
   // useEffect(()=> {
   //  setSidebarTabs(false)
   //  console.log('sidebar tabs')

@@ -4,7 +4,7 @@ import {IoCaretBackCircleOutline,IoAddCircleOutline} from "react-icons/io5";
 import { stateList } from "../constants/stateList";
 import { useDispatch, useSelector } from "react-redux";
 import { addMoreProperty, addProperty } from "../registrationSlice";
-import { addFetchedProperties, addFetchedProperty, addPropertyCount } from "../propertySlice";
+import { addFetchedProperties, addFetchedProperty, addMenuType, addPropertyCount } from "../propertySlice";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../api/axios";
@@ -45,6 +45,9 @@ const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
   //   setActivateSecondProperty(false)
   //    }
  
+  useEffect(()=>{
+    dispatch(addMenuType(""))
+  },[])
   useEffect(()=>{
     let val = fetchedProperties[0]?.length
     console.log(fetchedProperties,val)
@@ -102,15 +105,18 @@ const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
         );
           
         console.log(response)
-        toast.success("Property created successfully!", {
-          position: toast.POSITION.TOP_CENTER
-        });
+        if(response?.status === 201){
+          toast.success("Property created successfully!", {
+            position: toast.POSITION.TOP_CENTER
+          });
+        } 
+       
       } catch (err) {
         console.log(err) 
         toast.error("Property creation failed!", {
           position: toast.POSITION.TOP_CENTER
         });
-      }
+      } 
       // }
       // handleSubmit()
     }
