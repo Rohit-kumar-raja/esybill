@@ -69,6 +69,12 @@ const OTPVerificationModal = ({
     sixthNum,
   ]);
 
+  // useEffect(()=>{
+  //   console.log("fifthNum, sixthNum", fifthNum, sixthNum)
+  //   if(sixthNum === ""){
+  //     fifthNumRef.current.focus()
+  //   }
+  // },[sixthNum, fifthNum])
   useEffect(() => {
     let number = [firstNum, secondNum, thirdNum, fourthNum, fifthNum, sixthNum];
     let otpval = [...number];
@@ -81,6 +87,9 @@ const OTPVerificationModal = ({
     console.log(user, otp, phone, properties);
   }, [registrationDetails]);
 
+  useEffect(()=>{
+    firstNumRef.current.focus()
+  },[])
   useEffect(() => {
     if (otp.toString().length === 6) {
       if (type === "verify") {
@@ -249,6 +258,11 @@ const OTPVerificationModal = ({
     return () => clearInterval(interval);
   }, []);
 
+  // useEffect(()=>{
+  //   if(sixthNum === ""){
+  //     fifthNumRef.current.focus();
+  //   }
+  // },[sixthNum])
   //  useEffect(()=>{
   //   if(submit)
   //   {
@@ -371,13 +385,14 @@ const OTPVerificationModal = ({
                     ref={firstNumRef}
                     onChange={(e) => {
                       setfirstNum(e.target.value);
-                      if (e.target.maxLength >= 1) secondNumRef.current.focus();
+                      if (e.target.value !== "") secondNumRef.current.focus();
+                      if (e.target.value === "") sixthNumRef.current.focus();
                     }}
                     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
-                        sixthNumRef.current.focus();
-                        setSixthNum("");
+                        firstNumRef.current.focus();
+                      
                       }
                     }}
                   />
@@ -397,13 +412,14 @@ const OTPVerificationModal = ({
                     ref={secondNumRef}
                     onChange={(e) => {
                       setsecondNum(e.target.value);
-                      if (e.target.maxLength >= 1) thirdNumRef.current.focus();
+                      if (e.target.value !== "") thirdNumRef.current.focus();
+                      if (e.target.value === "") firstNumRef.current.focus();
                     }}
                     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
-                        firstNumRef.current.focus();
-                        setfirstNum("");
+                        secondNumRef.current.focus();
+                       
                       }
                     }}
                   />
@@ -423,13 +439,14 @@ const OTPVerificationModal = ({
                     ref={thirdNumRef}
                     onChange={(e) => {
                       setthirdNum(e.target.value);
-                      if (e.target.maxLength >= 1) fourthNumRef.current.focus();
+                      if (e.target.value !== "") fourthNumRef.current.focus();
+                      if (e.target.value === "") secondNumRef.current.focus();
                     }}
                     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
-                        secondNumRef.current.focus();
-                        setsecondNum("");
+                        thirdNumRef.current.focus();
+                       
                       }
                     }}
                     // onKeyPress={ket}
@@ -450,13 +467,13 @@ const OTPVerificationModal = ({
                     ref={fourthNumRef}
                     onChange={(e) => {
                       setfourthNum(e.target.value);
-                      if (e.target.maxLength >= 1) fifthNumRef.current.focus();
+                      if (e.target.value !== "") fifthNumRef.current.focus();
+                      if (e.target.value === "") thirdNumRef.current.focus();
                     }}
                     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
-                        thirdNumRef.current.focus();
-                        setthirdNum("");
+                        fourthNumRef.current.focus();
                       }
                     }}
                   />
@@ -476,13 +493,14 @@ const OTPVerificationModal = ({
                     ref={fifthNumRef}
                     onChange={(e) => {
                       setfifthum(e.target.value);
-                      if (e.target.maxLength >= 1) sixthNumRef.current.focus();
+                      if (e.target.value !== "") sixthNumRef.current.focus();
+                      if (e.target.value === "") fourthNumRef.current.focus();
                     }}
                     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
-                        fourthNumRef.current.focus();
-                        setfourthNum("");
+                        fifthNumRef.current.focus();
+                        
                       }
                     }}
                   />
@@ -501,14 +519,18 @@ const OTPVerificationModal = ({
                     maxLength="1"
                     ref={sixthNumRef}
                     onChange={(e) => {
+                      console.log("max",e.target.maxLength, e.target.length, e.target.value)
                       setSixthNum(e.target.value);
-                      if (e.target.maxLength >= 1) firstNumRef.current.focus();
+                      if (e.target.value !== "") firstNumRef.current.focus();
+                      if (e.target.value === "") fifthNumRef.current.focus();
                     }}
                     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                     onKeyDown={(e) => {
                       if (e.key === "Backspace") {
-                        fifthNumRef.current.focus();
-                        setSixthNum("");
+                        sixthNumRef.current.focus();
+                        //setSixthNum("")
+                        //if (e.target.maxLength <= 1) fifthNumRef.current.focus();
+                        
                       }
                     }}
                   />
