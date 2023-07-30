@@ -9,6 +9,11 @@
     "comma-dangle": ["error", "never"],
     "no-unused-vars": ["warn"],
     "no-var": ["off"],
-    "one-var": ["off"]
+    "one-var": ["off"],
+    "import/no-extraneous-dependencies": ["warn"],
+    "no-plusplus": ["off"],
+    "max-len": "off",
+    "no-param-reassign": "warn",
+    "no-restricted-syntax": "off"
   }
 }
