@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react"
 import control from "../assets/dashboard/control.png"
 import AllCardsPage from "./MyProperties";

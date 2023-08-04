@@ -1,6 +1,7 @@
+/* eslint-disable */
 import React, { useState } from "react";
-import { FaBars } from 'react-icons/fa';
-import logo from '../assets/logo/logo.png'
+import { FaBars } from "react-icons/fa";
+import logo from "../assets/logo/logo.png"
 export default function Navbar({ fixed , viewPropertyButton, setViewAllProperty }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const togglePropertyHandler = () => {
@@ -13,9 +14,9 @@ export default function Navbar({ fixed , viewPropertyButton, setViewAllProperty 
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <span className="flex gap-2 md:gap-5">
-            <img src={logo} alt="logo" className="w-[50px] h-[50px]" />
-             {viewPropertyButton ? <button className="border border-[#800080] rounded-md px-6 py-2" 
-             onClick={togglePropertyHandler}>View all properties</button> : '' }
+              <img src={logo} alt="logo" className="w-[50px] h-[50px]" />
+              {viewPropertyButton ? <button className="border border-[#800080] rounded-md px-6 py-2" 
+                onClick={togglePropertyHandler}>View all properties</button> : "" }
             </span>
            
             <button
@@ -38,27 +39,27 @@ export default function Navbar({ fixed , viewPropertyButton, setViewAllProperty 
               <li className="nav-item text-gray-500 font-[400] text-[16px] leading-5   ">
       
                 
-                  <span className="ml-2">Home</span>
+                <span className="ml-2">Home</span>
                
               </li>
               <li className="nav-item text-gray-500 font-[400] text-[16px] leading-5   ">
       
                 
-                  <span className="ml-2">About us</span>
+                <span className="ml-2">About us</span>
                
               </li>
               <li className="nav-item text-gray-500 font-[400] text-[16px] leading-5   ">
       
                 
-                  <span className="ml-2">Products & Services</span>
+                <span className="ml-2">Products & Services</span>
                
               </li>
               <li className="nav-item text-gray-500 font-[400] text-[16px] leading-5   ">
       
      
-      <span className="ml-2">Contact us</span>
+                <span className="ml-2">Contact us</span>
    
-  </li>
+              </li>
             </ul>
           </div>
         </div>

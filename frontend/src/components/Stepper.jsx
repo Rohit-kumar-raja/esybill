@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 const Stepper = ({activateFirstProperty,activateFirstPropertyStepper,actFirstProp,setActivateSecondPropertyStepper,

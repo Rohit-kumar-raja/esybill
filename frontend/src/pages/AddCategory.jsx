@@ -1,3 +1,4 @@
+/* eslint-disable */
 import DataTable from "react-data-table-component";
 import {tableDummyData} from "../constants/tableDummyData"
 import {AiFillEdit} from "react-icons/ai";

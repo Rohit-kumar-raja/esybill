@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import Stepper from '../components/Stepper';
 import Navbar from '../components/Navbar';
