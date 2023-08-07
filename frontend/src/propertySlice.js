@@ -24,7 +24,7 @@ const propertySlice = createSlice({
     }, 
     addFetchedProperty:(state, action) => {
       //state.fetchedProperties[0][(action.payload.length)] = action.payload.propertyDetail
-      state = state.fetchedProperties[0].push(action.payload.propertyDetail)
+      state = state.fetchedProperties.push(action.payload.propertyDetail)
     }, 
     addPropertyNumber:(state,action) => {
       console.log(action.payload)

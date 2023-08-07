@@ -6,7 +6,7 @@ import {BsTelephoneForwardFill} from "react-icons/bs"
 import axios from "../api/axios";
 
 const EditProduct = (props) => {
-  const [SubCategory, setSubCategoryName] = useState("")
+
   const accessToken = useSelector(store => store?.login?.userData[0])
   const productDetails = useSelector(store => store?.property?.productDetails)
 
