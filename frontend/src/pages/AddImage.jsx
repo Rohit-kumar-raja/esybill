@@ -30,9 +30,7 @@ const AddImage = () => {
     console.log(file)
   }
 
-  const removeSelectedImage = () => {
-    setFile("") 
-  }
+  
 
   const saveInfo = () => {
 
@@ -68,7 +66,7 @@ const AddImage = () => {
     rounded-md py-2 my-6 text-[14px] px-3 mr-auto
     cursor-pointer opacity-100">Upload</button> */}
           </form>
-          <div className="w-62 h-62  " onClick={handleClick}>
+          <div className="w-62 h-62  " onClick={handleClick} role="presentation">
             {
               file ?   <div className="flex flex-col p-2">
                 <AiFillDelete className="text-red-600 text-xl self-end "/>

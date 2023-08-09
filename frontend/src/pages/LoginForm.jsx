@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
-import Navbar from "../components/Navbar"
-import { Link, useNavigate } from "react-router-dom"
-import OTPVerificationModal from "../components/OTPVerificationModal"
+import Navbar from "../components/Navbar.jsx"
+import { useNavigate } from "react-router-dom"
+import OTPVerificationModal from "../components/OTPVerificationModal.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { addOtp } from "../registrationSlice"
 
@@ -10,7 +10,6 @@ const LoginForm = () => {
   const [usermobilenumber, setUserMobileNumber] = useState("")
   const [showModal, setShowModal] = useState(false)
   const dispatch = useDispatch()
-  const userData = useSelector(store => store.login.userData)
   const accessToken = useSelector(store => store?.login?.userData[0])
   const navigate = useNavigate()
 

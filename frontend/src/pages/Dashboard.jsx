@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react"
 import control from "../assets/dashboard/control.png"
-import AllCardsPage from "./MyProperties";
 import logo from "../assets/logo/logo.png"
 import profile from "../assets/dashboard/User.png"
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import PropertyDetails from "./PropertyDetails";
-import AddProperty from "./AddProperty";
-import AddCategory from "./AddCategory";
-import AddSubCategory from "./AddSubCategory";
-import AddProduct from "./AddProduct";
-import Profile from "./Profile";
-import MyProperties from "./MyProperties";
+import { Link, useLocation, useNavigate} from "react-router-dom";
+import PropertyDetails from "./PropertyDetails.jsx";
+import AddProperty from "./AddProperty.jsx";
+import AddCategory from "./AddCategory.jsx";
+import AddSubCategory from "./AddSubCategory.jsx";
+import AddProduct from "./AddProduct.jsx";
+import Profile from "./Profile.jsx";
+import MyProperties from "./MyProperties.jsx";
 import { useSelector } from "react-redux";
-import AddImage from "./AddImage";
-import { addMenuType } from "../propertySlice";
+import AddImage from "./AddImage.jsx";
+
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const [sidebarTabs, setSidebarTabs] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
-  const accessToken = useSelector(store => store?.login?.userData[0]?.accessToken)
   const menuType = useSelector(store => store?.property?.menuType)
   useEffect(()=>{
     navigate("/dashboard/properties")
@@ -72,9 +70,11 @@ const Dashboard = () => {
         >
           <img
             src={control}
+            alt="background img"
             className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
-            onClick={() => setOpen(!open)}
+            onClick={() => setOpen(!open)} 
+            role="presentation"
           />
           <div className="flex gap-x-4 items-center">
             <img
@@ -97,7 +97,7 @@ const Dashboard = () => {
                 className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white
                text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
-                <img src={profile} />
+                <img src={profile} alt="profile" />
                 <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
               My Profile
                 </span>
@@ -107,7 +107,7 @@ const Dashboard = () => {
               <li
                 className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
-                <img src={profile} />
+                <img src={profile} alt="profile" />
                 <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
               My Properties
                 </span>
@@ -117,7 +117,7 @@ const Dashboard = () => {
               <li
                 className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
-                <img src={profile} />
+                <img src={profile} alt="profile" />
                 <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
               Add Property
                 </span>
@@ -130,7 +130,7 @@ const Dashboard = () => {
                     <li
                       className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
-                      <img src={profile} />
+                      <img src={profile} alt="profile" />
                       <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
               Property Details
                       </span>
@@ -143,7 +143,7 @@ const Dashboard = () => {
                         <li
                           className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
-                          <img src={profile} />
+                          <img src={profile} alt="profile" />
                           <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
               Image Menu
                           </span>
@@ -155,7 +155,7 @@ const Dashboard = () => {
                             <li
                               className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
-                              <img src={profile} />
+                              <img src={profile} alt="profile" />
                               <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
               Category 
                               </span>
@@ -165,7 +165,7 @@ const Dashboard = () => {
                             <li
                               className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
-                              <img src={profile} />
+                              <img src={profile} alt="profile" />
                               <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
               Sub-category
                               </span>
@@ -175,7 +175,7 @@ const Dashboard = () => {
                             <li
                               className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
-                              <img src={profile} />
+                              <img src={profile} alt="profile" />
                               <span className={`${!open && "hidden"} origin-left duration-200 text-[#3A3939]`}>
               Product
                               </span>

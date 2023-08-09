@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react"
-import { stateList } from "../constants/stateList"
 import { useSelector } from "react-redux"
 import axios from "../api/axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -123,7 +122,7 @@ const SubCategoryModal= ({setShowModal, setfetchSubCategory}) => {
                     category?.map((selectedCategory) => {
                       // setRn(selectedCategory?.CategoryRN)
                       return (
-                        <option value={selectedCategory.CategoryRN} data-test-id={`${selectedCategory.Cat}`} ref={refCat}>
+                        <option value={selectedCategory.CategoryRN} key={selectedCategory.CategoryRN} data-test-id={`${selectedCategory.Cat}`} ref={refCat}>
                           {selectedCategory.ItemCategory}
                         </option>
                       )
