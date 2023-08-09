@@ -8,7 +8,7 @@ const imageMenuController = require('../controller/controller.imageMenu');
 
 const upload = multer();
 
-// router.use(verifyTokenMiddleware);
+router.use(verifyTokenMiddleware);
 
 router.get('/', async (req, res) => {
   const result = await imageMenuController.getImageMenu(req.params.PropertyNo, req.body);
@@ -49,9 +49,9 @@ router.put('/', async (req, res) => {
 });
 
 router.delete('/', async (req, res) => {
-  const result = await imageMenuController.deleteImage(req.params.PropertyNo, req.body);
+  const result = await imageMenuController.deleteImage(req.params.PropertyNo, req.body[0]);
   if (result.success) {
-    return res.json(result.imageMenu);
+    return res.status(200).json(result.imageMenu);
   }
   return res.status(result.status).json(result.message);
 });

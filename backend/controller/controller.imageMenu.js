@@ -1,40 +1,13 @@
 const imageMenuModel = require('../model/model.imageMenu');
 const propertyModel = require('../model/model.property');
-const { uploadImageToS3, deleteImageFromS3 } = require('../util/s3MenuUpload');
-
-function removeQuotesFromFirstAndLast(arrayString) {
-  try {
-    const array = JSON.parse(arrayString);
-
-    if (!Array.isArray(array) || array.length === 0) {
-      return array;
-    }
-
-    array.forEach((item) => {
-      Object.keys(item).forEach((key) => {
-        if (typeof item[key] === 'string') {
-          // eslint-disable-next-line no-param-reassign
-          item[key] = item[key].replace(/^(['"])(.*)\1$/, '$2');
-        }
-      });
-    });
-
-    return array;
-  }
-  catch (error) {
-    return error;
-  }
-}
+const { uploadImageToS3, deleteObjectFromS3 } = require('../util/s3MenuUpload');
 
 async function getImageMenu(PropertyNo) {
   try {
     const imageMenu = await imageMenuModel.getImageMenu(PropertyNo);
-    console.log(imageMenu);
-    return { success: true, imageMenu: imageMenu.length === 0 ? JSON.parse('[]') : removeQuotesFromFirstAndLast(imageMenu[0].ImageSequence) };
+    return { success: true, imageMenu: imageMenu.length === 0 ? JSON.parse('[]') : JSON.parse(imageMenu[0].ImageSequence) };
   }
   catch (err) {
-    // eslint-disable-next-line
-      console.log(err);
     return { success: false, status: 500, message: 'Internal Server Error' };
   }
 }
@@ -43,21 +16,22 @@ async function insertImageMenu(propertyNo, image, text) {
   try {
     const imageMenu = await imageMenuModel.getImageMenu(propertyNo);
     const propertyDetails = await propertyModel.getAllPropertiesByPropertyNo(propertyNo);
-    if (!propertyDetails) throw new Error('Invalid Property No');
+    if (propertyDetails.length === 0) return { success: false, status: 500, message: 'Invalid Property Number' };
     const customerNo = propertyDetails[0].CustomerNo;
     const propertyMenuName = propertyDetails[0].PropertyMenuName;
-    // const imageUrl = await uploadImage(propertyNo, customerNo, image);
-    const imageUrl = await uploadImageToS3('myawsbucket-free', customerNo, `${customerNo}_${propertyNo}`, image);
+    const fileName = `${propertyNo}_${Date.now()}`;
+
+    const imageUrl = await uploadImageToS3('myawsbucket-free', `${propertyNo}_${customerNo}`, fileName, image);
 
     if (imageMenu.length === 0) {
       const imageData = JSON.stringify([{
         imageUrl,
         text
       }]);
-      await imageMenuModel.insertImageMenu(Number(propertyNo), propertyMenuName, JSON.stringify(imageData));
+      await imageMenuModel.insertImageMenu(Number(propertyNo), propertyMenuName, imageData);
     }
     else {
-      const parsedImageData = removeQuotesFromFirstAndLast(imageMenu[0].ImageSequence);
+      const parsedImageData = JSON.parse(imageMenu[0].ImageSequence);
       parsedImageData.push({
         imageUrl,
         text
@@ -65,12 +39,10 @@ async function insertImageMenu(propertyNo, image, text) {
       await imageMenuModel.updateImageMenu(JSON.stringify(parsedImageData), propertyNo);
     }
 
-    return { success: true };
+    return { success: true, status: 200, message: 'Image Inserted' };
   }
   catch (err) {
-  // eslint-disable-next-line
-  console.log(err);
-    return { success: false, status: 500, message: 'Internal Server Error' };
+    return { success: false, status: 500, message: `Internal Server Error : ${err}` };
   }
 }
 
@@ -78,7 +50,7 @@ async function swapImageMenu(propertyNo, originalPosition, newPosition) {
   try {
     const imageMenu = await imageMenuModel.getImageMenu(propertyNo);
 
-    const parsedImageData = removeQuotesFromFirstAndLast(imageMenu[0].ImageSequence);
+    const parsedImageData = JSON.parse(imageMenu[0].ImageSequence);
 
     if (originalPosition < 1 || newPosition < 1 || originalPosition > parsedImageData.length || newPosition > parsedImageData.length) {
       return { success: false, message: 'Invalid originalPosition or newPosition.' };
@@ -92,38 +64,42 @@ async function swapImageMenu(propertyNo, originalPosition, newPosition) {
 
     await imageMenuModel.swapImageMenu(updatedImageSequence, propertyNo);
 
-    return { success: true, message: 'Images swapped successfully.', imageMenu };
+    return {
+      success: true, status: 200, message: 'Images swapped successfully.', imageMenu
+    };
   }
   catch (error) {
-    return { success: false, message: 'An unexpected error occurred.' };
+    return { success: false, status: 500, message: 'An unexpected error occurred.' };
   }
 }
 
 async function deleteImage(propertyNo, pageNo) {
-  console.log(propertyNo, pageNo);
   try {
     const imageMenu = await imageMenuModel.getImageMenu(propertyNo);
 
-    const parsedImageData = removeQuotesFromFirstAndLast(imageMenu[0].ImageSequence);
-    console.log(parsedImageData);
+    const parsedImageData = JSON.parse(imageMenu[0].ImageSequence);
 
-    // Check if the Page Number is valid
     if (pageNo < 1 || pageNo > parsedImageData.length) {
-      return { success: false, message: 'Invalid Page Number.' };
+      return { success: false, status: 400, message: 'Invalid Page Number.' };
     }
 
-    const deleteStatus = await deleteImageFromS3('myawsbucket-free', parsedImageData[pageNo - 1]);
+    const deleteStatus = await deleteObjectFromS3('myawsbucket-free', parsedImageData[pageNo - 1].imageUrl);
     if (!deleteStatus.success) throw new Error('Delete Unsucessful.');
 
-    // Delete data of the given index (Page Number) from the ImageSequence array
     parsedImageData.splice(pageNo - 1, 1);
 
-    await imageMenuModel.deleteImageMenu(parsedImageData, propertyNo);
+    const updatedImageSequence = JSON.stringify(parsedImageData);
 
-    return { success: true, message: 'Image delete successfully.', imageMenu };
+    await imageMenuModel.deleteImageMenu(updatedImageSequence, propertyNo);
+
+    return {
+      success: true, status: 200, message: 'Image delete successfully.', imageMenu
+    };
   }
   catch (error) {
-    return { success: false, message: 'An unexpected error occurred.' };
+    return {
+      success: false, status: 500, message: 'An unexpected error occurred.', error
+    };
   }
 }
 

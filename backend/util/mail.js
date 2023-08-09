@@ -25,7 +25,7 @@ const transporter = nodeMailer.createTransport({
 //     });
 //   });
 // }
-function sendMail(email, subject, body) {
+function sendMail(email, subject, text, html, attachment) {
   return new Promise((resolve, reject) => {
     resolve();
   });
