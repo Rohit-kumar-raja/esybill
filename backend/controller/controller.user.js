@@ -1,4 +1,5 @@
 const customerModel = require('../model/model.customer');
+const propertyModel = require('../model/model.property');
 const { sendOTP } = require('../lib/otp');
 const qr = require('../lib/qr');
 const { getToken } = require('../lib/token');

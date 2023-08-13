@@ -58,8 +58,7 @@ router.put('/', verifyTokenMiddleware, verifyOTPMiddleware, async (req, res) => 
   return res.status(result.status).send(result.message);
 });
 
-// router.put('/email', verifyTokenMiddleware, verifyOTPMiddleware, async (req, res) => {
-router.put('/email', async (req, res) => {
+router.put('/email', verifyTokenMiddleware, verifyOTPMiddleware, async (req, res) => {
   const { email, CustomerNo } = req.body;
   const result = await userConroller.updateEmail(email, CustomerNo);
   if (result.success) {
