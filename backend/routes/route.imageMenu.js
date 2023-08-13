@@ -27,7 +27,7 @@ router.post('/', upload.single('image'), async (req, res) => {
       return res.status(400).json({ message: 'Invalid request. PropertyNumber and Image are required.' });
     }
 
-    const result = await imageMenuController.insertImageMenu(req.params.PropertyNo, req.file.buffer, req.body.text);
+    const result = await imageMenuController.insertImageMenu(req.params.PropertyNo, req.file.buffer, req.body.text, req.user.CustomerNo);
 
     if (result.success) {
       return res.status(200).json({ success: true, message: 'Menu Successfully Added' });

@@ -12,12 +12,11 @@ async function getImageMenu(PropertyNo) {
   }
 }
 
-async function insertImageMenu(propertyNo, image, text) {
+async function insertImageMenu(propertyNo, image, text, customerNo) {
   try {
     const imageMenu = await imageMenuModel.getImageMenu(propertyNo);
-    const propertyDetails = await propertyModel.getAllPropertiesByPropertyNo(propertyNo);
+    const propertyDetails = await propertyModel.getPropertyById(propertyNo, customerNo);
     if (propertyDetails.length === 0) return { success: false, status: 500, message: 'Invalid Property Number' };
-    const customerNo = propertyDetails[0].CustomerNo;
     const propertyMenuName = propertyDetails[0].PropertyMenuName;
     const fileName = `${propertyNo}_${Date.now()}`;
 

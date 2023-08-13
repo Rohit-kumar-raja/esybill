@@ -30,13 +30,6 @@ async function getAllProperties(customerNo) {
   return result[0];
 }
 
-async function getAllPropertiesByPropertyNo(propertyNo) {
-  const connection = await db();
-  const query = mysql.format('select * from tblmasterproperty where PropertyNo=?', [propertyNo]);
-  const result = await connection.query(query);
-  return result[0];
-}
-
 async function getPropertyById(propertyNo, customerNo) {
   const connection = await db();
   const result = await connection.query('select * from tblmasterproperty where CustomerNo=? and PropertyNo=?', [customerNo, propertyNo]);
@@ -63,7 +56,6 @@ async function deleteProperty(propertyNo, customerNo) {
 module.exports = {
   insertProperty,
   getAllProperties,
-  getAllPropertiesByPropertyNo,
   getPropertyById,
   updateProperty,
   deleteProperty
