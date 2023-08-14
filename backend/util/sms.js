@@ -10,7 +10,7 @@ async function sendSMS(message, number) {
       numbers: number.toString(),
       sender,
       message,
-      test: true
+      test: process.env.TEST_SMS
     });
     const response = await axios.post('https://api.textlocal.in/send/', data);
     return response.data.status;
