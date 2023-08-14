@@ -28,14 +28,14 @@ async function sendOTP({ email, number, type }) {
     let msg;
     if (type === 'login') msg = loginMsg;
     else if (type === 'verify') msg = regMsg;
-    if (email && email != null) {
-      if (await otpModel.insert(email, otp)) {
-        await mail.sendMail(email, 'EzyBill OTP', msg);
-      }
-    }
     if (number) {
       if (await otpModel.insert(number, otp)) {
         await sms.sendSMS(msg, number);
+      }
+    }
+    if (email && email != null) {
+      if (await otpModel.insert(email, otp)) {
+        await mail.sendMail(email, 'EzyBill OTP', msg);
       }
     }
     return true;
