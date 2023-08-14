@@ -1,3 +1,5 @@
-const config = require('./config/config');
+const mail = require('./util/mail');
 
-console.log(config.MenuImages);
+mail.sendMail('suryansgoel1998@gmail.com', 'TEST', null, 'TEST')
+  .then((data) => console.log('DATA--- ', data))
+  .catch((err) => console.log('ERROR--- ', err));

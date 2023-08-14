@@ -13,16 +13,7 @@ const PropertyDetails = () => {
   console.log(location.pathname)
   const propertyDetail = useSelector(store => store?.property?.propertyDetails[0]) 
   const accessToken = useSelector(store => store?.login?.userData[0])
-  const propertyDetails = {
-    PropType:"Hotel",
-    PropName: "Kareems",
-    PropEmail:"test@gmail.com",
-    PropAddress:"Kolkata",
-    PropPhone:"9101043391",
-    PropState:"West Bengal",
-    PropCountry:"India"
-  }
-
+  
 
   const [PropType, setPropType] = useState("")
   const [PropName, setPropName] = useState("")
@@ -37,7 +28,7 @@ const PropertyDetails = () => {
   const [fetchedMenu, setfetchedMenu] = useState("")
   const [disabledText, setDisabledText] = useState(false)
   const [disabledMenu, setDisabledMenu] = useState(false)
-  const [license, setLicense] = useState("")
+  //const [license, setLicense] = useState("")
   useEffect(()=> {
     if(propertyDetail?.length > 0){
       if(propertyDetail[0]?.hasActiveDesktopLicense === 1){
@@ -66,7 +57,7 @@ const PropertyDetails = () => {
       setPropCountry(propertyDetail[0]?.PropCountry)
       setImage(propertyDetail[0]?.QRLocation)
       setfetchedMenu(propertyDetail[0]?.MenuType)
-      setLicense(propertyDetail[0]?.hasActiveDesktopLicense)
+      //setLicense(propertyDetail[0]?.hasActiveDesktopLicense)
    
 
     }
@@ -102,6 +93,7 @@ const PropertyDetails = () => {
       dispatch(addMenuType(e.target.value))
     }
     else{
+      console.log("else conditn")
     }
     seteditDetails(true)
   }
@@ -325,7 +317,7 @@ const PropertyDetails = () => {
                 <option selected>Choose a state</option>
                 {
                   stateList.map((stateList) => {
-                    return (<option value={stateList}>{stateList}</option>)
+                    return (<option value={stateList} key={stateList}>{stateList}</option>)
                   })
                 }
               </select>
