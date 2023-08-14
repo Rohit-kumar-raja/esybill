@@ -18,6 +18,18 @@ async function updateUser(user, customerNo) {
   await connection.query(query);
 }
 
+async function getUserBycustomerNo(customerNo) {
+  const connection = await db();
+  const query = mysql.format('SELECT * FROM tblmastercustomer WHERE CustomerNo=?', [customerNo]);
+  const users = await connection.query(query);
+  return users[0][0];
+}
+async function updateUserEmail(email, customerNo) {
+  const connection = await db();
+  const query = mysql.format('UPDATE tblmastercustomer SET RegEmail=? WHERE CustomerNo=?', [email, customerNo]);
+  await connection.query(query);
+}
+
 async function insert(user) {
   const connection = await db();
   let custNo = await connection.execute('select max(CustomerNo) as custNo from tblmastercustomer;');
@@ -37,5 +49,7 @@ async function insert(user) {
 module.exports = {
   getUserByPhone,
   updateUser,
+  getUserBycustomerNo,
+  updateUserEmail,
   insert
 };
