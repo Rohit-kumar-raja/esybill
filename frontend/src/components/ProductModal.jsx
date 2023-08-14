@@ -1,6 +1,4 @@
-/* eslint-disable */
-import React, { useEffect, useRef, useState } from "react"
-import { stateList } from "../constants/stateList"
+import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import axios from "../api/axios"; 
 import { toast, ToastContainer } from "react-toastify";
@@ -8,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const ProductModal= ({setShowModal,setfetchProduct}) => {
-  const [CreateCategory, setCreateCategory] = useState(null)
+
   const [category, setCategory] = useState(null)
   const [selectedCategory, setselectedCategory] = useState(null)
   const [selectedsubCategory, setselectedsubCategory] = useState(null)
@@ -26,7 +24,7 @@ const ProductModal= ({setShowModal,setfetchProduct}) => {
 
   const accessToken = useSelector(store => store?.login?.userData[0]) 
   const PropertyNo = useSelector(store => store?.property?.propertyNumber)
-  const refCat = useRef()
+  
   useEffect(()=>{
     console.log("useEffect")
     const getCategoryData = async () => {
@@ -165,7 +163,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
                       {
                         category?.map((selectedCategory) => {
                           return (
-                            <option value={selectedCategory.CategoryRN} >
+                            <option value={selectedCategory.CategoryRN} key={selectedCategory.CategoryRN} >
                               {selectedCategory.ItemCategory}
                             </option>
                           )
@@ -188,7 +186,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
                       <option selected>Choose a subcategory</option>
                       {
                         subcategory?.map((stateList) => {
-                          return (<option value={stateList?.ItemNameRN}>{stateList?.ItemName}</option>)
+                          return (<option value={stateList?.ItemNameRN} key={stateList?.ItemNameRN}>{stateList?.ItemName}</option>)
         
                         })
                       }

@@ -20,7 +20,7 @@ const registrationSlice = createSlice({
       state.properties[(action.payload.number)] = action.payload.value
       console.log(action.payload)
     }, 
-    addMoreProperty:(state, action) => {
+    addMoreProperty:() => {
       // state.properties[(action.payload.len)] = action.payload.propertyDetails
     }, 
     addOtp:(state, action) => {

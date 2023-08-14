@@ -1,20 +1,16 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react"
-import {IoCaretBackCircleOutline,IoAddCircleOutline} from "react-icons/io5";
-
 import { stateList } from "../constants/stateList";
 import { useDispatch, useSelector } from "react-redux";
-import { addMoreProperty, addProperty } from "../registrationSlice";
-import { addFetchedProperties, addFetchedProperty, addMenuType, addPropertyCount } from "../propertySlice";
+
+import { addFetchedProperty, addMenuType, addPropertyCount } from "../propertySlice";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../api/axios";
 //import OTPVerificationModal from './OTPVerificationModal';
 
 
-const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
-  setActivateSecondProperty
-}) => {
+const AddProperty = () => {
 
   const [PropType, setPropType] = useState("")
   const [PropName, setPropName] = useState("") 
@@ -24,9 +20,6 @@ const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
   const [PropState, setPropState] = useState("")
   const [PropCountry, setPropCountry] = useState("")  
   const [disabled, setDisabled] = useState(true)
- 
-  const [addPropBtn, setAddPropBtn] = useState(true) 
-  const [showModal, setShowModal] = useState(false)
   const [limit, setLimit] = useState(false)
   const [length, setLength] = useState("")
   const accessToken = useSelector(store => store?.login?.userData[0])
@@ -159,7 +152,7 @@ const AddProperty = ({ setActivateThirdProperty,setActivateThirdPropertyStepper,
               <p className="block tracking-wide text-[red]
  text-[20px] font-medium mb-2">Property Limit reached!</p>
               <p className="block tracking-wide text-[#464646]
- text-[16px] font-normal mb-2"> Can't create more properties</p>
+ text-[16px] font-normal mb-2"> Cant create more properties</p>
               <p className="block tracking-wide text-[#464646]
  text-[16px] font-normal mb-2">To increase your limit, please contact system admin</p>
               <p className="block tracking-wide text-[#464646]
@@ -267,7 +260,7 @@ w-full px-2.5 h-[42px]" defaultValue={PropState} onChange={(e)=> setPropState(e.
                       <option selected>Choose a state</option>
                       {
                         stateList.map((stateList) => {
-                          return (<option value={stateList}>{stateList}</option>)
+                          return (<option value={stateList} key={stateList}>{stateList}</option>)
                         })
                       }
                     </select>

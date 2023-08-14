@@ -3,23 +3,17 @@ import React, { useEffect, useState } from "react"
 import { stateList } from "../constants/stateList"
 import axios from "../api/axios";
 import { useDispatch, useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
+import {  ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import OTPVerificationModal from "../components/OTPVerificationModal";
+import OTPVerificationModal from "../components/OTPVerificationModal.jsx";
 import { addOtp, addPhone } from "../registrationSlice";
 import { useLocation } from "react-router-dom";
 import { addPropertyCount } from "../propertySlice";
 
-const USER_DETAILS = "/api/user";
+
 
 const Profile = () => {
-  const customerDetails = {
-    CustomerName:"Namrata",
-    RegMobile: "9101043391",
-    State:"Assam",
-    Country:"India"
-  }
-
+  
   const [profile, setProfile] = useState("")
   const [path, setPath] = useState("")
   const location = useLocation()
@@ -62,7 +56,6 @@ const Profile = () => {
   const [State, setState] = useState("")
   const [Country, setCountry] = useState("")
   const [editDetails, seteditDetails] = useState(false)
-  const [customerDetail, setCustomerDetail] = useState([])
   const [showModal, setShowModal] = useState(false)
   const dispatch = useDispatch()
   const accessToken = useSelector(store => store?.login?.userData[0]) 
@@ -111,6 +104,7 @@ const Profile = () => {
       setCountry(e.target.value)
     }
     else{
+      console.log("else condition")
     }
     seteditDetails(true)
   }
@@ -256,7 +250,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
                   <option selected value={State}>{State}</option>
                   {
                     stateList?.map((stateList) => {
-                      return (<option value={stateList}>{stateList}</option>)
+                      return (<option value={stateList} key={stateList}>{stateList}</option>)
         
                     })
                   }

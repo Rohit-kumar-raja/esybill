@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react"
-import PropertyCardComponent from "../components/PropertyCardComponent"
+import PropertyCardComponent from "../components/PropertyCardComponent.jsx"
 import axios from "../api/axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";

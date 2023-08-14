@@ -1,42 +1,10 @@
-/* eslint-disable */
-import DataTable from "react-data-table-component";
-import {tableDummyData} from "../constants/tableDummyData"
-import {AiFillEdit} from "react-icons/ai";
-import {BsFillTrashFill} from "react-icons/bs"
-import CategoryModal from "../components/CategoryModal";
+import React from "react";
 import { useEffect, useState } from "react";
-import SubCategoryModal from "../components/SubCategoryModal";
-import SubcategoryCardComponent from "../components/SubcategoryCardComponent";
+import SubCategoryModal from "../components/SubCategoryModal.jsx";
+import SubcategoryCardComponent from "../components/SubcategoryCardComponent.jsx";
 import axios from "../api/axios";
 import { useSelector } from "react-redux";
-import EditSubCategory from "../components/EditSubCategory";
-const columns = [
-  {
-    name: "Property Name",
-    selector: row => row.property_name,
-    sortable: true,
-  },
-  {
-    name: "Category",
-    selector: row => row.category,
-    sortable: true,
-  },
-  {
-    name: "Sub Category",
-    selector: row => row.sub_category,
-    sortable: true,
-  },
-  {
-    name: "Edit",
-    selector: row => <AiFillEdit/>,
-    sortable: true,
-  },
-  {
-    name: "Delete",
-    selector: row => <BsFillTrashFill/>,
-    sortable: true,
-  },
-];
+import EditSubCategory from "../components/EditSubCategory.jsx";
 
 
 
@@ -48,7 +16,7 @@ const AddSubCategory = () => {
   const [subcategory, setSubCategory] = useState(null) 
   const [deletePopup, setDeletePopup] = useState(false)
   const [edit, setEdit] = useState(false)
-  const [del, setDel] = useState(false)
+  
 
   const fun = () => {
     setEdit(false)
@@ -123,12 +91,12 @@ const AddSubCategory = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-2 py-3 md:px-6">
             {
               subcategory?.map(subcategory => (
-                <div>
+                <div key={subcategory}>
                   <SubcategoryCardComponent subcategory={subcategory} 
                     setEdit={setEdit} 
                     deletePopup={deletePopup} 
                     setDeletePopup={setDeletePopup}
-                    setDel={setDel}/>
+                  />
                 </div>
               ))
             }   

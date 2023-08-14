@@ -6,17 +6,16 @@ import {FiMapPin} from "react-icons/fi"
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../api/axios";
 import { addPropertyDetails, addPropertyNumber } from "../propertySlice";
-import { useNavigate } from "react-router-dom";
+
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const PropertyCardComponent = ({setSidebarTabs, property, propNo, deletePopup, setDeletePopup}) => {
-  const {PropType,PropPhone,PropState,PropName, PropNo} = property
+const PropertyCardComponent = ({setSidebarTabs, property, deletePopup, setDeletePopup}) => {
+  const {PropType,PropPhone,PropState,PropName} = property
   const accessToken = useSelector(store => store?.login?.userData[0])
   const [propertyDetails, setpropertyDetails] = useState(null)
   
 
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   // useEffect(()=>{
   // if(property){

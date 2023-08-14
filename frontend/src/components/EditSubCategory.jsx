@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {BsTelephoneForwardFill} from "react-icons/bs"
 import { useSelector } from "react-redux";
 import axios from "../api/axios";
-import { Link, useNavigate } from "react-router-dom";
+
 
 
 const EditSubCategory = (props) => {

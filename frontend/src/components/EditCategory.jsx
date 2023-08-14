@@ -2,17 +2,16 @@
 import React, { useEffect, useState } from "react"
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {TbBuildingEstate } from "react-icons/tb";
 import {BsTelephoneForwardFill} from "react-icons/bs"
 import { useSelector } from "react-redux";
 import axios from "../api/axios";
-import { Link, useNavigate } from "react-router-dom";
+
 
 const EditCategory = (props) => {
   const [ItemCategory, setCategoryName] = useState("")
   const accessToken = useSelector(store => store?.login?.userData[0])
   const  categoryDetails = useSelector(store => store?.property?.categoryDetails)
-  const navigate = useNavigate()
+
   useEffect(()=>{
     console.log( categoryDetails)
     setCategoryName(categoryDetails?.ItemCategory)
@@ -21,11 +20,7 @@ const EditCategory = (props) => {
   // useEffect(()=>{
   //   setEdit(true)
   // },[])
-  const backHandler = (e) =>{  
-    e.preventDefault()
-    setE(true)
-    //setEdit(false)
-  }
+ 
 
   const saveEditHandler = async (e) => {
     e.preventDefault()

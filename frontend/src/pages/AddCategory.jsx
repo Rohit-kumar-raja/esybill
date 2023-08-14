@@ -1,45 +1,13 @@
-/* eslint-disable */
-import DataTable from "react-data-table-component";
-import {tableDummyData} from "../constants/tableDummyData"
-import {AiFillEdit} from "react-icons/ai";
-import {BsFillTrashFill} from "react-icons/bs"
-import CategoryModal from "../components/CategoryModal";
+
+import React from "react";
+import CategoryModal from "../components/CategoryModal.jsx";
 import { useEffect, useState } from "react";
-import CategoryCardComponent from "../components/CategoryCardComponent";
+import CategoryCardComponent from "../components/CategoryCardComponent.jsx";
 import { useSelector } from "react-redux";
 import axios from "../api/axios";
-import EditCategory from "../components/EditCategory";
-const columns = [
-  {
-    name: "Property Name",
-    selector: row => row.property_name,
-    sortable: true,
-  },
-  {
-    name: "Category",
-    selector: row => row.category,
-    sortable: true,
-  },
-  {
-    name: "Edit",
-    
-    cell:(row) => <button onClick={()=>editHandler(row)} id={row.ID}> <AiFillEdit/></button>,
-  },
-  {
-    name: "Delete",
-    cell:(row) => <button onClick={()=>deleteHandler(row)} id={row.ID}> <BsFillTrashFill/></button>,
-  },
-];
+import EditCategory from "../components/EditCategory.jsx";
 
 
-// const editHandler = (row) => {
-//     console.log(row)
-// }
-
-
-const deleteHandler = (row) => {
-  console.log(row)
-}
 
 const AddCategory = () => {
   const [showModal, setShowModal] = useState(false)
@@ -49,7 +17,6 @@ const AddCategory = () => {
   const PropertyNo = useSelector(store => store?.property?.propertyNumber)
   const accessToken = useSelector(store => store?.login?.userData[0])
   const [edit, setEdit] = useState(false)
-  const [ed, setE] = useState(false)
   const [deletePopup, setDeletePopup] = useState(false)
 
   useEffect(()=>{
@@ -148,7 +115,7 @@ const AddCategory = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-2 py-3 md:px-6">
             {
               category?.map(category => (
-                <div>
+                <div  key={category}>
                   <CategoryCardComponent 
                     category={category} 
                     setEdit={setEdit}
