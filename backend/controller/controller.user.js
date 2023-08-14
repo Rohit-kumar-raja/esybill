@@ -3,6 +3,7 @@ const propertyModel = require('../model/model.property');
 const { sendOTP } = require('../lib/otp');
 const qr = require('../lib/qr');
 const { getToken } = require('../lib/token');
+const mailer = require('../util/mail');
 
 /**
  *
@@ -146,6 +147,19 @@ async function update(user, customerNo) {
     return { success: false, status: 500, message: 'Internal Server Error' };
   }
 }
+async function updateEmail(email, customerNo) {
+  try {
+    await customerModel.updateUserEmail(email, customerNo);
+    const user = await customerModel.getUserBycustomerNo(customerNo);
+    mailer.sendMail(email, 'New Email Updated', `Hello ${user.CustomerName}, You New Email: ${email} has been successfully Updated`)
+      .then((info) => ({ success: true, status: 200, message: `Email Successfully Mailed: ${info}` }))
+      .catch((error) => ({ success: false, status: 500, message: `Email Not Sent: ${error}` }));
+    return { success: true, status: 200, message: 'Email Successfully Updated and Mailed' };
+  }
+  catch (err) {
+    return { success: false, status: 500, message: `Internal Server Error: ${err}` };
+  }
+}
 
 module.exports = {
   getUserByPhone,
@@ -153,5 +167,6 @@ module.exports = {
   sendVerifyOtp,
   register,
   login,
-  update
+  update,
+  updateEmail
 };

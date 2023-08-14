@@ -3,7 +3,7 @@ import { MdOutlineMobileFriendly } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import registrationSlice, { addOtp } from "../registrationSlice";
+import { addOtp } from "../registrationSlice";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { userProfile } from "../loginSlice";
@@ -14,7 +14,6 @@ const USER_LOGIN = "/api/user/login";
 
 const OTPVerificationModal = ({
   setShowModal,
-  userRegistrationData,
   type,
   usermobilenumber,
   seteditDetails,
@@ -22,7 +21,7 @@ const OTPVerificationModal = ({
   user,
 }) => {
   const [timer, setTimer] = useState(10);
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
   const [firstNum, setfirstNum] = useState("");
   const [secondNum, setsecondNum] = useState("");
   const [thirdNum, setthirdNum] = useState("");
@@ -33,7 +32,7 @@ const OTPVerificationModal = ({
   const [border, setborder] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const dataresult = useSelector((store) => store.register);
+
   const otp = useSelector((store) => store.register?.otp);
   const registrationDetails = useSelector((store) => store.register);
   const phoneNumber = useSelector((store) => store.register?.phone);
@@ -552,7 +551,7 @@ const OTPVerificationModal = ({
                     )}
                   </p>
                   <ToastContainer autoClose={2000} />
-                  {loader && (
+                  {/* {loader && (
                     <svg
                       aria-hidden="true"
                       className="items-center inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-pink-400"
@@ -569,9 +568,8 @@ const OTPVerificationModal = ({
                         fill="currentFill"
                       />
                     </svg>
-                  )}
-                  {/* <Link to='/'><button className='bg-blue-800 hover:bg-blue-900 text-white text-sm
-     py-2 px-4 rounded focus:outline-none focus:shadow-outline'>Back to login</button></Link> */}
+                  )} */}
+                
                 </div>
               </form>
             </div>

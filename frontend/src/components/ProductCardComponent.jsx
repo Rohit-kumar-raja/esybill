@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect} from "react"
 import {TbBuildingEstate } from "react-icons/tb";
 import {BsTelephoneForwardFill} from "react-icons/bs"
-import {FiMapPin} from "react-icons/fi"
 import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../api/axios";
 import { getProduct } from "../propertySlice";
 
-const ProductCardComponent = ({setSidebarTabs, product,setEdit,setfetchProduct,
+const ProductCardComponent = ({product,setEdit,setfetchProduct,
   deletePopup, setDeletePopup}) => {
  
   const dispatch = useDispatch()
@@ -17,9 +16,7 @@ const ProductCardComponent = ({setSidebarTabs, product,setEdit,setfetchProduct,
   useEffect(()=>{
     console.log("Product", product)
   },[])
-  const viewSidebarToggler = () => {
-    setSidebarTabs(true)
-  }
+  
 
   const editHandler = () => {
     console.log("edit clicked")

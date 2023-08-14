@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import {TbBuildingEstate } from "react-icons/tb";
 import {BsTelephoneForwardFill} from "react-icons/bs"
-import {FiMapPin} from "react-icons/fi"
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../api/axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getCategory } from "../propertySlice";
 
-const CategoryCardComponent= ({setSidebarTabs, category, setEdit, setIndCategory, 
+const CategoryCardComponent= ({ category, setEdit, 
   deletePopup, setDeletePopup}) => {
  
   const dispatch = useDispatch()
   const accessToken = useSelector(store => store?.login?.userData[0])
-  const viewSidebarToggler = () => {
-    setSidebarTabs(true)
-  } 
+  
   const editHandler = () => {
     console.log("edit clicked")
     setEdit(true)

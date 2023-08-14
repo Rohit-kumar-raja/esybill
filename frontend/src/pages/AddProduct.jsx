@@ -1,48 +1,12 @@
-import DataTable from "react-data-table-component";
-import {tableDummyData} from "../constants/tableDummyData"
-import {AiFillEdit} from "react-icons/ai";
-import {BsFillTrashFill} from "react-icons/bs"
-import CategoryModal from "../components/CategoryModal";
+import React from "react";
 import { useEffect, useState } from "react";
-import SubCategoryModal from "../components/SubCategoryModal";
-import ProductModal from "../components/ProductModal";
-import ProductCardComponent from "../components/ProductCardComponent";
+import ProductModal from "../components/ProductModal.jsx";
+import ProductCardComponent from "../components/ProductCardComponent.jsx";
 import { useSelector } from "react-redux";
 import axios from "../api/axios";
-import EditProduct from "../components/EditProduct";
+import EditProduct from "../components/EditProduct.jsx";
 
-const columns = [
-  {
-    name: "Property Name",
-    selector: row => row.property_name,
-    sortable: true,
-  },
-  {
-    name: "Category",
-    selector: row => row.category,
-    sortable: true,
-  },
-  {
-    name: "Sub Category",
-    selector: row => row.sub_category,
-    sortable: true,
-  },
-  {
-    name: "Product",
-    selector: row => row.sub_category,
-    sortable: true,
-  },
-  {
-    name: "Edit",
-    selector: row => <AiFillEdit/>,
-    sortable: true,
-  },
-  {
-    name: "Delete",
-    selector: row => <BsFillTrashFill/>,
-    sortable: true,
-  },
-];
+
 
 
 
@@ -123,7 +87,7 @@ const AddSubCategory = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 px-2 py-3 md:px-6">
             {
               product?.map(product => (
-                <div>
+                <div key={product}>
                   <ProductCardComponent product={product} setEdit={setEdit} 
                     setfetchProduct={setfetchProduct}
                     deletePopup={deletePopup} 

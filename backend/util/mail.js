@@ -1,34 +1,50 @@
 const nodeMailer = require('nodemailer');
+const config = require('../config/config');
 
 const transporter = nodeMailer.createTransport({
-  host: 'smtp.zoho.com',
+  host: 'smtppro.zoho.in',
   secure: true,
   port: 465,
   auth: {
-    user: 'email@domain.is',
-    pass: 'password_here'
+    user: process.env.ZOHO_USERNAME,
+    pass: process.env.ZOHO_PASSWORD
   }
 });
+
+// Service Check Using Gmail
+// const transporterGmail = nodeMailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: config.testEmail,
+//     pass: config.testEmailPassword
+//   }
+// });
 // function sendMail(email, subject, body) {
 //   return new Promise((resolve, reject) => {
 //     const mailOptions = {
-//       from: 'email@domain.com',
+//       from: 'noreply@ezybillindia.com',
 //       to: email,
 //       subject,
-//       html: body
+//       text,
+//       html
 //     };
 //     transporter.sendMail(mailOptions, (err, info) => {
 //       if (err) {
 //         return reject(err);
 //       }
-//       return resolve();
+//       return resolve(info);
 //     });
 //   });
 // }
-function sendMail(email, subject, text, html, attachment) {
-  return new Promise((resolve, reject) => {
-    resolve();
-  });
+async function sendMail(email, subject, text = '', html = '') {
+  const mailOptions = {
+    from: 'noreply@ezybillindia.com',
+    to: email,
+    subject,
+    text,
+    html
+  };
+  return transporter.sendMail(mailOptions);
 }
 
 module.exports = { sendMail };
