@@ -30,7 +30,7 @@ async function sendOTP({ email, number, type }) {
     else if (type === 'verify') msg = regMsg;
     if (email && email != null) {
       if (await otpModel.insert(email, otp)) {
-        await mail.sendMail(msg, email);
+        await mail.sendMail(email, 'EzyBill OTP', msg);
       }
     }
     if (number) {
