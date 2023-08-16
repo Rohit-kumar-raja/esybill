@@ -4,7 +4,7 @@ import {FaFacebookF,FaWhatsapp,FaInstagram,FaTwitter} from "react-icons/fa"
 const Footer = () => {
   return (
     <>
-      <div className="flex bg-[#100010] flex-col">
+      <div className="flex bg-[#100010] flex-col font-poppins">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-5 text-white py-10 px-10">
           <div className='flex flex-col items-start text-sm'>
             <p className='text-2xl'><span className='font-light'>EzyBill</span> <span className='font-medium'>India</span></p>

@@ -65,11 +65,11 @@ const Navbar = () => {
               }`}
             >
               <ul className="flex flex-col md:flex-row items-center justify-center space-y-8 md:flex 
-               md:space-x-6 md:space-y-0">
-                <li className="text-[#5E5E5E] font-medium text-[16px] hover:text-[#5E5E5E]">
+               md:space-x-6 md:space-y-0 ">
+                <li className="text-[#5E5E5E] font-raleway font-medium text-[16px] hover:text-[#5E5E5E]">
                   <Link to='/'>Home</Link>
                 </li>
-                <li className="text-[#5E5E5E] font-medium text-[16px] hover:text-[#5E5E5E]">
+                <li className="text-[#5E5E5E] font-raleway font-medium text-[16px] hover:text-[#5E5E5E]">
                   <Link to='/about'>About us</Link> 
                 </li>
                 {/* <li 
@@ -79,7 +79,7 @@ const Navbar = () => {
                             </li> */}
                 <button id="dropdownDelayButton" data-dropdown-toggle="dropdownDelay" data-dropdown-delay="500" data-dropdown-trigger="hover" 
                   className="text-[#5E5E5E] flex items-center 
-                            mx-auto md:mx-0
+                            mx-auto md:mx-0 font-raleway
                             font-medium text-[16px] hover:text-[#5E5E5E]" type="button" 
                   onClick={()=>setdropdown(!dropdown)}>
                                 Products & Services <svg className="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -87,11 +87,11 @@ const Navbar = () => {
                   </svg></button>
 
                            
-                <li className="text-[#5E5E5E] font-medium text-[16px] hover:text-[#5E5E5E]">
+                <li className="text-[#5E5E5E] font-raleway font-medium text-[16px] hover:text-[#5E5E5E]">
                   <Link to='/pricing'>Pricing</Link> 
                 </li>
                            
-                <li className="text-[#5E5E5E] font-medium text-[16px] hover:text-[#5E5E5E]">
+                <li className="text-[#5E5E5E] font-raleway font-medium text-[16px] hover:text-[#5E5E5E]">
                   <Link to='/contact-us'>Contact Us</Link>
                 </li>
               </ul>

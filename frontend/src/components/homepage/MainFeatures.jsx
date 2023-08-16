@@ -4,6 +4,10 @@ import user from "../../assets/homepage/icon-rect.svg"
 import f1 from "../../assets/homepage/f1.svg"
 import f2 from "../../assets/homepage/f2.svg"
 import f3 from "../../assets/homepage/f3.svg"
+
+
+
+
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import CarouselCards from "./CarouselCards.jsx";
@@ -45,11 +49,11 @@ const MainFeatures = () => {
         </div>
         <div className='col-span-1 md:hidden'>
           <Carousel>
-            <div>
+            <div className="my-8">
               <CarouselCards img={f1} title="Hotel Managament Software" 
                 content="Hotel Management Software (HMS) is a comprehensive solution tailored for the hospitality industry, enabling efficient management of daily operations and exceptional guest experiences."/> 
             </div>
-            <div>
+            <div className="my-8">
               <CarouselCards img={f2} title="Restaurant Managament Software" 
                 content="Restaurant Management Software (RMS) offers a range of features to
     streamline various aspects of 
@@ -57,7 +61,7 @@ const MainFeatures = () => {
     order management, table reservations, menu customization, 
     staff scheduling, and billing. "/> 
             </div>
-            <div>
+            <div className="my-8">
               <CarouselCards img={f3} title="Cloud Menu" 
                 content="Cloud Menu (CM) is digital menu 
     solution that leverages cloud-

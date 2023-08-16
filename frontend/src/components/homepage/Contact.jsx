@@ -9,7 +9,7 @@ const Contact = () => {
           <img src={contact1} alt="" />
         </div>
         <div>
-          <form className="w-full max-w-lg bg-white rounded-xl p-5">
+          <form className="w-full max-w-lg bg-white rounded-xl p-5 font-raleway">
             <p className='text-[#7E007E] font-semibold text-center text-[23px] py-5'>Schedule a Call with Us</p>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -62,7 +62,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            <button className='bg-[#800080] font-medium text-[15px] text-white rounded-md px-20 py-2'>Submit</button>
+            <button className='bg-[#800080] font-poppins font-medium text-[15px] text-white rounded-md px-20 py-2'>Submit</button>
           </form>
         </div>
       </div>

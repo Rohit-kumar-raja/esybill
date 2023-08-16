@@ -2,20 +2,21 @@ import React from "react"
 import background from "../../assets/homepage/test.svg"
 import bgimg from "../../assets/homepage/bgimg.svg"
 import scanner from "../../assets/homepage/scanner.svg"
+
 const HeroSection = () => {
   return (
     <>
-      <div className="grid grid-rows-3 grid-flow-col">
-        <div className="hidden md:flex md:row-span-3 ">
+      <div className="grid grid-rows-3 grid-flow-col"> 
+        <div className="hidden md:flex md:row-span-3 "> 
 
           <div className='flex flex-col  items-start gap-1 px-20 justify-center'>
             <button className='
-    bg-rgba font-normal text-[12px] text-white rounded-xl px-4 py-1 my-4'>Your bill is on us!!</button>
-            <p className='text-[#333333] font-semibold  text-[25px]'>Hotel and Restaurant d </p>
-            <p className='text-[#333333] font-semibold  text-[25px]'>Management Software</p> 
-            <p className='text-[#920592] font-medium  text-[25px]'>EzyBill India</p> 
-            <p className='text-[#333333] font-light text-[15px] mt-3'>Empowering Hospitality Excellence, Embrace the Finest</p>
-            <p className='text-[#333333] font-light text-[15px]'>Hotel Management Software & Restaurant POS in India.</p>
+    bg-rgba font-normal text-[12px] text-white rounded-xl px-4 py-1 my-4 font-poppins'>Your bill is on us!!</button>
+            <p className='text-[#333333] font-bold  text-[25px] font-raleway'>Hotel and Restaurant  </p>
+            <p className='text-[#333333] font-bold  text-[25px] font-raleway'>Management Software</p> 
+            <p className='text-[#920592] font-bold  text-[25px]'>EzyBill India</p> 
+            <p className='text-[#333333] font-light text-[15px] mt-3 font-poppins'>Empowering Hospitality Excellence, Embrace the Finest</p>
+            <p className='text-[#333333] font-light text-[15px] font-poppins'>Hotel Management Software & Restaurant POS in India.</p>
             <div className='flex gap-3 py-3 my-3' >
               <button className='
     bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2'>Learn More</button>
@@ -32,14 +33,14 @@ const HeroSection = () => {
           {/* <div className='flex  gap-2 flex-col '> */}
           <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
      md:items-end top-[15%] md:top-[25%]'>
-            <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem]
+            <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
     bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>Login</button>
 
             {/* <button className='rotate-90 md:-rotate-90  mt-[7rem]  mr-[-2.4rem] left-4 
     border-2 border-[#7E007E] max-w-max bg-white font-normal text-[15px] text-[#7E007E]
      rounded-t-2xl px-8 py-2'>Register</button> */}
 
-            <button className='rotate-90 md:-rotate-90 mt-[7rem] ml-[-0.4rem] md:ml-[0rem] md:mr-[-2.4rem] 
+            <button className='rotate-90 font-raleway md:-rotate-90 mt-[7rem] ml-[-0.4rem] md:ml-[0rem] md:mr-[-2.4rem] 
     border-2 border-[#7E007E] max-w-max bg-white font-normal text-[15px] text-[#7E007E]
      rounded-t-2xl px-8 py-2'>Register</button>
 
@@ -51,33 +52,33 @@ const HeroSection = () => {
 
         <div className='flex flex-col items-center md:items-start gap-1 px-5 md:px-20 py-10'>
           <button className='
-    bg-rgba font-normal text-[12px] text-white rounded-xl px-4 py-1 my-4'>Your bill is on us!!</button>
-          <p className='text-[#333333] font-semibold  text-[25px]'>Hotel and Restaurant </p>
-          <p className='text-[#333333] font-semibold  text-[25px]'>Management Software</p> 
-          <p className='text-[#920592] font-medium  text-[25px]'>EzyBill India</p> 
-          <p className='text-[#333333] font-light text-[15px] mt-3'>Empowering Hospitality Excellence, Embrace the Finest</p>
-          <p className='text-[#333333] font-light text-[15px]'>Hotel Management Software & Restaurant POS in India.</p>
+    bg-rgba font-normal text-[12px] text-white rounded-xl px-4 py-1 my-4 font-poppins'>Your bill is on us!!</button>
+          <p className='text-[#333333] font-semibold  text-[25px] font-raleway'>Hotel and Restaurant </p>
+          <p className='text-[#333333] font-semibold  text-[25px] font-raleway'>Management Software</p> 
+          <p className='text-[#920592] font-medium  text-[25px] font-raleway'>EzyBill India</p> 
+          <p className='text-[#333333] font-extralight text-[15px] mt-3 font-poppins'>Empowering Hospitality Excellence, Embrace the Finest</p>
+          <p className='text-[#333333] font-extralight text-[15px] font-poppins'>Hotel Management Software & Restaurant POS in India.</p>
           <div className='flex gap-3 py-3 my-3' >
             <button className='
-    bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2'>Learn More</button>
+    bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2 font-raleway'>Learn More</button>
             <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-sm px-8 py-2'>Get a Free Demo</button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-sm px-8 py-2 font-raleway'>Get a Free Demo</button>
           </div>
         </div>
 
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 py-6 md:py-3" style={{ backgroundImage: `url(${bgimg})` }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 py-6 md:py-3 font-raleway" style={{ backgroundImage: `url(${bgimg})` }}>
         <div className='col-span-1 md:col-span-2'>
           <div className='col-span-1 md:flex md:items-center md:justify-center md:col-span-2'>
             <img src={scanner} alt="" className='w-40 h-40 md:w-20 md:h-20 mx-auto md:mx-5 py-4' />
             <div className="flex flex-col text-[#333333] ">
-              <p className='text-base flex flex-wrap justify-center md:justify-normal'>Scan this QR to access a sample <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>& Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>Cloud Menu </span> for your Restaurant, Hotel or Café. </p>
+              <p className='text-[14px] flex flex-wrap justify-center md:justify-normal'>Scan this QR to access a sample <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>& Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>Cloud Menu </span> for your Restaurant, Hotel or Café. </p>
               <p className='text-xs text-[#7E007E] flex flex-wrap font-bold px-3 md:px-0'>Launching Offer- FREE for 3 months. After that only ₹69/-  per month !</p>
             </div>
           </div>
         </div>
         <div className='flex items-center justify-center py-3 md:py-0'>
-          <button className='bg-rgba font-normal text-[15px] text-white rounded-lg px-8 py-2'>Try free Cloud Menu for 3 Months</button>
+          <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>Try free Cloud Menu for 3 Months</button>
         </div>
       </div>
 

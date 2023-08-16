@@ -2,7 +2,7 @@ import React from "react"
 
 const FeatureCard = ({hoverText, title, img}) => {
   return (
-    <div>
+    <div className="font-poppins">
       <div className="relative max-w-xs overflow-hidden bg-cover rounded-md p-4 
          bg-no-repeat border-2 border-[#920592]">
         <img

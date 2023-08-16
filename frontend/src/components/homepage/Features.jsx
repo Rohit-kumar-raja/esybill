@@ -11,9 +11,9 @@ import img7 from "../../assets/homepage/img7.svg"
 const Features = () => {
   return (
     <>
-      <div className="grid grid-cols-1" >
-        <p className='text-[#333333] font-semibold text-[25px]  
-     flex flex-wrap my-10 md:ml-10 px-10 md:px-0'>What makes us, <span className='text-[#7E007E] font-bold mx-1'>EzyBill India,</span> Stand Out?</p>
+      <div className="grid grid-cols-1 font-poppins" >
+        <p className='text-[#333333] font-medium text-[25px]  
+     flex flex-wrap my-10 md:ml-10 px-10 md:px-0 font-poppins'>What makes us, <span className='text-[#7E007E] font-bold mx-1'>EzyBill India,</span> Stand Out?</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3  px-10 ">
         <div >

@@ -7,12 +7,12 @@ const CarouselCards = ({title,content, img}) => {
     text-[#333333] hover:bg-[#7E007E] hover:text-white border-2 border-[#7E007E]
      my-3 hover:cursor-pointer py-8">
         <img src={img} alt="" className='w-10 h-10'/>
-        <p className='font-medium text-[18px] '>{title}</p>
-        <p className='text-[15px] '>{content}</p>
-        <p className='font-semibold'>Learn More</p>
+        <p className='font-medium text-[18px] font-poppins'>{title}</p>
+        <p className='text-[15px] font-raleway '>{content}</p>
+        <p className='font-semibold font-raleway'>Learn More</p>
       </div>
     </>
   )
 }
 
-export default CarouselCards
+export default CarouselCards 

@@ -19,8 +19,6 @@ import AddImage from "./pages/AddImage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import AddContact from "./pages/AddContact.jsx";
 import Hms from "./pages/Hms.jsx";
-import Rms from "./pages/Rms.jsx";
-import Cm from "./pages/Cm.jsx";
 import Pricing from "./pages/Pricing.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 
@@ -48,8 +46,8 @@ function App() {
             <Route path="pricing" element={<Pricing />} />
             <Route path="about" element={<AboutUs />} />
             <Route path="hms" element={<Hms />} />
-            <Route path="rms" element={<Rms/>} />
-            <Route path="cm" element={<Cm />} />
+            <Route path="rms" element={<Hms/>} />
+            <Route path="cm" element={<Hms />} />
           </Routes>
         </div>
       </Provider>

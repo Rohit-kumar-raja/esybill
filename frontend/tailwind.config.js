@@ -8,6 +8,11 @@ module.exports = {
       colors: {
         "rgba": "rgba(185, 15, 185, 1)",
       },
+      fontFamily: {
+        "poppins": ["Poppins", "sans-serif"],
+        "raleway": ["Raleway", "sans-serif"]
+       
+      },
     },
   },
   plugins: [],
