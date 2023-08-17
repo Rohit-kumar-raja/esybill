@@ -65,12 +65,15 @@ const HeroSection = () => {
     border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-sm px-8 py-2 font-raleway'>Get a Free Demo</button>
           </div>
         </div>
-
+ 
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 py-6 md:py-3 font-raleway" style={{ backgroundImage: `url(${bgimg})` }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 py-6 md:py-3 font-raleway bg-no-repeat bg-cover" 
+        style={{ backgroundImage: `url(${bgimg})` }}>
         <div className='col-span-1 md:col-span-2'>
           <div className='col-span-1 md:flex md:items-center md:justify-center md:col-span-2'>
-            <img src={scanner} alt="" className='w-40 h-40 md:w-20 md:h-20 mx-auto md:mx-5 py-4' />
+            <img src={scanner} alt="" className='w-40 h-40 
+             md:w-20 md:h-20 mx-auto md:mx-5 py-4 
+            back ' /> 
             <div className="flex flex-col text-[#333333] ">
               <p className='text-[14px] flex flex-wrap justify-center md:justify-normal'>Scan this QR to access a sample <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>& Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>Cloud Menu </span> for your Restaurant, Hotel or Café. </p>
               <p className='text-xs text-[#7E007E] flex flex-wrap font-bold px-3 md:px-0'>Launching Offer- FREE for 3 months. After that only ₹69/-  per month !</p>
