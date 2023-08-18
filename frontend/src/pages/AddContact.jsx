@@ -33,7 +33,7 @@ const AddContact = () => {
         </div>
       </div>
       <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"
-        style={{ backgroundImage: `url(${contactbg})` }}>
+        style={{ backgroundImage: `url(${contactbg})`,backgroundRepeat : "no-repeat", backgroundSize :"cover" }}>
         <p className="text-[#800080] font-poppins text-2xl text-center font-bold">Feel free to Register a demonstration or consultation</p>
         <p className="text-[#333333] font-raleway font-medium md:px-6">Get in touch and let us know how we can help. Fill out the form and we{"'"}ll be in touch as soon as possible.</p>
         <div className="flex gap-4"  onChange={handleChange} >
