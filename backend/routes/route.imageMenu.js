@@ -2,13 +2,13 @@ const express = require('express');
 const multer = require('multer');
 
 const router = express.Router({ mergeParams: true });
-// const { verifyTokenMiddleware } = require('../lib/token');
+const { verifyTokenMiddleware } = require('../lib/token');
 
 const imageMenuController = require('../controller/controller.imageMenu');
 
 const upload = multer();
 
-// router.use(verifyTokenMiddleware);
+router.use(verifyTokenMiddleware);
 
 router.get('/', async (req, res) => {
   const result = await imageMenuController.getImageMenu(req.params.PropertyNo, req.body);
