@@ -41,6 +41,8 @@ async function insertImageMenu(propertyNo, image, text, customerNo) {
     return { success: true, status: 200, message: 'Image Inserted' };
   }
   catch (err) {
+    // eslint-disable-next-line no-console
+    console.log(err);
     return { success: false, status: 500, message: `Internal Server Error : ${err}` };
   }
 }

@@ -72,10 +72,12 @@ const AddImage = () => {
         const options = {
           headers: {
             "Authorization": `Bearer ${accessToken}`
-          }}
-        const body = [index]
+          },
+          data: [index], 
+        }
+        console.log(options);
         const response = await axios.delete("/api/property/10/menu", 
-          body, options);
+          options);
         console.log(response?.data);
         setReload(!reload)
         console.log(imageMenu);
