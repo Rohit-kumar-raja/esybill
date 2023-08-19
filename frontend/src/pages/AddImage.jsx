@@ -8,6 +8,7 @@ const AddImage = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const accessToken = useSelector(store => store?.login?.userData[0])
+  const propertyNumber = useSelector((state) => state.property.propertyNumber);
   const [reload, setReload] = useState(false)
   const [text, setNewText] = useState("")
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ const AddImage = () => {
           headers: {
             "Authorization": `Bearer ${accessToken}`
           }}
-        const response = await axios.get("/api/property/10/menu", options);
+        const response = await axios.get(`/api/property/${propertyNumber}/menu`, options);
         console.log(response?.data);
         setImageMenu(response?.data.imageMenu)
         setLoading(false)
@@ -47,7 +48,7 @@ const AddImage = () => {
           "Authorization": `Bearer ${accessToken}`,
           "Content-Type":"multipart/form-data"
         }}
-      const response = await axios.post("/api/property/10/menu", 
+      const response = await axios.post(`/api/property/${propertyNumber}/menu`, 
         bodyFormData, options);
       console.log(response?.data);
       setReload(!reload)
@@ -75,7 +76,7 @@ const AddImage = () => {
           },
           data: [index], 
         }
-        const response = await axios.delete("/api/property/10/menu", 
+        const response = await axios.delete(`/api/property/${propertyNumber}/menu`, 
           options);
         console.log(response?.data);
         setReload(!reload)
@@ -103,7 +104,7 @@ const AddImage = () => {
         const body = [
           index1, index2
         ]
-        const response = await axios.put("/api/property/10/menu", 
+        const response = await axios.put(`/api/property/${propertyNumber}/menu`, 
           body, options);
         console.log(response?.data);
         setReload(!reload)
@@ -129,7 +130,7 @@ const AddImage = () => {
         "text":text
       }
         
-      const response = await axios.put("/api/property/10/menu/image-caption", 
+      const response = await axios.put(`/api/property/${propertyNumber}/menu/image-caption`, 
         body, options);
       console.log(response?.data);
       setReload(!reload)
