@@ -75,7 +75,6 @@ const AddImage = () => {
           },
           data: [index], 
         }
-        console.log(options);
         const response = await axios.delete("/api/property/10/menu", 
           options);
         console.log(response?.data);
