@@ -3,6 +3,7 @@ import "./App.css";
 import RegistrationForm from "./pages/RegistrationForm.jsx";
 import { store } from "./store";
 import { Provider } from "react-redux";
+// import OTPVerificationModal from "./components/OTPVerificationModal.jsx";
 import { Routes, Route } from "react-router-dom"
 import LoginForm from "./pages/LoginForm.jsx";
 import background from "./assets/BG.png";
@@ -15,6 +16,11 @@ import AddProduct from "./pages/AddProduct.jsx";
 import Profile from "./pages/Profile.jsx";
 import MyProperties from "./pages/MyProperties.jsx";
 import AddImage from "./pages/AddImage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import AddContact from "./pages/AddContact.jsx";
+import Hms from "./pages/Hms.jsx";
+import Pricing from "./pages/Pricing.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
 
 function App() {
   return (
@@ -23,8 +29,9 @@ function App() {
       <Provider store={store}>
         <div style={{ backgroundImage: `url(${background})` }}>
           <Routes>
-            <Route path="/" element={ <RegistrationForm/> } />
-            
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/contact-us" element={<AddContact/>} />
+            <Route path="/signup" element={ <RegistrationForm/> } />
             <Route path="login" element={ <LoginForm/> } />
             <Route path="dashboard" element={ <Dashboard/> }>
               <Route path="profile" element={<Profile />} />
@@ -36,6 +43,11 @@ function App() {
               <Route path="product" element={<AddProduct />} />
               <Route path="image" element={<AddImage />} />
             </Route>
+            <Route path="pricing" element={<Pricing />} />
+            <Route path="about" element={<AboutUs />} />
+            <Route path="hms" element={<Hms />} />
+            <Route path="rms" element={<Hms/>} />
+            <Route path="cm" element={<Hms />} />
           </Routes>
         </div>
       </Provider>

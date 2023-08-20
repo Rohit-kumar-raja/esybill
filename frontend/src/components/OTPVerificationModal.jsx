@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useRef, useState } from "react";
 import { MdOutlineMobileFriendly } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
