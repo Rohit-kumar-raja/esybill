@@ -5,7 +5,7 @@ const Testimonials = () => {
   return (
     <>
       <div className="py-5 md:my-6" style={{ backgroundImage: `url(${bg})` }}   >
-        <p className='text-[#FFFFFF] text-[25px] font-semibold text-center'>Lets see what our customers say</p>
+        <p className='text-[#FFFFFF] text-[25px] font-semibold text-center font-poppins'>Lets see what our customers say</p>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <div className='p-8'>
             <TestimonialCard title="Mr Don Dey" subtitle="Café & Pub owner" content="I highly recommend EzyBill India's restaurant management software with a customized cloud menu. It has significantly improved our productivity, allowing us to streamline operations and create unique menu items effortlessly. The efficient management tools have been a game-changer for our café. 

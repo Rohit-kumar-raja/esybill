@@ -2,6 +2,7 @@ import React from "react"
 import background from "../../assets/homepage/test.svg"
 import bgimg from "../../assets/homepage/bgimg.svg"
 import scanner from "../../assets/homepage/scanner.svg"
+import Sticky from "react-sticky-el";
 
 const HeroSection = () => {
   return (
@@ -67,23 +68,32 @@ const HeroSection = () => {
         </div>
  
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 py-6 md:py-3 font-raleway bg-no-repeat bg-cover" 
-        style={{ backgroundImage: `url(${bgimg})` }}>
-        <div className='col-span-1 md:col-span-2'>
-          <div className='col-span-1 md:flex md:items-center md:justify-center md:col-span-2'>
-            <img src={scanner} alt="" className='w-40 h-40 
-             md:w-20 md:h-20 mx-auto md:mx-5 py-4 
+      <Sticky className="z-[99] relative top-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 z-[99] relative 
+          py-6 md:py-3 font-raleway bg-no-repeat bg-cover" 
+        style={{ backgroundImage: `url(${bgimg})`, backgroundRepeat:"no-repeat", backgroundSize:"cover" }}>
+          <div className='col-span-1 md:col-span-2'>
+            <div className='col-span-1 md:flex md:items-center md:justify-center md:col-span-2'>
+              <img src={scanner} alt="" className='w-24 h-24 
+             md:w-24 md:h-24 mx-auto md:mx-5 py-4 
             back ' /> 
-            <div className="flex flex-col text-[#333333] ">
-              <p className='text-[14px] flex flex-wrap justify-center md:justify-normal'>Scan this QR to access a sample <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>& Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>Cloud Menu </span> for your Restaurant, Hotel or Café. </p>
-              <p className='text-xs text-[#7E007E] flex flex-wrap font-bold px-3 md:px-0'>Launching Offer- FREE for 3 months. After that only ₹69/-  per month !</p>
+              <div className="flex flex-col text-[#333333] px-4 md:px-0">
+                <p className='text-[14px] flex flex-wrap justify-start 
+                 '>Scan this QR to access a sample <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>& Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>Cloud Menu </span> for your Restaurant, Hotel or Café. </p>
+                <p className='text-xs text-[#7E007E] flex flex-col md:flex-row 
+                justify-start 
+                  flex-wrap font-bold px-0'>
+                  Launching Offer- FREE for 3 months. After that only ₹69/-  per month !</p>
+              </div>
             </div>
           </div>
+          <div className='flex items-center justify-center py-3 md:py-0'>
+            <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>
+              Try free Cloud Menu for 3 Months</button>
+          </div>
         </div>
-        <div className='flex items-center justify-center py-3 md:py-0'>
-          <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>Try free Cloud Menu for 3 Months</button>
-        </div>
-      </div>
+      </Sticky>
+     
 
     </>
   )

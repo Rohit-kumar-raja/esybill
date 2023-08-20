@@ -5,8 +5,11 @@ import PricingBanners from "../components/pricing/PricingBanners.jsx"
 import Footer from "../components/homepage/Footer.jsx"
 import PricingCards from "../components/pricing/PricingCards.jsx"
 import RmsCards from "../components/pricing/RmsCards.jsx"
+import Sticky from "react-sticky-el";
+
 const Pricing = () => {
-  const [selectedValue,setSelectedValue] = useState([]); 
+  const [selectedValue,setSelectedValue] = useState("RMS"); 
+ 
   function handleSelectChange(event) {
     setSelectedValue(event.target.value);
   }
@@ -17,11 +20,14 @@ const Pricing = () => {
   return (
     <>
       <Navbar/>
-      <div className="flex justify-center items-center flex-col gap-2 py-2 px-1"  style={{ backgroundImage: `url(${pricingbg})` }}>
-        <p className="text-[#B0138D] text-md md:text-[20px] font-semibold">Bigger Offer </p>
-        <p className="text-[#6C3C67] text-xs md:text-[16px] font-medium">Up to 10 rooms(Stand-Alone Version) – 699 including GST + Cloud Menu Absolutely Free</p>
-        <p className="text-[#FF7474] text-md md:text-[15px] font-medium">10% OFF On Annual Billing </p>
-      </div>
+      <Sticky>
+        <div className="flex justify-center items-center flex-col gap-2 py-2 px-1"  style={{ backgroundImage: `url(${pricingbg})` }}>
+          <p className="text-[#B0138D] text-md md:text-[20px] font-semibold">Bigger Offer </p>
+          <p className="text-[#6C3C67] text-xs md:text-[16px] font-medium">Up to 10 rooms(Stand-Alone Version) – 699 including GST + Cloud Menu Absolutely Free</p>
+          <p className="text-[#FF7474] text-md md:text-[15px] font-medium">10% OFF On Annual Billing </p>
+        </div>
+      </Sticky>
+     
       <div className="flex flex-col justify-center items-center py-4">
         <p className="text-[#7E007E] flex flex-col justify-center items-center gap-4
           text-xl md:text-[33px] font-semibold px-6 font-raleway">
