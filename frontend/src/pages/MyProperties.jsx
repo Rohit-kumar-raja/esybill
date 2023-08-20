@@ -37,10 +37,8 @@ const MyProperties = ({setSidebarTabs}) => {
           }}
         const response = await axios.get("/api/user", options);
         setUser(response?.data);
-        console.log("USER: ", response?.data, configData.MODAL_REPEAT_DAYS);
         var daySinceModalDisplayed = calculateDaysDifference(response?.data?.LastDateModalDisplayed)
-        console.log("DAY: ", daySinceModalDisplayed);
-        if((response?.data.RegEmail == "" || response?.data.RegEmail == null) && daySinceModalDisplayed >=3){
+        if((response?.data.RegEmail == "" || response?.data.RegEmail == null) && daySinceModalDisplayed >= configData.MODAL_REPEAT_DAYS){
           setOpen(true)
         }
       }
@@ -127,7 +125,6 @@ const MyProperties = ({setSidebarTabs}) => {
         email: email,
         CustomerNo: user.CustomerNo
       }
-      console.log(data);
       await axios.put("/api/user/email", data, options)
         .then (res => {
           console.log("RESPONSE: ", res);
