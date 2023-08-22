@@ -5,27 +5,37 @@ import Select from "react-select";
 import {AiFillInfoCircle} from "react-icons/ai"
 const Contact = () => {
  
+  const hmsclickHandler = () => {
+    setIsShownHms(prevState => !prevState)
+  }
+  const rmsclickHandler = () => {
+    setIsShownRms(prevState => !prevState)
+  }
+  const cmclickHandler = () => {
+    setIsShownCm(prevState => !prevState)
+  }
   const data = [
     {
       value: 1,
       text: "Hotel Management Software (HMS)",
-      icon: <AiFillInfoCircle/>,
-      className :"flex justify-between"
+      icon: <AiFillInfoCircle onClick={hmsclickHandler}/>
     },
     {
       value: 2,
       text: "Restaurant Management Software (RMS)",
-      icon: <AiFillInfoCircle/>
+      icon: <AiFillInfoCircle onClick={rmsclickHandler}/>
     },
     {
       value: 3,
       text: "Cloud Menu(CM)",
-      icon: <AiFillInfoCircle/>
+      icon: <AiFillInfoCircle onClick={cmclickHandler} />
     }
   ];
  
   const [selectedOption, setSelectedOption] = useState(null);
- 
+  const [isShownhms, setIsShownHms] = useState(false);
+  const [isShownrms, setIsShownRms] = useState(false); 
+  const [isShowncm, setIsShownCm] = useState(false);
   // handle onChange event of the dropdown
   const handleChange = e => {
     setSelectedOption(e);
@@ -37,7 +47,7 @@ const Contact = () => {
           <img src={contact1} alt="" />
         </div>
         <div>
-          <form className="w-full max-w-lg bg-white rounded-xl p-5 font-raleway">
+          <form className="w-full max-w-lg bg-white relative rounded-xl p-5 font-raleway">
             <p className='text-[#7E007E] font-semibold text-center text-[23px] py-5'>Schedule a Call with Us</p>
             <div className="flex flex-wrap items-center justify-center -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3">
@@ -77,12 +87,8 @@ const Contact = () => {
                 /> 
     
               </div>
+             
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                {/* <label className="block uppercase tracking-wide text-[#565656] text-xs text-left font-bold mb-2" htmlFor="grid-first-name">
-    Subject
-                </label>
-                <input className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-[#A9A9A9] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-2 focus:border-[#800080] focus:bg-white" id="grid-first-name" type="text" 
-                /> */}
                 <label className="block uppercase tracking-wide text-[#565656] text-xs text-left font-bold mb-2" htmlFor="grid-first-name">
     Subject
                 </label>
@@ -97,17 +103,47 @@ const Contact = () => {
                   options={data}
                   onChange={handleChange}
                   getOptionLabel={e => (
-                    <div className="flex justify-between">
+                    <>
+                      <div className="flex justify-between">
                       
-                      <span >{e.text}</span>
-                      {e.icon}
-                    </div>
+                        <span >{e.text}</span>
+                        <span  role="presentation" >{e.icon}</span>
+                      </div>
+                     
+                    </>
                   )}
                 />
+              </div>
+              {/* <label className="block uppercase tracking-wide text-[#565656] text-xs text-left font-bold mb-2" htmlFor="grid-first-name">
+    Subject
+                </label>
+                <input className="appearance-none block w-full bg-white-200 text-gray-700 border-2 border-[#A9A9A9] rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-2 focus:border-[#800080] focus:bg-white" id="grid-first-name" type="text" 
+                /> */}
+                
+              {isShownhms && (
+                <div className="absolute right-0 md:-right-20  text-[8px] bg-[#FFE1FF] text-[#7E007E]  
+                border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-0">
+          Efficiently manage hotel operations, reservations,
+           guest check-in/out, and optimize revenue while 
+           delivering exceptional guest experiences.
+                </div>
+              )}
+              {isShownrms && (
+                <div className="absolute right-0 md:-right-20  text-[8px] bg-[#FFE1FF] text-[#7E007E]  
+                border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-0">
+           Streamline restaurant operations, manage orders, reservations, inventory, and billing for an enhanced dining experience.
+                </div>
+              )}
+              {isShowncm && (
+                <div className="absolute right-0 md:-right-20  text-[8px] bg-[#FFE1FF] text-[#7E007E]  
+                 border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-0">
+Transform traditional menus into digital, interactive menus accessible from smartphones, enabling convenient browsing, ordering, and real-time updates for customers.
+                </div>
+              )}
  
                 
 
-              </div>
+          
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

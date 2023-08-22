@@ -3,7 +3,6 @@ import background from "../../assets/homepage/test.svg"
 import bgimg from "../../assets/homepage/bgimg.svg"
 import scanner from "../../assets/homepage/scanner.svg"
 import Sticky from "react-sticky-el";
-
 const HeroSection = () => {
   return (
     <>
