@@ -9,7 +9,7 @@ const CarouselCards = ({title,content, img}) => {
         <img src={img} alt="" className='w-10 h-10'/>
         <p className='font-medium text-[18px] font-poppins'>{title}</p>
         <p className='text-[15px] font-raleway '>{content}</p>
-        <p className='font-semibold font-raleway'>Learn More</p>
+        <p className='font-semibold font-raleway'> Learn More</p>
       </div>
     </>
   )

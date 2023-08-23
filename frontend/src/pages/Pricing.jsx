@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react"
 import Navbar from "../components/homepage/Navbar.jsx"
 import pricingbg from "../assets/pricing/pricingbg.svg"
+
+
+
 import PricingBanners from "../components/pricing/PricingBanners.jsx"
 import Footer from "../components/homepage/Footer.jsx"
 import PricingCards from "../components/pricing/PricingCards.jsx"
@@ -21,7 +24,8 @@ const Pricing = () => {
     <>
       <Navbar/>
       <Sticky>
-        <div className="flex justify-center items-center flex-col gap-2 py-2 px-1"  style={{ backgroundImage: `url(${pricingbg})` }}>
+        <div className="flex justify-center items-center flex-col gap-2 py-2 px-1" 
+          style={{ backgroundImage: `url(${pricingbg})` }}>
           <p className="text-[#B0138D] text-md md:text-[20px] font-semibold">Bigger Offer </p>
           <p className="text-[#6C3C67] text-xs md:text-[16px] font-medium">Up to 10 rooms(Stand-Alone Version) – 699 including GST + Cloud Menu Absolutely Free</p>
           <p className="text-[#FF7474] text-md md:text-[15px] font-medium">10% OFF On Annual Billing </p>

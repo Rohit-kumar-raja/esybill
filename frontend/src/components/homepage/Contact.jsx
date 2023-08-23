@@ -40,7 +40,7 @@ const Contact = () => {
   const handleChange = e => {
     setSelectedOption(e);
   }
-  return (
+  return ( 
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-10 md:p-20" style={{ backgroundImage: `url(${contact2})` }} >
         <div>
@@ -122,7 +122,7 @@ const Contact = () => {
                 
               {isShownhms && (
                 <div className="absolute right-0 md:-right-20  text-[8px] bg-[#FFE1FF] text-[#7E007E]  
-                border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-0">
+                border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-[50%]">
           Efficiently manage hotel operations, reservations,
            guest check-in/out, and optimize revenue while 
            delivering exceptional guest experiences.
@@ -130,13 +130,13 @@ const Contact = () => {
               )}
               {isShownrms && (
                 <div className="absolute right-0 md:-right-20  text-[8px] bg-[#FFE1FF] text-[#7E007E]  
-                border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-0">
+                border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-[50%]">
            Streamline restaurant operations, manage orders, reservations, inventory, and billing for an enhanced dining experience.
                 </div>
               )}
               {isShowncm && (
                 <div className="absolute right-0 md:-right-20  text-[8px] bg-[#FFE1FF] text-[#7E007E]  
-                 border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-0">
+                 border-2 border-[#7E007E] p-1 rounded-md w-full md:w-20 top-[60%] md:top-[50%]">
 Transform traditional menus into digital, interactive menus accessible from smartphones, enabling convenient browsing, ordering, and real-time updates for customers.
                 </div>
               )}

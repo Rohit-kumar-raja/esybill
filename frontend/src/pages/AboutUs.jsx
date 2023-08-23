@@ -1,6 +1,7 @@
 import React from "react"
 import aboutimg from "../assets/aboutus/aboutimg.svg"
 import aboutbg from "../assets/aboutus/aboutbg.svg"
+import abtimg from "../assets/aboutus/abtimg.svg"
 import Navbar from "../components/homepage/Navbar.jsx"
 import aboutimage from "../assets/aboutus/aboutimage.svg"
 import Footer from "../components/homepage/Footer.jsx"
@@ -9,7 +10,12 @@ const AboutUs = () => {
   return (
     <>
       <Navbar/>
-      <div className="grid grid-rows-3 grid-flow-col p-2 md:p-4"> 
+      <div className="grid grid-rows-3 grid-flow-col p-2 md:p-4" 
+        style={{ backgroundImage: `url(${abtimg})`,
+          backgroundRepeat:"no-repeat", 
+          backgroundSize:"cover"
+        }}
+      > 
         <div className="hidden md:flex md:row-span-3 ">
           <div className='flex flex-col  items-start gap-1 px-20 justify-center'>
             <p className='text-[#920592] font-bold  text-[25px] uppercase'>ABOUT US</p> 
@@ -30,8 +36,8 @@ const AboutUs = () => {
         <div className=" row-span-3  col-span-2">
           <img src={aboutimg} className='object-cover h-full w-screen my-4' alt='bg-img'/>
         </div>
-
       </div>
+
       <div className="row-span-3 md:hidden">
         <div className='flex flex-col  items-center gap-1 px-5 md:px-20 justify-center'>
           <p className='text-[#920592] font-bold  text-[25px] uppercase'>ABOUT US</p> 
@@ -49,6 +55,8 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
+
       <div className="flex flex-col py-10 md:py-20 my-4 font-raleway items-center justify-center"
         style={{ backgroundImage: `url(${aboutbg})`, backgroundRepeat : "no-repeat", backgroundSize :"cover" }}>
         <h3 className="uppercase text-[#7E007E] font-poppins font-bold text-2xl">How IT ALL STARTED</h3>
