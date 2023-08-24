@@ -20,9 +20,11 @@ const HeroSection = () => {
             <p className='text-[#333333] font-light text-[15px] font-poppins'>Hotel Management Software & Restaurant POS in India.</p>
             <div className='flex gap-3 py-3 my-3' >
               <button className='
-    bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2'>Learn More</button>
+    bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2'>
+                <Link to="/about">Learn More</Link></button>
               <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-sm px-8 py-2'>Get a Free Demo</button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2'>
+                <Link to="/contact-us">Get a Free Demo</Link></button>
             </div>
           </div>
 
@@ -65,9 +67,11 @@ const HeroSection = () => {
           <p className='text-[#333333] font-extralight text-[15px] font-poppins'>Hotel Management Software & Restaurant POS in India.</p>
           <div className='flex gap-3 py-3 my-3' >
             <button className='
-    bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2 font-raleway'>Learn More</button>
+    bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2 font-raleway'>
+              <Link to="/about"> Learn More</Link></button>
             <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-sm px-8 py-2 font-raleway'>Get a Free Demo</button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2 font-raleway'>
+              <Link to="/contact-us">Get a Free Demo</Link></button>
           </div>
         </div>
  
@@ -93,7 +97,7 @@ const HeroSection = () => {
           </div>
           <div className='flex items-center justify-center py-3 md:py-0'>
             <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>
-              Try free Cloud Menu for 3 Months</button>
+              <Link to="/about">Try free Cloud Menu for 3 Months</Link> </button>
           </div>
         </div>
       </Sticky>

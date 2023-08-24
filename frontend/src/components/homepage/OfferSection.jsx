@@ -1,5 +1,6 @@
 import React from "react"
 import offer from "../../assets/homepage/offerImage.svg"
+import { Link } from "react-router-dom"
 const OfferSection = () => {
   return (
     <>
@@ -12,7 +13,9 @@ const OfferSection = () => {
           <p className='text-[#000000] font-semibold text-[20px] font-raleway'>month including gst.</p>
           <p className='text-lg text-[#860286] font-bold'>+</p>
           <p className='text-[#000000] font-semibold text-[20px] mb-5 font-raleway'>Cloud Menu absolutely <span className='text-[#860286] font-bold'>Free!!</span></p>
-          <button className='bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2 font-raleway'>Explore Now</button>
+          <button className='bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2 font-raleway'>
+            <Link to="/pricing"> Explore Now </Link>
+          </button>
         </div>
         <div>
           <img src={offer} alt="" />

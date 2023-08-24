@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useRef } from "react"
 import aboutimg from "../assets/aboutus/aboutimg.svg"
 import aboutbg from "../assets/aboutus/aboutbg.svg"
 import abtimg from "../assets/aboutus/abtimg.svg"
 import Navbar from "../components/homepage/Navbar.jsx"
 import aboutimage from "../assets/aboutus/aboutimage.svg"
 import Footer from "../components/homepage/Footer.jsx"
+import { Link } from "react-router-dom"
 
 const AboutUs = () => {
+  const divRef = useRef(null);
   return (
     <>
       <Navbar/>
@@ -27,9 +29,15 @@ const AboutUs = () => {
             </p>
             <div className='flex gap-3 py-3 md:py-6 my-3' >
               <button className='
-    bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2'>Learn More</button>
+    bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2' 
+              onClick={()=>{
+                divRef.current.scrollTo({ top: 0, behavior: "smooth" }) 
+                console.log("clicked")
+              }} >Learn More</button>
               <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-sm px-8 py-2'>Get a Demo</button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2'>
+                <Link to='/contact-us'>Get a Demo</Link> 
+              </button>
             </div>
           </div>
         </div>
@@ -49,15 +57,18 @@ const AboutUs = () => {
           </p> 
           <div className='flex gap-3 py-3 my-3' >
             <button className='
-    bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2 font-raleway'>Learn More</button>
+    bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2 font-raleway' 
+            onClick={()=>divRef.current.scrollTo({ top: 0, behavior: "smooth" })}>Learn More</button>
             <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-sm px-8 py-2 font-raleway'>Get a Free Demo</button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-sm px-8 py-2 font-raleway'>
+              <Link to='/contact-us'>Get a Free Demo</Link></button>
           </div>
         </div>
       </div>
 
 
       <div className="flex flex-col py-10 md:py-20 my-4 font-raleway items-center justify-center"
+        ref={divRef}
         style={{ backgroundImage: `url(${aboutbg})`, backgroundRepeat : "no-repeat", backgroundSize :"cover" }}>
         <h3 className="uppercase text-[#7E007E] font-poppins font-bold text-2xl">How IT ALL STARTED</h3>
         <p className="font-raleway text-xs py-4 px-8 md:px-40 leading-6">EzyBill India, a full stack software was founded by Mr Lahiri and Dr Aich. Both are longtime friends who believed that by creating a product that would lower the cost of doing business in the nation, they might contribute to the development of digital India. EzyBill India was the idea they came up with after considerable deliberation and market research. They didnt realise how challenging it would be to turn their concept into reality when they started their firm, but thats what made it so thrilling! Since they wanted to give their valued customers the greatest service possible, they never compromised on quality.
