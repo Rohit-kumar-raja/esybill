@@ -160,6 +160,15 @@ async function updateEmail(email, customerNo) {
     return { success: false, status: 500, message: `Internal Server Error: ${err}` };
   }
 }
+async function updateLastDateModalDisplayed(newDate, customerNo) {
+  try {
+    await customerModel.updateLastDateModalDisplayed(newDate, customerNo);
+    return { success: true, status: 200, message: 'New Modal Date Updated' };
+  }
+  catch (err) {
+    return { success: false, status: 500, message: `Internal Server Error: ${err}` };
+  }
+}
 
 module.exports = {
   getUserByPhone,
@@ -168,5 +177,6 @@ module.exports = {
   register,
   login,
   update,
-  updateEmail
+  updateEmail,
+  updateLastDateModalDisplayed
 };

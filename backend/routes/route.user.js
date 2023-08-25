@@ -58,9 +58,18 @@ router.put('/', verifyTokenMiddleware, verifyOTPMiddleware, async (req, res) => 
   return res.status(result.status).send(result.message);
 });
 
-router.put('/email', verifyTokenMiddleware, verifyOTPMiddleware, async (req, res) => {
+router.put('/email', verifyTokenMiddleware, async (req, res) => {
   const { email, CustomerNo } = req.body;
   const result = await userConroller.updateEmail(email, CustomerNo);
+  if (result.success) {
+    return res.status(result.status).send(result.message);
+  }
+  return res.status(result.status).send(result.message);
+});
+
+router.put('/modal-date', verifyTokenMiddleware, async (req, res) => {
+  const { newDate, CustomerNo } = req.body;
+  const result = await userConroller.updateLastDateModalDisplayed(newDate, CustomerNo);
   if (result.success) {
     return res.status(result.status).send(result.message);
   }
