@@ -3,8 +3,8 @@ const homeConroller = require('../controller/controller.home');
 
 const router = express.Router({ mergeParams: true });
 
-router.post('/form', async (req, res) => {
-  const result = await homeConroller.insertFormData(req.params.form, req.body);
+router.post('/form/:formName', async (req, res) => {
+  const result = await homeConroller.insertFormData(req.params.formName, req.body);
   if (result.success) {
     return res.sendStatus(201);
   }
