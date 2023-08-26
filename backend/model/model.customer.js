@@ -29,6 +29,11 @@ async function updateUserEmail(email, customerNo) {
   const query = mysql.format('UPDATE tblmastercustomer SET RegEmail=? WHERE CustomerNo=?', [email, customerNo]);
   await connection.query(query);
 }
+async function updateLastDateModalDisplayed(newDate, customerNo) {
+  const connection = await db();
+  const query = mysql.format('UPDATE tblmastercustomer SET LastDateModalDisplayed=? WHERE CustomerNo=?', [newDate, customerNo]);
+  await connection.query(query);
+}
 
 async function insert(user) {
   const connection = await db();
@@ -51,5 +56,6 @@ module.exports = {
   updateUser,
   getUserBycustomerNo,
   updateUserEmail,
-  insert
+  insert,
+  updateLastDateModalDisplayed
 };
