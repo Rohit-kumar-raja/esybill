@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect, useState } from "react"
 import {TbBuildingEstate } from "react-icons/tb";
 import {BsTelephoneForwardFill} from "react-icons/bs"

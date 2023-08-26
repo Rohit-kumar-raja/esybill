@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import axios from "../api/axios";

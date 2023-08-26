@@ -1,3 +1,4 @@
+
 import React from "react"
 import bg from "../../assets/homepage/bg-rect.svg"
 import user from "../../assets/homepage/icon-rect.svg"

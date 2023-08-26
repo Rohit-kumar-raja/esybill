@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import React, { useEffect, useState } from "react"
 import { stateList } from "../constants/stateList";
 import { useDispatch, useSelector } from "react-redux";
