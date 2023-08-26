@@ -1,8 +1,11 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import contact1 from "../../assets/homepage/contact1.svg" 
 import contact2 from "../../assets/homepage/contact2.svg"
 import Select from "react-select";
 import {AiFillInfoCircle} from "react-icons/ai"
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "../../api/axios";
 const Contact = () => {
  
   const hmsclickHandler = () => {
@@ -36,18 +39,76 @@ const Contact = () => {
   const [isShownhms, setIsShownHms] = useState(false);
   const [isShownrms, setIsShownRms] = useState(false); 
   const [isShowncm, setIsShownCm] = useState(false);
+
+  const [disabled, setDisabled] = useState(true)
   // handle onChange event of the dropdown
   const handleChange = e => {
     setSelectedOption(e);
   }
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("") 
+  const [phone, setPhone] = useState("") 
+
+  const [date, setDate] = useState("") 
+  const [time, setTime] = useState("") 
+
+  useEffect(()=>{
+    console.log(name, email, phone, date, time, selectedOption)
+  })
+  useEffect(()=>{
+    if(name !== "" && email !=="" && phone !=="" && date !="" && time !=""){
+      setDisabled(false)
+    }
+    else{
+      setDisabled(true)
+    }
+  },[name, email, phone, date, time])
+  const submitHandler = async(e) =>{
+    e.preventDefault() 
+    let subject = selectedOption?.text
+    console.log(name,
+      email, 
+      subject,
+      phone,
+      date,
+      time)
+    try{
+      const response = await axios.post(`/api/home/form/${"call"}`,{
+        name,
+        email, 
+        subject,
+        phone,
+        date,
+        time
+      })
+      if(response?.status === 201){
+        toast.success("Call scheduled successfully!", {
+          position: toast.POSITION.TOP_CENTER
+        });
+      } 
+    }
+    catch{
+      toast.error("Call couldn't be scheduled, please try again later!", {
+        position: toast.POSITION.TOP_CENTER
+      });
+     
+    }
+    setName("")
+    setEmail("")
+    setPhone("")
+    setDate("") 
+    setTime("")
+  }
   return ( 
     <>
+      <ToastContainer autoClose={2000}/>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-10 md:p-20" style={{ backgroundImage: `url(${contact2})` }} >
         <div>
           <img src={contact1} alt="" />
         </div>
         <div>
-          <form className="w-full max-w-lg bg-white relative rounded-xl p-5 font-raleway">
+          <form className="w-full max-w-lg bg-white relative rounded-xl p-5 font-raleway" 
+            onSubmit={submitHandler} >
             <p className='text-[#7E007E] font-semibold text-center text-[23px] py-5'>Schedule a Call with Us</p>
             <div className="flex flex-wrap items-center justify-center -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3">
@@ -57,8 +118,8 @@ const Contact = () => {
                 <input className="appearance-none block w-full 
                 bg-white-200 text-gray-700 border-2 border-[#A9A9A9] 
                 rounded py-3 px-4 mb-3 leading-tight focus:outline-none 
-                focus:border-2 focus:border-[#800080] focus:bg-white" 
-                id="grid-first-name" type="text" 
+                focus:border-2 focus:border-[#800080] focus:bg-white" value={name}
+                id="grid-first-name" type="text" onChange={(e)=> setName(e.target.value)}
                 />
     
               </div>
@@ -70,7 +131,9 @@ const Contact = () => {
                 bg-white-200 text-gray-700 border-2 border-[#A9A9A9] 
                 rounded py-3 px-4 mb-3 leading-tight focus:outline-none 
                 focus:border-2 focus:border-[#800080] focus:bg-white" 
-                id="grid-first-name" type="text" 
+                maxLength="10"  value={phone}
+                onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
+                id="grid-first-name" type="text" onChange={(e)=> setPhone(e.target.value)}
                 />
               </div>
             </div>
@@ -83,7 +146,8 @@ const Contact = () => {
                 bg-white-200 text-gray-700 border-2 border-[#A9A9A9] 
                 rounded py-3 px-4  leading-tight focus:outline-none 
                 focus:border-2 focus:border-[#800080] focus:bg-white" 
-                id="grid-first-name" type="email" 
+                id="grid-first-name" type="email" value={email}
+                onChange={(e)=> setEmail(e.target.value)}
                 /> 
     
               </div>
@@ -154,7 +218,8 @@ Transform traditional menus into digital, interactive menus accessible from smar
                 bg-white-200 text-gray-700 border-2 border-[#A9A9A9] 
                 rounded py-3 px-4 mb-3 leading-tight focus:outline-none 
                 focus:border-2 focus:border-[#800080] focus:bg-white" 
-                id="grid-first-name" type="text" 
+                value={date}
+                id="grid-first-name" type="date" onChange={(e)=> setDate(e.target.value)}
                 /> 
     
               </div>
@@ -166,11 +231,17 @@ Transform traditional menus into digital, interactive menus accessible from smar
                 bg-white-200 text-gray-700 border-2 border-[#A9A9A9] 
                 rounded py-3 px-4 mb-3 leading-tight focus:outline-none 
                 focus:border-2 focus:border-[#800080] focus:bg-white" 
-                id="grid-first-name" type="text" 
+                value={time}
+                id="grid-first-name" type="time" onChange={(e)=> setTime(e.target.value)}
                 /> 
               </div>
             </div>
-            <button className='bg-[#800080] font-poppins font-medium text-[15px] text-white rounded-md px-20 py-2'>Submit</button>
+            <button className={`bg-[#800080] font-poppins font-medium text-[15px]
+             text-white rounded-md px-20 py-2 
+             ${disabled ? "cursor:not-allowed opacity-50" : "cursor-pointer opacity-100"}`}
+            disabled={disabled} type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </div>

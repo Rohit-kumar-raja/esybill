@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import HeroImage from "../assets/contact/hero.png"
-import email from "../assets/contact/email.svg"
-import phone from "../assets/contact/phone.svg"
+import emailimg from "../assets/contact/email.svg"
+import phoneimg from "../assets/contact/phone.svg"
 import location from "../assets/contact/location.svg"
 import Navbar from "../components/homepage/Navbar.jsx"
 import Cards from "../components/contactpage/Cards.jsx"
@@ -10,6 +10,9 @@ import Footer from "../components/homepage/Footer.jsx"
 import {AiFillInfoCircle} from "react-icons/ai"
 import {MdOutlineClose} from "react-icons/md"
 import Select from "react-select";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "../api/axios"
 const AddContact = () => {
   const [value, setValue] = useState("")
   const clickHandler = (val) => {
@@ -95,12 +98,70 @@ const AddContact = () => {
   const [contactRadio, setcontactRadio] = useState("Demo Purpose")
   const [selectedOption, setSelectedOption] = useState(null);
   const [conSelectedOption, setconSelectedOption] = useState(null);
+
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("") 
+  const [phone, setPhone] = useState("") 
+  const [state, setState] = useState("")
+  
+  const [disabled, setDisabled] = useState(true)
+  useEffect(()=>{
+    if(name !== "" && email !=="" && phone !=="" && state !="" && (selectedOption !=="" || conSelectedOption !=="")){
+      setDisabled(false)
+    }
+    else{
+      setDisabled(true)
+    }
+  }, [name,email, phone, state, selectedOption, conSelectedOption])
   // const [isShownhms, setIsShownHms] = useState(false);
   // const [isShownrms, setIsShownRms] = useState(false); 
   // const [isShowncm, setIsShownCm] = useState(false);
   // handle onChange event of the dropdown
   const selectChange = e => {
     setSelectedOption(e);
+  }
+  const submitHandler = async(e) => {
+    e.preventDefault() 
+    let subject ;
+    let  response;
+    
+    try{
+      if(contactRadio === "Demo Purpose")
+      {
+        subject = selectedOption?.text
+        response = await axios.post(`/api/home/form/${"demo"}`,{
+          name,email, phone, state, subject
+        })
+        
+      }
+      if(contactRadio === "Consultation")
+      {
+        subject = conSelectedOption?.text
+        response = await axios.post(`/api/home/form/${"consultation"}`,{
+          name,email, phone, state, subject
+        })
+        
+      }
+
+      if(response?.status === 201){
+        toast.success("Call scheduled successfully!", {
+          position: toast.POSITION.TOP_CENTER
+        });
+      } 
+      console.log(name,email, phone, state, subject)
+    }
+    catch{
+      toast.error("Call couldn't be scheduled, please try again later!", {
+        position: toast.POSITION.TOP_CENTER
+      });
+     
+    }
+    setName("")
+    setEmail("") 
+    setPhone("") 
+    setState("")
+    setSelectedOption("")
+    setconSelectedOption("")
   }
   const consultationSelectedOption = e => {
     setconSelectedOption(e)
@@ -112,9 +173,10 @@ const AddContact = () => {
   }; 
   useEffect(()=>{ 
     console.log(contactRadio)
-  },[contactRadio])
+  },[contactRadio])  
   return (
     <> 
+      <ToastContainer autoClose={2000}/>
       <Navbar/>
       <div className="grid grid-cols-1  md:grid-cols-2">
         <div><img src={HeroImage} alt="hero" width={500} className="md:ml-12" /></div>
@@ -122,8 +184,8 @@ const AddContact = () => {
         <div className="flex flex-col items-start justify-center gap-4 md:gap-12">
           <Cards img={location} title="LOCATE US" content="Eastland Microsystems, Malancha Road, P.O. Noapara , Barasat , Kolkata 700125, 
             West Bengal, India" />
-          <Cards img={email} title="EMAIL US" content="support@ezybillindia.com" />
-          <Cards img={phone} title="PHONE NUMBER" content="+91 9836041044" />
+          <Cards img={emailimg} title="EMAIL US" content="support@ezybillindia.com" />
+          <Cards img={phoneimg} title="PHONE NUMBER" content="+91 9836041044" />
         </div>
       </div>
       <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"
@@ -167,39 +229,45 @@ const AddContact = () => {
           </div>
         </div>
         <form className="w-full bg-transparent relative
-        rounded-xl py-5 px-4 md:px-[10rem] font-raleway flex flex-col">
+        rounded-xl py-5 px-4 md:px-[10rem] font-raleway flex flex-col" 
+        onSubmit={submitHandler} >
     
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
              
               <input placeholder="Name" 
+                value={name}
                 className="appearance-none block placeholder-[#7E007E] w-full bg-white-200 
                text-[#7E007E] border-2 border-[#A9A9A9] rounded-md py-3 px-4 mb-3 font-poppins
                leading-tight focus:outline-none focus:border-2 focus:border-[#800080]
                 focus:bg-white" id="grid-first-name" type="text" 
+                onChange={(e)=> setName(e.target.value)}
               />
     
             </div>
             <div className="w-full md:w-1/2 px-3">
              
-              <input placeholder="Email" className="appearance-none block w-full 
+              <input placeholder="Email" value={email} className="appearance-none block w-full 
               font-poppins placeholder-[#7E007E]
                bg-white-200 text-[#7E007E] border-2 
                border-[#A9A9A9] rounded-md py-3 px-4 mb-3 
                leading-tight focus:outline-none focus:border-2 
                focus:border-[#800080] focus:bg-white" id="grid-first-name" type="text" 
+              onChange={(e)=> setEmail(e.target.value)}
               />
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
              
-              <input placeholder="Phone" className="appearance-none block w-full
+              <input placeholder="Phone" value={phone} className="appearance-none block w-full
               placeholder-[#7E007E]
                bg-[#F7F0F7] text-[#7E007E] border-2 border-[#A9A9A9] rounded-md py-3 
                px-4 mb-3 leading-tight focus:outline-none font-poppins
                focus:border-2 focus:border-[#800080] focus:bg-white" 
-              id="grid-first-name" type="text" 
+              maxLength="10" 
+              onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
+              id="grid-first-name" type="text" onChange={(e)=> setPhone(e.target.value)}
               />
     
             </div>
@@ -337,15 +405,17 @@ const AddContact = () => {
               <input placeholder="State" className="appearance-none block w-full 
               bg-white-200 text-[#7E007E] border-2 border-[#A9A9A9] placeholder-[#7E007E]
                rounded-md py-3 px-4 mb-3 leading-tight focus:outline-none font-poppins
-               focus:border-2 focus:border-[#800080] focus:bg-white" 
-              id="grid-first-name" type="text" 
+               focus:border-2 focus:border-[#800080] focus:bg-white" value={state}
+              id="grid-first-name" type="text" onChange={(e)=> setState(e.target.value)}
               />
     
             </div>
           
           </div>
-          <button className='bg-[#800080] font-poppins self-center
-           font-medium text-[15px] text-white rounded-md px-20 py-2'>Submit</button>
+          <button className={`bg-[#800080] font-poppins self-center
+           font-medium text-[15px] text-white rounded-md px-20 py-2 
+           ${disabled ? "cursor:not-allowed opacity-50" : "cursor-pointer opacity-100"}
+           `}  disabled={disabled} type="submit" > Submit</button>
         </form>
       </div>
       <Footer/>
