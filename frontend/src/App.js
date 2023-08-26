@@ -21,6 +21,7 @@ import AddContact from "./pages/AddContact.jsx";
 import Hms from "./pages/Hms.jsx";
 import Pricing from "./pages/Pricing.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
+import CloudMenu from "./pages/CloudMenu.jsx";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <div style={{ backgroundImage: `url(${background})` }}>
           <Routes>
             <Route path="/" element={<HomePage/>}/>
+            <Route path="/cloud-menu/:menuName" element={<CloudMenu/>}/>
             <Route path="/contact-us" element={<AddContact/>} />
             <Route path="/signup" element={ <RegistrationForm/> } />
             <Route path="login" element={ <LoginForm/> } />

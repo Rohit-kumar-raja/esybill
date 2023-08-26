@@ -24,7 +24,8 @@ async function getMenu(menuName) {
   try {
     const property = await propertyModel.getPropertyByMenuName(menuName);
     let menu;
-    if (property.MenuType === 'text') {
+    const menuType = property.MenuType;
+    if (menuType === 'text') {
       const itemCategoryPromise = itemCategoryModel.getItemCategoriesByProperty(property.PropertyNo);
       const itemPromise = itemModel.getItemsByProperty(property.PropertyNo);
       const productPromise = productModel.getProductsByProperty(property.PropertyNo);
@@ -35,31 +36,29 @@ async function getMenu(menuName) {
       if (products.length <= 0) {
         return { success: false, status: 404, message: 'No Menu Found' };
       }
-      menu = {};
+      menu = [];
       itemCategories.forEach((itemCategory) => {
-        menu[itemCategory.ItemCategory] = {
+        const categoryData = {
+          category: itemCategory.ItemCategory,
           note: itemCategory.NoteOnItemCategory,
-          subcategories: {}
+          subcategories: []
         };
-        const itemData = items.filter((item) => {
-          if (item.CategoryRN === itemCategory.CategoryRN) return true;
-          return false;
-        });
+        const itemData = items.filter((item) => item.CategoryRN === itemCategory.CategoryRN);
         itemData.forEach((item) => {
-          menu[itemCategory.ItemCategory].subcategories[item.ItemName] = {
+          const subcategoryData = {
+            subcategory: item.ItemName,
             ...item,
-            products: {}
+            products: []
           };
-          const productData = products.filter((product) => {
-            if (item.CategoryRN === product.CategoryRN && product.ItemNameRN === item.ItemNameRN) return true;
-            return false;
-          });
+          const productData = products.filter(
+            (product) => item.CategoryRN === product.CategoryRN && product.ItemNameRN === item.ItemNameRN
+          );
           productData.forEach((product) => {
-            menu[itemCategory.ItemCategory].subcategories[item.ItemName].products[product.ProductName] = {
-              ...product
-            };
+            subcategoryData.products.push(product);
           });
+          categoryData.subcategories.push(subcategoryData);
         });
+        menu.push(categoryData);
       });
     }
     else {
@@ -69,14 +68,12 @@ async function getMenu(menuName) {
       }
       menu = JSON.parse(imageMenu[0].ImageSequence);
     }
-    return { success: true, menu };
+    return { success: true, status: 200, data: { menuType, menu } };
   }
   catch (err) {
     if (err.code === 'ERR_NO_PROPERTY') {
       return { success: false, status: 404, message: err.code };
     }
-    // eslint-disable-next-line
-    console.log(err);
     return { success: false, status: 500, message: 'Internal Server Error' };
   }
 }
