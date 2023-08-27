@@ -31,6 +31,8 @@ import step8 from "../assets/products/carousel/step-8.svg"
 import step9 from "../assets/products/carousel/step-9.svg"
 import step10 from "../assets/products/carousel/step-10.svg"
 
+
+
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import CloudMenuCards from "../components/homepage/CloudMenuCards.jsx"
@@ -140,17 +142,28 @@ const Hms = () => {
 
       {
         arr?.length > 0 ? 
-          arr[0]?.map(arr => (
-            <>
-              <div className="flex px-4 md:px-24 py-4 font-poppins">
-                <img src={arr[0]} alt="" className="w-20 h-16"/>
-                <div className="flex flex-col">
-                  <p className="text-[#611261] text-lg font-semibold">{arr[1]}</p>
-                  <p className="text-[#7E007E] text-base font-normal">{arr[2]}</p>
-                </div>
-              </div>
-            </>
-          ))
+          <>
+          
+            <div  style={{ backgroundImage: `url(${arr[3][0]})`,
+              backgroundRepeat:"no-repeat",
+              backgroundSize:"cover" }}>
+              {
+                arr[0]?.map(arr => (
+                  <>
+             
+                    <div className="flex px-4 md:px-24 py-4 font-poppins ">
+                      <img src={arr[0]} alt="" className="w-20 h-16"/>
+                      <div className="flex flex-col">
+                        <p className="text-[#611261] text-lg font-semibold">{arr[1]}</p>
+                        <p className="text-[#7E007E] text-base font-normal">{arr[2]}</p>
+                      </div>
+                    </div>
+              
+                  </>
+                ))
+              }
+            </div>
+          </>
           : null
       }
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-poppins">
@@ -194,7 +207,32 @@ const Hms = () => {
       {
         location?.pathname === "/cm" ? 
           <>
-            <Carousel>
+            <Carousel 
+              autoPlay
+              infiniteLoop
+              showArrows={false}
+              renderIndicator={(onClickHandler, isSelected, index, label) => {
+                const defStyle = { marginLeft: 20, color: "#983398", cursor: "pointer" , fontSize: "15px", fontWeight: "bold"};
+                const style = isSelected
+                  ? { ...defStyle, color: "#983398" }
+                  : { ...defStyle };
+                return (
+                  <span
+                    style={style}
+                    onClick={onClickHandler}
+                    onKeyDown={onClickHandler}
+                    
+                    value={index}
+                    key={index}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`${label} ${index + 1}`}
+                  >
+                    { index + 1}
+                  </span>
+                );
+              }}
+            >
              
               <CloudMenuCards title="Step 1:" img={step1} content="Go to registration page or click generate cloud menu now button at home page"/>
              

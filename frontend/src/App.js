@@ -28,7 +28,9 @@ function App() {
     <> 
    
       <Provider store={store}>
-        <div style={{ backgroundImage: `url(${background})` }}>
+        <div 
+          style={{ backgroundImage: `url(${background})` }} 
+        >
           <Routes>
             <Route path="/" element={<HomePage/>}/>
             <Route path="/cloud-menu/:menuName" element={<CloudMenu/>}/>

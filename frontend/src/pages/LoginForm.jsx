@@ -72,8 +72,8 @@ const LoginForm = () => {
                 </label>
                 <input className="appearance-none block w-full border-2 border-[#DDDDDD]
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2
-             focus:border-[#800080] rounded-md h-[42px] px-4 mb-3 leading-tight " required
-                id="grid-first-name" type="text" placeholder="" 
+             focus:border-[#800080] rounded-md h-[42px] px-4 mb-3 leading-tight" 
+             required id="grid-first-name" type="text" placeholder="" 
                 value={usermobilenumber} onChange={(e)=> setUserMobileNumber(e.target.value)} />
               </div>
             </div>

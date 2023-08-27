@@ -1,5 +1,6 @@
 import React from "react"
 import {FaFacebookF,FaWhatsapp,FaInstagram,FaTwitter} from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 const Footer = () => {
   return (
@@ -14,21 +15,21 @@ const Footer = () => {
               <FaFacebookF/>
               <FaWhatsapp/>
               <FaInstagram/>
-              <FaTwitter/>
+              <FaTwitter/> 
             </div>
           </div>
           <div className='flex flex-col items-start text-sm'>
             <p className='font-medium'>Products & Services</p>
-            <p className='font-light py-2'>Hotel Management Software</p>
-            <p className='font-light py-2'>Restaurant Management Software</p>
-            <p className='font-light py-2'>Cloud Menu</p>
+            <p className='font-light py-2'><Link to='/hms'>Hotel Management Software</Link> </p>
+            <p className='font-light py-2'><Link to='/rms'>Restaurant Management Software </Link></p>
+            <p className='font-light py-2'><Link to='/cm'>Cloud Menu</Link></p>
           </div>
           <div className='flex flex-col items-start text-sm'>
             <p>Pages</p>
-            <p className='font-light py-2'>Home</p>
-            <p className='font-light py-2'>About Us</p>
-            <p className='font-light py-2'>Contact Us</p>
-            <p className='font-light py-2'>Pricing</p>
+            <p className='font-light py-2'><Link to='/'>Home</Link></p>
+            <p className='font-light py-2'><Link to='/about'> About Us</Link></p>
+            <p className='font-light py-2'><Link to='/contact-us'>Contact Us</Link></p>
+            <p className='font-light py-2'><Link to='/pricing'>Pricing</Link></p>
           </div>
           <div className='flex flex-col items-start text-sm'>
             <p>Legal</p>
