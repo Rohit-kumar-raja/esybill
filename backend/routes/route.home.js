@@ -11,4 +11,12 @@ router.post('/form/:formName', async (req, res) => {
   return res.status(result.status).send(result.message);
 });
 
+router.get('/menu/:menuName', async (req, res) => {
+  const result = await homeConroller.getMenu(req.params.menuName);
+  if (result.success) {
+    return res.status(result.status).json(result.data);
+  }
+  return res.status(result.status).send(result.message);
+});
+
 module.exports = router;

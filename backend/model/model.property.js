@@ -53,10 +53,22 @@ async function deleteProperty(propertyNo, customerNo) {
   await connection.query(query);
 }
 
+async function getPropertyByMenuName(menuName) {
+  const connection = await db();
+  const result = await connection.query('select PropertyNo, PropName, isMenuActive, MenuType, isActive from tblmasterproperty where PropertyMenuName=?', [menuName]);
+  if (result[0].length < 1 || !result[0][0].isMenuActive || !result[0][0].isActive) {
+    const err = new Error('No Such Property');
+    err.code = 'ERR_NO_PROPERTY';
+    throw err;
+  }
+  return result[0][0];
+}
+
 module.exports = {
   insertProperty,
   getAllProperties,
   getPropertyById,
   updateProperty,
-  deleteProperty
+  deleteProperty,
+  getPropertyByMenuName
 };

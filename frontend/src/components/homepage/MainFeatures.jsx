@@ -1,13 +1,13 @@
 
 import React from "react"
-import bg from "../../assets/homepage/bg-rect.svg"
+import featurebg from "../../assets/homepage/featurebg.svg"
 import user from "../../assets/homepage/icon-rect.svg"
 import f1 from "../../assets/homepage/f1.svg"
 import f2 from "../../assets/homepage/f2.svg"
 import f3 from "../../assets/homepage/f3.svg"
 
 
-
+ 
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -17,7 +17,7 @@ const MainFeatures = () => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-10 py-20"  
-        style={{ backgroundImage: `url(${bg})` }}
+        style={{ backgroundImage: `url(${featurebg})` }}
       >
         <div className='col-span-1'>
           <img src={user} alt="" />

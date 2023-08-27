@@ -40,6 +40,10 @@ import cm2 from "../assets/products/cm2.svg"
 import cm3 from "../assets/products/cm3.svg"
 import cm4 from "../assets/products/cm4.svg"
 
+import hmsbg from "../assets/products/hmsbg.svg"
+import rmsbg from "../assets/products/rmsbg.svg"
+// import cmbg from "../assets/products/cmbg.svg"
+
 export const rms = [
   "What Is Restaurant Management Software(RMS)?",
   "Restaurant Management Software (RMS) is a comprehensive software solution designed specifically for restaurants and food establishments. It offers a range of features to streamline various aspects of restaurant operations, including order management, table reservations, inventory management, menu customization, and billing.",
@@ -97,6 +101,9 @@ export const hmsfeature = [
     [hms21,"Special Occasion Menu Templates","Offers pre-designed menu templates for special occasions."],
     [hms22,"Customizable Billing Facility","Customizable Billing Facility allow customers to receive separate bills for different items or combine multiple services into a single bill based on their preferences. This offers flexibility and convenience in managing expenses."],
     [hms23,"Customer support","Provides 24/7 support for any technical and operational assistance."],
+  ],
+  [
+    hmsbg
   ]
 ]
 
@@ -120,6 +127,9 @@ export const rmsfeature = [
     [rms12,"Cash, Credit or Debit Card, UPI, and Blended Mode payment","Supports multiple payment methods, including cash, credit cards, debit cards, UPI (Unified Payments Interface), and blended modes, providing flexibility for customers."],
     [rms13,"Daily inventory consumption report","Generates reports that detail the daily consumption of inventory items, aiding in inventory management and cost control."],
     [rms14,"Daily quantitative & value-wise sale report","Presents reports on sales quantities and values, offering insights into product popularity and revenue generation."],  
+  ],
+  [
+    rmsbg
   ]
 ]
 
@@ -130,4 +140,7 @@ export const cmfeature = [
     [cm3,"User-friendly interface ensures ease of use for both customers and staff","The user-friendly interface ensures that both customers and staff can navigate the system easily, promoting a seamless experience for all users."],
     [cm4,"Streamline the ordering process, saving time for both guests and staff", "By streamlining the ordering process, the establishment minimizes wait times and enhances efficiency, benefiting both guests and staff members and creating a smoother dining experience overall."],
   ],
+  [],
+  [],
+  ""
 ]
