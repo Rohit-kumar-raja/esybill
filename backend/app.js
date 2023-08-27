@@ -16,4 +16,4 @@ app.listen(process.env.NODE_PORT || 4000, () => {
 });
 app.use('/api', routes);
 
-app.use('/assets*', express.static(path.join(__dirname, '/assets')));
+app.use('/assets', express.static(path.join(__dirname, 'public')));
