@@ -87,7 +87,7 @@ const PropertyOneForm = ({
         /> : null
       }
       <div className='flex flex-col px-6'>
-        <form className="rounded-md px-2 md:px-6 py-6 shadow-xl" onSubmit={propertyOneSubmitHandler}>
+        <form className="rounded-md px-2 md:px-6 py-6 shadow-xl bg-white" onSubmit={propertyOneSubmitHandler}>
           <div className='px-6 text-center'>
             <h1 className='text-[15px] font-normal text-[#464646]'>Property</h1>
             <h1 className='text-[30px] font-semibold text-[#464646]'>One</h1>
@@ -97,7 +97,7 @@ const PropertyOneForm = ({
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label className="block tracking-wide text-[#464646]
                 text-[16px] font-normal mb-2" htmlFor='states'>
-                Property Type*
+                Property Type<span className="text-red-400">*</span>
               </label>
               <select id="states" className="bg-gray-50  block 
                 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
@@ -111,7 +111,7 @@ const PropertyOneForm = ({
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label className="block tracking-wide text-[#464646]
                 text-[16px] font-normal mb-2" htmlFor="grid-first-name">
-                Property Name*
+                Property Name<span className="text-red-400">*</span>
               </label>
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -122,7 +122,7 @@ const PropertyOneForm = ({
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label className="block tracking-wide text-[#464646]
                 text-[16px] font-normal mb-2" htmlFor="grid-first-name">
-                Property Email*
+                Property Email<span className="text-red-400">*</span>
               </label>
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -133,7 +133,7 @@ const PropertyOneForm = ({
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label className="block tracking-wide text-[#464646]
                 text-[16px] font-normal mb-2" htmlFor="grid-first-name">
-                Property Address*
+                Property Address<span className="text-red-400">*</span>
               </label>
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -144,7 +144,7 @@ const PropertyOneForm = ({
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label className="block tracking-wide text-[#464646]
                 text-[16px] font-normal mb-2" htmlFor="grid-first-name">
-                Property Country*
+                Property Country<span className="text-red-400">*</span>
               </label>
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -157,7 +157,7 @@ const PropertyOneForm = ({
               <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">
                 <label className="block tracking-wide text-[#464646] 
                 text-[16px] font-normal mb-2" htmlFor="grid-first-name">
-                Mobile Number*
+                Mobile Number<span className="text-red-400">*</span>
                 </label>
                 <input className="appearance-none block  border-2 border-[#DDDDDD]
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
@@ -170,7 +170,7 @@ const PropertyOneForm = ({
             
                 <label className="block tracking-wide text-[#464646]
                 text-[16px] font-normal mb-2" htmlFor='states'>
-                State*
+                State<span className="text-red-400">*</span>
                 </label>
 
                 <select id="states" className="bg-gray-50  block 
