@@ -24,7 +24,7 @@ const HeroSection = () => {
                 <Link to="/about">Learn More</Link></button>
               <button className='
     border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2'>
-                <Link to="/contact-us">Get a Free Demo</Link></button>
+                <Link to="/pricing">Get a Free Demo</Link></button>
             </div>
           </div>
 
@@ -71,7 +71,7 @@ const HeroSection = () => {
               <Link to="/about"> Learn More</Link></button>
             <button className='
     border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2 font-raleway'>
-              <Link to="/contact-us">Get a Free Demo</Link></button>
+              <Link to="/pricing">Get a Free Demo</Link></button>
           </div>
         </div>
  
@@ -97,7 +97,7 @@ const HeroSection = () => {
           </div>
           <div className='flex items-center justify-center py-3 md:py-0'>
             <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>
-              <Link to="/about">Try free Cloud Menu for 3 Months</Link> </button>
+              <Link to="/pricing">Try free Cloud Menu for 3 Months</Link> </button>
           </div>
         </div>
       </Sticky>

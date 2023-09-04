@@ -236,12 +236,15 @@ Transform traditional menus into digital, interactive menus accessible from smar
                 /> 
               </div>
             </div>
-            <button className={`bg-[#800080] font-poppins font-medium text-[15px]
+            <div className="flex justify-center items-center">
+              <button className={`bg-[#800080] font-poppins font-medium text-[15px]
              text-white rounded-md px-20 py-2 
              ${disabled ? "cursor:not-allowed opacity-50" : "cursor-pointer opacity-100"}`}
-            disabled={disabled} type="submit">
+              disabled={disabled} type="submit">
               Submit
-            </button>
+              </button>
+            </div>
+           
           </form>
         </div>
       </div>
