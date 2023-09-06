@@ -81,7 +81,7 @@ const Hms = () => {
     console.log("arr", arr, arr?.length)
   },[arr])
   return (
-  
+   
     <>
       <Navbar/>
       <div className="flex flex-col justify-center items-center font-poppins">
@@ -250,7 +250,7 @@ const Hms = () => {
 
               <CloudMenuCards title="Step 8:" img={step8} content="Download QR code"/>
 
-              <CloudMenuCards title="Step 8:" img={step9} content="Print the QR"/>
+              <CloudMenuCards title="Step 9:" img={step9} content="Print the QR"/>
 
               <CloudMenuCards title="Step 10:" img={step10} content="Scan to Check and circulate with smile"/>
               

@@ -27,7 +27,7 @@ const AboutUs = () => {
             and modern business <br/> approach at
               <span className="text-[#7E007EE5] font-semibold px-2">EzyBill India</span> 
             </p>
-            <div className='flex gap-3 py-3 md:py-6 my-3' >
+            {/* <div className='flex gap-3 py-3 md:py-6 my-3' >
               <button className='
     bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2' 
               onClick={()=>{
@@ -38,7 +38,7 @@ const AboutUs = () => {
     border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2'>
                 <Link to='/contact-us'>Get a Demo</Link> 
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className=" row-span-3  col-span-2">
