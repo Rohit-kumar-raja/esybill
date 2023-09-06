@@ -31,7 +31,7 @@ const HeroSection = () => {
 
         </div>
         <div className=" row-span-3  col-span-2">
-          <img src={background} className='object-cover h-full w-screen' alt='bg-img'/>
+          <img src={background} className='object-cover h-full md:h-[70vh] w-screen' alt='bg-img'/>
  
           {/* <div className='flex  gap-2 flex-col '> */}
           <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
@@ -57,7 +57,7 @@ const HeroSection = () => {
       </div>
       <div className="row-span-3 md:hidden">
 
-        <div className='flex flex-col items-center md:items-start gap-1 px-5 md:px-20 py-10'>
+        <div className='flex flex-col items-center md:items-start gap-1 px-5 md:px-20 '>
           <button className='
     bg-rgba font-normal text-[12px] text-white rounded-xl px-4 py-1 my-4 font-poppins'>Your bill is on us!!</button>
           <p className='text-[#333333] font-semibold  text-[25px] font-raleway'>Hotel and Restaurant </p>
@@ -78,7 +78,7 @@ const HeroSection = () => {
       </div>
       <Sticky className="z-[99] relative top-0">
         <div className="grid grid-cols-1 md:grid-cols-3 z-[99] relative 
-          py-6 md:py-3 font-raleway bg-no-repeat bg-cover" 
+          py-6 md:py-3 font-raleway bg-no-repeat bg-cover " 
         style={{ backgroundImage: `url(${bgimg})`, backgroundRepeat:"no-repeat", backgroundSize:"cover" }}>
           <div className='col-span-1 md:col-span-2'>
             <div className='col-span-1 md:flex md:items-center md:justify-center md:col-span-2'>
