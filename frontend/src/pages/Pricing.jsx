@@ -11,7 +11,7 @@ import RmsCards from "../components/pricing/RmsCards.jsx"
 import Sticky from "react-sticky-el";
 
 const Pricing = () => {
-  const [selectedValue,setSelectedValue] = useState("CMS"); 
+  const [selectedValue,setSelectedValue] = useState("HMS"); 
  
   function handleSelectChange(event) {
     setSelectedValue(event.target.value);

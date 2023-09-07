@@ -20,7 +20,7 @@ const OfferSection = () => {
         <div>
           <img src={offer} alt="" />
         </div>
-      </div>
+      </div> 
     </>
   )
 }

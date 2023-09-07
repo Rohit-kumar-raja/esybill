@@ -14,12 +14,12 @@ const Navbar = () => {
         <div className="px-4 mx-auto md:justify-around md:items-center md:flex md:px-8">
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
-              
-              <div className='flex items-center'>
-                <img src={logo1} alt='logo' className='h-[40px]'/>
-                <img src={logo2} alt='logo' className='h-[35px]'/>
-              </div>
-              
+              <Link to="/">
+                <div className='flex items-center'>
+                  <img src={logo1} alt='logo' className='h-[40px]'/>
+                  <img src={logo2} alt='logo' className='h-[35px]'/>
+                </div>
+              </Link>
               <div className="md:hidden">
                 <button
                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"

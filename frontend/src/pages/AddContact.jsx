@@ -8,7 +8,7 @@ import Cards from "../components/contactpage/Cards.jsx"
 import contactbg from "../assets/contact/contactbg.svg"
 import { Tooltip } from "react-tooltip";
 import Footer from "../components/homepage/Footer.jsx"
-import {AiFillInfoCircle} from "react-icons/ai"
+import {AiFillInfoCircle} from "react-icons/ai" 
 import Select from "react-select";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
