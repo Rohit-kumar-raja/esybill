@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import RegistrationForm from "./pages/RegistrationForm.jsx";
 import { store } from "./store";
@@ -23,16 +23,19 @@ import Pricing from "./pages/Pricing.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 
 function App() {
+
+  const [scrollProp, setScrollProp] = useState(false)
+
   return (
     <> 
-   
+    
       <Provider store={store}>
         <div 
           style={{ backgroundImage: `url(${background})` }} 
         >
           <Routes>
-            <Route path="/" element={<HomePage/>}/>
-            <Route path="/contact-us" element={<AddContact/>} />
+            <Route path="/" element={<HomePage scrollProp={scrollProp} setScrollProp={setScrollProp}/>}/>
+            <Route path="/contact-us" element={<AddContact scrollProp={scrollProp}/>} />
             <Route path="/signup" element={ <RegistrationForm/> } />
             <Route path="login" element={ <LoginForm/> } />
             <Route path="dashboard" element={ <Dashboard/> }>

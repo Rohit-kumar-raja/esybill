@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import HeroImage from "../assets/contact/hero.png"
 import emailimg from "../assets/contact/email.svg"
 import phoneimg from "../assets/contact/phone.svg"
@@ -28,7 +28,7 @@ const consultationContent = [
   "For any other inquiries or topics not covered in the above categories."
 ]
 
-const AddContact = () => {
+const AddContact = ({scrollProp}) => {
   
   // const clickHandler = (val) => {
   //   if(val === "hmsdemo"){
@@ -150,7 +150,14 @@ const AddContact = () => {
   const [state, setState] = useState("")
   
   const [disabled, setDisabled] = useState(true)
-  function isValidEmail(email) {
+  const scollToRef = useRef();
+
+  useEffect(()=>{
+    if(scrollProp){
+      scollToRef.current.scrollIntoView()
+    }
+  },[scrollProp])
+  function isValidEmail(email) { 
     return /\S+@\S+\.\S+/.test(email);
   }
 
@@ -254,7 +261,7 @@ const AddContact = () => {
           <Cards img={phoneimg} title="PHONE NUMBER" content="+91 9836041044" />
         </div>
       </div>
-      <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"
+      <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"  ref={scollToRef}
         style={{ backgroundImage: `url(${contactbg})`,backgroundRepeat : "no-repeat", backgroundSize :"cover" }}>
         <p className="text-[#800080] font-poppins text-2xl text-center font-bold">Feel free to Register a demonstration or consultation</p>
         <p className="text-[#333333] font-raleway font-medium md:px-6">Get in touch and let us know how we can help. Fill out the form and we{"'"}ll be in touch as soon as possible.</p>

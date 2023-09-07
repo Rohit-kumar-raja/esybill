@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React, {  useState } from "react"
 import logo1 from "../../assets/homepage/logo1.png"
 import logo2 from "../../assets/homepage/logo2.png"
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const [dropdown, setdropdown] = useState(false)
-  useEffect(()=>{
-    console.log(dropdown)
-  })
+  
   return (
     <>
       <nav className="w-full bg-white shadow-lg">
@@ -96,7 +94,7 @@ const Navbar = () => {
               </ul>
 
                       
-            </div>
+            </div> 
           </div>
                
         </div>

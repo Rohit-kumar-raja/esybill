@@ -3,8 +3,10 @@ import background from "../../assets/homepage/test.svg"
 import bgimg from "../../assets/homepage/bgimg.svg"
 import scanner from "../../assets/homepage/scanner.svg"
 import Sticky from "react-sticky-el";
-import { Link } from "react-router-dom";
-const HeroSection = () => {
+import { Link, useNavigate } from "react-router-dom";
+
+const HeroSection = (props) => {
+  const navigate = useNavigate()
   return (
     <>
       <div className="grid grid-rows-3 grid-flow-col"> 
@@ -23,8 +25,13 @@ const HeroSection = () => {
     bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2'>
                 <Link to="/about">Learn More</Link></button>
               <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2'>
-                <Link to="/contact-us">Get a Free Demo</Link></button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2' 
+              onClick={() => {
+                props.setScrollProp(true)
+                navigate("/contact-us") 
+              }}
+              >
+                Get a Free Demo</button>
             </div>
           </div>
 
@@ -70,8 +77,12 @@ const HeroSection = () => {
     bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2 font-raleway'>
               <Link to="/about"> Learn More</Link></button>
             <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2 font-raleway'>
-              <Link to="/contact-us">Get a Free Demo</Link></button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2 
+    font-raleway'  onClick={() => {
+              props.setScrollProp(true)
+              navigate("/contact-us") 
+            }}>
+          Get a Free Demo</button>
           </div>
         </div>
  
