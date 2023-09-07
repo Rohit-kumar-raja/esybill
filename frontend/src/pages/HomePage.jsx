@@ -8,16 +8,17 @@ import Testimonials from "../components/homepage/Testimonials.jsx"
 import Contact from "../components/homepage/Contact.jsx"
 import Footer from "../components/homepage/Footer.jsx"
 
-const HomePage = () => {
+const HomePage = ({setScrollProp}) => {
+  
   return (
     <>
-      <Navbar/>
-      <HeroSection/>
+      <Navbar />
+      <HeroSection setScrollProp={setScrollProp}/> 
       <Features/>
       <MainFeatures/>
-      <OfferSection/>
+      <OfferSection setScrollProp={setScrollProp}/>
       <Testimonials/>
-      <Contact/>
+      <Contact />
       <Footer/>
     </>
   )

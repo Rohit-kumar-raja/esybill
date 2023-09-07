@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import HeroImage from "../assets/contact/hero.png"
 import emailimg from "../assets/contact/email.svg"
 import phoneimg from "../assets/contact/phone.svg"
@@ -6,65 +6,96 @@ import location from "../assets/contact/location.svg"
 import Navbar from "../components/homepage/Navbar.jsx"
 import Cards from "../components/contactpage/Cards.jsx"
 import contactbg from "../assets/contact/contactbg.svg"
+import { Tooltip } from "react-tooltip";
 import Footer from "../components/homepage/Footer.jsx"
-import {AiFillInfoCircle} from "react-icons/ai"
-import {MdOutlineClose} from "react-icons/md"
+import {AiFillInfoCircle} from "react-icons/ai" 
 import Select from "react-select";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../api/axios"
-const AddContact = () => {
-  const [value, setValue] = useState("")
-  const clickHandler = (val) => {
-    if(val === "hmsdemo"){
-      setValue("hmsDemo")
-    }
-    else if(val === "rmsdemo"){
-      setValue("rmsdemo")
-    }
-    else if(val === "cmdemo"){
-      setValue("cmdemo")
-    }
-    else if(val === "comdemo"){
-      setValue("comdemo")
-    }
-    else if(val === "conprice"){
-      setValue("conprice")
-    }
-    else if(val === "consys"){
-      setValue("consys")
-    }
-    else if(val === "conreport"){
-      setValue("conreport")
-    }
-    else if(val === "coninquiry"){
-      setValue("coninquiry")
-    }
+
+const demoContent = [
+  "A demonstration tailored to highlight the capabilities and features of our hotel management software, with or without the service terminal option",
+  "A demonstration specifically focused on showcasing the features and functionality of our restaurant management software.",
+  "A demonstration specifically focused on showcasing the features and functionality of our restaurant management software.",
+  "A comprehensive demonstration that covers both the Restaurant Software (RMS) and Hotel Software (HMS), including the option to include or exclude the service terminal functionality."
+]
+ 
+const consultationContent = [
+  "If you have any questions or queries regarding our pricing structure, packages, or payment options.",
+  "For inquiries related to the system requirements and infrastructure needed to run our software effectively.",
+  "If you require customized tools or specific reporting features tailored to your business needs.",
+  "For any other inquiries or topics not covered in the above categories."
+]
+
+const AddContact = ({scrollProp}) => {
+  
+  // const clickHandler = (val) => {
+  //   if(val === "hmsdemo"){
+  //     setValue("hmsDemo")
+  //   }
+  //   else if(val === "rmsdemo"){
+  //     setValue("rmsdemo")
+  //   }
+  //   else if(val === "cmdemo"){
+  //     setValue("cmdemo")
+  //   }
+  //   else if(val === "comdemo"){
+  //     setValue("comdemo")
+  //   }
+  //   else if(val === "conprice"){
+  //     setValue("conprice")
+  //   }
+  //   else if(val === "consys"){
+  //     setValue("consys")
+  //   }
+  //   else if(val === "conreport"){
+  //     setValue("conreport")
+  //   }
+  //   else if(val === "coninquiry"){
+  //     setValue("coninquiry")
+  //   }
    
-    else {
-      setValue("")
-    }
-  }
+  //   else {
+  //     setValue("")
+  //   }
+  // }
   const data = [
     {
       value: 1,
       text: "Hotel Management Software (HMS) Demo",
-      icon: <AiFillInfoCircle onClick={()=>clickHandler("hmsdemo")}/>
+      icon: <AiFillInfoCircle 
+      // onMouseEnter={()=>clickHandler("hmsdemo")} 
+      //   onMouseLeave={()=>clickHandler("")} 
+        data-tooltip-id="my-tooltip" data-tooltip-content={demoContent[0]} 
+      />
     },
     {
       value: 2,
       text: "Restaurant Management Software (RMS) Demo",
-      icon: <AiFillInfoCircle onClick={()=>clickHandler("rmsdemo")}/>
+      icon: <AiFillInfoCircle 
+        // onMouseEnter={()=>clickHandler("rmsdemo")} 
+        // onMouseLeave={()=>clickHandler("")}
+        data-tooltip-id="my-tooltip" data-tooltip-content={demoContent[1]} 
+      />
     },
     {
       value: 3,
       text: "Cloud Menu (CM)",
-      icon: <AiFillInfoCircle onClick={()=>clickHandler("cmdemo")} />
+      icon: <AiFillInfoCircle 
+      // onMouseEnter={()=>clickHandler("cmdemo")}  
+      //   onMouseLeave={()=>clickHandler("")}
+        data-tooltip-id="my-tooltip" data-tooltip-content={demoContent[2]} 
+      />
     },
     {
       value: 4,
       text: "Combined Demo",
-      icon: <AiFillInfoCircle onClick={()=>clickHandler("comdemo")} />
+      icon: <AiFillInfoCircle 
+      // onMouseEnter={()=>clickHandler("comdemo")}  
+      //   onMouseLeave={()=>clickHandler("")}
+        data-tooltip-id="my-tooltip" data-tooltip-content={demoContent[3]} 
+      />
     }
   ];
 
@@ -73,28 +104,42 @@ const AddContact = () => {
     {
       value: 1,
       text: "Pricing Inquiry",
-      icon: <AiFillInfoCircle onClick={()=>clickHandler("conprice")}/>
+      icon: <AiFillInfoCircle 
+      // onMouseEnter={()=>clickHandler("conprice")} 
+      //   onMouseLeave={()=>clickHandler("")} 
+        data-tooltip-id="my-tooltip" data-tooltip-content={consultationContent[0]} 
+      />
     },
     {
       value: 2,
       text: "System Requirements & Infrastructure",
-      icon: <AiFillInfoCircle onClick={()=>clickHandler("consys")}/>
+      icon: <AiFillInfoCircle
+      // onMouseEnter={()=>clickHandler("conprice")} 
+      //   onMouseLeave={()=>clickHandler("")} 
+        data-tooltip-id="my-tooltip" data-tooltip-content={consultationContent[1]} 
+      />
     },
     {
       value: 3,
       text: "Customized Tools & Reporting",
-      icon: <AiFillInfoCircle onClick={()=>clickHandler("conreport")} />
+      icon: <AiFillInfoCircle
+        // onMouseEnter={()=>clickHandler("conprice")} 
+      //   onMouseLeave={()=>clickHandler("")} 
+        data-tooltip-id="my-tooltip" data-tooltip-content={consultationContent[2]} 
+      />
     },
     {
       value: 4,
       text: "Other Inquiries",
-      icon: <AiFillInfoCircle onClick={()=>clickHandler("coninquiry")} />
+      icon: <AiFillInfoCircle 
+        // onMouseEnter={()=>clickHandler("conprice")} 
+      //   onMouseLeave={()=>clickHandler("")} 
+        data-tooltip-id="my-tooltip" data-tooltip-content={consultationContent[3]} 
+      />
     }
   ];
 
-  useEffect(()=>{
-    console.log("value", value)
-  },[value])
+  
   const [contactRadio, setcontactRadio] = useState("Demo Purpose")
   const [selectedOption, setSelectedOption] = useState(null);
   const [conSelectedOption, setconSelectedOption] = useState(null);
@@ -105,9 +150,26 @@ const AddContact = () => {
   const [state, setState] = useState("")
   
   const [disabled, setDisabled] = useState(true)
+  const scollToRef = useRef();
+
   useEffect(()=>{
-    if(name !== "" && email !=="" && phone !=="" && state !="" && (selectedOption !=="" || conSelectedOption !=="")){
-      setDisabled(false)
+    if(scrollProp){
+      scollToRef.current.scrollIntoView()
+    }
+  },[scrollProp])
+  function isValidEmail(email) { 
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
+  useEffect(()=>{
+    if(name !== "" && email !=="" && phone?.length === 10 && state !="" && (selectedOption !=="" || conSelectedOption !==""))
+    {
+      if (isValidEmail(email)) {
+        setDisabled(false)
+      }
+      else{
+        setDisabled(true)
+      }
     }
     else{
       setDisabled(true)
@@ -172,11 +234,22 @@ const AddContact = () => {
     
   }; 
   useEffect(()=>{ 
-    console.log(contactRadio)
-  },[contactRadio])  
+    console.log(phone?.length,typeof phone?.length, "phone")
+  },[phone])  
+
+  
   return (
     <> 
       <ToastContainer autoClose={2000}/>
+      <Tooltip id="my-tooltip" place="right"
+        style={{backgroundColor: "#FFE1FF", 
+          border:"#7E007E",
+          borderColor:"#7E007E",
+          borderWidth:"1px",
+          color:"#7E007E",
+          fontSize:"8px",
+          width:"10rem"}}
+      />
       <Navbar/>
       <div className="grid grid-cols-1  md:grid-cols-2">
         <div><img src={HeroImage} alt="hero" width={500} className="md:ml-12" /></div>
@@ -188,7 +261,7 @@ const AddContact = () => {
           <Cards img={phoneimg} title="PHONE NUMBER" content="+91 9836041044" />
         </div>
       </div>
-      <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"
+      <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"  ref={scollToRef}
         style={{ backgroundImage: `url(${contactbg})`,backgroundRepeat : "no-repeat", backgroundSize :"cover" }}>
         <p className="text-[#800080] font-poppins text-2xl text-center font-bold">Feel free to Register a demonstration or consultation</p>
         <p className="text-[#333333] font-raleway font-medium md:px-6">Get in touch and let us know how we can help. Fill out the form and we{"'"}ll be in touch as soon as possible.</p>
@@ -228,7 +301,7 @@ const AddContact = () => {
             </label>
           </div>
         </div>
-        <form className="w-full bg-transparent relative
+        <form className="w-full bg-transparent 
         rounded-xl py-5 px-4 md:px-[10rem] font-raleway flex flex-col" 
         onSubmit={submitHandler} >
     
@@ -252,20 +325,23 @@ const AddContact = () => {
                bg-white-200 text-[#7E007E] border-2 
                border-[#A9A9A9] rounded-md py-3 px-4 mb-3 
                leading-tight focus:outline-none focus:border-2 
-               focus:border-[#800080] focus:bg-white" id="grid-first-name" type="text" 
-              onChange={(e)=> setEmail(e.target.value)}
+               focus:border-[#800080] focus:bg-white" id="grid-first-name" type="email" 
+              onChange={(e)=> setEmail(e.target.value)} required
               />
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
              
-              <input placeholder="Phone" value={phone} className="appearance-none block w-full
+              <input placeholder="Phone" value={phone} className="appearance-none 
+              block w-full
               placeholder-[#7E007E]
                bg-[#F7F0F7] text-[#7E007E] border-2 border-[#A9A9A9] rounded-md py-3 
                px-4 mb-3 leading-tight focus:outline-none font-poppins
                focus:border-2 focus:border-[#800080] focus:bg-white" 
               maxLength="10" 
+              minLength="10"
+              required
               onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
               id="grid-first-name" type="text" onChange={(e)=> setPhone(e.target.value)}
               />
@@ -278,18 +354,25 @@ const AddContact = () => {
                    
                    
                     <Select
-                      className="bg-gray-50  block text-xs border-2 border-[#A9A9A9] 
-                 rounded-md focus:outline-none 
+                      className="bg-gray-50  block  border-2 border-[#A9A9A9] 
+                 rounded-md focus:outline-none font-poppins
                 focus:shadow-lg focus:shadow-[#800080]-500/50 
-                focus:border-2 focus:border-[#800080]
+                focus:border-2 focus:border-[#800080] text-[#800080]
                   w-full" 
                       placeholder="Subject"
+                      theme={theme => ({
+                        ...theme,
+                        colors: {
+                          ...theme.colors,
+                          neutral50: "#800080",  // Placeholder color
+                        },
+                      })}
                       value={conSelectedOption}
                       options={consultationData}
                       onChange={consultationSelectedOption}
                       getOptionLabel={e => (
                         <>
-                          <div className="flex justify-between">
+                          <div className="flex justify-between relative">
                       
                             <span >{e.text}</span>
                             <span  role="presentation" >{e.icon}</span>
@@ -297,23 +380,30 @@ const AddContact = () => {
                      
                         </>
                       )}
-                    />
+                    /> 
 
                   </> : contactRadio === "Demo Purpose" ? 
                     <>
                       <Select
-                        className="bg-gray-50  block text-xs border-2 border-[#A9A9A9] 
-                 rounded-md focus:outline-none 
+                        className="bg-gray-50  block  border-2 border-[#A9A9A9] 
+                 rounded-md focus:outline-none  font-poppins leading-tight
                 focus:shadow-lg focus:shadow-[#800080]-500/50 
-                focus:border-2 focus:border-[#800080]
+                focus:border-2 focus:border-[#800080] text-[#800080]
                   w-full" 
-                        placeholder=""
+                        placeholder="Subject"
+                        theme={theme => ({
+                          ...theme,
+                          colors: {
+                            ...theme.colors,
+                            neutral50: "#800080",  // Placeholder color
+                          },
+                        })}
                         value={selectedOption}
                         options={data}
                         onChange={selectChange}
                         getOptionLabel={e => (
                           <>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between ">
                       
                               <span >{e.text}</span>
                               <span  role="presentation" >{e.icon}</span>
@@ -328,74 +418,7 @@ const AddContact = () => {
             </div>
           
             
-            {value === "hmsDemo" ? (
-              <div className="absolute right-0  text-[8px] bg-[#FFE1FF] 
-                text-[#7E007E] border-2 border-[#7E007E] p-1 rounded-md 
-                w-full md:w-[10rem] ">
-                <MdOutlineClose className="ml-auto" onClick={()=> setValue("")} />
-                <span>A demonstration tailored to highlight the capabilities and features of our hotel management software, with or without the service terminal option.
-                </span>
-              </div>
-            ) : value === "rmsdemo" ? (
-              <div className="absolute right-0  text-[8px] bg-[#FFE1FF] 
-                text-[#7E007E] border-2 border-[#7E007E] p-1 rounded-md 
-                w-full md:w-[10rem] ">
-                <MdOutlineClose className="ml-auto" onClick={()=> setValue("")} />
-                <span>A demonstration specifically focused on showcasing the features and functionality of our restaurant management software.
-                </span>
-              </div>
-            ) : value === "cmdemo" ? (
-              <div className="absolute right-0  text-[8px] bg-[#FFE1FF] 
-                text-[#7E007E] border-2 border-[#7E007E] p-1 rounded-md 
-                w-full md:w-[10rem] ">
-                <MdOutlineClose className="ml-auto" onClick={()=> setValue("")} />
-                <span>A demonstration specifically focused on showcasing the features and functionality of our restaurant management software.
-                </span>
-              </div>
-            ): value === "comdemo" ? (
-              <div className="absolute right-0  text-[8px] bg-[#FFE1FF] 
-                text-[#7E007E] border-2 border-[#7E007E] p-1 rounded-md 
-                w-full md:w-[10rem] ">
-                <MdOutlineClose className="ml-auto" onClick={()=> setValue("")} />
-                <span>A comprehensive demonstration that covers both the Restaurant Software (RMS) and Hotel Software (HMS), including the option to include or exclude the service terminal functionality.
-                </span>
-              </div>
-            ): value === "conprice" ? (
-              <div className="absolute right-0  text-[8px] bg-[#FFE1FF] 
-                text-[#7E007E] border-2 border-[#7E007E] p-1 rounded-md 
-                w-full md:w-[10rem] ">
-                <MdOutlineClose className="ml-auto" onClick={()=> setValue("")} />
-                <span>If you have any questions or queries regarding our pricing structure, packages, or payment options.
-                </span>
-              </div>
-            ) :
-              value === "consys" ? (
-                <div className="absolute right-0  text-[8px] bg-[#FFE1FF] 
-                text-[#7E007E] border-2 border-[#7E007E] p-1 rounded-md 
-                w-full md:w-[10rem] ">
-                  <MdOutlineClose className="ml-auto" onClick={()=> setValue("")} />
-                  <span>For inquiries related to the system requirements and infrastructure needed to run our software effectively.
-                  </span>
-                </div>
-              ): 
-                value === "conreport" ? (
-                  <div className="absolute right-0  text-[8px] bg-[#FFE1FF] 
-                text-[#7E007E] border-2 border-[#7E007E] p-1 rounded-md 
-                w-full md:w-[10rem] ">
-                    <MdOutlineClose className="ml-auto" onClick={()=> setValue("")} />
-                    <span>If you require customized tools or specific reporting features tailored to your business needs.
-                    </span>
-                  </div>
-                ):
-                  value === "coninquiry" ? (
-                    <div className="absolute right-0  text-[8px] bg-[#FFE1FF] 
-                text-[#7E007E] border-2 border-[#7E007E] p-1 rounded-md 
-                w-full md:w-[10rem] ">
-                      <MdOutlineClose className="ml-auto" onClick={()=> setValue("")} />
-                      <span>For any other inquiries or topics not covered in the above categories.
-                      </span>
-                    </div>
-                  ): null}
+           
 
  
           </div>

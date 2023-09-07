@@ -3,8 +3,10 @@ import background from "../../assets/homepage/test.svg"
 import bgimg from "../../assets/homepage/bgimg.svg"
 import scanner from "../../assets/homepage/scanner.svg"
 import Sticky from "react-sticky-el";
-import { Link } from "react-router-dom";
-const HeroSection = () => {
+import { Link, useNavigate } from "react-router-dom";
+
+const HeroSection = (props) => {
+  const navigate = useNavigate()
   return (
     <>
       <div className="grid grid-rows-3 grid-flow-col"> 
@@ -23,15 +25,20 @@ const HeroSection = () => {
     bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2'>
                 <Link to="/about">Learn More</Link></button>
               <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2'>
-                <Link to="/contact-us">Get a Free Demo</Link></button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2' 
+              onClick={() => {
+                props.setScrollProp(true)
+                navigate("/contact-us") 
+              }}
+              >
+                Get a Free Demo</button>
             </div>
           </div>
 
 
         </div>
         <div className=" row-span-3  col-span-2">
-          <img src={background} className='object-cover h-full w-screen' alt='bg-img'/>
+          <img src={background} className='object-cover h-full md:h-[70vh] w-screen' alt='bg-img'/>
  
           {/* <div className='flex  gap-2 flex-col '> */}
           <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
@@ -57,7 +64,7 @@ const HeroSection = () => {
       </div>
       <div className="row-span-3 md:hidden">
 
-        <div className='flex flex-col items-center md:items-start gap-1 px-5 md:px-20 py-10'>
+        <div className='flex flex-col items-center md:items-start gap-1 px-5 md:px-20 '>
           <button className='
     bg-rgba font-normal text-[12px] text-white rounded-xl px-4 py-1 my-4 font-poppins'>Your bill is on us!!</button>
           <p className='text-[#333333] font-semibold  text-[25px] font-raleway'>Hotel and Restaurant </p>
@@ -70,15 +77,19 @@ const HeroSection = () => {
     bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2 font-raleway'>
               <Link to="/about"> Learn More</Link></button>
             <button className='
-    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2 font-raleway'>
-              <Link to="/contact-us">Get a Free Demo</Link></button>
+    border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2 
+    font-raleway'  onClick={() => {
+              props.setScrollProp(true)
+              navigate("/contact-us") 
+            }}>
+          Get a Free Demo</button>
           </div>
         </div>
  
       </div>
       <Sticky className="z-[99] relative top-0">
         <div className="grid grid-cols-1 md:grid-cols-3 z-[99] relative 
-          py-6 md:py-3 font-raleway bg-no-repeat bg-cover" 
+          py-6 md:py-3 font-raleway bg-no-repeat bg-cover " 
         style={{ backgroundImage: `url(${bgimg})`, backgroundRepeat:"no-repeat", backgroundSize:"cover" }}>
           <div className='col-span-1 md:col-span-2'>
             <div className='col-span-1 md:flex md:items-center md:justify-center md:col-span-2'>
@@ -97,7 +108,7 @@ const HeroSection = () => {
           </div>
           <div className='flex items-center justify-center py-3 md:py-0'>
             <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>
-              <Link to="/about">Try free Cloud Menu for 3 Months</Link> </button>
+              <Link to="/cm">Try free Cloud Menu for 3 Months</Link> </button>
           </div>
         </div>
       </Sticky>
