@@ -30,7 +30,7 @@ const Contact = () => {
       text: "Hotel Management Software (HMS)",
       icon: <AiFillInfoCircle
       //  onClick={hmsclickHandler}
-        data-tooltip-id="my-tooltip" data-tooltip-content="hh" 
+        data-tooltip-id="my-tooltip" data-tooltip-content={scheduleCallData[0]}
       />
     },
     {
@@ -71,9 +71,18 @@ const Contact = () => {
   useEffect(()=>{
     console.log(name, email, phone, date, time, selectedOption)
   })
+
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
   useEffect(()=>{
-    if(name !== "" && email !=="" && phone !=="" && date !="" && time !=""){
-      setDisabled(false)
+    if(name !== "" && email !=="" && phone?.length === 10 && date !="" && time !=""){
+      if (isValidEmail(email)) {
+        setDisabled(false)
+      }
+      else
+        setDisabled(true)
     }
     else{
       setDisabled(true)
@@ -164,7 +173,8 @@ const Contact = () => {
                 bg-white-200 text-gray-700 border-2 border-[#A9A9A9] 
                 rounded py-3 px-4 mb-3 leading-tight focus:outline-none 
                 focus:border-2 focus:border-[#800080] focus:bg-white" 
-                maxLength="10"  value={phone}
+                maxLength="10" 
+                minLength="10" value={phone}
                 onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
                 id="grid-first-name" type="text" onChange={(e)=> setPhone(e.target.value)}
                 />
@@ -180,7 +190,7 @@ const Contact = () => {
                 rounded py-3 px-4  leading-tight focus:outline-none 
                 focus:border-2 focus:border-[#800080] focus:bg-white" 
                 id="grid-first-name" type="email" value={email}
-                onChange={(e)=> setEmail(e.target.value)}
+                onChange={(e)=> setEmail(e.target.value)} required
                 /> 
     
               </div>
