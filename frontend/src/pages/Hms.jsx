@@ -96,7 +96,8 @@ const Hms = () => {
       <div className="flex flex-col justify-center items-center font-poppins" >
         <img src={location?.pathname === "/hms" ? hmsheader : location?.pathname === "/rms"?
           rmsheader : cmheader } className='object-cover h-[100%] w-screen' alt='bg-img'/>
-        <h2 className="text-[#983398] font-bold uppercase md:text-[35px] mt-[-20%]">
+        <h2 className="text-[#983398] font-bold uppercase text-[20px] flex flex-wrap
+        md:text-[35px] mt-[-25%] md:mt-[-20%] w-min md:w-max  items-center">
           {
             location?.pathname === "/hms" ? "Hotel management Software" : 
               location?.pathname === "/rms" ? "Restaurant Management Software"
@@ -155,7 +156,7 @@ const Hms = () => {
           
             <div  style={{ backgroundImage: `url(${arr[3][0]})`,
               backgroundRepeat:"no-repeat",
-              backgroundSize:"cover" }}>
+              backgroundSize:"contain" }}>
               {
                 arr[0]?.map(arr => (
                   <>
@@ -176,7 +177,8 @@ const Hms = () => {
           : null
       }
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-poppins">
-        <div className="flex flex-col justify-center items-center">
+        {/* change */}
+        <div className="flex flex-col justify-evenly items-center">
           {
             arr?.length > 0 ? 
               arr[1]?.map(arr => (
@@ -196,7 +198,7 @@ const Hms = () => {
         <img 
           src={location?.pathname === "/hms" ? hmsfeaturesimg : location?.pathname === "/rms"?
             rmsfeaturesimg : null }
-          alt="" />
+          alt="" className="object-contain" />
       </div>
       {
         arr?.length > 0 ? 
@@ -212,7 +214,7 @@ const Hms = () => {
             </>
           ))
           : null
-      }
+      } 
       {
         location?.pathname === "/cm" ? 
           <>

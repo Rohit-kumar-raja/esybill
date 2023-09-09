@@ -4,6 +4,7 @@ import bgimg from "../../assets/homepage/bgimg.svg"
 import scanner from "../../assets/homepage/scanner.svg"
 import Sticky from "react-sticky-el";
 import { Link, useNavigate } from "react-router-dom";
+import { BiRupee } from "react-icons/bi";
 
 const HeroSection = (props) => {
   const navigate = useNavigate()
@@ -102,7 +103,7 @@ const HeroSection = (props) => {
                 <p className='text-xs text-[#7E007E] flex flex-col md:flex-row 
                 justify-start 
                   flex-wrap font-bold px-0'>
-                  Launching Offer- FREE for 3 months. After that only ₹69/-  per month !</p>
+                  Launching Offer- FREE for 3 months. After that only <BiRupee/> 69/-  per month !</p>
               </div>
             </div>
           </div>
