@@ -53,9 +53,9 @@ const Pricing = () => {
           value={selectedValue} onChange={handleSelectChange}
           >
             <option  selected>Choose an option</option>
-            <option value="HMS">HMS</option>
-            <option value="RMS">RMS</option>
-            <option value="CMS">CMS</option>
+            <option value="HMS">Hotel Management Software (HMS)</option>
+            <option value="RMS">Resturant Management Software (RMS)</option>
+            <option value="CMS">Cloud Menu (CMS)</option>
           
           </select>
 

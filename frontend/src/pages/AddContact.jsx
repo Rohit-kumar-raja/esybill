@@ -148,6 +148,7 @@ const AddContact = ({scrollProp}) => {
   const [email, setEmail] = useState("") 
   const [phone, setPhone] = useState("") 
   const [state, setState] = useState("")
+  const [pincode, setPincode] = useState("")
   
   const [disabled, setDisabled] = useState(true)
   const scollToRef = useRef();
@@ -162,7 +163,7 @@ const AddContact = ({scrollProp}) => {
   }
 
   useEffect(()=>{
-    if(name !== "" && email !=="" && phone?.length === 10 && state !="" && (selectedOption !=="" || conSelectedOption !==""))
+    if(name !== "" && email !=="" && phone?.length === 10 && state !="" && pincode !="" && (selectedOption !=="" || conSelectedOption !==""))
     {
       if (isValidEmail(email)) {
         setDisabled(false)
@@ -192,7 +193,7 @@ const AddContact = ({scrollProp}) => {
       {
         subject = selectedOption?.text
         response = await axios.post(`/api/home/form/${"demo"}`,{
-          name,email, phone, state, subject
+          name,email, phone, state, subject, pincode
         })
         
       }
@@ -200,7 +201,7 @@ const AddContact = ({scrollProp}) => {
       {
         subject = conSelectedOption?.text
         response = await axios.post(`/api/home/form/${"consultation"}`,{
-          name,email, phone, state, subject
+          name,email, phone, state, subject, pincode
         })
         
       }
@@ -222,6 +223,7 @@ const AddContact = ({scrollProp}) => {
     setEmail("") 
     setPhone("") 
     setState("")
+    setPincode("")
     setSelectedOption("")
     setconSelectedOption("")
   }
@@ -433,7 +435,17 @@ const AddContact = ({scrollProp}) => {
               />
     
             </div>
-          
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+             
+              <input placeholder="Pincode" className="appearance-none block w-full 
+             bg-white-200 text-[#7E007E] border-2 border-[#A9A9A9] placeholder-[#7E007E]
+              rounded-md py-3 px-4 mb-3 leading-tight focus:outline-none font-poppins
+              focus:border-2 focus:border-[#800080] focus:bg-white" value={pincode}
+              onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
+              id="grid-first-name" type="text" onChange={(e)=> setPincode(e.target.value)}
+              />
+   
+            </div>
           </div>
           <button className={`bg-[#800080] font-poppins self-center
            font-medium text-[15px] text-white rounded-md px-20 py-2 
