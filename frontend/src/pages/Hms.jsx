@@ -6,7 +6,7 @@ import hmsheader from "../assets/products/hmsheader.svg"
 import hmsimg from "../assets/products/hms-img.svg"
 import rmsimg from "../assets/products/rms-img.svg"
 import cmimg from "../assets/products/cm-img.svg"
-import { useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 import { hms } from "../constants/productsData.js"
 import { rms } from "../constants/productsData.js"
@@ -36,6 +36,7 @@ import step10 from "../assets/products/carousel/step-10.svg"
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import CloudMenuCards from "../components/homepage/CloudMenuCards.jsx"
+import { useRef } from "react"
 
 
 const Hms = () => {
@@ -80,21 +81,42 @@ const Hms = () => {
   useEffect(()=>{
     console.log("arr", arr, arr?.length)
   },[arr])
+
+  const scrollRef = useRef()
+  useEffect(()=>{
+    scrollRef.current.scrollIntoView()
+  },[])
   return (
    
     <>
-      <Navbar/>
-      <div className="flex flex-col justify-center items-center font-poppins">
+      <div  ref={scrollRef}>
+        <Navbar />
+      </div>
+    
+      <div className="flex flex-col justify-center items-center font-poppins" >
         <img src={location?.pathname === "/hms" ? hmsheader : location?.pathname === "/rms"?
           rmsheader : cmheader } className='object-cover h-[100%] w-screen' alt='bg-img'/>
-        <h2 className="text-[#983398] font-bold uppercase md:text-[35px] mt-[-20%]">
+        <h2 className="text-[#983398] font-bold uppercase text-[20px] flex flex-wrap
+        md:text-[35px] mt-[-25%] md:mt-[-20%] w-min md:w-max  items-center">
           {
             location?.pathname === "/hms" ? "Hotel management Software" : 
               location?.pathname === "/rms" ? "Restaurant Management Software"
                 : "CLOUD MENU" 
           }
         </h2>
-       
+        <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
+     md:items-end top-[15%] md:top-[25%]'>
+          <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
+    bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>
+            <Link to="/login">Login</Link> 
+          </button>
+          <button className='rotate-90 font-raleway md:-rotate-90 mt-[7rem] ml-[-0.4rem] md:ml-[0rem] md:mr-[-2.4rem] 
+    border-2 border-[#7E007E] max-w-max bg-white font-normal text-[15px] text-[#7E007E]
+     rounded-t-2xl px-8 py-2'>
+            <Link to="/signup">Register</Link> 
+          </button>
+
+        </div>
       </div>
       <div className="flex flex-col justify-center items-center font-poppins">
         <h2 className="text-[#983398] font-bold text-[25px] py-12 md:py-24 px-4 md:px-1 text-center md:text-start">
@@ -146,7 +168,7 @@ const Hms = () => {
           
             <div  style={{ backgroundImage: `url(${arr[3][0]})`,
               backgroundRepeat:"no-repeat",
-              backgroundSize:"cover" }}>
+              backgroundSize:"contain" }}>
               {
                 arr[0]?.map(arr => (
                   <>
@@ -167,7 +189,8 @@ const Hms = () => {
           : null
       }
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-poppins">
-        <div className="flex flex-col justify-center items-center">
+        {/* change */}
+        <div className="flex flex-col justify-evenly items-center">
           {
             arr?.length > 0 ? 
               arr[1]?.map(arr => (
@@ -187,7 +210,7 @@ const Hms = () => {
         <img 
           src={location?.pathname === "/hms" ? hmsfeaturesimg : location?.pathname === "/rms"?
             rmsfeaturesimg : null }
-          alt="" />
+          alt="" className="object-contain" />
       </div>
       {
         arr?.length > 0 ? 
@@ -203,58 +226,63 @@ const Hms = () => {
             </>
           ))
           : null
-      }
+      } 
       {
         location?.pathname === "/cm" ? 
           <>
-            <Carousel 
-              autoPlay
-              infiniteLoop
-              showArrows={false}
-              renderIndicator={(onClickHandler, isSelected, index, label) => {
-                const defStyle = { marginLeft: 20, color: "#983398", cursor: "pointer" , fontSize: "15px", fontWeight: "bold"};
-                const style = isSelected
-                  ? { ...defStyle, color: "#983398" }
-                  : { ...defStyle };
-                return (
-                  <span
-                    style={style}
-                    onClick={onClickHandler}
-                    onKeyDown={onClickHandler}
+            <div className="flex items-center justify-center flex-col">
+              <button className="my-6 font-poppins
+              bg-rgba font-semibold text-[15px] text-white rounded w-5/6 px-4 md:px-8 py-4">
+                How to activate cloud menu?</button>
+              <Carousel 
+                autoPlay
+                infiniteLoop
+                showArrows={false}
+                renderIndicator={(onClickHandler, isSelected, index, label) => {
+                  const defStyle = { marginLeft: 20, color: "#983398", cursor: "pointer" , fontSize: "15px", fontWeight: "bold"};
+                  const style = isSelected
+                    ? { ...defStyle, color: "#983398" }
+                    : { ...defStyle };
+                  return (
+                    <span
+                      style={style}
+                      onClick={onClickHandler}
+                      onKeyDown={onClickHandler}
                     
-                    value={index}
-                    key={index}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={`${label} ${index + 1}`}
-                  >
-                    { index + 1}
-                  </span>
-                );
-              }}
-            >
+                      value={index}
+                      key={index}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`${label} ${index + 1}`}
+                    >
+                      { index + 1}
+                    </span>
+                  );
+                }}
+              >
              
-              <CloudMenuCards title="Step 1:" img={step1} content="Go to registration page or click generate cloud menu now button at home page"/>
+                <CloudMenuCards title="Step 1:" img={step1} content="Go to registration page or click generate cloud menu now button at home page"/>
              
-              <CloudMenuCards title="Step 2:" img={step2} content="Register your property or restaurant with OTP verification"/>
+                <CloudMenuCards title="Step 2:" img={step2} content="Register your property or restaurant with OTP verification"/>
             
-              <CloudMenuCards title="Step 3:" img={step3} content="Your account opened. Now login to your account"/>
+                <CloudMenuCards title="Step 3:" img={step3} content="Your account opened. Now login to your account"/>
 
-              <CloudMenuCards title="Step 4:" img={step4} content="Select generate cloud menu"/>
+                <CloudMenuCards title="Step 4:" img={step4} content="Select generate cloud menu"/>
 
-              <CloudMenuCards title="Step 5:" img={step5} content="Select photo for photo view menu Or select text for text view menu"/>
+                <CloudMenuCards title="Step 5:" img={step5} content="Select photo for photo view menu Or select text for text view menu"/>
 
-              <CloudMenuCards title="Step 6:" img={step6} content="Upload photo of your menu card or text manually"/>
+                <CloudMenuCards title="Step 6:" img={step6} content="Upload photo of your menu card or text manually"/>
 
-              <CloudMenuCards title="Step 7:" img={step7} content="Submit"/>
+                <CloudMenuCards title="Step 7:" img={step7} content="Submit"/>
 
-              <CloudMenuCards title="Step 8:" img={step8} content="Download QR code"/>
+                <CloudMenuCards title="Step 8:" img={step8} content="Download QR code"/>
 
-              <CloudMenuCards title="Step 9:" img={step9} content="Print the QR"/>
+                <CloudMenuCards title="Step 9:" img={step9} content="Print the QR"/>
 
-              <CloudMenuCards title="Step 10:" img={step10} content="Scan to Check and circulate with smile"/>
+                <CloudMenuCards title="Step 10:" img={step10} content="Scan to Check and circulate with smile"/>
               
-            </Carousel>
+              </Carousel>
+            </div>
           </>
           : null
       }

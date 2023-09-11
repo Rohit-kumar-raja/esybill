@@ -13,6 +13,7 @@ import Select from "react-select";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../api/axios"
+import { Link } from "react-router-dom"
 
 const demoContent = [
   "A demonstration tailored to highlight the capabilities and features of our hotel management software, with or without the service terminal option",
@@ -148,6 +149,7 @@ const AddContact = ({scrollProp}) => {
   const [email, setEmail] = useState("") 
   const [phone, setPhone] = useState("") 
   const [state, setState] = useState("")
+  const [pincode, setPincode] = useState("")
   
   const [disabled, setDisabled] = useState(true)
   const scollToRef = useRef();
@@ -162,7 +164,7 @@ const AddContact = ({scrollProp}) => {
   }
 
   useEffect(()=>{
-    if(name !== "" && email !=="" && phone?.length === 10 && state !="" && (selectedOption !=="" || conSelectedOption !==""))
+    if(name !== "" && email !=="" && phone?.length === 10 && state !="" && pincode !="" && (selectedOption !=="" || conSelectedOption !==""))
     {
       if (isValidEmail(email)) {
         setDisabled(false)
@@ -192,7 +194,7 @@ const AddContact = ({scrollProp}) => {
       {
         subject = selectedOption?.text
         response = await axios.post(`/api/home/form/${"demo"}`,{
-          name,email, phone, state, subject
+          name,email, phone, state, subject, pincode
         })
         
       }
@@ -200,7 +202,7 @@ const AddContact = ({scrollProp}) => {
       {
         subject = conSelectedOption?.text
         response = await axios.post(`/api/home/form/${"consultation"}`,{
-          name,email, phone, state, subject
+          name,email, phone, state, subject, pincode
         })
         
       }
@@ -222,6 +224,7 @@ const AddContact = ({scrollProp}) => {
     setEmail("") 
     setPhone("") 
     setState("")
+    setPincode("")
     setSelectedOption("")
     setconSelectedOption("")
   }
@@ -259,6 +262,20 @@ const AddContact = ({scrollProp}) => {
             West Bengal, India" />
           <Cards img={emailimg} title="EMAIL US" content="support@ezybillindia.com" />
           <Cards img={phoneimg} title="PHONE NUMBER" content="+91 9836041044" />
+
+          <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
+     md:items-end top-[15%] md:top-[25%]'>
+            <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
+    bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>
+              <Link to="/login">Login</Link> 
+            </button>
+            <button className='rotate-90 font-raleway md:-rotate-90 mt-[7rem] ml-[-0.4rem] md:ml-[0rem] md:mr-[-2.4rem] 
+    border-2 border-[#7E007E] max-w-max bg-white font-normal text-[15px] text-[#7E007E]
+     rounded-t-2xl px-8 py-2'>
+              <Link to="/signup">Register</Link> 
+            </button>
+
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"  ref={scollToRef}
@@ -433,7 +450,17 @@ const AddContact = ({scrollProp}) => {
               />
     
             </div>
-          
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+             
+              <input placeholder="Pincode" className="appearance-none block w-full 
+             bg-white-200 text-[#7E007E] border-2 border-[#A9A9A9] placeholder-[#7E007E]
+              rounded-md py-3 px-4 mb-3 leading-tight focus:outline-none font-poppins
+              focus:border-2 focus:border-[#800080] focus:bg-white" value={pincode}
+              onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
+              id="grid-first-name" type="text" onChange={(e)=> setPincode(e.target.value)}
+              />
+   
+            </div>
           </div>
           <button className={`bg-[#800080] font-poppins self-center
            font-medium text-[15px] text-white rounded-md px-20 py-2 

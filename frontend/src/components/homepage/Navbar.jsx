@@ -13,7 +13,7 @@ const Navbar = () => {
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
               <Link to="/">
-                <div className='flex items-center'>
+                <div className='flex items-center mr-0 md:mr-10'>
                   <img src={logo1} alt='logo' className='h-[40px]'/>
                   <img src={logo2} alt='logo' className='h-[35px]'/>
                 </div>
@@ -21,7 +21,10 @@ const Navbar = () => {
               <div className="md:hidden">
                 <button
                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-                  onClick={() => setNavbar(!navbar)}
+                  onClick={() => {
+                    setNavbar(!navbar)
+                    setdropdown(false)
+                  }}
                 >
                   {navbar ? (
                     <svg
