@@ -9,6 +9,7 @@ import Footer from "../components/homepage/Footer.jsx"
 import PricingCards from "../components/pricing/PricingCards.jsx"
 import RmsCards from "../components/pricing/RmsCards.jsx"
 import Sticky from "react-sticky-el";
+import { Link } from "react-router-dom"
 
 const Pricing = () => {
   const [selectedValue,setSelectedValue] = useState("HMS"); 
@@ -60,6 +61,21 @@ const Pricing = () => {
           </select>
 
         </div>
+
+        <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
+     md:items-end top-[15%] md:top-[25%]'>
+          <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
+    bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>
+            <Link to="/login">Login</Link> 
+          </button>
+          <button className='rotate-90 font-raleway md:-rotate-90 mt-[7rem] ml-[-0.4rem] md:ml-[0rem] md:mr-[-2.4rem] 
+    border-2 border-[#7E007E] max-w-max bg-white font-normal text-[15px] text-[#7E007E]
+     rounded-t-2xl px-8 py-2'>
+            <Link to="/signup">Register</Link> 
+          </button>
+
+        </div>
+
       </div>
       {
         selectedValue === "HMS" ? 
