@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Navbar from "../components/homepage/Navbar.jsx"
 import pricingbg from "../assets/pricing/pricingbg.svg"
 
@@ -9,7 +9,7 @@ import Footer from "../components/homepage/Footer.jsx"
 import PricingCards from "../components/pricing/PricingCards.jsx"
 import RmsCards from "../components/pricing/RmsCards.jsx"
 import Sticky from "react-sticky-el";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom" 
 
 const Pricing = () => {
   const [selectedValue,setSelectedValue] = useState("HMS"); 
@@ -18,17 +18,25 @@ const Pricing = () => {
     setSelectedValue(event.target.value);
   }
 
+  const scrollRef = useRef()
+  useEffect(()=>{
+    scrollRef.current.scrollIntoView()
+  },[]) 
+
   useEffect(()=>{
     console.log("selectedValue",selectedValue)
   },[selectedValue])
-  return (
+  return ( 
     <>
-      <Navbar/>
+      <div ref={scrollRef}>
+        <Navbar/>
+      </div>
+  
       <Sticky>
         <div className="flex justify-center items-center flex-col gap-2 py-2 px-1" 
           style={{ backgroundImage: `url(${pricingbg})` }}>
           <p className="text-[#B0138D] text-md md:text-[20px] font-semibold">Bigger Offer </p>
-          <p className="text-[#6C3C67] text-xs md:text-[16px] font-medium">Up to 10 rooms(Stand-Alone Version) – 699 including GST + Cloud Menu Absolutely Free</p>
+          <p className="text-[#6C3C67] text-xs md:text-[16px] font-medium">Up to 10 rooms(Stand-Alone Version) – ₹699 including GST + Cloud Menu Absolutely Free</p>
           <p className="text-[#FF7474] text-md md:text-[15px] font-medium">10% OFF On Annual Billing </p>
         </div>
       </Sticky>
@@ -45,7 +53,7 @@ const Pricing = () => {
         </p>
         <div className="flex justify-center items-center px-2 md:px-0">
           <label htmlFor="countries" className="block mb-2 text-sm font-medium w-[250px] mr-5
-            text-#170F49 ">Choose your service</label>
+            text-#170F49 ">Choose the application</label>
           <select id="countries" className="bg-gray-50 border 
            border-gray-300 text-gray-900 text-sm rounded-lg 
             focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 

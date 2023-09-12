@@ -70,9 +70,9 @@ const HeroSection = (props) => {
     bg-rgba font-normal text-[12px] text-white rounded-xl px-4 py-1 my-4 font-poppins'>Your bill is on us!!</button>
           <p className='text-[#333333] font-semibold  text-[25px] font-raleway'>Hotel and Restaurant </p>
           <p className='text-[#333333] font-semibold  text-[25px] font-raleway'>Management Software</p> 
-          <p className='text-[#920592] font-medium  text-[25px] font-raleway'>EzyBill India</p> 
-          <p className='text-[#333333] font-extralight text-[15px] mt-3 font-poppins'>Empowering Hospitality Excellence, Embrace the Finest</p>
-          <p className='text-[#333333] font-extralight text-[15px] font-poppins'>Hotel Management Software & Restaurant POS in India.</p>
+          <p className='text-[#920592] font-bold  text-[25px] font-poppins'>EzyBill India</p> 
+          <p className='text-[#333333] font-extralight text-[15px] mt-3 font-poppins'>Empowering Hospitality Excellence, Embrace the Finest Hotel Management Software & Restaurant POS in India.</p>
+          {/* <p className='text-[#333333] font-extralight text-[15px] font-poppins'>Hotel Management Software & Restaurant POS in India.</p> */}
           <div className='flex gap-3 py-3 my-3' >
             <button className='
     bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2 font-raleway'>
@@ -93,11 +93,11 @@ const HeroSection = (props) => {
           py-6 md:py-3 font-raleway bg-no-repeat bg-cover " 
         style={{ backgroundImage: `url(${bgimg})`, backgroundRepeat:"no-repeat", backgroundSize:"cover" }}>
           <div className='col-span-1 md:col-span-2'>
-            <div className='col-span-1 md:flex md:items-center md:justify-center md:col-span-2'>
+            <div className='grid grid-cols-3 md:flex md:items-center md:justify-center md:col-span-2'>
               <img src={scanner} alt="" className='w-24 h-24 
-             md:w-24 md:h-24 mx-auto md:mx-5 py-4 
+             md:w-24 md:h-24 mx-auto md:mx-5 py-4 my-auto
             back ' /> 
-              <div className="flex flex-col text-[#333333] px-4 md:px-0">
+              <div className="col-span-2 md:flex md:flex-col text-[#333333] px-4 md:px-0">
                 <p className='text-[14px] flex flex-wrap justify-start 
                  '>Scan this QR to access a sample <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>& Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>Cloud Menu </span> for your Restaurant, Hotel or Café. </p>
                 <p className='text-xs text-[#7E007E] flex flex-col md:flex-row 
@@ -109,7 +109,7 @@ const HeroSection = (props) => {
           </div>
           <div className='flex items-center justify-center py-3 md:py-0'>
             <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>
-              <Link to="/cm">Try free Cloud Menu for 3 Months</Link> </button>
+              <Link to="/signup">Try free Cloud Menu for 3 Months</Link> </button>
           </div>
         </div>
       </Sticky>

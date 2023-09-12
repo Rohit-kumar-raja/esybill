@@ -61,6 +61,12 @@ const AddContact = ({scrollProp}) => {
   //     setValue("")
   //   }
   // }
+
+  const scrollHeader = useRef()
+  useEffect(()=>{
+    scrollHeader.current.scrollIntoView()
+  },[])
+
   const data = [
     {
       value: 1,
@@ -81,7 +87,7 @@ const AddContact = ({scrollProp}) => {
       />
     },
     {
-      value: 3,
+      value: 3, 
       text: "Cloud Menu (CM)",
       icon: <AiFillInfoCircle 
       // onMouseEnter={()=>clickHandler("cmdemo")}  
@@ -253,7 +259,10 @@ const AddContact = ({scrollProp}) => {
           fontSize:"8px",
           width:"10rem"}}
       />
-      <Navbar/>
+      <div ref={scrollHeader}>
+        <Navbar/>
+      </div>
+     
       <div className="grid grid-cols-1  md:grid-cols-2">
         <div><img src={HeroImage} alt="hero" width={500} className="md:ml-12" /></div>
        
@@ -325,7 +334,7 @@ const AddContact = ({scrollProp}) => {
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
              
-              <input placeholder="Name" 
+              <input placeholder="Name *" 
                 value={name}
                 className="appearance-none block placeholder-[#7E007E] w-full bg-white-200 
                text-[#7E007E] border-2 border-[#A9A9A9] rounded-md py-3 px-4 mb-3 font-poppins
@@ -337,7 +346,7 @@ const AddContact = ({scrollProp}) => {
             </div>
             <div className="w-full md:w-1/2 px-3">
              
-              <input placeholder="Email" value={email} className="appearance-none block w-full 
+              <input placeholder="Email *" value={email} className="appearance-none block w-full 
               font-poppins placeholder-[#7E007E]
                bg-white-200 text-[#7E007E] border-2 
                border-[#A9A9A9] rounded-md py-3 px-4 mb-3 

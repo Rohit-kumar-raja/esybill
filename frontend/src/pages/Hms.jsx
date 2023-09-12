@@ -62,27 +62,31 @@ const Hms = () => {
     console.log(`${uriparam}`+"img")
   },[`${uriparam}`+"img"])
 
+  const scrollRef = useRef()
   useEffect(()=>{
     console.log(uriparam,"uriparam")
     if(location?.pathname === "/hms"){
       setArr(hmsfeature)
+      scrollRef.current.scrollIntoView()
     } 
     else if(location?.pathname === "/rms"){
       setArr(rmsfeature)
+      scrollRef.current.scrollIntoView()
     }
     else if(location?.pathname === "/cm"){
       setArr(cmfeature)
+      scrollRef.current.scrollIntoView()
     }
     else{
       console.log("cm")
     }
   },[uriparam,location?.pathname])
 
-  useEffect(()=>{
+  useEffect(()=>{ 
     console.log("arr", arr, arr?.length)
   },[arr])
 
-  const scrollRef = useRef()
+  
   useEffect(()=>{
     scrollRef.current.scrollIntoView()
   },[])

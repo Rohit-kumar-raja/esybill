@@ -3,6 +3,7 @@ import { Link} from "react-router-dom"
 
 const CarouselCards = ({title,content, img}) => {
   const [path, setPath] = useState("")
+  
   useEffect(()=>{
     if(title === "Hotel Managament Software"){
       setPath("/hms")

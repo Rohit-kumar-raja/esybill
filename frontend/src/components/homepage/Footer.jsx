@@ -8,13 +8,13 @@ const Footer = () => {
       <div className="flex bg-[#100010] flex-col font-poppins">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-5 text-white py-10 px-10">
           <div className='flex flex-col items-start text-sm'>
-            <p className='text-2xl text-[#7E007E]'><span className='font-light'>EzyBill</span> <span className='font-medium'>India</span></p>
+            <p className='text-2xl text-[#7E007E]'><span className=' font-bold'>EzyBill India</span></p>
             <p className='font-light py-2'>Contact No - +91  9836041044</p>
             <p className='font-light py-2'>Email - support@ezybillindia.com</p>
             <div className="flex gap-3 py-2">
               <FaFacebookF/>
               <FaWhatsapp/>
-              <FaInstagram/>
+              <FaInstagram/> 
               <FaTwitter/> 
             </div>
           </div>
@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
         <hr className='mx-11' />
         <div className='text-white font-light text-sm pt-6 pb-10'>
-          <p className="text-center">Copyright 2022 <span className="text-[#7E007E]">EzyBill India</span> | All Rights Reserved</p>
+          <p className="text-center">Copyright 2022 <span className="text-[#7E007E] font-bold">EzyBill India</span> | All Rights Reserved</p>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import React, {  useState } from "react"
 import logo1 from "../../assets/homepage/logo1.png"
-import logo2 from "../../assets/homepage/logo2.png"
+//import logo2 from "../../assets/homepage/logo2.png"
 import { Link} from "react-router-dom";
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -15,9 +15,10 @@ const Navbar = () => {
               <Link to="/">
                 <div className='flex items-center mr-0 md:mr-10'>
                   <img src={logo1} alt='logo' className='h-[40px]'/>
-                  <img src={logo2} alt='logo' className='h-[35px]'/>
+                  {/* <img src={logo2} alt='logo' className='h-[35px]'/> */}
+                  <span className='font-poppins text-2xl font-bold text-[#7E007E]'>EzyBill India</span>
                 </div>
-              </Link>
+              </Link> 
               <div className="md:hidden">
                 <button
                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"

@@ -154,8 +154,11 @@ const Contact = () => {
             <p className='text-[#7E007E] font-semibold text-center text-[23px] py-5'>Schedule a Call with Us</p>
             <div className="flex flex-wrap items-center justify-center -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3">
-                <label className="block uppercase tracking-wide text-[#565656] text-xs text-left font-bold mb-2" htmlFor="grid-first-name">
-    Name
+                <label className="flex items-center uppercase 
+                 text-[#565656] text-xs font-bold mb-2" htmlFor="grid-first-name">
+                 
+                  <span>Name  </span>
+                  <span className="text-red-600 font-medium text-[25px]">*</span>
                 </label>
                 <input className="appearance-none block w-full 
                 bg-white-200 text-gray-700 border-2 border-[#A9A9A9] 
@@ -182,8 +185,9 @@ const Contact = () => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-6 items-center justify-center">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-[#565656] text-xs text-left font-bold mb-2" htmlFor="grid-first-name">
-        Email
+                <label className="flex items-center  uppercase tracking-wide text-[#565656] text-xs text-left font-bold mb-2" htmlFor="grid-first-name">
+                  <span>Email</span> 
+                  <span className="text-red-600 font-medium text-[25px]">*</span>
                 </label>
                 <input className="appearance-none block w-full 
                 bg-white-200 text-gray-700 border-2 border-[#A9A9A9] 
