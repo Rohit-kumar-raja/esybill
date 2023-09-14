@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import React, { useEffect, useState } from "react"
 import PropertyCardComponent from "../components/PropertyCardComponent.jsx"
 import axios from "../api/axios";
