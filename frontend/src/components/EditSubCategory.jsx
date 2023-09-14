@@ -52,16 +52,22 @@ const EditSubCategory = (props) => {
     <> 
       <ToastContainer autoClose={2000}/>
       <form className="md:w-[30rem] mx-auto">    
-        <div className='rounded-md p-5 shadow-md'>
-          <div className='flex flex-col gap-3'>
-            <div className='flex text-[14px] font-normal justify-between flex-col md:flex-row'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>SubCategory Name</h5>
+        <div className='rounded-md p-5 shadow-md '>
+          <div className='flex flex-col gap-3 '>
+            <div className='text-[14px] font-normal justify-between flex-col md:flex-row'>
+                <p className="p-2 font-poppins text-[0.8rem] font-[550]">Sub Category Name</p>
               <input type='text' value={SubCategory} onChange={(e) => setSubCategoryName(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
               />
             </div>
+                          <div>
+                      <p className="p-2 font-poppins text-[0.8rem] font-[550]">Note</p>
+                <textarea className="w-full h-48 shadow-md rounded-md appearance-none block  border-2 border-[#DDDDDD] required
+            focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none 
+            focus:border-2 focus:border-[#800080] p-2 text-sm resize-none overflow-auto"></textarea>
+              </div>
             <div className='flex'>
               <button className="
     font-normal  bg-green-400 text-[white] flex items-center 

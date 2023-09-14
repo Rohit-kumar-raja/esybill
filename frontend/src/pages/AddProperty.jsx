@@ -207,7 +207,7 @@ const AddProperty = () => {
                   <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
-                  id="grid-first-name" type="text" placeholder="" 
+                  id="grid-first-name" type="email" placeholder="" 
                   value={PropEmail} onChange={(e)=> setPropEmail(e.target.value)} />
                 </div>
                 <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
@@ -239,11 +239,11 @@ const AddProperty = () => {
             text-[16px] font-normal mb-2" htmlFor="grid-first-name">
             Mobile Number*
                     </label>
-                    <input className="appearance-none block  border-2 border-[#DDDDDD]
+                    <input className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none block  border-2 border-[#DDDDDD]
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
             w-full h-[42px]
             rounded-md  px-4 mb-3 leading-tight focus:outline-none"
-                    id="grid-first-name" type="text" placeholder="" 
+                    id="grid-first-name" type="number" placeholder="" 
                     value={PropPhone} onChange={(e)=> setPropPhone(e.target.value)} />
                   </div>
                   <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">

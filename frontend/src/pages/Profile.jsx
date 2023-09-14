@@ -210,16 +210,30 @@ const Profile = () => {
               id="CustomerName" type="text" placeholder="" 
               value={CustomerName} onChange={(e)=>editDetailsHandler(e,"CustomerName")} />
             </div>
+
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label className="block tracking-wide text-[#464646] 
             text-[16px] font-normal mb-2" htmlFor="grid-first-name"> 
-              Mobile Number*
+              Email Id*
               </label>
               <input className="appearance-none block  border-2 border-[#DDDDDD]
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
              w-full h-[42px]
              rounded-md  px-4 mb-3 leading-tight focus:outline-none"
-              id="RegMobile" type="text" placeholder="" 
+              id="RegMobile" type="email" placeholder="" 
+               />
+            </div>
+
+            <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
+              <label className="block tracking-wide text-[#464646] 
+            text-[16px] font-normal mb-2" htmlFor="grid-first-name"> 
+              Mobile Number*
+              </label>
+              <input className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none block  border-2 border-[#DDDDDD]
+            focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
+             w-full h-[42px]
+             rounded-md  px-4 mb-3 leading-tight focus:outline-none"
+              id="RegMobile" type="number" placeholder="" 
               value={RegMobile} onChange={(e)=>editDetailsHandler(e,"RegMobile")} />
             </div>
 

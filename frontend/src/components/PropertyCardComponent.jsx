@@ -89,17 +89,17 @@ const PropertyCardComponent = ({setSidebarTabs, property, deletePopup, setDelete
       <div className='rounded-md p-5 shadow-md'>
         <p className='my-3'>{PropName}</p>
         <div className='flex flex-col gap-3'>
-          <div className='flex text-[15px] font-normal justify-between'>
-            <h5 className='text-[#B3B3B3] flex items-center gap-2'><TbBuildingEstate/>Property type</h5>
-            <h5 className='text-[#464646] '>{PropType}</h5>
+          <div className='flex text-[15px] font-normal justify-between items-center'>
+            <h5 className='text-[#B3B3B3] flex flex-grow items-center gap-2'><TbBuildingEstate/>Property type</h5>
+            <h5 className='text-[#464646] w-1/3 px-2 text-left '>{PropType}</h5>
           </div>
           <div className='flex text-[15px] font-normal justify-between'>
-            <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Contact</h5>
-            <h5 className='text-[#464646]'>{PropPhone}</h5>
+            <h5 className='text-[#B3B3B3] flex flex-grow items-center gap-2'><BsTelephoneForwardFill/>Contact</h5>
+            <h5 className='text-[#464646]  w-1/3 px-2 text-left'>{PropPhone}</h5>
           </div>
           <div className='flex text-[15px] font-normal justify-between'>
-            <h5 className='text-[#B3B3B3] flex items-center gap-2'><FiMapPin/>State</h5>
-            <h5 className='text-[#464646]'>{PropState}</h5>
+            <h5 className='text-[#B3B3B3] flex flex-grow items-center gap-2'><FiMapPin/>State</h5>
+            <h5 className='text-[#464646]  w-1/3 px-2 text-left'>{PropState}</h5>
           </div>
         </div>
         <div className="flex flex-col md:flex-row"> 

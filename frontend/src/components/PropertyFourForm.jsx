@@ -123,7 +123,7 @@ const PropertyFourForm = ({
               <input className="appearance-none block w-full border-2 border-[#DDDDDD] required
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
-              id="grid-first-name" type="text" placeholder="" 
+              id="grid-first-name" type="email" placeholder="" 
               value={PropEmail} onChange={(e)=> setPropEmail(e.target.value)} />
             </div>
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">

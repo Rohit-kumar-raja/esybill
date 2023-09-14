@@ -551,6 +551,7 @@ const OTPVerificationModal = ({
                       </span>
                     )}
                   </p>
+                  <p className="text-[0.7rem] font-[550] font-poppins">For customers outside India, please check your email for OTP</p>
                   <ToastContainer autoClose={2000} />
                   {/* {loader && (
                     <svg

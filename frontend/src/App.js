@@ -32,7 +32,7 @@ function App() {
     
       <Provider store={store}>
         <div 
-          style={{ backgroundImage: `url(${background})` }} 
+          style={{ backgroundImage: `url(${background})`, width:"100%", minHeight:"100vh", backgroundPosition:"center", backgroundSize:"cover" }} 
         >
           <Routes>
             <Route path="/" element={<HomePage scrollProp={scrollProp} setScrollProp={setScrollProp}/>}/>
