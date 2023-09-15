@@ -8,20 +8,32 @@ async function getImageMenu(PropertyNo) {
   return result[0];
 }
 
-async function updateImageMenu(PropertyNo, imageMenu) {
+async function insertImageMenu(propertyNo, propertyMenuName, imageMenu) {
+  const connection = await db();
+  const query = mysql.format('INSERT INTO tblimagemenu SET PropertyNo=?, PropertyMenuName=?, ImageSequence=?', [propertyNo, propertyMenuName, imageMenu]);
+  await connection.query(query);
+}
+
+async function updateImageMenu(imageMenu, PropertyNo) {
   const connection = await db();
   const query = mysql.format('UPDATE tblimagemenu SET ImageSequence=? WHERE PropertyNo=?', [imageMenu, PropertyNo]);
   await connection.query(query);
 }
-
-async function insertImageMenu(imageMenu) {
+async function swapImageMenu(updatedImageSequence, propertyNo) {
   const connection = await db();
-  const query = mysql.format('INSERT INTO tblimagemenu SET ?', [imageMenu]);
+  const query = mysql.format('UPDATE tblimagemenu SET ImageSequence = ? WHERE PropertyNo = ?', [updatedImageSequence, propertyNo]);
+  await connection.query(query);
+}
+async function deleteImageMenu(updatedImageSequence, propertyNo) {
+  const connection = await db();
+  const query = mysql.format('UPDATE tblimagemenu SET ImageSequence = ? WHERE PropertyNo = ?', [updatedImageSequence, propertyNo]);
   await connection.query(query);
 }
 
 module.exports = {
   getImageMenu,
+  insertImageMenu,
   updateImageMenu,
-  insertImageMenu
+  swapImageMenu,
+  deleteImageMenu
 };

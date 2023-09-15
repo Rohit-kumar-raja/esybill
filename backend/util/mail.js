@@ -1,4 +1,5 @@
 const nodeMailer = require('nodemailer');
+const config = require('../config/config');
 
 const transporter = nodeMailer.createTransport({
   host: 'smtppro.zoho.in',
@@ -9,7 +10,16 @@ const transporter = nodeMailer.createTransport({
     pass: process.env.ZOHO_PASSWORD
   }
 });
-// function sendMail(email, subject, text = '', html = '') {
+
+// Service Check Using Gmail
+// const transporterGmail = nodeMailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: config.testEmail,
+//     pass: config.testEmailPassword
+//   }
+// });
+// function sendMail(email, subject, body) {
 //   return new Promise((resolve, reject) => {
 //     const mailOptions = {
 //       from: 'noreply@ezybillindia.com',
