@@ -10,10 +10,11 @@ import PricingCards from "../components/pricing/PricingCards.jsx"
 import RmsCards from "../components/pricing/RmsCards.jsx"
 import Sticky from "react-sticky-el";
 import { Link } from "react-router-dom" 
+import CmCards from "../components/pricing/CmCards.jsx"
 
-const Pricing = () => {
+const Pricing = ({setScrollProp}) => {
   const [selectedValue,setSelectedValue] = useState("HMS"); 
- 
+  
   function handleSelectChange(event) {
     setSelectedValue(event.target.value);
   }
@@ -89,21 +90,23 @@ const Pricing = () => {
         selectedValue === "HMS" ? 
           <>
             <PricingBanners title="Hotel Management Software"/>
-            <PricingCards/>
+            <PricingCards setScrollProp={setScrollProp}/>
           </> : 
           selectedValue === "RMS" ? 
             <>
               <PricingBanners title="Resturant Management Software"/>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4  px-4 md:px-20 my-8 mx-6">
-                <RmsCards title="Standard" subtitle="(Stand-Alone Version)" amount="₹599"/>
-                <RmsCards title="Premium" subtitle="(Online Version)" amount="₹899"/>
+                <RmsCards title="Standard" subtitle="(Stand-Alone Version)" amount="₹599" 
+                  setScrollProp={setScrollProp}/>
+                <RmsCards title="Premium" subtitle="(Online Version)" amount="₹899" 
+                  setScrollProp={setScrollProp}/>
               </div>
             </> :
             selectedValue === "CMS" ? 
               <>
                 <PricingBanners title="Cloud Menu"/>
                 <div className="grid grid-cols-1  gap-4  md:px-80 my-8 mx-6">
-                  <RmsCards title="Free" subtitle="for 3 months, and then" amount="₹69"/>
+                  <CmCards title="Free" subtitle="for 3 months, and then" amount="₹69"/>
                 </div>
               </>
               : null

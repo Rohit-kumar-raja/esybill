@@ -26,7 +26,7 @@ const HomePage = ({setScrollProp}) => {
       <Testimonials/>
       <Contact />
       <Footer/>
-    </>
+    </> 
   )
 }
 

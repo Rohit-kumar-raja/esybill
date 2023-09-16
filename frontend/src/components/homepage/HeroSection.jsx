@@ -32,7 +32,7 @@ const HeroSection = (props) => {
                 navigate("/contact-us") 
               }}
               >
-                Get a Free Demo</button>
+                Get a Free Demo</button> 
             </div>
           </div>
 
@@ -108,8 +108,11 @@ const HeroSection = (props) => {
             </div>
           </div>
           <div className='flex items-center justify-center py-3 md:py-0'>
-            <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>
-              <Link to="/signup">Try free Cloud Menu for 3 Months</Link> </button>
+            <Link to="/signup">
+              <button className='bg-rgba font-medium text-[15px] text-white rounded-lg px-8 py-2'>
+             Try free Cloud Menu for 3 Months
+              </button>
+            </Link>
           </div>
         </div>
       </Sticky>

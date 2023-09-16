@@ -1,7 +1,8 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
 
-const RmsCards = ({title, subtitle, amount}) => {
+const RmsCards = ({title, subtitle, amount,setScrollProp}) => {
+  const navigate = useNavigate() 
   return (
     <>
       <div className=" py-4 px-4 md:px-24">
@@ -16,13 +17,17 @@ const RmsCards = ({title, subtitle, amount}) => {
           <p  className="text-[#7A7D9C] text-md md:text-[18px]  
            font-normal font-poppins">+ Cloud Menu absolutely free</p>
           <button className='text-[#7E007E] border-2 border-[#7E007E] bg-white rounded-full
-    hover:bg-rgba font-medium text-[15px] hover:text-white self-center px-8 py-2 font-raleway'>
-            <Link to='/contact-us'>Get Started</Link> 
+    hover:bg-rgba font-medium text-[15px] hover:text-white self-center px-8 py-2 font-raleway' 
+          onClick={() => {
+            setScrollProp(true)
+            navigate("/contact-us") 
+          }}>
+            Get Started
           </button>
         </div>
       </div>
     </>
   )
-}
+} 
 
 export default RmsCards 

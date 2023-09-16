@@ -1,8 +1,9 @@
 import React from "react"
 import PricingCard from "./PricingCard.jsx"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-const PricingCards = () => {
+const PricingCards = (props) => {
+  const navigate = useNavigate() 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4 my-8 mx-6">
@@ -21,10 +22,16 @@ const PricingCards = () => {
             <PricingCard content ="Up to" span="65 rooms –" rupee="₹"  amt="6499" subcontent="  per month including GST + Cloud Menu Absolutely Free"/>
             <PricingCard content ="Up to" span="80 rooms –" rupee="₹"  amt="7999" subcontent="  per month including GST + Cloud Menu Absolutely Free"/>
             <button className='text-[#7E007E] border-2 border-[#7E007E] bg-white rounded-full
-    hover:bg-rgba font-medium text-[15px] hover:text-white self-center px-8 py-2 font-raleway'>
-              <Link to='/contact-us'>Get Started</Link> 
-            </button>
-          </div>
+    hover:bg-rgba font-medium text-[15px] hover:text-white self-center px-8 py-2 font-raleway' 
+            onClick={() => {
+              props.setScrollProp(true)
+              navigate("/contact-us") 
+            }}>
+              {/* <Link to='/contact-us'> */}
+                Get Started
+              {/* </Link>  */}
+            </button> 
+          </div> 
         </div>
         <div className="border-2 rounded-md border-[#F6CFFC] py-4 px-4 md:px-24">
           <div className="flex flex-col items-center font-medium text-2xl font-poppins justify-center">
@@ -41,8 +48,12 @@ const PricingCards = () => {
             <PricingCard content ="Up to" span="65 rooms –" rupee="₹"  amt="8999" subcontent="  per month including GST + Cloud Menu Absolutely Free"/>
             <PricingCard content ="Up to" span="80 rooms –" rupee="₹"  amt="10999" subcontent=" per month including GST + Cloud Menu Absolutely Free"/>
             <button className='text-[#7E007E] border-2 border-[#7E007E] bg-white rounded-full
-    hover:bg-rgba font-medium text-[15px] hover:text-white self-center px-8 py-2 font-raleway'>
-              <Link to='/contact-us'>Get Started</Link> 
+    hover:bg-rgba font-medium text-[15px] hover:text-white self-center px-8 py-2 font-raleway' 
+            onClick={() => {
+              props.setScrollProp(true)
+              navigate("/contact-us") 
+            }}>
+             Get Started
             </button>
           </div>
         </div>
