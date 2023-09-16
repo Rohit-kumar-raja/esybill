@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import React, { useEffect, useState } from "react"
 import Navbar from "../components/Navbar.jsx"
@@ -5,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import OTPVerificationModal from "../components/OTPVerificationModal.jsx"
 import { useDispatch, useSelector } from "react-redux"
 import { addOtp } from "../registrationSlice"
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const LoginForm = () => {
   const [disabled, setDisabled] = useState(true)
@@ -76,31 +78,31 @@ const LoginForm = () => {
             text-[14px] font-[550] font-jost mb-2" htmlFor="grid-first-name">
              Mobile number*
                 </label>
-                <div className={`flex items-center gap-2 bg-white border-2 border-[#DDDDDD]  ${focused && 'shadow-lg shadow-[#800080]-500/50 border-[#800080]'}
+                <div className={`flex items-center gap-2 bg-white border-2 border-[#DDDDDD]  ${focused && "shadow-lg shadow-[#800080]-500/50 border-[#800080]"}
               p-2 rounded-md leading-tight`}>
-                <div  className="flex gap-0 items-center">
-<p className="margin-0 text-black text-[0.7rem] font-[550] font-poppins">+91</p>
-<KeyboardArrowDownIcon className="text-[#464646] font-[550] text-xs" style={{fontSize:"0.8rem"}}/>
-                </div>
-                                <input onBlur={()=>setFocused(false)} onFocus={()=>setFocused(true)} className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none appearance-none block w-full border-0 outline-none 
+                  <div  className="flex gap-0 items-center">
+                    <p className="margin-0 text-black text-[0.7rem] font-[550] font-poppins">+91</p>
+                    <KeyboardArrowDownIcon className="text-[#464646] font-[550] text-xs" style={{fontSize:"0.8rem"}}/>
+                  </div>
+                  <input onBlur={()=>setFocused(false)} onFocus={()=>setFocused(true)} className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none appearance-none block w-full border-0 outline-none 
              " 
-             required id="grid-first-name" type="number" placeholder="" 
-                value={usermobilenumber} onChange={(e)=> setUserMobileNumber(e.target.value)} />
+                  required id="grid-first-name" type="number" placeholder="" 
+                  value={usermobilenumber} onChange={(e)=> setUserMobileNumber(e.target.value)} />
                 </div>
 
               </div>
-                            <div className="w-full mb-6 md:mb-0 px-2 md:mt-6"> 
+              <div className="w-full mb-6 md:mb-0 px-2 md:mt-6"> 
                 <label className="block tracking-wide text-[#464646]
             text-[14px] font-[550] font-jost mb-2" htmlFor="grid-first-name">
              Email Id
                 </label>
                
-                                <input className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none block w-full border-2 border-[#DDDDDD]
+                <input className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none block w-full border-2 border-[#DDDDDD]
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2
              focus:border-[#800080] rounded-md h-[42px] px-4 mb-3 leading-tight"
-             type="email" placeholder="" 
+                type="email" placeholder="" 
                 />
-                </div>
+              </div>
  
             </div>
             <div className='flex flex-col items-center'>

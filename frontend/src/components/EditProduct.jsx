@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {BsTelephoneForwardFill} from "react-icons/bs"
 import axios from "../api/axios";
+import validateText, { validateNumber } from "../utils/TextValidations";
 
 const EditProduct = (props) => {
 
@@ -79,6 +80,7 @@ const EditProduct = (props) => {
             <div className='flex text-[14px] font-normal justify-between  flex-col md:flex-row'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Product Name</h5>
               <input type='text' value={ProductName} onChange={(e) => setProductName(e.target.value)}
+                onInput={(e)=>validateText(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -90,11 +92,13 @@ const EditProduct = (props) => {
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
+                onInput={(e)=>validateText(e.target.value)}
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Unit Price</h5>
               <input type='text' value={UnitPrice} onChange={(e) => setunitprice(e.target.value)} disabled
+                onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -103,6 +107,7 @@ const EditProduct = (props) => {
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Unit</h5>
               <input type='text' value={Unit} onChange={(e) => setunit(e.target.value)} disabled
+                onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -111,6 +116,7 @@ const EditProduct = (props) => {
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>SGSTPC</h5>
               <input type='text' value={SGSTPC} onChange={(e) => setSGSTPC(e.target.value)} disabled
+                onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -119,6 +125,7 @@ const EditProduct = (props) => {
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>CGSTPC</h5>
               <input type='text' value={CGSTPC} onChange={(e) => setCGSTPC(e.target.value)} disabled
+                onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -127,6 +134,7 @@ const EditProduct = (props) => {
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>DiscountAllowed</h5>
               <input type='text' value={DiscountAllowed} onChange={(e) => setDiscountAllowed(e.target.value)} disabled
+                onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -135,6 +143,7 @@ const EditProduct = (props) => {
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>ShName</h5>
               <input type='text' value={ShName} onChange={(e) => setShName(e.target.value)} disabled
+                onInput={(e)=>validateText(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -143,6 +152,7 @@ const EditProduct = (props) => {
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>RoomUnitPrice</h5>
               <input type='text' value={RoomUnitPrice} onChange={(e) => setRoomUnitPrice(e.target.value)} disabled
+                onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -151,6 +161,7 @@ const EditProduct = (props) => {
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>HSNSAC</h5>
               <input type='text' value={HSNSAC} onChange={(e) => setHSNSAC(e.target.value)} disabled
+                // onInput={(e)=>validateText(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
