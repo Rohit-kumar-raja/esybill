@@ -81,7 +81,7 @@ const Pricing = ({setScrollProp}) => {
     bg-white font-normal text-[15px] text-[#7E007E] rounded-t-2xl px-8 py-2 max-w-max 
     border-2 border-[#7E007E] mt-[7rem]'>
             <Link to="/signup">Register</Link> 
-          </button>
+          </button> 
 
         </Sticky>
 

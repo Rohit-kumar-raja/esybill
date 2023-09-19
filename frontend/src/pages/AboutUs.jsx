@@ -62,7 +62,7 @@ const AboutUs = () => {
       
             </Sticky>
           </div>
-        
+         
          
 
 
