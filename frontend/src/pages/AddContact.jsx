@@ -14,6 +14,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../api/axios"
 import { Link } from "react-router-dom"
+import Sticky from "react-sticky-el/lib/basic-version"
 
 const demoContent = [
   "A demonstration tailored to highlight the capabilities and features of our hotel management software, with or without the service terminal option",
@@ -272,19 +273,19 @@ const AddContact = ({scrollProp}) => {
           <Cards img={emailimg} title="EMAIL US" content="support@ezybillindia.com" />
           <Cards img={phoneimg} title="PHONE NUMBER" content="+91 9836041044" />
 
-          <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
-     md:items-end top-[15%] md:top-[25%]'>
+          <Sticky className ="absolute left-[-8%] md:left-4 md:flex md:flex-col  md:right-0  
+     md:items-end top-[15%] md:top-[25%]">
             <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
     bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>
               <Link to="/login">Login</Link> 
             </button>
-            <button className='rotate-90 font-raleway md:-rotate-90 mt-[7rem] ml-[-0.4rem] md:ml-[0rem] md:mr-[-2.4rem] 
-    border-2 border-[#7E007E] max-w-max bg-white font-normal text-[15px] text-[#7E007E]
-     rounded-t-2xl px-8 py-2'>
+            <button className='rotate-90 md:-rotate-90 ml-[-0.4rem] md:ml-[0rem] absolute  md:right-[-2.3rem] font-raleway
+    bg-white font-normal text-[15px] text-[#7E007E] rounded-t-2xl px-8 py-2 max-w-max 
+    border-2 border-[#7E007E] mt-[7rem]'>
               <Link to="/signup">Register</Link> 
             </button>
 
-          </div>
+          </Sticky>
         </div>
       </div>
       <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"  ref={scollToRef}

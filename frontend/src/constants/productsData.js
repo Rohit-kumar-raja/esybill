@@ -62,7 +62,7 @@ export const hms = [
   "What Is Hotel Management Software(HMS)?",
   "Hotel Management Software (HMS) is a comprehensive solution tailored for the hospitality industry, enabling efficient management of daily operations and exceptional guest experiences.",
   "With features for reservations, bookings, check-in/out, housekeeping, billing, and reporting, HMS centralizes room availability, rates, and inventory for optimized occupancy and revenue. It automates processes, enhances efficiency, and facilitates personalized services through guest profile management and targeted marketing campaigns. ",
-  "With features for reservations, bookings, check-in/out, housekeeping, billing, and reporting, HMS centralizes room availability, rates, and inventory for optimized occupancy and revenue. It automates processes, enhances efficiency, and facilitates personalized services through guest profile management and targeted marketing campaigns. "
+  "The software also handles banquet and event bookings, offering comprehensive analytics for performance insights. Integration with Cloud Menu elevates room service by allowing guests to access menus, and place orders conveniently.HMS empowers hotels of all sizes to streamline operations, enhance guest satisfaction, and drive revenue growth."
 ]
 
 export const features = {
