@@ -20,16 +20,18 @@ const OfferSection = () => {
           <p className='text-[#000000] font-semibold text-[20px] font-raleway'>month including gst.</p>
           <p className='text-lg text-[#860286] font-bold'>+</p>
           <p className='text-[#000000] font-semibold text-[20px] mb-5 font-raleway'>Cloud Menu absolutely <span className='text-[#860286] font-bold'>Free!!</span></p>
-          <button className='bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2 
+          <Link to='/pricing'>
+            <button className='bg-rgba font-normal text-[15px] text-white rounded-sm px-8 py-2 
           font-raleway'
-          //  onClick={() => {
-          //   props.setScrollProp(true)
-          //   navigate("/contact-us") 
-          // }}
-          >
-            <Link to='/pricing'>Explore Now </Link>
+              //  onClick={() => {
+              //   props.setScrollProp(true)
+              //   navigate("/contact-us") 
+              // }}
+            >
+           Explore Now 
            
-          </button>
+            </button>
+          </Link>
         </div>
         <div>
           <img src={offer} alt="" />

@@ -22,9 +22,12 @@ const HeroSection = (props) => {
             <p className='text-[#333333] font-light text-[15px] mt-3 font-poppins'>Empowering Hospitality Excellence, Embrace the Finest</p>
             <p className='text-[#333333] font-light text-[15px] font-poppins'>Hotel Management Software & Restaurant POS in India.</p>
             <div className='flex gap-3 py-3 my-3' >
-              <button className='
+              <Link to="/about">
+                <button className='
     bg-rgba font-normal text-[15px] text-white rounded-md px-8 py-2'>
-                <Link to="/about">Learn More</Link></button>
+                Learn More 
+                </button>
+              </Link>
               <button className='
     border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2' 
               onClick={() => {
@@ -44,19 +47,22 @@ const HeroSection = (props) => {
           {/* <div className='flex  gap-2 flex-col '> */}
           {/* <Sticky className="z-[99] relative top-0"> */}
           {/* <Sticky> */}
-          <Sticky className ="absolute left-[-8%] md:left-4 md:flex md:flex-col  md:right-0  
-     md:items-end top-[15%] md:top-[25%]">
-            <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
+          <Sticky className ="absolute left-[-8%] md:left-4 md:flex md:flex-col  md:right-0  z-[9999]
+     md:items-end top-[5rem] md:top-[25%]">
+            <Link to="/login">
+              <button className='rotate-90 md:-rotate-90 absolute  md:right-[-1.7rem] 
+              font-raleway mt-[4rem] md:mt-[0rem]
     bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>
-              <Link to="/login">Login</Link> 
-            </button>
-            <button className='rotate-90 md:-rotate-90 ml-[-0.4rem] md:ml-[0rem] absolute  md:right-[-2.3rem] font-raleway
+            Login 
+              </button></Link> 
+            <Link to="/signup"> <button className='rotate-90 md:-rotate-90 ml-[-0.4rem]
+             md:ml-[0rem] absolute  md:right-[-2.3rem] font-raleway
     bg-white font-normal text-[15px] text-[#7E007E] rounded-t-2xl px-8 py-2 max-w-max 
-    border-2 border-[#7E007E] mt-[7rem]'>
-              <Link to="/signup">Register</Link> 
+    border-2 border-[#7E007E] mt-[11rem]  md:mt-[7rem] '>
+             Register
             </button>
-
-          
+            </Link> 
+           
           </Sticky>
         
         </div>
