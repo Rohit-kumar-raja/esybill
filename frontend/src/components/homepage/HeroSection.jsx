@@ -4,7 +4,7 @@ import bgimg from "../../assets/homepage/bgimg.svg"
 import scanner from "../../assets/homepage/scanner.svg"
 import Sticky from "react-sticky-el";
 import { Link, useNavigate } from "react-router-dom";
-import { BiRupee } from "react-icons/bi";
+
 
 const HeroSection = (props) => {
   const navigate = useNavigate()
@@ -103,12 +103,19 @@ const HeroSection = (props) => {
              md:w-24 md:h-24 mx-auto md:mx-5 py-4 my-auto
             back ' /> 
               <div className="col-span-2 md:flex md:flex-col text-[#333333] px-4 md:px-0">
-                <p className='text-[14px] flex flex-wrap justify-start 
-                 '>Scan this QR to access a sample <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>& Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>Cloud Menu </span> for your Restaurant, Hotel or Café. </p>
-                <p className='text-xs text-[#7E007E] flex flex-col md:flex-row 
+                {/* <p className='text-[14px] flex flex-wrap justify-start 
+                 '>Scan this QR to view a sample & Upgrade your paper menu to 
+                  <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>
+                 & Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>
+                  Cloud Menu </span> for your Restaurant, Hotel or Café. </p> */}
+                <p className='text-sm  md:text-[18px] flex flex-wrap justify-start leading-5 md:leading-10
+                 '>Scan this QR to view a sample & Upgrade your paper menu to 
+                  <span className='text-[#7E007E] font-bold mx-0 md:mx-2'> Cloud Menu </span>
+                </p> 
+                <p className='text-xs text-[#7E007E] flex flex-row md:flex-row 
                 justify-start 
                   flex-wrap font-bold px-0'>
-                  Launching Offer- FREE for 3 months. After that only <BiRupee/> 69/-  per month !</p>
+                  Launching Offer- FREE for 3 months then Only ₹ 69/-  per month !</p>
               </div>
             </div>
           </div>
