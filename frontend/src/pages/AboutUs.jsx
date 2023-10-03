@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react"
 import aboutimg from "../assets/aboutus/aboutimg.svg"
-import aboutbg from "../assets/aboutus/aboutbg.svg"
 import abtimg from "../assets/aboutus/abtimg.svg"
 import Navbar from "../components/homepage/Navbar.jsx"
 import aboutimage from "../assets/aboutus/aboutimage.svg"
@@ -44,7 +43,8 @@ const AboutUs = () => {
             <Sticky className ="absolute left-[-8%] md:left-4 md:flex md:flex-col  md:right-0  
      md:items-end top-[15%] md:top-[25%]">
               <Link to="/login">
-                <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
+                <button className='rotate-90 md:-rotate-90 absolute  
+                 md:right-[-1.7rem] font-raleway mt-[5rem]
     bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>
                Login 
                 </button></Link> 
@@ -55,7 +55,7 @@ const AboutUs = () => {
      rounded-t-2xl px-8 py-2'> */}
               <Link to="/signup"> <button className='rotate-90 md:-rotate-90 ml-[-0.4rem] md:ml-[0rem] absolute  md:right-[-2.3rem] font-raleway
     bg-white font-normal text-[15px] text-[#7E007E] rounded-t-2xl px-8 py-2 max-w-max 
-    border-2 border-[#7E007E] mt-[7rem]  '>
+    border-2 border-[#7E007E] mt-[12rem]  '>
               Register 
               </button>
               </Link> 
@@ -90,9 +90,13 @@ const AboutUs = () => {
       </div>
 
 
-      <div className="flex flex-col py-10 md:py-20 my-4 font-raleway items-center justify-center"
-        ref={divRef}
-        style={{ backgroundImage: `url(${aboutbg})`, backgroundRepeat : "no-repeat", backgroundSize :"cover" }}>
+      <div className=" flex flex-col py-10 md:py-20 my-4 font-raleway items-center justify-center 
+        bg-[#FFE1FF] md:bg-hero-pattern "
+      ref={divRef}
+        // style={{ backgroundImage: `url(${aboutbg})`, 
+        //   backgroundRepeat : "no-repeat", 
+        //   backgroundSize :"cover" }}
+      >
         <h3 className="uppercase text-[#7E007E] font-poppins font-bold text-2xl">How IT ALL STARTED</h3>
         <p className="font-raleway text-[18px] py-4 px-8 md:px-40 leading-8"><span className="text-[#7E007E] font-bold">EzyBill India</span>, a full stack software was initiated by Mr Lahiri and Dr Aich. Both are longtime friends who believed that by creating a product that would lower the cost of doing business in the nation, they might contribute to the development of digital India. <span className="text-[#7E007E] font-bold">EzyBill India</span> was the idea they came up with after considerable deliberation and market research. They didnt realise how challenging it would be to turn their concept into reality when they started their firm, but thats what made it so thrilling! Since they wanted to give their valued customers the greatest service possible, they never compromised on quality.
         </p>

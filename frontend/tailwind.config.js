@@ -13,6 +13,10 @@ module.exports = {
         "raleway": ["Raleway", "sans-serif"]
        
       },
+      backgroundImage: {
+        "hero-pattern": "url('assets/aboutus/aboutbg.svg')",
+     
+      }
     },
   },
   plugins: [],

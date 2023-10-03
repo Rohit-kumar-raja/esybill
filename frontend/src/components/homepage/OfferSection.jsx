@@ -15,7 +15,7 @@ const OfferSection = () => {
         <div className='flex flex-col items-start justify-center ml-20  py-10 md:py-0'>
           <p className='text-[#333333] text-[20px] font-bold font-poppins'>Splash yourself</p>
           <p className='text-[#7E007E] font-bold text-[30px] font-poppins'>Bigger Offer</p>
-          <p className='text-[#000000] font-semibold text-[20px] mt-5 font-raleway'>Up to 10 rooms only <span className='font-bold'>699/-</span> per <br/>
+          <p className='text-[#000000] font-semibold text-[20px] mt-5 font-raleway'>Up to 10 rooms only <span className='font-bold'>₹699/-</span> per <br/>
           </p>
           <p className='text-[#000000] font-semibold text-[20px] font-raleway'>month including gst.</p>
           <p className='text-lg text-[#860286] font-bold'>+</p>
@@ -29,7 +29,7 @@ const OfferSection = () => {
               // }}
             >
            Explore Now 
-           
+            
             </button>
           </Link>
         </div>
