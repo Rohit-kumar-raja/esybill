@@ -38,6 +38,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import CloudMenuCards from "../components/homepage/CloudMenuCards.jsx"
 import { useRef } from "react"
+import Sticky from "react-sticky-el";
 
 
 const Hms = () => {
@@ -63,27 +64,31 @@ const Hms = () => {
     console.log(`${uriparam}`+"img")
   },[`${uriparam}`+"img"])
 
+  const scrollRef = useRef()
   useEffect(()=>{
     console.log(uriparam,"uriparam")
     if(location?.pathname === "/hms"){
       setArr(hmsfeature)
+      scrollRef.current.scrollIntoView()
     } 
     else if(location?.pathname === "/rms"){
       setArr(rmsfeature)
+      scrollRef.current.scrollIntoView()
     }
     else if(location?.pathname === "/cm"){
       setArr(cmfeature)
+      scrollRef.current.scrollIntoView()
     }
     else{
       console.log("cm")
     }
   },[uriparam,location?.pathname])
 
-  useEffect(()=>{
+  useEffect(()=>{ 
     console.log("arr", arr, arr?.length)
   },[arr])
 
-  const scrollRef = useRef()
+  
   useEffect(()=>{
     scrollRef.current.scrollIntoView()
   },[])
@@ -105,19 +110,19 @@ const Hms = () => {
                 : "CLOUD MENU" 
           }
         </h2>
-        <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
-     md:items-end top-[15%] md:top-[25%]'>
-          <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
+        <Sticky className ="absolute left-[-8%] md:left-4 md:flex md:flex-col  md:right-0  
+     md:items-end top-[15%] md:top-[25%]">
+          <Link to="/login"> <button className='rotate-90 md:-rotate-90 absolute mt-[5rem]  md:right-[-1.7rem] font-raleway
     bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>
-            <Link to="/login">Login</Link> 
+           Login 
+          </button></Link> 
+          <Link to="/signup">  <button className='rotate-90 md:-rotate-90 ml-[-0.4rem] md:ml-[0rem] absolute  md:right-[-2.3rem] font-raleway
+    bg-white font-normal text-[15px] text-[#7E007E] rounded-t-2xl px-8 py-2 max-w-max 
+    border-2 border-[#7E007E] mt-[12rem]'>
+           Register
           </button>
-          <button className='rotate-90 font-raleway md:-rotate-90 mt-[7rem] ml-[-0.4rem] md:ml-[0rem] md:mr-[-2.4rem] 
-    border-2 border-[#7E007E] max-w-max bg-white font-normal text-[15px] text-[#7E007E]
-     rounded-t-2xl px-8 py-2'>
-            <Link to="/signup">Register</Link> 
-          </button>
-
-        </div>
+          </Link> 
+        </Sticky> 
       </div>
       <div className="flex flex-col justify-center items-center font-poppins">
         <h2 className="text-[#983398] font-bold text-[25px] py-12 md:py-24 px-4 md:px-1 text-center md:text-start">

@@ -3,7 +3,7 @@ import React from "react"
 import featurebg from "../../assets/homepage/featurebg.svg"
 import user from "../../assets/homepage/icon-rect.svg"
 import f1 from "../../assets/homepage/f1.svg"
-import f2 from "../../assets/homepage/f2.svg"
+import f2 from "../../assets/homepage/f11.svg"
 import f3 from "../../assets/homepage/f3.svg"
 
 
@@ -49,7 +49,7 @@ const MainFeatures = () => {
           </div>
         </div>
         <div className='col-span-1 md:hidden'>
-          <Carousel>
+          <Carousel  showArrows={true}>
             <div className="my-8">
               <CarouselCards img={f1} title="Hotel Managament Software" 
                 content="Hotel Management Software (HMS) is a comprehensive solution tailored for the hospitality industry, enabling efficient management of daily operations and exceptional guest experiences."/> 

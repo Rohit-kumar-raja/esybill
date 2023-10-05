@@ -55,11 +55,11 @@ function App() {
               <Route path="product" element={<AddProduct />} />
               <Route path="image" element={<AddImage />} />
             </Route>
-            <Route path="pricing" element={<Pricing />} />
+            <Route path="pricing" element={<Pricing setScrollProp={setScrollProp}/>} />
             <Route path="about" element={<AboutUs />} />
             <Route path="hms" element={<Hms />} />
             <Route path="rms" element={<Hms/>} />
-            <Route path="cm" element={<Hms />} />
+            <Route path="cm" element={<Hms />} /> 
           </Routes>
         </div>
       </Provider>

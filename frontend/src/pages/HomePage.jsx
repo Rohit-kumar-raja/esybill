@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import Navbar from "../components/homepage/Navbar.jsx"
 import HeroSection from "../components/homepage/HeroSection.jsx"
 import Features from "../components/homepage/Features.jsx"
@@ -9,10 +9,16 @@ import Contact from "../components/homepage/Contact.jsx"
 import Footer from "../components/homepage/Footer.jsx"
 
 const HomePage = ({setScrollProp}) => {
-  
+  const scrollRef = useRef()
+  useEffect(()=>{
+    scrollRef.current.scrollIntoView()
+  },[])
   return (
     <>
-      <Navbar />
+      <div ref={scrollRef}>
+        <Navbar />
+      </div>
+    
       <HeroSection setScrollProp={setScrollProp}/> 
       <Features/>
       <MainFeatures/>
@@ -20,7 +26,7 @@ const HomePage = ({setScrollProp}) => {
       <Testimonials/>
       <Contact />
       <Footer/>
-    </>
+    </> 
   )
 }
 

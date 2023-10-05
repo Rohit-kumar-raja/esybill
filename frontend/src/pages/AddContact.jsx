@@ -14,6 +14,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../api/axios"
 import { Link } from "react-router-dom"
+import Sticky from "react-sticky-el/lib/basic-version"
 
 const demoContent = [
   "A demonstration tailored to highlight the capabilities and features of our hotel management software, with or without the service terminal option",
@@ -61,6 +62,12 @@ const AddContact = ({scrollProp}) => {
   //     setValue("")
   //   }
   // }
+
+  const scrollHeader = useRef()
+  useEffect(()=>{
+    scrollHeader.current.scrollIntoView()
+  },[])
+
   const data = [
     {
       value: 1,
@@ -81,7 +88,7 @@ const AddContact = ({scrollProp}) => {
       />
     },
     {
-      value: 3,
+      value: 3, 
       text: "Cloud Menu (CM)",
       icon: <AiFillInfoCircle 
       // onMouseEnter={()=>clickHandler("cmdemo")}  
@@ -164,7 +171,12 @@ const AddContact = ({scrollProp}) => {
   }
 
   useEffect(()=>{
-    if(name !== "" && email !=="" && phone?.length === 10 && state !="" && pincode !="" && (selectedOption !=="" || conSelectedOption !==""))
+    if(name !== "" 
+    && email !=="" 
+    && phone?.length === 10 
+    && state !="" 
+    && pincode !="" 
+    && (selectedOption !=="" || conSelectedOption !==""))
     {
       if (isValidEmail(email)) {
         setDisabled(false)
@@ -176,7 +188,7 @@ const AddContact = ({scrollProp}) => {
     else{
       setDisabled(true)
     }
-  }, [name,email, phone, state, selectedOption, conSelectedOption])
+  }, [name,email, phone, pincode, state, selectedOption, conSelectedOption])
   // const [isShownhms, setIsShownHms] = useState(false);
   // const [isShownrms, setIsShownRms] = useState(false); 
   // const [isShowncm, setIsShownCm] = useState(false);
@@ -253,7 +265,10 @@ const AddContact = ({scrollProp}) => {
           fontSize:"8px",
           width:"10rem"}}
       />
-      <Navbar/>
+      <div ref={scrollHeader}>
+        <Navbar/>
+      </div>
+     
       <div className="grid grid-cols-1  md:grid-cols-2">
         <div><img src={HeroImage} alt="hero" width={500} className="md:ml-12" /></div>
        
@@ -263,19 +278,20 @@ const AddContact = ({scrollProp}) => {
           <Cards img={emailimg} title="EMAIL US" content="support@ezybillindia.com" />
           <Cards img={phoneimg} title="PHONE NUMBER" content="+91 9836041044" />
 
-          <div className='absolute left-[-8%] md:left-4  md:flex md:flex-col md:absolute md:right-0  
-     md:items-end top-[15%] md:top-[25%]'>
-            <button className='rotate-90 md:-rotate-90 absolute   md:right-[-1.7rem] font-raleway
+          <Sticky className ="absolute left-[-8%] md:left-4 md:flex md:flex-col  md:right-0  
+     md:items-end top-[15%] md:top-[25%]">
+            <Link to="/login">
+              <button className='rotate-90 md:-rotate-90 absolute  mt-[5rem] md:right-[-1.7rem] font-raleway
     bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 max-w-max'>
-              <Link to="/login">Login</Link> 
-            </button>
-            <button className='rotate-90 font-raleway md:-rotate-90 mt-[7rem] ml-[-0.4rem] md:ml-[0rem] md:mr-[-2.4rem] 
-    border-2 border-[#7E007E] max-w-max bg-white font-normal text-[15px] text-[#7E007E]
-     rounded-t-2xl px-8 py-2'>
-              <Link to="/signup">Register</Link> 
-            </button>
-
-          </div>
+             Login 
+              </button></Link> 
+            <Link to="/signup">  <button className='rotate-90 md:-rotate-90 ml-[-0.4rem] md:ml-[0rem] absolute  md:right-[-2.3rem] font-raleway
+    bg-white font-normal text-[15px] text-[#7E007E] rounded-t-2xl px-8 py-2 max-w-max 
+    border-2 border-[#7E007E] mt-[12rem]'>
+             Register
+            </button> 
+            </Link> 
+          </Sticky>
         </div>
       </div>
       <div className="flex flex-col gap-5 items-center justify-center p-10 md:p-5"  ref={scollToRef}
@@ -325,7 +341,7 @@ const AddContact = ({scrollProp}) => {
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
              
-              <input placeholder="Name" 
+              <input placeholder="Name *" 
                 value={name}
                 className="appearance-none block placeholder-[#7E007E] w-full bg-white-200 
                text-[#7E007E] border-2 border-[#A9A9A9] rounded-md py-3 px-4 mb-3 font-poppins
@@ -337,7 +353,7 @@ const AddContact = ({scrollProp}) => {
             </div>
             <div className="w-full md:w-1/2 px-3">
              
-              <input placeholder="Email" value={email} className="appearance-none block w-full 
+              <input placeholder="Email *" value={email} className="appearance-none block w-full 
               font-poppins placeholder-[#7E007E]
                bg-white-200 text-[#7E007E] border-2 
                border-[#A9A9A9] rounded-md py-3 px-4 mb-3 

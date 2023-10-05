@@ -14,7 +14,10 @@ module.exports = {
         "jost":    ["Jost", "sans-serif"],
        
       },
-      
+      backgroundImage: {
+        "hero-pattern": "url('assets/aboutus/aboutbg.svg')",
+     
+      }
     },
   },
   plugins: [],

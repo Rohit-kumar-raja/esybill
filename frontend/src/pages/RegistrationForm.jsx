@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Stepper from "../components/Stepper.jsx";
-import Navbar from "../components/Navbar.jsx";
+//import Navbar from "../components/Navbar.jsx";
+import Navbar from "../components/homepage/Navbar.jsx";
 import PersonalDetailsForm from "../components/PersonalDetailsForm.jsx";
 import PropertyOneForm from "../components/PropertyOneForm.jsx";
 import PropertyTwoForm from "../components/PropertyTwoForm.jsx";

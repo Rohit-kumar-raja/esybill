@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import React, { useEffect, useState } from "react"
-import Navbar from "../components/Navbar.jsx"
+//import Navbar from "../components/Navbar.jsx"
+import Navbar from "../components/homepage/Navbar.jsx"
 import { useNavigate } from "react-router-dom"
 import OTPVerificationModal from "../components/OTPVerificationModal.jsx"
 import { useDispatch, useSelector } from "react-redux"

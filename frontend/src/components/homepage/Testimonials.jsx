@@ -31,7 +31,9 @@ const Testimonials = () => {
             <div className='p-8'>
               <TestimonialCard title="Mr Debraj Pattnaik" subtitle="Hotel Owner" content=" The HMS offers clear reports, streamlines operations, and enhances customer satisfaction. With its excellent features like customised cloud menu and on-call instant support, it has significantly improved productivity in our hotel."/>
             </div>
-                 
+            <div className='p-8'>
+              <TestimonialCard title="Pritikana Raj" subtitle="Restaurant manager" content="I've been using EzyBill's restaurant management software with its cloud menu feature for a few months now, and I must say, it's been a game-changer for my restaurant in Kolkata. The software is not only cost-effective but also incredibly easy to use. It has simplified our daily operations and made menu updates a breeze. EzyBill has truly made managing our restaurant more efficient and enjoyable. Highly recommended!"/>
+            </div>
           </div>
         </Carousel>
  
@@ -57,7 +59,9 @@ const Testimonials = () => {
             <div className='p-8'>
               <TestimonialCard title="Mr Debraj Pattnaik" subtitle="Hotel owner" content=" The HMS offers clear reports, streamlines operations, and enhances customer satisfaction. With its excellent features like customised cloud menu and on-call instant support, it has significantly improved productivity in our hotel."/>
             </div>
-           
+            <div className='p-8'>
+              <TestimonialCard title="Pritikana Raj" subtitle="Restaurant manager" content="I've been using EzyBill's restaurant management software with its cloud menu feature for a few months now, and I must say, it's been a game-changer for my restaurant in Kolkata. The software is not only cost-effective but also incredibly easy to use. It has simplified our daily operations and made menu updates a breeze. EzyBill has truly made managing our restaurant more efficient and enjoyable. Highly recommended!"/>
+            </div>
           </Carousel>
  
         </div>

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const CmCards = ({title, subtitle, amount}) => {
   return (
@@ -12,14 +13,16 @@ const CmCards = ({title, subtitle, amount}) => {
            font-normal font-poppins">per month</span></p>
           <p className="text-[#7A7D9C] text-[18px]  
            font-normal font-poppins">including GST</p>
-          <p  className="text-[#7A7D9C] text-[18px]  
-           font-normal font-poppins">+ Cloud Menu absolutely free</p>
-          <button className='text-[#7E007E] border-2 border-[#7E007E] bg-white rounded-full
-    hover:bg-rgba font-medium text-[15px] hover:text-white self-center px-8 py-2 font-raleway'>Get Started</button>
+          {/* <p  className="text-[#7A7D9C] text-[18px]  
+           font-normal font-poppins">+ Cloud Menu absolutely free</p> */}
+          <Link to='/signup'>
+            <button className='text-[#7E007E] border-2 border-[#7E007E] bg-white rounded-full
+    hover:bg-rgba font-medium text-[15px] hover:text-white self-center px-8 py-2 font-raleway'>
+      Get Started</button></Link>
         </div>
       </div>
     </>
-  )
+  ) 
 }
 
 export default CmCards
