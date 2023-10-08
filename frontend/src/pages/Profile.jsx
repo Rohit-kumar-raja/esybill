@@ -47,6 +47,7 @@ const Profile = () => {
     // Country: ''
   });
   const [RegMobile, setRegMobile] = useState("");
+  const [RegEmail, setRegEmail] = useState("");
   const [State, setState] = useState("");
   const [Country, setCountry] = useState("");
   const [editDetails, seteditDetails] = useState(false);
@@ -89,6 +90,8 @@ const Profile = () => {
       setCustomerName(e.target.value);
     } else if (id.includes("RegMobile")) {
       setRegMobile(e.target.value);
+    } else if (id.includes("RegEmail")) {
+      setRegEmail(e.target.value);
     } else if (id.includes("State")) {
       setState(e.target.value);
     } else if (id.includes("Country")) {
@@ -96,8 +99,22 @@ const Profile = () => {
     } else {
       console.log("else condition");
     }
-    seteditDetails(true);
   };
+
+  useEffect(() => {
+    if (
+      CustomerName !== "" &&
+      RegMobile !== "" &&
+      RegEmail !== "" &&
+      RegEmail.toLowerCase().match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      ) &&
+      State !== "" &&
+      Country !== ""
+    ) {
+      seteditDetails(true);
+    }
+  }, [RegEmail]);
 
   const cancelEditHandler = (e) => {
     e.preventDefault();
@@ -167,9 +184,9 @@ const Profile = () => {
     }
   }, [profile]);
 
-
   return (
     <>
+      <ToastContainer autoClose={2000} />
       {showModal ? (
         <OTPVerificationModal
           setShowModal={setShowModal}
@@ -187,7 +204,7 @@ const Profile = () => {
           //</>onSubmit={userDetailSubmitHandler}
         >
           <div className="px-2">
-            <h1 className="text-[30px] font-semibold text-[#464646]">
+            <h1 className="text-[30px] font-semibold text-[#464646] font-jost">
               My Profile
             </h1>
           </div>
@@ -229,6 +246,8 @@ const Profile = () => {
                 id="RegMobile"
                 type="email"
                 placeholder=""
+                value={RegEmail}
+                onChange={(e) => editDetailsHandler(e, "RegEmail")}
               />
             </div>
 

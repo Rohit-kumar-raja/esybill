@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -5,6 +6,7 @@ import { stateList } from "../constants/stateList";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addPhone, addUser } from "../registrationSlice";
+import TelLenValidation from "../utils/TelLenValidation";
 
 const PersonalDetailsForm = ({
   setActivateFirstProperty,
@@ -12,6 +14,7 @@ const PersonalDetailsForm = ({
 }) => {
   const [CustomerName, setCustomerName] = useState("");
   const [RegMobile, setRegMobile] = useState("");
+  const [RegEmail, setRegEmail] = useState("");
   const [State, setState] = useState("");
   const [Country, setCountry] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -39,6 +42,11 @@ const PersonalDetailsForm = ({
     if (
       CustomerName !== "" &&
       RegMobile !== "" &&
+      RegMobile?.length >= 10 &&
+      RegEmail !== "" &&
+      RegEmail.toLowerCase().match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      ) &&
       State !== "" &&
       captchaToken
     ) {
@@ -73,8 +81,10 @@ const PersonalDetailsForm = ({
           onSubmit={userDetailSubmitHandler}
         >
           <div className="px-6 text-center">
-            <h1 className="text-[15px] font-normal text-[#464646]">Personal</h1>
-            <h1 className="text-[30px] font-semibold text-[#464646]">
+            <h1 className="text-[15px] font-normal text-[#464646] font-jost">
+              Personal
+            </h1>
+            <h1 className="text-[30px] font-semibold text-[#464646] font-jost">
               Details
             </h1>
           </div>
@@ -129,21 +139,24 @@ const PersonalDetailsForm = ({
                     setRegMobile(newValue);
                   }
                 }}
-                onKeyDown={(e) => {
-                  if (
-                    !(
-                      (e.key >= "0" && e.key <= "9") ||
-                      e.key === "Backspace" ||
-                      e.key === "Delete" ||
-                      (e.ctrlKey === true && (e.key === "v" || e.key === "V"))
-                    ) ||
-                    (e.target.value.length >= 10 &&
-                      e.key !== "Backspace" &&
-                      e.key !== "Delete")
-                  ) {
-                    e.preventDefault();
-                  }
-                }}
+                onKeyDown={(e) => TelLenValidation(e)}
+              />
+            </div>
+            <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
+              <label
+                className="block tracking-wide text-[#464646] 
+            text-[16px] font-normal mb-2"
+                htmlFor="grid-first-name"
+              >
+                Email Id <span className="text-red-400">*</span>
+              </label>
+              <input
+                className="appearance-none block border-2 border-[#DDDDDD] focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080] w-full h-[42px] rounded-md px-4 mb-3 leading-tight focus:outline-none"
+                required
+                id="grid-first-name"
+                type="email"
+                value={RegEmail}
+                onChange={(e) => setRegEmail(e.target.value)}
               />
             </div>
 

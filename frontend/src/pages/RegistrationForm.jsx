@@ -40,7 +40,7 @@ const RegistrationForm = () => {
     <>
       <Navbar/>
 
-      <div className="grid grid-cols-4 md:grid-cols-12 md:my-12">
+      <div className="grid grid-cols-4 md:grid-cols-12 p-12">
         <div className="md:col-span-1"></div>
         <div className="col-span-4 md:col-span-10">
           <div className="grid grid-cols-4">

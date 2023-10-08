@@ -10,6 +10,7 @@ import {
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../api/axios";
+import TelLenValidation from "../utils/TelLenValidation";
 //import OTPVerificationModal from './OTPVerificationModal';
 
 const AddProperty = () => {
@@ -142,9 +143,13 @@ const AddProperty = () => {
     if (
       PropType !== "" &&
       PropName !== "" &&
-      PropEmail !== "" &&
+      PropEmail !== "" && 
+      PropEmail.toLowerCase().match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      ) &&
       PropAddress !== "" &&
       PropPhone !== "" &&
+      PropPhone.length >= 10 &&
       PropState !== "" &&
       PropCountry !== ""
     ) {
@@ -226,8 +231,10 @@ const AddProperty = () => {
             onSubmit={propertyTwoSubmitHandler}
           >
             <div className="px-6 text-center">
-              <h1 className="text-[15px] font-normal text-[#464646]">Add</h1>
-              <h1 className="text-[30px] font-semibold text-[#464646]">
+              <h1 className="text-[15px] font-normal text-[#464646] font-jost">
+                Add
+              </h1>
+              <h1 className="text-[30px] font-semibold text-[#464646] font-jost">
                 Property
               </h1>
             </div>
@@ -235,7 +242,7 @@ const AddProperty = () => {
               <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
                 <label
                   className="block tracking-wide text-[#464646]
-            text-[16px] font-normal mb-2"
+            text-[16px] font-normal mb-2 font-jost"
                   htmlFor="states"
                 >
                   Property Type*
@@ -257,7 +264,7 @@ const AddProperty = () => {
               <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
                 <label
                   className="block tracking-wide text-[#464646]
-            text-[16px] font-normal mb-2"
+            text-[16px] font-normal mb-2 font-jost"
                   htmlFor="grid-first-name"
                 >
                   Property Name*
@@ -277,7 +284,7 @@ const AddProperty = () => {
               <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
                 <label
                   className="block tracking-wide text-[#464646]
-            text-[16px] font-normal mb-2"
+            text-[16px] font-normal mb-2 font-jost"
                   htmlFor="grid-first-name"
                 >
                   Property Email*
@@ -297,7 +304,7 @@ const AddProperty = () => {
               <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
                 <label
                   className="block tracking-wide text-[#464646]
-            text-[16px] font-normal mb-2"
+            text-[16px] font-normal mb-2 font-jost"
                   htmlFor="grid-first-name"
                 >
                   Property Address*
@@ -317,7 +324,7 @@ const AddProperty = () => {
               <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
                 <label
                   className="block tracking-wide text-[#464646]
-            text-[16px] font-normal mb-2"
+            text-[16px] font-normal mb-2 font-jost"
                   htmlFor="grid-first-name"
                 >
                   Property Country*
@@ -339,7 +346,7 @@ const AddProperty = () => {
                 <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">
                   <label
                     className="block tracking-wide text-[#464646] 
-            text-[16px] font-normal mb-2"
+            text-[16px] font-normal mb-2 font-jost"
                     htmlFor="grid-first-name"
                   >
                     Mobile Number*
@@ -351,6 +358,7 @@ const AddProperty = () => {
             rounded-md  px-4 mb-3 leading-tight focus:outline-none"
                     id="grid-first-name"
                     type="number"
+                    onKeyDown={(e) => TelLenValidation(e)}
                     placeholder=""
                     value={PropPhone}
                     onChange={(e) => setPropPhone(e.target.value)}
@@ -359,7 +367,7 @@ const AddProperty = () => {
                 <div className="col-span-4 md:col-span-2 mb-6 md:mb-0 px-2">
                   <label
                     className="block tracking-wide text-[#464646]
-            text-[16px] font-normal mb-2"
+            text-[16px] font-normal mb-2 font-jost"
                     htmlFor="states"
                   >
                     State*
@@ -374,7 +382,9 @@ w-full px-2.5 h-[42px]"
                     defaultValue={PropState}
                     onChange={(e) => setPropState(e.target.value)}
                   >
-                    <option selected value="">Choose a state</option>
+                    <option selected value="">
+                      Choose a state
+                    </option>
                     {stateList.map((stateList) => {
                       return (
                         <option value={stateList} key={stateList}>
