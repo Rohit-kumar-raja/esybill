@@ -16,7 +16,7 @@ const HomePage = ({setScrollProp}) => {
   return (
     <>
       <div ref={scrollRef}>
-        <Navbar />
+        <Navbar setScrollProp={setScrollProp}/>
       </div>
     
       <HeroSection setScrollProp={setScrollProp}/> 
