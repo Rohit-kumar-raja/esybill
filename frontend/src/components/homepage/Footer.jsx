@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
         <hr className='mx-11' />
         <div className='text-white font-light text-sm pt-6 pb-10'>
-          <p className="text-center">Copyright 2022 <span className="text-[#7E007E] font-bold">EzyBill India</span> | All Rights Reserved</p>
+          <p className="text-center">Copyright 2022 <span className="text-[#7E007E] font-bold">Eastland Microsystems</span> | All Rights Reserved</p>
         </div>
       </div>
 
