@@ -111,10 +111,13 @@ const Hms = () => {
         </h2>
         <Sticky className ="absolute right-20 md:left-4 md:flex md:flex-col  md:right-0  
      md:items-end top-[15%] md:top-[25%]">
+
+
+     
           <Link to="/login"> <button className='-rotate-90 md:-rotate-90 
           right-[-7.7rem] ml-[-.4rem] md:ml-0
           absolute mt-[5rem] 
-           md:right-[-1.5rem] font-raleway 
+           md:right-[-2.5rem] font-raleway 
     bg-rgba font-normal text-[15px] text-white rounded-t-2xl px-8 py-2 w-32'>
            Login 
           </button></Link> 
@@ -243,54 +246,60 @@ const Hms = () => {
               <button className="my-6 font-poppins
               bg-rgba font-semibold text-[15px] text-white rounded w-5/6 px-4 md:px-8 py-4">
                 How to activate cloud menu?</button>
-              <Carousel 
-                autoPlay
-                infiniteLoop
-                showArrows={false}
-                renderIndicator={(onClickHandler, isSelected, index, label) => {
-                  const defStyle = { marginLeft: 20, color: "#983398", cursor: "pointer" , fontSize: "15px", fontWeight: "bold"};
-                  const style = isSelected
-                    ? { ...defStyle, color: "#983398" }
-                    : { ...defStyle };
-                  return (
-                    <span
-                      style={style}
-                      onClick={onClickHandler}
-                      onKeyDown={onClickHandler}
+              <div className="w-[90vw]">
+                <Carousel 
+                  autoPlay
+                  infiniteLoop
+                  showArrows={false}
+                  renderIndicator={(onClickHandler, isSelected, index, label) => {
+                    const defStyle = { marginLeft: 20,
+                      width: "100vw",
+                      color: "#983398", cursor: "pointer" ,
+                      fontSize: "15px", fontWeight: "bold"};
+                    const style = isSelected
+                      ? { ...defStyle, color: "#983398" }
+                      : { ...defStyle };
+                    return (
+                      <span
+                        style={style}
+                        onClick={onClickHandler}
+                        onKeyDown={onClickHandler}
                     
-                      value={index}
-                      key={index}
-                      role="button"
-                      tabIndex={0}
-                      aria-label={`${label} ${index + 1}`}
-                    >
-                      { index + 1}
-                    </span>
-                  );
-                }}
-              >
+                        value={index}
+                        key={index}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`${label} ${index + 1}`}
+                      >
+                        { index + 1}
+                      </span>
+                    );
+                  }}
+                >
              
-                <CloudMenuCards title="Step 1:" img={step1} content="Go to registration page or click generate cloud menu now button at home page"/>
+                  <CloudMenuCards title="Step 1:" img={step1} content="Go to registration page or click generate cloud menu now button at home page"/>
              
-                <CloudMenuCards title="Step 2:" img={step2} content="Register your property or restaurant with OTP verification"/>
+                  <CloudMenuCards title="Step 2:" img={step2} content="Register your property or restaurant with OTP verification"/>
             
-                <CloudMenuCards title="Step 3:" img={step3} content="Your account opened. Now login to your account"/>
+                  <CloudMenuCards title="Step 3:" img={step3} content="Your account opened. Now login to your account"/>
 
-                <CloudMenuCards title="Step 4:" img={step4} content="Select generate cloud menu"/>
+                  <CloudMenuCards title="Step 4:" img={step4} content="Select generate cloud menu"/>
 
-                <CloudMenuCards title="Step 5:" img={step5} content="Select photo for photo view menu Or select text for text view menu"/>
+                  <CloudMenuCards title="Step 5:" img={step5} content="Select photo for photo view menu Or select text for text view menu"/>
 
-                <CloudMenuCards title="Step 6:" img={step6} content="Upload photo of your menu card or text manually"/>
+                  <CloudMenuCards title="Step 6:" img={step6} content="Upload photo of your menu card or text manually"/>
 
-                <CloudMenuCards title="Step 7:" img={step7} content="Submit"/>
+                  <CloudMenuCards title="Step 7:" img={step7} content="Submit"/>
 
-                <CloudMenuCards title="Step 8:" img={step8} content="Download QR code"/>
+                  <CloudMenuCards title="Step 8:" img={step8} content="Download QR code"/>
 
-                <CloudMenuCards title="Step 9:" img={step9} content="Print the QR"/>
+                  <CloudMenuCards title="Step 9:" img={step9} content="Print the QR"/>
 
-                <CloudMenuCards title="Step 10:" img={step10} content="Scan to Check and circulate with smile"/>
+                  <CloudMenuCards title="Step 10:" img={step10} content="Scan to Check and circulate with smile"/>
               
-              </Carousel>
+                </Carousel>
+              </div>
+             
             </div>
           </>
           : null
