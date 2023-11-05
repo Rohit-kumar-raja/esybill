@@ -4,7 +4,7 @@ function consultation({ name }) {
       <div class="w-full" style="border-bottom: 2px solid #8d2a9d">
         <div class="flex items-center justify-center py-[30px]">
           <img
-            src="http://ezybillindia.in/static/emailAssets/logo-golden-outline/logo_golden_outline.png"
+            src="https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/logo-golden-outline/logo_golden_outline.png"
             alt=""
           />
           <p class="font-poppins text-[24px]">
@@ -15,7 +15,7 @@ function consultation({ name }) {
       </div>
       <div
         style="
-          background: url('http://ezybillindia.in/static/emailAssets/letter/email_bg.png');
+          background: url('https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/letter/email_bg.png');
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
@@ -29,7 +29,7 @@ function consultation({ name }) {
                 Email Confirmation for Consultation
               </p>
               <img
-                src="http://ezybillindia.in/static/emailAssets/letter/letter_banner1.png"
+                src="https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/letter/letter_banner1.png"
                 alt=""
               />
             </div>
@@ -121,7 +121,7 @@ function call({
   <div class="w-full" style="border-bottom: 2px solid #8d2a9d">
     <div class="flex items-center justify-center py-[30px]">
       <img
-        src="http://ezybillindia.in/static/emailAssets/logo-golden-outline/logo_golden_outline.png"
+        src="https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/logo-golden-outline/logo_golden_outline.png"
         alt=""
       />
       <p class="font-poppins text-[24px]">
@@ -132,7 +132,7 @@ function call({
   </div>
   <div
     style="
-      background: url('http://ezybillindia.in/static/emailAssets/letter/email_bg.png');
+      background: url('https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/letter/email_bg.png');
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -146,7 +146,7 @@ function call({
             Email Confirmation for Scheduling a Call
           </p>
           <img
-            src="http://ezybillindia.in/static/emailAssets/letter/thankyou_banner.png"
+            src="https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/letter/thankyou_banner.png"
             alt=""
           />
         </div>
@@ -245,7 +245,7 @@ function demo({ name }) {
   <div class="w-full" style="border-bottom: 2px solid #8d2a9d">
     <div class="flex items-center justify-center py-[30px]">
       <img
-        src="http://ezybillindia.in/static/emailAssets/logo-golden-outline/logo_golden_outline.png"
+        src="https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/logo-golden-outline/logo_golden_outline.png"
         alt=""
       />
       <p class="font-poppins text-[24px]">
@@ -256,7 +256,7 @@ function demo({ name }) {
   </div>
   <div
     style="
-      background: url('http://ezybillindia.in/static/emailAssets/letter/email_bg.png');
+      background: url('https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/letter/email_bg.png');
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -270,7 +270,7 @@ function demo({ name }) {
             Email Confirmation for Demonstration
           </p>
           <img
-            src="http://ezybillindia.in/static/emailAssets/letter/letter_banner.png"
+            src="https://ezybill-email-template-images.s3.ap-south-1.amazonaws.com/letter/letter_banner.png"
             alt=""
           />
         </div>
