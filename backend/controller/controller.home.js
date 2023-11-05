@@ -11,8 +11,8 @@ const emailTemplates = require('../emailTemplates');
 async function insertFormData(form, formData) {
   try {
     await homeModel[form](formData);
-    await mailer.sendMail(config.adminEmail, 'User Request', emailTemplates.adminMail(form, formData));
-    mailer.sendMail(formData.email, 'Thank you for contacting EzyBill India', emailTemplates[form](formData));
+    await mailer.sendMail(config.adminEmail, 'User Request', '', emailTemplates.adminMail(form, formData));
+    mailer.sendMail(formData.email, 'Thank you for contacting EzyBill India', '', emailTemplates[form](formData));
     return { success: true };
   }
   catch (err) {
