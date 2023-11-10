@@ -10,7 +10,8 @@ module.exports = {
       },
       fontFamily: {
         "poppins": ["Poppins", "sans-serif"],
-        "raleway": ["Raleway", "sans-serif"]
+        "raleway": ["Raleway", "sans-serif"],
+        "jost":    ["Jost", "sans-serif"],
        
       },
       backgroundImage: {

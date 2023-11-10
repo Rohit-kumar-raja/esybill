@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect, useRef, useState } from "react";
 import { MdOutlineMobileFriendly } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
@@ -551,6 +550,7 @@ const OTPVerificationModal = ({
                       </span>
                     )}
                   </p>
+                  <p className="text-[0.7rem] font-[550] font-poppins">For customers outside India, please check your email for OTP</p>
                   <ToastContainer autoClose={2000} />
                   {/* {loader && (
                     <svg
