@@ -1,13 +1,6 @@
 function consultation({ name }) {
   const body = `
-  <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Template</title>
-  </head>
-  <body style="margin: 0; padding: 0; box-sizing: border-box">
+  <div style="margin: 0; padding: 0; box-sizing: border-box">
     <!-- wrapper div -->
     <div style="width: 100%; overflow: hidden">
       <div style="width: 100%; margin: 0 auto">
@@ -294,8 +287,7 @@ function consultation({ name }) {
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
 `;
   return body;
 }
@@ -304,14 +296,7 @@ function call({
   name, date, time, subject
 }) {
   const body = `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Email Template</title>
-    </head>
-    <body style="margin: 0; padding: 0; box-sizing: border-box">
+    <div style="margin: 0; padding: 0; box-sizing: border-box">
       <!-- wrapper div -->
   
       <div style="width: 100%; overflow: hidden">
@@ -614,22 +599,14 @@ function call({
           </div>
         </div>
       </div>
-    </body>
-  </html>
+    </div>
   `;
   return body;
 }
 
 function demo({ name }) {
   const body = `
-  <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Template</title>
-  </head>
-  <body style="margin: 0; padding: 0; box-sizing: border-box">
+  <div style="margin: 0; padding: 0; box-sizing: border-box">
     <!-- wrapper div -->
     <div style="width: 100%; overflow: hidden">
       <div style="width: 100%; margin: 0 auto">
@@ -907,8 +884,7 @@ function demo({ name }) {
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
 `;
   return body;
 }
