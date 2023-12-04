@@ -99,10 +99,10 @@ const HeroSection = (props) => {
         style={{ backgroundImage: `url(${bgimg})`, backgroundRepeat:"no-repeat", backgroundSize:"cover" }}>
           <div className='col-span-1 md:col-span-2'>
             <div className='grid grid-cols-3 md:flex md:items-center md:justify-center md:col-span-2'>
-              <img src={scanner} alt="" className='w-24 h-24 
+              <img src={scanner} alt="" className='w-28 h-28 
              md:w-24 md:h-24 mx-auto md:mx-5 py-4 my-auto
             back ' /> 
-              <div className="col-span-2 md:flex md:flex-col text-[#333333] px-4 md:px-0">
+              <div className="col-span-2 md:flex md:flex-col text-[#333333] pr-2 md:pr-0 md:px-0">
                 {/* <p className='text-[14px] flex flex-wrap justify-start 
                  '>Scan this QR to view a sample & Upgrade your paper menu to 
                   <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>

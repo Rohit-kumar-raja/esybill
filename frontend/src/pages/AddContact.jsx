@@ -221,12 +221,20 @@ const AddContact = ({scrollProp}) => {
         
       }
 
-      if(response?.status === 201){
-        toast.success("Call scheduled successfully!", {
+      if(response?.status === 201 && contactRadio === "Demo Purpose"){
+        toast.success("Demo call scheduled successfully!", {
           position: toast.POSITION.TOP_CENTER
         });
       } 
-      console.log(name,email, phone, state, subject)
+      else  if(response?.status === 201 && contactRadio === "Consultation"){
+        toast.success("Consultation scheduled successfully!", {
+          position: toast.POSITION.TOP_CENTER
+        });
+      } 
+      else{
+        console.log(name,email, phone, state, subject)
+      }
+      
     }
     catch{
       toast.error("Call couldn't be scheduled, please try again later!", {
