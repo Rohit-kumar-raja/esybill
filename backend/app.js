@@ -5,9 +5,10 @@ const path = require('path');
 const routes = require('./routes/index');
 
 const app = express();
-if (process.env.NODE_ENV.toString().toLowerCase() !== 'production') {
-  app.use(cors());
-}
+app.use(cors());
+// if (process.env.NODE_ENV !== 'production') {
+
+// }
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.listen(process.env.NODE_PORT || 4000, () => {

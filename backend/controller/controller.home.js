@@ -6,11 +6,13 @@ const itemCategoryModel = require('../model/model.itemCategory');
 const itemModel = require('../model/model.item');
 const productModel = require('../model/model.product');
 const imageMenuModel = require('../model/model.imageMenu');
+const emailTemplates = require('../emailTemplates');
 
 async function insertFormData(form, formData) {
   try {
     await homeModel[form](formData);
-    await mailer.sendMail(config.adminEmail, 'Subject', JSON.stringify(formData));
+    await mailer.sendMail(config.adminEmail, 'User Request', '', emailTemplates.adminMail(form, formData));
+    mailer.sendMail(formData.email, 'Thank you for contacting EzyBill India', '', emailTemplates[form](formData));
     return { success: true };
   }
   catch (err) {

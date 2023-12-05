@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import axios from "../api/axios"; 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import validateText, { validateNumber } from "../utils/TextValidations";
 
 
 const ProductModal= ({setShowModal,setfetchProduct}) => {
@@ -148,8 +149,8 @@ const ProductModal= ({setShowModal,setfetchProduct}) => {
                 </div> 
                 {/*body*/}
                 <div className="p-6 flex flex-col gap-3 ">
-                  <div className='flex justify-evenly items-center gap-3'>
-                    <label className="block tracking-wide text-[#464646] text-sm
+                  <div className='flex justify-between items-center px-4'>
+                    <label className="block tracking-wide text-[#464646]text-sm
             font-normal mb-2" htmlFor='states'>
             Category
                     </label>
@@ -172,7 +173,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
                       }
                     </select>
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
               Sub-Category
@@ -192,7 +193,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
                       }
                     </select>
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
               Product
@@ -201,9 +202,9 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
-                    value={ProductName} onChange={(e)=> setProductName(e.target.value)} />
+                    value={ProductName} onChange={(e)=> setProductName(e.target.value)} onInput={(e)=>validateText(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
               Note On Product
@@ -212,9 +213,9 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
-                    value={NoteOnProduct} onChange={(e)=> setNoteOnProduct(e.target.value)} />
+                    value={NoteOnProduct} onChange={(e)=> setNoteOnProduct(e.target.value)} onInput={(e)=>validateText(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
               Unit Price 
@@ -223,9 +224,10 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
+                    onInput={(e)=>validateNumber(e.target.value)}
                     value={Unitprice} onChange={(e)=> setunitprice(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
              Unit
@@ -234,9 +236,10 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
+                    onInput={(e)=>validateNumber(e.target.value)}
                     value={Unit} onChange={(e)=> setunit(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
               SGSTPC
@@ -245,9 +248,10 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
+                    onInput={(e)=>validateNumber(e.target.value)}
                     value={SGSTPC} onChange={(e)=> setSGSTPC(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
             CGSTPC
@@ -256,9 +260,10 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
+                    onInput={(e)=>validateNumber(e.target.value)}
                     value={CGSTPC} onChange={(e)=> setCGSTPC(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
              Discount Allowed
@@ -267,9 +272,10 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
+                    onInput={(e)=>validateNumber(e.target.value)}
                     value={DiscountAllowed} onChange={(e)=> setDiscountAllowed(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
             Sh Name
@@ -278,9 +284,10 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
+                    onInput={(e)=>validateText(e.target.value)}
                     value={ShName} onChange={(e)=> setShName(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
               Room Unit Price 
@@ -289,9 +296,10 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
+                    onInput={(e)=>validateNumber(e.target.value)}
                     value={RoomUnitPrice} onChange={(e)=> setRoomUnitPrice(e.target.value)} />
                   </div>
-                  <div className='flex justify-evenly items-center gap-3'>
+                  <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
              HSNSAC
@@ -300,6 +308,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
+                    
                     value={HSNSAC} onChange={(e)=> setHSNSAC(e.target.value)} />
                   </div>
                   <div>
