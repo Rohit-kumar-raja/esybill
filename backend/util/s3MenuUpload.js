@@ -8,8 +8,7 @@ async function uploadImageToS3(bucketName, folderName, fileName, imageBuffer, is
     const params = {
       Bucket: bucketName,
       Key: `${folderName}${isQR ? '/' : '/ImageMenu/'}${fileName}`,
-      Body: imageBuffer,
-      ACL: 'public-read'
+      Body: imageBuffer
     };
 
     const command = new PutObjectCommand(params);
