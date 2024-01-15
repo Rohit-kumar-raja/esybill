@@ -19,6 +19,7 @@ async function uploadImageToS3(bucketName, folderName, fileName, imageBuffer, is
     return imageUrl;
   }
   catch (error) {
+    console.log(error);
     return { success: false, status: 500, message: 'Error uploading object from S3.' };
   }
 }
