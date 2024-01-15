@@ -8,7 +8,8 @@ async function generateQR(data, name, logo = '../public/logos/logo.png') {
       if (err) {
         reject(err);
       }
-      uploadImageToS3(process.env.S3_BUCKET, 'QRCodes', `${name}.png`, b64Image, true).then(resolve).catch(reject);
+      const imgBuff = Buffer.from(b64Image, 'base64');
+      uploadImageToS3(process.env.S3_BUCKET, 'QRCodes', `${name}.png`, imgBuff, true).then(resolve).catch(reject);
     });
   });
 }
