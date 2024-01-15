@@ -18,14 +18,15 @@ async function getAllProperties(customerNo) {
 
 async function createProperty(property, customerNo) {
   try {
-    // eslint-disable-next-line
+    // eslint-disable-next-line no-param-reassign
     property.CustomerNo = customerNo;
     const PropertyMenuName = `${property.PropName.trim().replace(' ', '-')}-${new Date().getTime()}`;
-    // eslint-disable-next-line
+    // eslint-disable-next-line no-param-reassign
     property.PropertyMenuName = PropertyMenuName;
-    qr.generateQR(`${process.env.MENU_URL}/${PropertyMenuName}`, PropertyMenuName);
-    // eslint-disable-next-line
-    property.QRLocation = `${process.env.URL}/assets/qrcodes/${PropertyMenuName}.png`;
+    // eslint-disable-next-line no-param-reassign
+    property.QRLocation = await qr.generateQR(`${process.env.MENU_URL}/${PropertyMenuName}`, PropertyMenuName);
+    // eslint-disable-next-line no-param-reassign
+    // property.QRLocation = `${process.env.URL}/assets/qrcodes/${PropertyMenuName}.png`;
     await propertyModel.insertProperty(property);
     return { success: true };
   }

@@ -20,7 +20,7 @@ async function insertImageMenu(propertyNo, image, text, customerNo) {
     const propertyMenuName = propertyDetails[0].PropertyMenuName;
     const fileName = `${propertyNo}_${Date.now()}`;
 
-    const imageUrl = await uploadImageToS3('myawsbucket-free', `${propertyNo}_${customerNo}`, fileName, image);
+    const imageUrl = await uploadImageToS3(process.env.S3_BUCKET, `${propertyNo}_${customerNo}`, fileName, image);
 
     if (imageMenu.length === 0) {
       const imageData = JSON.stringify([{
@@ -108,7 +108,7 @@ async function deleteImage(propertyNo, pageNo) {
       return { success: false, status: 400, message: 'Invalid Page Number.' };
     }
 
-    const deleteStatus = await deleteObjectFromS3('myawsbucket-free', parsedImageData[pageNo - 1].imageUrl);
+    const deleteStatus = await deleteObjectFromS3('process.env.S3_BUCKET', parsedImageData[pageNo - 1].imageUrl);
     if (!deleteStatus.success) throw new Error('Delete Unsucessful.');
 
     parsedImageData.splice(pageNo - 1, 1);

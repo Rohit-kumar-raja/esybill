@@ -3,11 +3,11 @@ require('dotenv').config();
 
 const s3Client = new S3Client({ region: 'ap-south-1' });
 
-async function uploadImageToS3(bucketName, folderName, fileName, imageBuffer) {
+async function uploadImageToS3(bucketName, folderName, fileName, imageBuffer, isQR) {
   try {
     const params = {
       Bucket: bucketName,
-      Key: `${folderName}/ImageMenu/${fileName}`,
+      Key: `${folderName}${isQR ? '/' : '/ImageMenu/'}${fileName}`,
       Body: imageBuffer,
       ACL: 'public-read'
     };
@@ -15,7 +15,7 @@ async function uploadImageToS3(bucketName, folderName, fileName, imageBuffer) {
     const command = new PutObjectCommand(params);
     await s3Client.send(command);
 
-    const imageUrl = `https://${bucketName}.s3.amazonaws.com/${folderName}/ImageMenu/${fileName}`;
+    const imageUrl = `https://${bucketName}.s3.amazonaws.com/${folderName}/${isQR ? 'QR' : 'ImageMenu'}/${fileName}`;
     return imageUrl;
   }
   catch (error) {
