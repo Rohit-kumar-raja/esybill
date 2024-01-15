@@ -25,7 +25,6 @@ async function createProperty(property, customerNo) {
     property.PropertyMenuName = PropertyMenuName;
     // eslint-disable-next-line no-param-reassign
     property.QRLocation = await qr.generateQR(`${process.env.MENU_URL}/${PropertyMenuName}`, PropertyMenuName);
-    console.log('\n\nTEST3--', property.QRLocation);
     // eslint-disable-next-line no-param-reassign
     // property.QRLocation = `${process.env.URL}/assets/qrcodes/${PropertyMenuName}.png`;
     await propertyModel.insertProperty(property);

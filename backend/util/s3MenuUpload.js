@@ -14,7 +14,7 @@ async function uploadImageToS3(bucketName, folderName, fileName, imageBuffer, is
     const command = new PutObjectCommand(params);
     await s3Client.send(command);
 
-    const imageUrl = `https://${bucketName}.s3.amazonaws.com/${folderName}/${isQR ? 'QR' : 'ImageMenu'}/${fileName}`;
+    const imageUrl = `https://${bucketName}.s3.amazonaws.com/${folderName}${isQR ? '/' : '/ImageMenu/'}${fileName}`;
     return imageUrl;
   }
   catch (error) {
