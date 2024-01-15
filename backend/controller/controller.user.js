@@ -87,8 +87,8 @@ async function register(user, properties) {
       property.CustomerNo = custId;
       const PropertyMenuName = `${property.PropName.trim().replace(' ', '-')}-${new Date().getTime()}`;
       property.PropertyMenuName = PropertyMenuName;
-      qr.generateQR(`${process.env.MENU_URL}/${PropertyMenuName}`, PropertyMenuName);
-      property.QRLocation = `${process.env.URL}/assets/qrcodes/${PropertyMenuName}.png`;
+      property.QRLocation = await qr.generateQR(`${process.env.MENU_URL}/${PropertyMenuName}`, PropertyMenuName);
+      // property.QRLocation = `${process.env.URL}/assets/qrcodes/${PropertyMenuName}.png`;
       // eslint-disable-next-line
       await propertyModel.insertProperty(property);
     }
