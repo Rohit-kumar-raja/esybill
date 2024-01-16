@@ -209,7 +209,7 @@ const Profile = () => {
             </h1>
           </div>
           <div className="flex items-center justify-between  flex-wrap mb-6">
-            <div className="w-[48%] mb-6 md:mb-0 px-2 md:mt-6 gap-2">
+            <div className="w-[100%] md:w-[48%] mb-6 md:mb-0 px-2 md:mt-6 gap-2">
               <label
                 className="block tracking-wide text-[#464646]
             text-[16px] font-normal mb-2 font-jost"
@@ -230,7 +230,7 @@ const Profile = () => {
               />
             </div>
 
-            <div className="w-[48%] mb-6 md:mb-0 px-2 md:mt-6">
+            <div className="w-[100%] md:w-[48%] mb-6 md:mb-0 px-2 md:mt-6">
               <label
                 className="block tracking-wide text-[#464646] 
             text-[16px] font-normal mb-2 font-jost"
@@ -251,7 +251,7 @@ const Profile = () => {
               />
             </div>
 
-            <div className="w-[48%] mb-6 md:mb-0 px-2 md:mt-6">
+            <div className="w-[100%] md:w-[48%] mb-6 md:mb-0 px-2 md:mt-6">
               <label
                 className="block tracking-wide text-[#464646] 
             text-[16px] font-normal mb-2 font-jost"
@@ -271,7 +271,7 @@ const Profile = () => {
                 onChange={(e) => editDetailsHandler(e, "RegMobile")}
               />
             </div>
-            <div className="w-[48%] mb-6 md:mb-0 px-2 md:mt-6">
+            <div className="w-[100%] md:w-[48%] mb-6 md:mb-0 px-2 md:mt-6">
               <label
                 className="block tracking-wide text-[#464646]
             text-[16px] font-normal mb-2 font-jost"
@@ -301,7 +301,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
                 })}
               </select>
             </div>
-            <div className="w-[48%] mb-6 md:mb-0 px-2 md:mt-6">
+            <div className="w-[100%] md:w-[48%] mb-6 md:mb-0 px-2 md:mt-6">
               <label
                 className="block tracking-wide text-[#464646] 
             text-[16px] font-normal mb-2"

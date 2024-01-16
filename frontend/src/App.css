@@ -17,6 +17,12 @@
   width: auto !important;
 } 
 
+#stick .sticky{
+  transform: translateZ(0px);
+    top: 7rem !important;
+    width: 0px;
+    position: fixed;
+}
 /* .carousel-root{
   width: 100vw !important;
 } */

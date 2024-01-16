@@ -40,11 +40,11 @@ const RegistrationForm = () => {
     <>
       <Navbar/>
 
-      <div className="grid grid-cols-4 md:grid-cols-12 p-12">
+      <div className="grid grid-cols-4 md:grid-cols-12 p-4 md:p-12">
         <div className="md:col-span-1"></div>
-        <div className="col-span-4 md:col-span-10">
-          <div className="grid grid-cols-4">
-            <div className="col-span-1  ">
+        <div className="col-span-6 md:col-span-10">
+          <div className="grid grid-cols-6">
+            <div className="col-span-1 md:col-span-2">
               <Stepper 
               // actFirstProp={actFirstProp} 
 
@@ -66,7 +66,7 @@ const RegistrationForm = () => {
                 setActivateFourthPropertyStepper={setActivateFourthPropertyStepper}
               />
             </div>
-            <div className="col-span-3">
+            <div className="col-span-5 md:col-span-4 ">
               <div className="col-span-3 md:grid md:grid-cols-8">
                 <div className="md:col-span-1"></div>
                 <div className="col-span-3 md:col-span-6">

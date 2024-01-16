@@ -48,7 +48,7 @@ const HeroSection = (props) => {
           {/* <Sticky className="z-[99] relative top-0"> */}
           {/* <Sticky> */}
           <Sticky className ="absolute left-[-8%] md:left-4 md:flex md:flex-col  md:right-0  z-[9999]
-     md:items-end top-[5rem] md:top-[25%]">
+     md:items-end top-[15%] md:top-[25%]" id="stick">
             <Link to="/login">
               <button className='rotate-90 md:-rotate-90 absolute md:right-[-2.5rem] 
               font-raleway mt-[5rem] ml-[-.8rem] md:ml-0

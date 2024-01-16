@@ -88,20 +88,20 @@ const PropertyCardComponent = ({setSidebarTabs, property, deletePopup, setDelete
       <div className='rounded-md p-5 shadow-md'>
         <p className='my-3'>{PropName}</p>
         <div className='flex flex-col gap-3'>
-          <div className='flex text-[15px] font-normal justify-between items-center'>
+          <div className='flex text-[15px] flex-col md:flex-row font-normal md:justify-between md:items-center'>
             <h5 className='text-[#B3B3B3] flex flex-grow items-center gap-2'><TbBuildingEstate/>Property type</h5>
-            <h5 className='text-[#464646] w-1/3 px-2 text-left '>{PropType}</h5>
+            <h5 className='text-[#464646] w-1/3 px-6 md:px-2 text-left '>{PropType}</h5>
           </div>
-          <div className='flex text-[15px] font-normal justify-between'>
+          <div className='flex text-[15px] flex-col md:flex-row font-normal md:justify-between md:items-center'>
             <h5 className='text-[#B3B3B3] flex flex-grow items-center gap-2'><BsTelephoneForwardFill/>Contact</h5>
-            <h5 className='text-[#464646]  w-1/3 px-2 text-left'>{PropPhone}</h5>
+            <h5 className='text-[#464646]  w-1/3 px-6 md:px-2 text-left'>{PropPhone}</h5>
           </div>
-          <div className='flex text-[15px] font-normal justify-between'>
+          <div className='flex text-[15px] flex-col md:flex-row font-normal md:justify-between md:items-center'>
             <h5 className='text-[#B3B3B3] flex flex-grow items-center gap-2'><FiMapPin/>State</h5>
-            <h5 className='text-[#464646]  w-1/3 px-2 text-left'>{PropState}</h5>
+            <h5 className='text-[#464646]  w-1/3 px-6 md:px-2 text-left'>{PropState}</h5>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row"> 
+        <div className="flex flex-row"> 
           <button className="font-normal  bg-[#800080] text-[white] flex items-center 
     rounded-md py-2  md:py-1 lg:py-2 my-2 md:my-6 text-[10px] md:text-[13px] px-3 mx-auto
       cursor-pointer opacity-100" onClick={viewSidebarToggler}>View More</button>
