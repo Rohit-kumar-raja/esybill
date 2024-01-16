@@ -222,7 +222,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
           </div>
           <div className="flex flex-col items-center">
             <ReCAPTCHA
-              sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+              sitekey={"6LdawpEnAAAAAD5WyqQoXne_hG5P0OVCHDe2h71Y"}
               ref={captchaRef}
               onChange={useCallback(() => setCaptchaToken(true))}
             />
