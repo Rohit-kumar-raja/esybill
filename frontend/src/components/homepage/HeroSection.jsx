@@ -100,7 +100,7 @@ const HeroSection = (props) => {
           <div className='col-span-1 md:col-span-2'>
             <div className='grid grid-cols-3 md:flex md:items-center md:justify-center md:col-span-2'>
               <img src={scanner} alt="" className='w-28 h-28 
-             md:w-24 md:h-24 mx-auto md:mx-5 py-4 my-auto
+             md:w-24 md:h-24 mx-auto md:mx-5 md:py-4 my-auto
             back ' /> 
               <div className="col-span-2 md:flex md:flex-col text-[#333333] pr-2 md:pr-0 md:px-0">
                 {/* <p className='text-[14px] flex flex-wrap justify-start 
@@ -108,7 +108,7 @@ const HeroSection = (props) => {
                   <span className='text-[#7E007E] font-bold mx-2'> Cloud Menu </span>
                  & Upgrade your paper menu to <span className='text-[#7E007E] font-bold mx-2'>
                   Cloud Menu </span> for your Restaurant, Hotel or Café. </p> */}
-                <p className='text-sm  md:text-[18px] flex flex-wrap justify-start leading-5 md:leading-10
+                <p className='text-sm  md:text-[18px] flex flex-wrap justify-start  md:leading-10
                  '>Scan this QR to view a sample & Upgrade your paper menu to 
                   <span className='text-[#7E007E] font-bold mx-0 md:mx-2'> Cloud Menu </span>
                 </p> 
