@@ -24,7 +24,7 @@ async function sendOTP({ email, number, type }) {
     const validity = 5;
     const otp = generateOTP();
     const loginMsg = `Dear Customer, the OTP to Login to your EzyBill India account is ${otp} and valid for ${validity} min. - Eastland Microsystems`;
-    const regMsg = `Welcome to EzyBill India digital services, OTP for registration is ${otp} and valid for ${validity} min. - Eastland Microsystems`;
+    const regMsg = `Welcome to EzyBill India digital services, OTP for registration is ${otp} and valid for ${validity} min - Eastland Microsystems`;
     let msg;
     if (type === 'login') msg = loginMsg;
     else if (type === 'verify') msg = regMsg;

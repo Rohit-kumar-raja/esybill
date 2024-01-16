@@ -13,6 +13,11 @@ async function sendSMS(message, number) {
       test: process.env.TEST_SMS
     });
     const response = await axios.post('https://api.textlocal.in/send/', data);
+    if (response.data.status === 'failure') {
+      // eslint-disable-next-line
+      console.log(response.data.errors);
+      return false;
+    }
     return response.data.status;
   }
   catch (err) {
