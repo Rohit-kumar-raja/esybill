@@ -49,7 +49,7 @@ const Profile = () => {
   const [RegEmail, setRegEmail] = useState("");
   const [State, setState] = useState("");
   const [Country, setCountry] = useState("");
-  const [editDetails, seteditDetails] = useState(false);
+  const [editDetails, seteditDetails] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const accessToken = useSelector((store) => store?.login?.userData[0]);
@@ -82,6 +82,7 @@ const Profile = () => {
 
 
   const editDetailsHandler = (e, id) => {
+    seteditDetails(false)
     if (id.includes("CustomerName")) {
       setCustomerName(e.target.value);
     } else if (id.includes("RegMobile")) {
@@ -97,24 +98,27 @@ const Profile = () => {
     }
   };
 
-  useEffect(() => {
-    if (
-      CustomerName !== "" &&
-      RegMobile !== "" &&
-      RegEmail !== "" &&
-      RegEmail.toLowerCase().match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      ) &&
-      State !== "" &&
-      Country !== ""
-    ) {
-      seteditDetails(true);
-    }
-  }, [RegEmail]);
+  // useEffect(() => {
+  //   if (
+  //     CustomerName !== "" &&
+  //     RegMobile !== "" &&
+  //     RegEmail !== "" &&
+  //     // RegEmail.toLowerCase().match(
+  //     //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  //     // ) &&
+  //     State !== "" &&
+  //     Country !== ""
+  //   ) {
+  //     seteditDetails(true);
+  //   }
+  // }, [RegEmail]);
 
   const cancelEditHandler = (e) => {
     e.preventDefault();
-    seteditDetails(false);
+    console.log("inside cancel")
+    // seteditDetails(false)
+
+    seteditDetails(true);
     setCustomerName(profile?.CustomerName);
     setRegMobile(profile?.RegMobile);
     setState(profile?.State);
@@ -174,6 +178,7 @@ const Profile = () => {
       setCustomerName(profile?.CustomerName);
       setRegMobile(profile?.RegMobile);
       setState(profile?.State);
+      setRegEmail(profile?.RegEmail)
       setCountry(profile?.Country);
       setRegEmail(profile?.RegEmail)
       dispatch(addPhone(profile?.RegMobile));
@@ -320,28 +325,39 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             </div>
 
             {/* <div className="grid grid-cols-4 md:mb-3 md:mt-3"></div> */}
-          </div>
+          </div> 
           <div className="flex  items-center gap-3 px-2 justify-end">
-            {editDetails ? (
-              <>
-                <button
-                  className="font-normal  text-[#A1A1A1] flex items-center 
-      rounded-md py-2 my-6 text-[13px] px-3 cursor-pointer opacity-100 hover:bg-[#A1A1A1] hover:text-white"
-                  onClick={(e) => cancelEditHandler(e)}
-                >
+          
+            <>
+              <button
+                className={`font-normal  text-[#A1A1A1] flex items-center 
+      rounded-md py-2 my-6 text-[13px] px-3 
+       ${
+    editDetails
+      ? "cursor-not-allowed opacity-50 bg-gray-500"
+      : "cursor-pointer opacity-100 bg-gray-600"
+    }
+       `}
+                disabled={editDetails}
+                onClick={(e) => cancelEditHandler(e)}
+              >
                   Cancel
-                </button>
-                <button
-                  className="font-normal w-[20%]  bg-[#800080] text-[white] flex items-center 
-      rounded-md py-2 my-6 text-[13px]  px-3 cursor-pointer opacity-100"
-                  onClick={(e) => saveEditHandler(e)}
-                >
-                  <p className="text-center w-full">Save Changes</p>
-                </button>
-              </>
-            ) : (
-              ""
-            )}
+              </button>
+              <button
+                className={`font-normal w-[20%]   text-[white] flex items-center 
+      rounded-md py-2 my-6 text-[13px]  px-3 
+      ${
+    editDetails
+      ? "cursor-not-allowed opacity-50 bg-purple-500"
+      : "cursor-pointer opacity-100 bg-purple-600"
+    }
+      `}   disabled={editDetails}
+                onClick={(e) => saveEditHandler(e)}
+              >
+                <p className="text-center w-full">Save Changes</p>
+              </button>
+            </>
+           
           </div>
         </form>
       </div>

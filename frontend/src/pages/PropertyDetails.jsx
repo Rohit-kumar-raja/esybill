@@ -24,7 +24,7 @@ const PropertyDetails = () => {
   const [PropState, setPropState] = useState("");
   const [PropCountry, setPropCountry] = useState("");
   const [image, setImage] = useState("");
-  const [editDetails, seteditDetails] = useState(false);
+  const [editDetails, seteditDetails] = useState(true);
   const [menu, setMenu] = useState("");
   const [fetchedMenu, setfetchedMenu] = useState("");
   const [disabledText, setDisabledText] = useState(false);
@@ -82,7 +82,7 @@ const PropertyDetails = () => {
     } else {
       console.log("else conditn");
     }
-    seteditDetails(true);
+    seteditDetails(false);
   };
 
   useEffect(() => {
@@ -102,6 +102,7 @@ const PropertyDetails = () => {
     setPropState(propertyDetail[0].PropState);
     setPropCountry(propertyDetail[0].PropCountry);
     setMenu(propertyDetail[0].MenuType);
+    seteditDetails(true)
   };
   const saveEditHandler = async (e) => {
     e.preventDefault();
@@ -385,26 +386,35 @@ const PropertyDetails = () => {
 
         <div className="flex flex-col mb-6">
           <div className="flex  items-center gap-3 px-2">
-            {editDetails ? (
-              <>
-                <button
-                  className="font-normal  bg-red-400 text-[white] flex items-center 
-      rounded-md py-2 my-6 text-[13px] px-3 cursor-pointer opacity-100"
-                  onClick={(e) => cancelEditHandler(e)}
-                >
+            
+            <button
+              className={`font-normal   text-[white] flex items-center 
+      rounded-md py-2 my-6 text-[13px] px-3  opacity-100 
+      ${
+    editDetails
+      ? "cursor-not-allowed opacity-50 bg-red-500"
+      : "cursor-pointer opacity-100 bg-red-600"
+    }
+      `}
+              disabled={editDetails}
+              onClick={(e) => cancelEditHandler(e)}
+            >
                   Cancel
-                </button>
-                <button
-                  className="font-normal  bg-green-400 text-[white] flex items-center 
-      rounded-md py-2 my-6 text-[13px] px-3 cursor-pointer opacity-100"
-                  onClick={(e) => saveEditHandler(e)}
-                >
+            </button>
+            <button
+              className={`font-normal   text-[white] flex items-center 
+              rounded-md py-2 my-6 text-[13px] px-3  opacity-100 
+              ${
+    editDetails
+      ? "cursor-not-allowed opacity-50 bg-green-500"
+      : "cursor-pointer opacity-100 bg-green-600"
+    }
+              `}  disabled={editDetails}
+              onClick={(e) => saveEditHandler(e)}
+            >
                   Save Changes
-                </button>
-              </>
-            ) : (
-              ""
-            )}
+            </button>
+              
           </div>
         </div>
       </form>

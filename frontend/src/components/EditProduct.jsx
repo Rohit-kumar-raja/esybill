@@ -75,7 +75,7 @@ const EditProduct = (props) => {
     <>
       <ToastContainer autoClose={2000}/>
       <form className="md:w-[30rem] mx-auto">    
-        <div className='rounded-md p-5 shadow-md'>
+        <div className='rounded-md p-5 border-solid border-2 border-gray-300'>
           <div className='flex flex-col gap-3'>
             <div className='flex text-[14px] font-normal justify-between  flex-col md:flex-row'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Product Name</h5>

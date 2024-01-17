@@ -114,7 +114,7 @@ const Dashboard = () => {
                 </span>
               </li>
             </Link>
-            <Link to='/dashboard/addproperty'>
+            {/* <Link to='/dashboard/addproperty'>
               <li
                 className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white">
@@ -123,7 +123,7 @@ const Dashboard = () => {
               Add Property
                 </span>
               </li>
-            </Link>
+            </Link> */}
             {
               sidebarTabs ?
                 <>

@@ -52,7 +52,7 @@ const EditSubCategory = (props) => {
     <>
       <ToastContainer autoClose={2000} />
       <form className="md:w-[30rem] mx-auto">
-        <div className="rounded-[20px] p-5 shadow-lg bg-white ">
+        <div className="rounded-[20px] p-5 border-solid border-2 border-gray-300 bg-white ">
           <div className="flex flex-col gap-3 ">
             <div className="text-[14px] font-normal justify-between flex-col md:flex-row">
               <p className="p-2 font-poppins text-[0.8rem] font-[550]">
