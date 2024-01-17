@@ -34,7 +34,7 @@ const PropertyDetails = () => {
     if (propertyDetail?.length > 0) {
       if (propertyDetail[0]?.hasActiveDesktopLicense === 1) {
         setDisabledText(true);
-        if (propertyDetail[0]?.MenuType !== "Image menu") {
+        if (propertyDetail[0]?.MenuType !== "image") {
           setDisabledMenu(true);
         } else {
           setDisabledMenu(false);
@@ -77,7 +77,6 @@ const PropertyDetails = () => {
     } else if (id.includes("PropCountry")) {
       setPropCountry(e.target.value);
     } else if (id.includes("MenuType")) {
-      console.log(e.target.value);
       setMenu(e.target.value);
       dispatch(addMenuType(e.target.value));
     } else {
@@ -216,7 +215,7 @@ const PropertyDetails = () => {
                 Menu Type
               </label>
               <select
-                id="states"
+                id="menu"
                 className="bg-gray-50  block 
                 border-2 border-[#DDDDDD] rounded-md focus:outline-none 
                 focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
@@ -227,28 +226,19 @@ const PropertyDetails = () => {
               >
                 {fetchedMenu === "text" ? (
                   <>
-                    <option value="Text menu" selected>
+                    <option value="text" selected>
                       Text menu
                     </option>
-                    <option value="Image menu">Image menu</option>
+                    <option value="image">Image menu</option>
                   </>
-                ) : fetchedMenu === "Image menu" ? (
+                ) : (
                   <>
-                    <option value="Image menu" selected>
+                    <option value="image" selected>
                       Image menu
                     </option>
-                    <option value="Text menu">Text menu</option>
+                    <option value="text">Text menu</option>
                   </>
-                ) : fetchedMenu === "Text menu" ? (
-                  <>
-                    <option value="Text menu" selected>
-                      Text menu
-                    </option>
-                    <option value="Image menu">Image menu</option>
-                  </>
-                ) : null}
-
-                {/* <option value="Text menu">Text menu</option> */}
+                ) }
               </select>
             </div>
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">

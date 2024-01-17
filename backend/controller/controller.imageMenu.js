@@ -108,7 +108,7 @@ async function deleteImage(propertyNo, pageNo) {
       return { success: false, status: 400, message: 'Invalid Page Number.' };
     }
 
-    const deleteStatus = await deleteObjectFromS3('process.env.S3_BUCKET', parsedImageData[pageNo - 1].imageUrl);
+    const deleteStatus = await deleteObjectFromS3(process.env.S3_BUCKET, parsedImageData[pageNo - 1].imageUrl);
     if (!deleteStatus.success) throw new Error('Delete Unsucessful.');
 
     parsedImageData.splice(pageNo - 1, 1);

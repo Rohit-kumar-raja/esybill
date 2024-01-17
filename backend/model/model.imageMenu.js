@@ -30,10 +30,17 @@ async function deleteImageMenu(updatedImageSequence, propertyNo) {
   await connection.query(query);
 }
 
+async function deleteImageMenuByPropertyNo(propertyNo) {
+  const connection = await db();
+  const query = mysql.format('DELETE FROM tblimagemenu WHERE PropertyNo=?', [propertyNo]);
+  await connection.query(query);
+}
+
 module.exports = {
   getImageMenu,
   insertImageMenu,
   updateImageMenu,
   swapImageMenu,
-  deleteImageMenu
+  deleteImageMenu,
+  deleteImageMenuByPropertyNo
 };

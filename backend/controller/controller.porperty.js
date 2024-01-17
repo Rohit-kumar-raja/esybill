@@ -3,6 +3,7 @@ const itemCategoryModel = require('../model/model.itemCategory');
 const itemModel = require('../model/model.item');
 const productModel = require('../model/model.product');
 const qr = require('../lib/qr');
+const imageMenuModel = require('../model/model.imageMenu');
 
 async function getAllProperties(customerNo) {
   try {
@@ -87,6 +88,7 @@ async function deleteProperty(propertyNo, customerNo) {
     await productModel.deleteProductByPropertyNo(propertyNo);
     await itemModel.deleteItemByPropertyNo(propertyNo);
     await itemCategoryModel.deleteItemCategoryByPropertyNo(propertyNo);
+    await imageMenuModel.deleteImageMenuByPropertyNo(propertyNo);
     await propertyModel.deleteProperty(propertyNo, customerNo);
     return { success: true };
   }
