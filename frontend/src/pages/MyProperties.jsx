@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react"
 import PropertyCardComponent from "../components/PropertyCardComponent.jsx"
 import axios from "../api/axios";
+
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addFetchedProperties } from "../propertySlice";
 import configData from "../config.json";
@@ -171,6 +172,18 @@ const MyProperties = ({setSidebarTabs}) => {
   
   return (
     <>
+      <div className="flex justify-end mr-5">
+        <Link to='/dashboard/addproperty' className="text-right">
+          <li
+            className="flex w-36 rounded-md p-2 cursor-pointer hover:bg-light-white text-[#fff] 
+          text-sm items-center justify-center gap-x-1 mt-2 bg-green-700 font-medium">
+            <span className="text-lg">+</span>
+            <span> Add Property</span>
+          </li>
+        </Link>
+      </div>
+     
+
       <div className="w-auto">
         {open && (
           <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">

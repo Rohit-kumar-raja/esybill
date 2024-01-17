@@ -85,7 +85,7 @@ const PropertyCardComponent = ({setSidebarTabs, property, deletePopup, setDelete
   return (
     <>
       <ToastContainer autoClose={2000}/>
-      <div className='rounded-md p-5 shadow-md'>
+      <div className='rounded-md p-5 border-solid border-2 border-gray-300'>
         <p className='my-3'>{PropName}</p>
         <div className='flex flex-col gap-3'>
           <div className='flex text-[15px] flex-col md:flex-row font-normal md:justify-between md:items-center'>

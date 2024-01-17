@@ -115,7 +115,7 @@ const OTPVerificationModal = ({
                   position: toast.POSITION.TOP_CENTER,
                 });
                 setShowModal(false)
-                seteditDetails(false)
+                seteditDetails(true)
               }
             } catch (err) {
               console.log(err);

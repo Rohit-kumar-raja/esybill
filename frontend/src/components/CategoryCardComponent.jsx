@@ -61,7 +61,7 @@ const CategoryCardComponent= ({ category, setEdit,
   return (
     <>
       <ToastContainer autoClose={2000} />
-      <div className="rounded-md p-5 shadow-md bg-white">
+      <div className="rounded-md p-5 border-solid border-2 border-gray-300 bg-white">
         <div className="flex flex-col gap-3">
           <div className="flex text-[14px] font-normal justify-between flex-wrap">
             <div className="flex items-center gap-4">
