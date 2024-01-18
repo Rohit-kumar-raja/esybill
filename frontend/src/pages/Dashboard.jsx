@@ -139,7 +139,7 @@ const Dashboard = () => {
                   </Link>
                  
                   {
-                    menuType === "Image menu" ? 
+                    menuType === "image" ? 
                       <Link to='/dashboard/image'>
                         <li
                           className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
