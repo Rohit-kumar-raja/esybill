@@ -22,7 +22,6 @@ const Profile = () => {
           },
         };
         const response = await axios.get("/api/user", options);
-        console.log(response, response?.data);
         setProfile(response?.data);
       } catch (error) {
         console.log(error);
@@ -81,9 +80,6 @@ const Profile = () => {
   //   handleSubmit()
   // },[])
 
-  useEffect(() => {
-    console.log(profile, profile[0]);
-  }, [profile]);
 
   const editDetailsHandler = (e, id) => {
     seteditDetails(false)
@@ -127,6 +123,7 @@ const Profile = () => {
     setRegMobile(profile?.RegMobile);
     setState(profile?.State);
     setCountry(profile?.Country);
+    setRegEmail(profile?.RegEmail)
   };
 
   const saveEditHandler = (e) => {
@@ -154,7 +151,6 @@ const Profile = () => {
         return { ...prevState, Country };
       });
     }
-    console.log(user);
     //   try {
     //     const options = {
     //       headers: {
@@ -184,6 +180,7 @@ const Profile = () => {
       setState(profile?.State);
       setRegEmail(profile?.RegEmail)
       setCountry(profile?.Country);
+      setRegEmail(profile?.RegEmail)
       dispatch(addPhone(profile?.RegMobile));
       dispatch(addPropertyCount(profile?.AllotedPropertyQuota));
     }

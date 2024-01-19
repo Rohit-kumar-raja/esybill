@@ -101,16 +101,18 @@ const CloudMenu = () =>{
             {textMenu.map(category => (
               <div key={category?.category} className="bg-white shadow-md p-4 rounded mb-4">
                 <h2 className="text-xl font-semibold bg-purple-100 pl-4 py-2 rounded">{category?.category}</h2>
-                <p className="text-gray-600">{category?.note}</p>
+                {category?.note!=="NONE"?<p className="text-gray-600 text-xs">{category?.note}</p>:null}
                 <div className="mt-2 space-y-2">
                   {category?.subcategories?.map(subcategory => (
                     <div key={subcategory?.subcategory} className="border-l-2 pl-4">
                       <h3 className="text-lg font-semibold">{subcategory?.subcategory}</h3>
+                      {subcategory?.NoteOnItem!=="NONE"?<p className="text-gray-500 text-xs">{subcategory?.NoteOnItem}</p>:null}
                       {subcategory?.products?.length > 0 ? (
                         <ul className="list-disc list-inside mt-2 space-y-1">
                           {subcategory?.products?.map(product => (
                             <li key={product?.ProductName} className="flex justify-between text-gray-600">
-                              <span className="font-semibold">{product?.ProductName}</span> <span className="font-semibold">₹ {product?.UnitPrice}</span>
+                              <span className="font-semibold">{product?.ProductName}{product?.NoteOnProduct!=="NONE"?<p className="text-gray-400 text-xs">{product?.NoteOnProduct}</p>:null}</span> <span className="font-semibold">₹ {product?.UnitPrice}</span>
+                              
                             </li>
                           ))}
                         </ul>
