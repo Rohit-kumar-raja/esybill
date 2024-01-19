@@ -131,8 +131,8 @@ const ProductModal= ({setShowModal,setfetchProduct}) => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col  bg-white 
               outline-none focus:outline-none w-[80vw] md:w-[65vw] h-[40vh] md:h-[40vw] overflow-y-scroll">
                 {/*header*/}
-                <div className="flex items-start justify-evenly p-5 border-b border-solid text-sm 
-                 border-slate-200 rounded-t">
+                <div className="flex items-start justify-evenly p-5 border-b border-solid text-xl
+                 border-slate-200 rounded-t font-medium">
                   <h3 className="text-[#3A3939]">
                    Create Product 
                   </h3>

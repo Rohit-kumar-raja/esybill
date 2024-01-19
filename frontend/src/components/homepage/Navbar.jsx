@@ -16,11 +16,10 @@ const Navbar = (props) => {
               <Link to="/">
                 <div className='flex items-center mr-0 md:mr-10'>
                   <img src={logo1} alt='logo' className='h-[40px]'/>
-                  {/* <img src={logo2} alt='logo' className='h-[35px]'/> */}
                   <span className='font-poppins text-2xl font-bold text-[#7E007E]'>EzyBill India</span>
                 </div>
               </Link> 
-              <div className="md:hidden">
+              <div className="md:hidden"> 
                 <button
                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                   onClick={() => {

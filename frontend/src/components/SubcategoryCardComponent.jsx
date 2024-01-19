@@ -113,11 +113,12 @@ const SubcategoryCardComponent = ({
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div
-                  className="flex items-center justify-center p-5 border-b border-solid text-sm 
+                  className="flex items-baseline justify-center p-5 border-b border-solid text-sm 
                  border-slate-200 rounded-t"
                 >
-                  <h3 className="text-[#3A3939]">
-                    Are you sure you want to delete the category?
+                  <h3 className="text-[#706f6f] font-medium leading-6">
+                  We still see some subcategories being present under the subcategory. <br/>
+                  Are you still sure to go ahead with the deletion?
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black loat-right

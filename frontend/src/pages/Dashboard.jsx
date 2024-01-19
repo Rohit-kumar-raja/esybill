@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react"
 import control from "../assets/dashboard/control.png"
-import logo from "../assets/logo/logo.png"
+import logo1 from "../assets/homepage/logo1.png"
 import profile from "../assets/dashboard/User.png"
 import { Link, useLocation, useNavigate} from "react-router-dom";
 import PropertyDetails from "./PropertyDetails.jsx";
@@ -77,20 +77,23 @@ const Dashboard = () => {
             onClick={() => setOpen(!open)} 
             role="presentation"
           />
-          <div className="flex gap-x-4 items-center">
-            <img
+          <div className="flex gap-x-2 items-center">
+            {
+              open ? 
+            
+                <>
+                  <img src={logo1} alt='logo' className='h-[40px]'/>
+                  <p className='font-poppins text-xs md:text-2xl font-bold text-[#7E007E]'>EzyBill India</p>
+                </> :  
+                <img src={logo1} alt='logo' className='h-[40px]'/>
+            }
+            {/* <img
               src={logo} alt="logo"
               className={`cursor-pointer duration-500 ${
                 open && "rotate-[360deg]"
               }`}
-            />
-            <h1
-              className={`text-white origin-left font-medium text-xl duration-200 ${
-                !open && "scale-0"
-              }`}
-            >
-            Ezybill
-            </h1>
+            /> */}
+            
           </div>
           <ul className="pt-6">
             <Link to='/dashboard/profile'>

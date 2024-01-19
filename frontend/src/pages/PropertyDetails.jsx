@@ -44,6 +44,7 @@ const PropertyDetails = () => {
   }, [disabledText, propertyDetail]);
 
   useEffect(() => {
+    console.log(propertyDetail,"propertyDetail")
     if (propertyDetail?.length > 0) {
       setPropType(propertyDetail[0]?.PropType);
       setPropName(propertyDetail[0]?.PropName);
@@ -248,7 +249,7 @@ const PropertyDetails = () => {
                 text-[16px] font-normal mb-2"
                 htmlFor="grid-first-name"
               >
-                Property Name*
+                Property Address*
               </label>
               <input
                 className="appearance-none block w-full border-2 border-[#DDDDDD] required
@@ -259,10 +260,11 @@ const PropertyDetails = () => {
                 id="grid-first-name"
                 type="text"
                 placeholder=""
-                value={PropName}
-                onChange={(e) => propertyEditHandler(e, "PropName")}
+                value={PropAddress}
+                onChange={(e) => propertyEditHandler(e, "PropAddress")}
               />
             </div>
+           
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label
                 className="block tracking-wide text-[#464646]
@@ -292,7 +294,7 @@ const PropertyDetails = () => {
                 text-[16px] font-normal mb-2"
                 htmlFor="grid-first-name"
               >
-                Property Address*
+                Property Name*
               </label>
               <input
                 className="appearance-none block w-full border-2 border-[#DDDDDD] required
@@ -303,11 +305,33 @@ const PropertyDetails = () => {
                 id="grid-first-name"
                 type="text"
                 placeholder=""
-                value={PropAddress}
-                onChange={(e) => propertyEditHandler(e, "PropAddress")}
+                value={PropName}
+                onChange={(e) => propertyEditHandler(e, "PropName")}
               />
             </div>
 
+            <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
+              <label
+                className="block tracking-wide text-[#464646]
+                text-[16px] font-normal mb-2"
+                htmlFor="mobilenumber"
+              >
+                Mobile Number*
+              </label>
+              <input
+                className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none block w-full border-2 border-[#DDDDDD] required
+                focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
+                rounded-md h-[42px] px-4 mb-3 leading-tight "
+                id="mobilenumber"
+                type="number"
+                placeholder=""
+                disabled={disabledText}
+                value={PropPhone}
+                onChange={(e) => propertyEditHandler(e, "PropPhone")}
+              />
+            </div>
+
+            {/* <div className="grid grid-cols-4 md:mb-3 md:mt-3"> */}
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label
                 className="block tracking-wide text-[#464646]
@@ -330,28 +354,7 @@ const PropertyDetails = () => {
                 onChange={(e) => propertyEditHandler(e, "PropCountry")}
               />
             </div>
-
-            {/* <div className="grid grid-cols-4 md:mb-3 md:mt-3"> */}
-            <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
-              <label
-                className="block tracking-wide text-[#464646]
-                text-[16px] font-normal mb-2"
-                htmlFor="mobilenumber"
-              >
-                Mobile Number*
-              </label>
-              <input
-                className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none block w-full border-2 border-[#DDDDDD] required
-                focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
-                rounded-md h-[42px] px-4 mb-3 leading-tight "
-                id="mobilenumber"
-                type="number"
-                placeholder=""
-                disabled={disabledText}
-                value={PropPhone}
-                onChange={(e) => propertyEditHandler(e, "PropPhone")}
-              />
-            </div>
+           
             <div className="w-full mb-6 md:mb-0 px-2 md:mt-6">
               <label
                 className="block tracking-wide text-[#464646]

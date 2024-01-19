@@ -6,7 +6,7 @@ import axios from "../api/axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getCategory } from "../propertySlice";
-import propNoIco from "../assets/propertyNoIco.png"
+// import propNoIco from "../assets/propertyNoIco.png"
 import tagIco from "../assets/tag.png"
 
 const CategoryCardComponent= ({ category, setEdit, 
@@ -63,7 +63,7 @@ const CategoryCardComponent= ({ category, setEdit,
       <ToastContainer autoClose={2000} />
       <div className="rounded-md p-5 border-solid border-2 border-gray-300 bg-white">
         <div className="flex flex-col gap-3">
-          <div className="flex text-[14px] font-normal justify-between flex-wrap">
+          {/* <div className="flex text-[14px] font-normal justify-between flex-wrap">
             <div className="flex items-center gap-4">
               <img src={propNoIco} alt="icon" className="w-4" />
               <h5 className="text-[#B3B3B3] flex items-center gap-2 font-jost">
@@ -72,7 +72,7 @@ const CategoryCardComponent= ({ category, setEdit,
             </div>
 
             <h5 className="text-[#464646] font-jost">{category?.PropertyNo}</h5>
-          </div>
+          </div> */}
           <div className="flex text-[14px] font-normal justify-between flex-wrap">
             <div className="flex items-center gap-4">
               <img src={tagIco} alt="icon" className="w-4" />
@@ -96,7 +96,7 @@ const CategoryCardComponent= ({ category, setEdit,
               Edit
             </button>
             <button
-              className="font-normal  bg-[#800080] text-[white] flex items-center 
+              className="font-normal  bg-red-600 text-[white] flex items-center 
     rounded-md py-2 my-6 text-[14px] px-10 
     cursor-pointer opacity-100 font-jost"
               onClick={categoryDeleteHandler}
@@ -114,11 +114,12 @@ const CategoryCardComponent= ({ category, setEdit,
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div
-                  className="flex items-center justify-center p-5 border-b border-solid text-sm 
+                  className="flex items-baseline justify-center p-5 border-b border-solid text-sm 
                  border-slate-200 rounded-t"
                 >
-                  <h3 className="text-[#3A3939]">
-                    Are you sure you want to delete the category?
+                  <h3 className="text-[#706f6f] font-medium leading-6">
+                  We still see some subcategories being present under the category. <br/>
+                  Are you still sure to go ahead with the deletion?
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black loat-right

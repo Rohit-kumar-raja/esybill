@@ -90,7 +90,7 @@ const AddSubCategory = () => {
         />
       )}
       <button
-        className="font-normal  bg-[#800080] text-[white] flex items-center 
+        className="font-normal  bg-green-700 text-[white] flex items-center 
       rounded-md py-2 my-6 text-[13px] px-3 ml-auto cursor-pointer opacity-100"
         onClick={createCategoryHandler}
       >
@@ -126,6 +126,7 @@ const AddSubCategory = () => {
                   <th className="whitespace-normal px-4 py-3">Category</th>
                   <th className="whitespace-normal px-4 py-3">Sub Category</th>
                   <th className="whitespace-normal px-4 py-3">Product</th>
+                  <th className="whitespace-normal px-4 py-3">Price</th>
                   <th className="whitespace-normal px-4 py-3">Edit</th>
                   <th className="whitespace-normal px-4 py-3">Delete</th>
                 </tr>
