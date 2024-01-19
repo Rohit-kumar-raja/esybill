@@ -329,7 +329,7 @@ const AddProperty = () => {
                 >
                   Property Country*
                 </label>
-                <input
+                {/* <input
                   className="appearance-none block w-full border-2 border-[#DDDDDD] required
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight "
@@ -339,7 +339,21 @@ const AddProperty = () => {
                   placeholder=""
                   value={PropCountry}
                   onChange={(e) => setPropCountry(e.target.value)}
-                />
+                /> */}
+                <select
+                  id="country"
+                  className="bg-gray-50  block 
+            border-2 border-[#DDDDDD] rounded-md focus:outline-none 
+            focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
+            w-full px-2.5 h-[42px]"
+                  value={PropCountry}
+                  onChange={(e) => setPropCountry(e.target.value)}
+                >
+                  <option selected>Choose a country</option>
+                  <option value="Hotel">India</option>
+                 
+                </select>
+
               </div>
 
               <div className="grid grid-cols-4 md:mb-3 md:mt-3">

@@ -169,12 +169,12 @@ const EditProduct = (props) => {
             </div>
             <div className='flex'>
               <button className="
-    font-normal  bg-green-400 text-[white] flex items-center 
+    font-normal  bg-[#800080] text-[white] flex items-center 
     rounded-md py-2 my-6 text-[14px] px-3 mx-auto
     cursor-pointer opacity-100" 
               onClick={saveEditHandler}>Edit</button>
               <button type='button' className="
-    font-normal  bg-[#800080] text-[white] flex items-center 
+    font-normal  bg-red-600 text-[white] flex items-center 
     rounded-md py-2 my-6 text-[14px] px-3 mx-auto
     cursor-pointer opacity-100" 
               onClick={props.setEdit}>Back</button>

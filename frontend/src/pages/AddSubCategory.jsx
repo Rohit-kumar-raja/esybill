@@ -11,7 +11,7 @@ import Pagination from "../components/Table/Pagination.jsx";
 
 let PageSize = 10;
 
-
+ 
 
 const AddSubCategory = () => {
   const [showModal, setShowModal] = useState(false)
@@ -24,6 +24,9 @@ const AddSubCategory = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(()=>{
+    setEdit(false)
+  },[]) 
   
   const fun = () => {
     setEdit(false)
@@ -89,7 +92,7 @@ const AddSubCategory = () => {
         showModal && <SubCategoryModal setShowModal={setShowModal}  
           setfetchSubCategory={ setfetchSubCategory}/>
       }
-      <button className="font-normal  bg-[#800080] text-[white] flex items-center 
+      <button className="font-normal  bg-green-700 text-[white] flex items-center 
       rounded-md py-2 my-6 text-[13px] px-3 ml-auto
       cursor-pointer opacity-100" onClick={ createCategoryHandler}>Create Sub Category</button>
       {

@@ -112,6 +112,9 @@ const ProductCardComponent = ({
         {product?.ProductName}
       </td>
       <td className="whitespace-normal px-4 py-3 text-center text-gray-700">
+        {product?.RoomUnitPrice}
+      </td>
+      <td className="whitespace-normal px-4 py-3 text-center text-gray-700">
         <div
           className="flex justify-center cursor-pointer"
           onClick={editHandler}

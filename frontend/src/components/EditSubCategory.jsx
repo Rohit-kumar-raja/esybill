@@ -9,9 +9,11 @@ import validateText from "../utils/TextValidations"
 
 
 const EditSubCategory = (props) => {
-  const [SubCategory, setSubCategoryName] = useState("")
+  console.log(props)
+  const [SubCategory, setSubCategoryName] = useState(props?.subcategory?.[0]?.ItemName)
   const accessToken = useSelector(store => store?.login?.userData[0])
   const  subcategoryDetails = useSelector(store => store?.property?.subcategoryDetails)
+
   const saveEditHandler = async (e) => {
     e.preventDefault()
     let editDetails = {} 
@@ -80,7 +82,7 @@ const EditSubCategory = (props) => {
             <div className="flex">
               <button
                 className="
-    font-normal  bg-green-400 text-[white] flex items-center 
+    font-normal  bg-[#800080] text-[white] flex items-center 
     rounded-md py-2 my-6 text-[14px] px-3 mx-auto
     cursor-pointer opacity-100 w-[30%]"
                 onClick={saveEditHandler}
@@ -90,7 +92,7 @@ const EditSubCategory = (props) => {
               <button
                 type="button"
                 className="
-    font-normal  bg-[#800080] text-[white] flex items-center 
+    font-normal  bg-red-600 text-[white] flex items-center 
     rounded-md py-2 my-6 text-[14px] px-3 mx-auto
     cursor-pointer opacity-100  w-[30%]"
                 onClick={props.setEdit}
