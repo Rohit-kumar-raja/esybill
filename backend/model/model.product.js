@@ -39,7 +39,7 @@ async function getProductsByProperty(propertyNo) {
                                 ON tblitemname.PropertyNo=tblitemcategory.PropertyNo and tblitemcategory.CategoryRN =tblitemname.CategoryRN 
                               JOIN tblproductname 
                                 ON tblitemname.PropertyNo=tblproductname.PropertyNo and tblitemname.CategoryRN =tblproductname.CategoryRN and tblitemname.ItemNameRN =tblproductname.ItemNameRN 
-                              WHERE tblproductname.PropertyNo=?`, [propertyNo]);
+                              WHERE tblproductname.PropertyNo=? and tblproductname.IsSuspended is not true`, [propertyNo]);
   const result = await connection.query(query);
   return result[0];
 }
