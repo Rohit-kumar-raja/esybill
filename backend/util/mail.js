@@ -38,7 +38,7 @@ const transporter = nodeMailer.createTransport({
 // }
 async function sendMail(email, subject, text = '', html = '') {
   const mailOptions = {
-    from: 'noreply@ezybillindia.com',
+    from: config.fromEmail,
     to: email,
     subject,
     text,
