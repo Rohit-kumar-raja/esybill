@@ -22,4 +22,17 @@ export function validateNumber(input){
   }
 }
 
+export  function isNumberKey(evt)
+{
+  const alphabetPattern = /^[0-9\s]*$/;
+  if (evt.match(alphabetPattern) || evt ===" ") {
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode != 46 && charCode > 31 
+       && (charCode < 48 || charCode > 57))
+      return false;
+  
+    return true;
+  }
+ 
+}
 export default validateText

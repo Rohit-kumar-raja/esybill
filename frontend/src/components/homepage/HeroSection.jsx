@@ -99,7 +99,7 @@ const HeroSection = (props) => {
         style={{ backgroundImage: `url(${bgimg})`, backgroundRepeat:"no-repeat", backgroundSize:"cover" }}>
           <div className='col-span-1 md:col-span-2'>
             <div className='grid grid-cols-3 md:flex md:items-center md:justify-center md:col-span-2'>
-              <img src={scanner} alt="" className='w-28 h-28 
+              <img src={scanner} alt="" className='w-28 h-24 
              md:w-24 md:h-24 mx-auto md:mx-5 md:py-4 my-auto
             back ' /> 
               <div className="col-span-2 md:flex md:flex-col text-[#333333] pr-2 md:pr-0 md:px-0">

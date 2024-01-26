@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import axios from "../api/axios"; 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import validateText, { validateNumber } from "../utils/TextValidations";
+import validateText, { isNumberKey, validateNumber } from "../utils/TextValidations";
 
 
 const ProductModal= ({setShowModal,setfetchProduct}) => {
@@ -236,7 +236,7 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
-                    onInput={(e)=>validateNumber(e.target.value)}
+                    onInput={(e)=>validateText(e.target.value)}
                     value={Unit} onChange={(e)=> setunit(e.target.value)} />
                   </div>
                   <div className='flex justify-between items-center px-4'>
@@ -248,7 +248,8 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
-                    onInput={(e)=>validateNumber(e.target.value)}
+                    // onInput={(e)=>validateNumber(e.target.value)}
+                    onInput={(e)=> isNumberKey(e.target.value)} 
                     value={SGSTPC} onChange={(e)=> setSGSTPC(e.target.value)} />
                   </div>
                   <div className='flex justify-between items-center px-4'>
@@ -260,25 +261,37 @@ focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#8000
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
-                    onInput={(e)=>validateNumber(e.target.value)}
+                    // onInput={(e)=>validateNumber(e.target.value)}
+                    onInput={(e)=> isNumberKey(e.target.value)} 
                     value={CGSTPC} onChange={(e)=> setCGSTPC(e.target.value)} />
                   </div>
                   <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
              Discount Allowed
-                    </label>
-                    <input className="appearance-none block  border-2 border-[#DDDDDD] required w-80
+                    </label> 
+
+                    <select id="states" className="bg-gray-50  block 
+border-2 border-[#DDDDDD] rounded-md focus:outline-none 
+focus:shadow-lg focus:shadow-[#800080]-500/50 focus:border-2 focus:border-[#800080]
+  w-80 px-2.5 h-[42px]" defaultValue={DiscountAllowed}
+                    onChange={(e)=> setDiscountAllowed(e.target.value)}  >
+                      <option selected>Choose an option</option>
+                      <option value="Yes" >Yes</option>
+                      <option value="No" >No</option>
+                    </select>
+
+                    {/* <input className="appearance-none block  border-2 border-[#DDDDDD] required w-80
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
             rounded-md h-[42px] px-4 mb-3 leading-tight " required
                     id="grid-first-name" type="text" placeholder="" 
                     onInput={(e)=>validateNumber(e.target.value)}
-                    value={DiscountAllowed} onChange={(e)=> setDiscountAllowed(e.target.value)} />
+                    value={DiscountAllowed} onChange={(e)=> setDiscountAllowed(e.target.value)} /> */}
                   </div>
                   <div className='flex justify-between items-center px-4'>
                     <label className="block tracking-wide text-[#464646] text-sm
             font-normal mb-2" htmlFor='states'>
-            Sh Name
+            Short Name
                     </label>
                     <input className="appearance-none block  border-2 border-[#DDDDDD] required w-80
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
