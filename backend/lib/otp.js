@@ -5,7 +5,7 @@ const otpModel = require('../model/model.otp');
 function generateOTP() {
   const digits = '0123456789';
   const firstDigit = '123456789';
-  let OTP = firstDigit[Math.floor(Math.random() * 10)];
+  let OTP = firstDigit[Math.floor(Math.random() * 9)];
   for (let i = 1; i < 6; i++) {
     OTP += digits[Math.floor(Math.random() * 10)];
   }
@@ -28,6 +28,7 @@ async function sendOTP({ email, number, type }) {
     let msg;
     if (type === 'login') msg = loginMsg;
     else if (type === 'verify') msg = regMsg;
+    console.log('OTP MESSAGE - ', msg);
     if (number) {
       if (await otpModel.insert(number, otp)) {
         await sms.sendSMS(msg, number);
