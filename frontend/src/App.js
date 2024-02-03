@@ -17,7 +17,7 @@ function App() {
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          minHeight: "110vh"
+          minHeight: "100vh"
         }} 
       >
         <Routes scrollProp={scrollProp} setScrollProp={setScrollProp}/>

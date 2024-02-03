@@ -55,6 +55,7 @@ const PropertyDetails = () => {
       setPropCountry(propertyDetail[0]?.PropCountry);
       setImage(propertyDetail[0]?.QRLocation);
       setfetchedMenu(propertyDetail[0]?.MenuType);
+      setMenu(propertyDetail[0]?.MenuType);
       //setLicense(propertyDetail[0]?.hasActiveDesktopLicense)
     }
   }, [propertyDetail]);
