@@ -1,7 +1,7 @@
 import React from "react"
 import background from "../../assets/homepage/test.svg"
 import bgimg from "../../assets/homepage/bgimg.svg"
-import scanner from "../../assets/homepage/scanner.svg"
+import scanner from "../../assets/homepage/scanner1.svg"
 import Sticky from "react-sticky-el";
 import { Link, useNavigate } from "react-router-dom";
 
