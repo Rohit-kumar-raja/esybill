@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import control from "../assets/dashboard/control.png";
 import logo1 from "../assets/homepage/logo1.png";
-import profile from "../assets/dashboard/User.png";
+import { FaHotel } from "react-icons/fa";
+import { RiMenuSearchFill } from "react-icons/ri";
+import { BiCategory} from "react-icons/bi";
+import { TbListDetails } from "react-icons/tb";
+import { MdOutlineCategory } from "react-icons/md"
+import { IoListOutline } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PropertyDetails from "./PropertyDetails.jsx";
 import AddProperty from "./AddProperty.jsx";
 import AddCategory from "./AddCategory.jsx";
 import AddSubCategory from "./AddSubCategory.jsx";
 import AddProduct from "./AddProduct.jsx";
+import { FaUser } from "react-icons/fa";
 import Profile from "./Profile.jsx";
 import MyProperties from "./MyProperties.jsx";
 import { useSelector } from "react-redux";
@@ -103,7 +109,8 @@ const Dashboard = () => {
                text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white"
               >
-                <img src={profile} alt="profile" />
+                {/* <img src={profile} alt="profile" /> */}
+                <FaUser size="16px" />
                 <span
                   className={`${
                     !open && "hidden"
@@ -118,7 +125,8 @@ const Dashboard = () => {
                 className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
               mt-2 bg-light-white"
               >
-                <img src={profile} alt="profile" />
+                {/* <img src={profile} alt="profile" /> */}
+                <FaHotel size="16px" />
                 <span
                   className={`${
                     !open && "hidden"
@@ -132,10 +140,11 @@ const Dashboard = () => {
               <>
                 <Link to="/dashboard/propertydetails">
                   <li
-                    className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-              mt-2 bg-light-white"
+                    className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 
+                    text-[14px] items-center gap-x-4 mt-2 bg-light-white ml-2"
                   >
-                    <img src={profile} alt="profile" />
+                    {/* <img src={profile} alt="profile" /> */}
+                    <TbListDetails size="19px"/>
                     <span
                       className={`${
                         !open && "hidden"
@@ -149,10 +158,12 @@ const Dashboard = () => {
                 {menuType === "image" ? (
                   <Link to="/dashboard/image">
                     <li
-                      className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-              mt-2 bg-light-white"
+                      className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300
+                       text-[14px]  items-center gap-x-4 
+              mt-2 bg-light-white ml-4"
                     >
-                      <img src={profile} alt="profile" />
+                      {/* <img src={profile} alt="profile" /> */}
+                      <RiMenuSearchFill size="20px"/>
                       <span
                         className={`${
                           !open && "hidden"
@@ -166,10 +177,11 @@ const Dashboard = () => {
                   <>
                     <Link to="/dashboard/category">
                       <li
-                        className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                        className="flex ml-4 rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-[14px]  items-center gap-x-4 
               mt-2 bg-light-white"
                       >
-                        <img src={profile} alt="profile" />
+                        {/* <img src={profile} alt="profile" /> */}
+                        <BiCategory size="20px"/>
                         <span
                           className={`${
                             !open && "hidden"
@@ -181,10 +193,11 @@ const Dashboard = () => {
                     </Link>
                     <Link to="/dashboard/subcategory">
                       <li
-                        className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                        className="flex ml-4 rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-[14px]  items-center gap-x-4 
               mt-2 bg-light-white"
                       >
-                        <img src={profile} alt="profile" />
+                        {/* <img src={profile} alt="profile" /> */}
+                        <MdOutlineCategory size="20px" />
                         <span
                           className={`${
                             !open && "hidden"
@@ -196,10 +209,11 @@ const Dashboard = () => {
                     </Link>
                     <Link to="/dashboard/product">
                       <li
-                        className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                        className="flex ml-4 rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-[14px]  items-center gap-x-4 
               mt-2 bg-light-white"
                       >
-                        <img src={profile} alt="profile" />
+                        {/* <img src={profile} alt="profile" /> */}
+                        <IoListOutline size="20px"  />
                         <span
                           className={`${
                             !open && "hidden"
