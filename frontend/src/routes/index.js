@@ -17,6 +17,7 @@ import AboutUs from "../pages/AboutUs.jsx";
 import CloudMenu from "../pages/CloudMenu.jsx";
 import RegistrationForm from "../pages/RegistrationForm.jsx";
 import LoginForm from "../pages/LoginForm.jsx";
+import TermsAndConditions from "../pages/TermsAndConditions.jsx";
 
 
 export default function Routes({scrollProp, setScrollProp}) {
@@ -101,6 +102,10 @@ export default function Routes({scrollProp, setScrollProp}) {
       {
         path:"cm",
         element:<Hms />
+      },
+      {
+        path:"termsandconditions",
+        element:<TermsAndConditions />
       },
     ]
   }]);
