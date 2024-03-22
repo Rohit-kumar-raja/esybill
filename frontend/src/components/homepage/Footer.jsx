@@ -33,9 +33,10 @@ const Footer = () => {
           </div>
           <div className='flex flex-col items-start text-sm'>
             <p>Legal</p>
-            <p className='font-light py-2'>Terms Of Service</p>
-            <p className='font-light py-2'>Privacy Policy</p>
-            <p className='font-light py-2'>Support</p>
+            <p className='font-light py-2'>
+              <Link to='/termsandconditions'>Terms and Conditions</Link> </p>
+            {/* <p className='font-light py-2'>Privacy Policy</p>
+            <p className='font-light py-2'>Support</p> */}
           </div>
         </div>
         <hr className='mx-11' />

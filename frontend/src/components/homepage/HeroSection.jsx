@@ -31,7 +31,7 @@ const HeroSection = (props) => {
               <button className='
     border-2 border-[#7E007E]  font-normal text-[15px] text-[#7E007E] rounded-md px-8 py-2' 
               onClick={() => {
-                props.setScrollProp(true)
+                props?.setScrollProp(true)
                 navigate("/contact-us") 
               }} 
               >
