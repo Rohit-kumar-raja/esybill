@@ -3,7 +3,7 @@
   "name": "EzyBill India",
   "icons": [
     {
-      "src": "logo.png",
+      "src": "favicon.ico",
       "sizes": "32x32 24x24 48x48",
       "type": "image/x-icon"
     }
