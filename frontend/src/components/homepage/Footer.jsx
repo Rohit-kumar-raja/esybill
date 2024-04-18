@@ -12,8 +12,8 @@ const Footer = () => {
             <p className='font-light py-2'>Contact No - +91  9836041044</p>
             <p className='font-light py-2'>Email - support@ezybillindia.com</p>
             <div className="flex gap-3 py-2">
-              <FaFacebookF/>
-              <FaWhatsapp/>
+              <a href="https://www.facebook.com/ezybillindia/" target="_blank" rel="noreferrer"><FaFacebookF /></a>
+              <a href="https://wa.me/919836041044" target="_blank" rel="noreferrer"><FaWhatsapp/></a>
               <FaInstagram/> 
               <FaTwitter/> 
             </div>
