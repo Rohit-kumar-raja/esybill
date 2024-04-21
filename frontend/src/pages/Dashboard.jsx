@@ -110,7 +110,7 @@ const Dashboard = () => {
               mt-2 bg-light-white"
               >
                 {/* <img src={profile} alt="profile" /> */}
-                <FaUser size="16px" />
+                <FaUser size="16px" fill="gray"/>
                 <span
                   className={`${
                     !open && "hidden"
@@ -122,11 +122,12 @@ const Dashboard = () => {
             </Link>
             <Link to="/dashboard/properties">
               <li
-                className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                className="flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300
+                 text-sm items-center gap-x-4 
               mt-2 bg-light-white"
               >
                 {/* <img src={profile} alt="profile" /> */}
-                <FaHotel size="16px" />
+                <FaHotel size="16px" fill="gray" />
                 <span
                   className={`${
                     !open && "hidden"
@@ -144,7 +145,7 @@ const Dashboard = () => {
                     text-[14px] items-center gap-x-4 mt-2 bg-light-white ml-2"
                   >
                     {/* <img src={profile} alt="profile" /> */}
-                    <TbListDetails size="19px"/>
+                    <TbListDetails size="19px" stroke="gray"/>
                     <span
                       className={`${
                         !open && "hidden"
@@ -163,7 +164,7 @@ const Dashboard = () => {
               mt-2 bg-light-white ml-4"
                     >
                       {/* <img src={profile} alt="profile" /> */}
-                      <RiMenuSearchFill size="20px"/>
+                      <RiMenuSearchFill size="20px" stroke="gray" fill="gray"/>
                       <span
                         className={`${
                           !open && "hidden"
@@ -181,7 +182,7 @@ const Dashboard = () => {
               mt-2 bg-light-white"
                       >
                         {/* <img src={profile} alt="profile" /> */}
-                        <BiCategory size="20px"/>
+                        <BiCategory size="20px" stroke="gray" fill="gray"/>
                         <span
                           className={`${
                             !open && "hidden"
@@ -197,7 +198,7 @@ const Dashboard = () => {
               mt-2 bg-light-white"
                       >
                         {/* <img src={profile} alt="profile" /> */}
-                        <MdOutlineCategory size="20px" />
+                        <MdOutlineCategory size="20px" stroke="gray" fill="gray"/>
                         <span
                           className={`${
                             !open && "hidden"
@@ -213,7 +214,7 @@ const Dashboard = () => {
               mt-2 bg-light-white"
                       >
                         {/* <img src={profile} alt="profile" /> */}
-                        <IoListOutline size="20px"  />
+                        <IoListOutline size="20px" stroke="gray"  />
                         <span
                           className={`${
                             !open && "hidden"

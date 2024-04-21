@@ -42,8 +42,34 @@ const EditProduct = (props) => {
     let editDetails = {} 
     if(ProductName !== productDetails?.ProductName){
       editDetails.ProductName = ProductName
-    }
-       
+    }  
+    if(NoteOnProduct !== productDetails?.NoteOnProduct){
+      editDetails.NoteOnProduct = NoteOnProduct
+    }   
+    if(UnitPrice !== productDetails?.UnitPrice){
+      editDetails.UnitPrice = UnitPrice
+    }  
+    if(Unit !== productDetails?.Unit){
+      editDetails.Unit = Unit
+    } 
+    if(SGSTPC !== productDetails?.SGSTPC){
+      editDetails.SGSTPC = SGSTPC
+    } 
+    if(CGSTPC !== productDetails?.CGSTPC){
+      editDetails.CGSTPC = CGSTPC
+    } 
+    if(DiscountAllowed !== productDetails?.DiscountAllowed){
+      editDetails.DiscountAllowed = DiscountAllowed
+    } 
+    if(ShName !== productDetails?.ShName){
+      editDetails.ShName = ShName
+    } 
+    if(RoomUnitPrice !== productDetails?.RoomUnitPrice){
+      editDetails.RoomUnitPrice = RoomUnitPrice
+    } 
+    if(HSNSAC !== productDetails?.HSNSAC){
+      editDetails.HSNSAC = HSNSAC
+    } 
     console.log(editDetails)
     try {
       const options = {
@@ -88,7 +114,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Note On Product</h5>
-              <input type='text' value={NoteOnProduct} onChange={(e) => setNoteOnProduct(e.target.value)} disabled
+              <input type='text' value={NoteOnProduct} onChange={(e) => setNoteOnProduct(e.target.value)}       
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight'
@@ -97,7 +123,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Unit Price</h5>
-              <input type='text' value={UnitPrice} onChange={(e) => setunitprice(e.target.value)} disabled
+              <input type='text' value={UnitPrice} onChange={(e) => setunitprice(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -106,7 +132,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Unit</h5>
-              <input type='text' value={Unit} onChange={(e) => setunit(e.target.value)} disabled
+              <input type='text' value={Unit} onChange={(e) => setunit(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -115,7 +141,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>SGSTPC</h5>
-              <input type='text' value={SGSTPC} onChange={(e) => setSGSTPC(e.target.value)} disabled
+              <input type='text' value={SGSTPC} onChange={(e) => setSGSTPC(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -124,7 +150,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>CGSTPC</h5>
-              <input type='text' value={CGSTPC} onChange={(e) => setCGSTPC(e.target.value)} disabled
+              <input type='text' value={CGSTPC} onChange={(e) => setCGSTPC(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -133,7 +159,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>DiscountAllowed</h5>
-              <input type='text' value={DiscountAllowed} onChange={(e) => setDiscountAllowed(e.target.value)} disabled
+              <input type='text' value={DiscountAllowed} onChange={(e) => setDiscountAllowed(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -142,7 +168,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>ShName</h5>
-              <input type='text' value={ShName} onChange={(e) => setShName(e.target.value)} disabled
+              <input type='text' value={ShName} onChange={(e) => setShName(e.target.value)}       
                 onInput={(e)=>validateText(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -151,7 +177,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>RoomUnitPrice</h5>
-              <input type='text' value={RoomUnitPrice} onChange={(e) => setRoomUnitPrice(e.target.value)} disabled
+              <input type='text' value={RoomUnitPrice} onChange={(e) => setRoomUnitPrice(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -160,7 +186,7 @@ const EditProduct = (props) => {
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
               <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>HSNSAC</h5>
-              <input type='text' value={HSNSAC} onChange={(e) => setHSNSAC(e.target.value)} disabled
+              <input type='text' value={HSNSAC} onChange={(e) => setHSNSAC(e.target.value)}       
                 // onInput={(e)=>validateText(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
