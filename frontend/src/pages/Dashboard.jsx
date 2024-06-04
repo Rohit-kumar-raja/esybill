@@ -114,7 +114,7 @@ const Dashboard = () => {
                 <span
                   className={`${
                     !open && "hidden"
-                  } origin-left duration-200 text-[#3A3939]`}
+                  } origin-left duration-200 text-[#3A3939] font-semibold`}
                 >
                   My Profile
                 </span>
@@ -131,7 +131,7 @@ const Dashboard = () => {
                 <span
                   className={`${
                     !open && "hidden"
-                  } origin-left duration-200 text-[#3A3939]`}
+                  } origin-left duration-200 text-[#3A3939] font-semibold`}
                 >
                   My Properties
                 </span>
@@ -149,7 +149,7 @@ const Dashboard = () => {
                     <span
                       className={`${
                         !open && "hidden"
-                      } origin-left duration-200 text-[#3A3939]`}
+                      } origin-left duration-200 text-[#3A3939] font-semibold`}
                     >
                       Property Details
                     </span>
@@ -168,7 +168,7 @@ const Dashboard = () => {
                       <span
                         className={`${
                           !open && "hidden"
-                        } origin-left duration-200 text-[#3A3939]`}
+                        } origin-left duration-200 text-[#3A3939] font-semibold`}
                       >
                         Image Menu
                       </span>
@@ -186,7 +186,7 @@ const Dashboard = () => {
                         <span
                           className={`${
                             !open && "hidden"
-                          } origin-left duration-200 text-[#3A3939]`}
+                          } origin-left duration-200 text-[#3A3939] font-semibold`}
                         >
                           Category
                         </span>
@@ -202,7 +202,7 @@ const Dashboard = () => {
                         <span
                           className={`${
                             !open && "hidden"
-                          } origin-left duration-200 text-[#3A3939]`}
+                          } origin-left duration-200 text-[#3A3939] font-semibold`}
                         >
                           Sub-category
                         </span>
@@ -214,11 +214,11 @@ const Dashboard = () => {
               mt-2 bg-light-white"
                       >
                         {/* <img src={profile} alt="profile" /> */}
-                        <IoListOutline size="20px" stroke="gray"  />
+                        <IoListOutline size="20px" stroke="gray" strokeWidth={30}  />
                         <span
                           className={`${
                             !open && "hidden"
-                          } origin-left duration-200 text-[#3A3939]`}
+                          } origin-left duration-200 text-[#3A3939] font-semibold`}
                         >
                           Product
                         </span>

@@ -14,6 +14,9 @@ const EditSubCategory = (props) => {
   const accessToken = useSelector(store => store?.login?.userData[0])
   const  subcategoryDetails = useSelector(store => store?.property?.subcategoryDetails)
 
+  // const [ItemNote, setItemNote] = useState("") 
+  const [disableBtn, setDisableBtn] = useState(true)
+
   const saveEditHandler = async (e) => {
     e.preventDefault()
     let editDetails = {} 
@@ -50,6 +53,17 @@ const EditSubCategory = (props) => {
     
     //props.setfetchSubCategory(false)
   }
+
+  const changeHandler = (value) => {
+    setSubCategoryName(value)
+    if(value === props?.subcategory?.[0]?.ItemName || value ==="")
+      setDisableBtn(true)
+    else 
+    {
+      validateText(value) ? setDisableBtn(false) : setDisableBtn(true)
+    }
+  }
+
   return (
     <>
       <ToastContainer autoClose={2000} />
@@ -60,14 +74,15 @@ const EditSubCategory = (props) => {
               <p className="p-2 font-poppins text-[0.8rem] font-[550]">
                 Sub Category Name
               </p>
-              <input
+              <input 
                 type="text"
                 value={SubCategory}
-                onChange={(e) => setSubCategoryName(e.target.value)}
+                onChange={(e) => changeHandler(e.target.value)}
+                // onChange={(e) => setSubCategoryName(e.target.value)}
                 className="appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
      rounded-md h-[42px] px-4 mb-3 leading-tight"
-                onInput={(e) => validateText(e.target.value)}
+              //  onInput={(e) => validateText(e.target.value)}
               />
             </div>
             <div>
@@ -81,13 +96,14 @@ const EditSubCategory = (props) => {
             </div>
             <div className="flex">
               <button
-                className="
-    font-normal  bg-[#800080] text-[white] flex items-center 
+                className={`
+    font-normal  bg-green-700 text-[white] flex items-center 
     rounded-md py-2 my-6 text-[14px] px-3 mx-auto
-    cursor-pointer opacity-100 w-[30%]"
+    cursor-pointer opacity-100 w-[30%] ${disableBtn  ? "cursor-not-allowed opacity-50"
+      : "cursor-pointer opacity-100"}`}
                 onClick={saveEditHandler}
               >
-                <p className="w-full text-center">Edit</p>
+                <p className="w-full text-center">Save</p>
               </button>
               <button
                 type="button"

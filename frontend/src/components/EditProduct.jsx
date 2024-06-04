@@ -21,6 +21,7 @@ const EditProduct = (props) => {
   const [ShName, setShName] = useState("")
   const [RoomUnitPrice, setRoomUnitPrice] = useState("")
   const [HSNSAC, setHSNSAC] = useState("")
+  const [disableBtn, setDisableBtn] = useState(true)
 
   useEffect(()=>{
     console.log(productDetails)
@@ -37,6 +38,34 @@ const EditProduct = (props) => {
       setHSNSAC(productDetails?.HSNSAC)
     }
   },[productDetails])
+
+  useEffect(()=>{
+    console.log("inside use effect",
+
+      ProductName !== productDetails?.ProductName,
+      NoteOnProduct !== productDetails?.NoteOnProduct ,
+      UnitPrice !== productDetails?.UnitPrice ,
+      Unit !== productDetails?.Unit ,
+      SGSTPC !== productDetails?.SGSTPC ,
+      CGSTPC !== productDetails?.CGSTPC ,
+      DiscountAllowed !== productDetails?.DiscountAllowed ,
+      ShName !== productDetails?.ShName ,
+      RoomUnitPrice !== productDetails?.RoomUnitPrice ,
+      HSNSAC !== productDetails?.HSNSAC
+
+    )
+
+
+    if(ProductName !== productDetails?.ProductName || NoteOnProduct !== productDetails?.NoteOnProduct || 
+      Number(UnitPrice) !== Number(productDetails?.UnitPrice) || Number(Unit) !== Number(productDetails?.Unit) || Number(SGSTPC) !== Number(productDetails?.SGSTPC) || 
+      Number(CGSTPC) !== Number(productDetails?.CGSTPC) || Number(DiscountAllowed) !== Number(productDetails?.DiscountAllowed) || 
+      ShName !== productDetails?.ShName || Number(RoomUnitPrice) !== Number(productDetails?.RoomUnitPrice) || HSNSAC !== productDetails?.HSNSAC
+    )
+      setDisableBtn(false)
+    else setDisableBtn(true)
+  },[ProductName, NoteOnProduct, UnitPrice, Unit, SGSTPC, CGSTPC, DiscountAllowed, ShName,
+    RoomUnitPrice, HSNSAC])
+
   const saveEditHandler = async (e) => {
     e.preventDefault()
     let editDetails = {} 
@@ -100,11 +129,11 @@ const EditProduct = (props) => {
   return (
     <>
       <ToastContainer autoClose={2000}/>
-      <form className="md:w-[30rem] mx-auto">    
+      <form className="md:w-[40rem] mx-auto">    
         <div className='rounded-md p-5 border-solid border-2 border-gray-300'>
           <div className='flex flex-col gap-3'>
             <div className='flex text-[14px] font-normal justify-between  flex-col md:flex-row'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Product Name</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>Product Name</h5>
               <input type='text' value={ProductName} onChange={(e) => setProductName(e.target.value)}
                 onInput={(e)=>validateText(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -113,7 +142,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Note On Product</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>Note On Product</h5>
               <input type='text' value={NoteOnProduct} onChange={(e) => setNoteOnProduct(e.target.value)}       
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
     focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none focus:border-2 focus:border-[#800080]
@@ -122,7 +151,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Unit Price</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>Unit Price</h5>
               <input type='text' value={UnitPrice} onChange={(e) => setunitprice(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -131,7 +160,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>Unit</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>Unit</h5>
               <input type='text' value={Unit} onChange={(e) => setunit(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -140,7 +169,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>SGSTPC</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>SGSTPC</h5>
               <input type='text' value={SGSTPC} onChange={(e) => setSGSTPC(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -149,7 +178,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>CGSTPC</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>CGSTPC</h5>
               <input type='text' value={CGSTPC} onChange={(e) => setCGSTPC(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -158,7 +187,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>DiscountAllowed</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>DiscountAllowed</h5>
               <input type='text' value={DiscountAllowed} onChange={(e) => setDiscountAllowed(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -167,7 +196,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>ShName</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>ShName</h5>
               <input type='text' value={ShName} onChange={(e) => setShName(e.target.value)}       
                 onInput={(e)=>validateText(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -176,7 +205,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>RoomUnitPrice</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>RoomUnitPrice</h5>
               <input type='text' value={RoomUnitPrice} onChange={(e) => setRoomUnitPrice(e.target.value)}       
                 onInput={(e)=>validateNumber(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -185,7 +214,7 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex text-[14px] font-normal justify-between'>
-              <h5 className='text-[#B3B3B3] flex items-center gap-2'><BsTelephoneForwardFill/>HSNSAC</h5>
+              <h5 className='text-[#B3B3B3] flex items-center gap-2 w-60'><BsTelephoneForwardFill/>HSNSAC</h5>
               <input type='text' value={HSNSAC} onChange={(e) => setHSNSAC(e.target.value)}       
                 // onInput={(e)=>validateText(e.target.value)}
                 className='appearance-none block w-full border-2 border-[#DDDDDD]
@@ -194,11 +223,12 @@ const EditProduct = (props) => {
               />
             </div>
             <div className='flex'>
-              <button className="
-    font-normal  bg-[#800080] text-[white] flex items-center 
+              <button className={`
+    font-normal  bg-green-700 text-[white] flex items-center 
     rounded-md py-2 my-6 text-[14px] px-3 mx-auto
-    cursor-pointer opacity-100" 
-              onClick={saveEditHandler}>Edit</button>
+    cursor-pointer opacity-100  ${disableBtn  ? "cursor-not-allowed opacity-50"
+      : "cursor-pointer opacity-100"}  `}
+              onClick={saveEditHandler}>Save</button>
               <button type='button' className="
     font-normal  bg-red-600 text-[white] flex items-center 
     rounded-md py-2 my-6 text-[14px] px-3 mx-auto

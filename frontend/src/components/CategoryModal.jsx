@@ -8,6 +8,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 const CategoryModal = ({ setShowModal, setfetchCategory }) => {
   const [ItemCategory, setItemCategory] = useState("");
+  const [ItemNote, setItemNote] = useState("");
   const [disabled, setDisabled] = useState(true);
   const accessToken = useSelector((store) => store?.login?.userData[0]);
   const PropertyNo = useSelector((store) => store?.property?.propertyNumber);
@@ -26,6 +27,7 @@ const CategoryModal = ({ setShowModal, setfetchCategory }) => {
           `/api/property/${PropertyNo}/itemCtegory`,
           {
             ItemCategory,
+          //  ItemNote
           },
           options
         );
@@ -97,6 +99,8 @@ const CategoryModal = ({ setShowModal, setfetchCategory }) => {
                     className="w-full h-48 shadow-md rounded-md appearance-none block  border-2 border-[#DDDDDD] required
             focus:shadow-lg focus:shadow-[#800080]-500/50 focus:outline-none 
             focus:border-2 focus:border-[#800080] p-2 text-sm resize-none overflow-auto"
+                    value={ItemNote}
+                    onChange={e => setItemNote(e.target.value)}
                   ></textarea>
 
                   <button

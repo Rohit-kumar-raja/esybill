@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addMenuType } from "../propertySlice";
 
+
 const PropertyDetails = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const PropertyDetails = () => {
   const [fetchedMenu, setfetchedMenu] = useState("");
   const [disabledText, setDisabledText] = useState(false);
   const [disabledMenu, setDisabledMenu] = useState(false);
+  
   //const [license, setLicense] = useState("")
   useEffect(() => {
     if (propertyDetail?.length > 0) {
@@ -171,7 +173,8 @@ const PropertyDetails = () => {
       });
     }
   };
-
+ 
+  
   return (
     <>
       <ToastContainer autoClose={2000} />
@@ -184,7 +187,13 @@ const PropertyDetails = () => {
             Property Details
           </h1>
         </div>
-        <img src={image} alt="Qr scanner" className="w-20 h-20 mx-auto my-2" />
+      
+       
+        <a href={image} download>
+          <img src={image} alt="Qr scanner" className="w-20 h-20 mx-auto my-2" />
+        </a>
+      
+      
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col mb-6">

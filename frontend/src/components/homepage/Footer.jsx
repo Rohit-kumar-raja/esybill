@@ -1,5 +1,5 @@
 import React from "react"
-import {FaFacebookF,FaWhatsapp,FaInstagram,FaTwitter} from "react-icons/fa"
+import {FaFacebookF,FaWhatsapp} from "react-icons/fa"
 import { Link } from "react-router-dom"
 
 const Footer = () => {
@@ -14,8 +14,7 @@ const Footer = () => {
             <div className="flex gap-3 py-2">
               <a href="https://www.facebook.com/ezybillindia/" target="_blank" rel="noreferrer"><FaFacebookF /></a>
               <a href="https://wa.me/919836041044" target="_blank" rel="noreferrer"><FaWhatsapp/></a>
-              <FaInstagram/> 
-              <FaTwitter/> 
+            
             </div>
           </div>
           <div className='flex flex-col items-start text-sm'>

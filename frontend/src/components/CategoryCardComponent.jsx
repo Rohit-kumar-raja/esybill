@@ -87,7 +87,7 @@ const CategoryCardComponent= ({ category, setEdit,
           <div className="flex items-center justify-around">
             <button
               className="
-    font-normal  bg-[#800080] text-[white] flex items-center 
+    font-normal  bg-green-700 text-[white] flex items-center 
     rounded-md py-2 px-10 my-6 text-[14px] 
     cursor-pointer opacity-100 font-jost  
      "

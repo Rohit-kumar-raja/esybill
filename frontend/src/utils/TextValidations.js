@@ -4,14 +4,15 @@ function validateText(input){
   const alphabetPattern = /^[a-zA-Z\s]+$/;
   if (input.match(alphabetPattern) || input===" ") {
     // do nothing
+    return true
   } else {
     event.target.value = input.replace(/[^a-zA-Z\s]/g, ""); // Remove non-alphabet characters
     toast.error("Only Alphabets are allowed.", {position:"top-center"})
-    
+    return false
   }
 }
 
-export function validateNumber(input){
+export function validateNumber(input){ 
   const alphabetPattern = /^[0-9\s]*$/;
   if (input.match(alphabetPattern) || input===" ") {
     // do nothing
