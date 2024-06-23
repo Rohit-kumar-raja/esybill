@@ -215,6 +215,8 @@ const AddImage = () => {
                       </div>
                       <p className="pointer-none text-gray-500 "><p className="text-blue-600 hover:underline">select a file</p> from your computer</p>
                     </div>
+                    </label>
+
                     <input
                       type="file" 
                       id="file-input"
@@ -224,7 +226,6 @@ const AddImage = () => {
                       }}
                       multiple={false}
                       className="hidden"/>
-                  </label>
                 </div>
               </div>
               <p className="pb-4 text-sm text-gray-300">
@@ -363,6 +364,8 @@ const AddImage = () => {
                         </div>
                         <p className="pointer-none text-gray-500 "><p className="text-blue-600 hover:underline">select a file</p> from your computer</p>
                       </div>
+                      </label>
+
                       <input
                         id="file-input"
                         type="file" className="hidden"
@@ -371,7 +374,6 @@ const AddImage = () => {
                         }}
                         multiple={false}
                       />
-                    </label>
                   </div>
                 </div>
                 <p className="pb-4 text-sm text-gray-300">
