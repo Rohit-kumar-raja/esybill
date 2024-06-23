@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import { AiFillDelete } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import axios from "../api/axios";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const AddImage = () => {
   const [imageMenu, setImageMenu] = useState([])
   const [loading, setLoading] = useState(true)
@@ -13,7 +13,7 @@ const AddImage = () => {
   const [text, setNewText] = useState("")
   const navigate = useNavigate()
 
-  useEffect(()=>{
+  useEffect(() => {
     setError(false)
     setLoading(true)
     const getImageMenu = async () => {
@@ -21,7 +21,8 @@ const AddImage = () => {
         const options = {
           headers: {
             "Authorization": `Bearer ${accessToken}`
-          }}
+          }
+        }
         const response = await axios.get(`/api/property/${propertyNumber}/menu`, options);
         console.log(response?.data);
         setImageMenu(response?.data.imageMenu)
@@ -33,12 +34,12 @@ const AddImage = () => {
         console.log(error);
         setLoading(false)
         setError(true)
-      } 
+      }
     }
     getImageMenu()
-  },[reload])
+  }, [reload])
 
-  const handleUpload = async (file)  =>{
+  const handleUpload = async (file) => {
     console.log(file);
     try {
       var bodyFormData = new FormData();
@@ -46,9 +47,10 @@ const AddImage = () => {
       const options = {
         headers: {
           "Authorization": `Bearer ${accessToken}`,
-          "Content-Type":"multipart/form-data"
-        }}
-      const response = await axios.post(`/api/property/${propertyNumber}/menu`, 
+          "Content-Type": "multipart/form-data"
+        }
+      }
+      const response = await axios.post(`/api/property/${propertyNumber}/menu`,
         bodyFormData, options);
       console.log(response?.data);
       setReload(!reload)
@@ -61,22 +63,22 @@ const AddImage = () => {
     }
   }
 
-  const handleDelete = async (index)  =>{
-    if(!window.confirm("Are you sure?")) return;
-    if(!accessToken){
+  const handleDelete = async (index) => {
+    if (!window.confirm("Are you sure?")) return;
+    if (!accessToken) {
       alert("Please login first")
       navigate("/login")
       return false;
     }
-    else{
+    else {
       try {
         const options = {
           headers: {
             "Authorization": `Bearer ${accessToken}`
           },
-          data: [index], 
+          data: [index],
         }
-        const response = await axios.delete(`/api/property/${propertyNumber}/menu`, 
+        const response = await axios.delete(`/api/property/${propertyNumber}/menu`,
           options);
         console.log(response?.data);
         setReload(!reload)
@@ -90,21 +92,22 @@ const AddImage = () => {
     }
   }
 
-  const handleSwap = async (index1, index2)  =>{
+  const handleSwap = async (index1, index2) => {
     console.log(index1, index2)
-    if(!accessToken){
+    if (!accessToken) {
       navigate("/login")
     }
-    else{
+    else {
       try {
         const options = {
           headers: {
             "Authorization": `Bearer ${accessToken}`
-          }}
+          }
+        }
         const body = [
           index1, index2
         ]
-        const response = await axios.put(`/api/property/${propertyNumber}/menu`, 
+        const response = await axios.put(`/api/property/${propertyNumber}/menu`,
           body, options);
         console.log(response?.data);
         setReload(!reload)
@@ -114,23 +117,24 @@ const AddImage = () => {
         console.log(error);
         setError(!reload)
         setError(true)
-      } 
+      }
     }
   }
 
-  const handleUpdateText = async (id)  =>{
+  const handleUpdateText = async (id) => {
     console.log("handleUpdateText", id, text);
     try {
       const options = {
         headers: {
           "Authorization": `Bearer ${accessToken}`
-        }}
-      const body = {
-        "position":id,
-        "text":text
+        }
       }
-        
-      const response = await axios.put(`/api/property/${propertyNumber}/menu/image-caption`, 
+      const body = {
+        "position": id,
+        "text": text
+      }
+
+      const response = await axios.put(`/api/property/${propertyNumber}/menu/image-caption`,
         body, options);
       console.log(response?.data);
       setReload(!reload)
@@ -140,7 +144,7 @@ const AddImage = () => {
       console.log(error);
       setError(!reload)
       setError(true)
-    } 
+    }
     setNewText("");
   }
 
@@ -171,7 +175,7 @@ const AddImage = () => {
                 fill="#1C64F2"
               />
             </svg>
-           Loading...
+            Loading...
           </button>
         </div>
       ) : error ? (
@@ -211,32 +215,32 @@ const AddImage = () => {
                   <label className="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                     <div className="h-full w-full text-center flex flex-col items-center justify-center">
                       <div className="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-                        <img className="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik"/>
+                        <img className="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik" />
                       </div>
                       <p className="pointer-none text-gray-500 "><p className="text-blue-600 hover:underline">select a file</p> from your computer</p>
                     </div>
-                    </label>
+                  </label>
 
-                    <input
-                      type="file" 
-                      id="file-input"
-                      onChange={(e)=>{
-                        console.log(e.target.files[0]);
-                        handleUpload(e.target.files[0])
-                      }}
-                      multiple={false}
-                      className="hidden"/>
+                  <input
+                    type="file"
+                    id="file-input"
+                    onChange={(e) => {
+                      console.log(e.target.files[0]);
+                      handleUpload(e.target.files[0])
+                    }}
+                    multiple={false}
+                    className="hidden" />
                 </div>
               </div>
               <p className="pb-4 text-sm text-gray-300">
                 <span>File type: jpg,png,types of images</span>
               </p>
-              <label  htmlFor="title" className="text-sm font-bold text-gray-500 tracking-wide">Image Caption</label>
+              <label htmlFor="title" className="text-sm font-bold text-gray-500 tracking-wide">Image Caption</label>
               <div className="flex justify-between">
-                <input 
-                  className="text-base w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" 
-                  type="text" 
-                  placeholder="Image Caption"/>
+                <input
+                  className="text-base w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+                  type="text"
+                  placeholder="Image Caption" />
                 <div className="flex">
                   <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-3">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -253,22 +257,22 @@ const AddImage = () => {
             </div>
           </div>
         </div>
-      ):(
+      ) : (
         <div className="flex flex-wrap">
-          {imageMenu.map((_item, index)=>{
+          {imageMenu.map((_item, index) => {
             const isCaptionTouched = _item.captionTouched;
-            return(
-              <div 
+            return (
+              <div
                 key={index}
                 className="w-[26rem] p-10 bg-white rounded-xl z-10 mr-4 mb-5">
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <p className="rounded-full bg-slate-300 px-4 py-2">
-                      <span className="text-sm font-bold text-gray-500 tracking-wide">{index+1}</span>
+                      <span className="text-sm font-bold text-gray-500 tracking-wide">{index + 1}</span>
                     </p>
                     <button className="text-red-500 text-2xl mt-2"
-                      onClick={()=>{
-                        handleDelete(index+1)
+                      onClick={() => {
+                        handleDelete(index + 1)
                       }}
                     >
                       <AiFillDelete />
@@ -279,18 +283,18 @@ const AddImage = () => {
                     <div className="flex items-center justify-center w-full">
                       <label className="flex flex-col rounded-lg border-4 border-dashed w-full group text-center">
                         <div className="h-full w-full text-center flex flex-col items-center justify-center">
-                          <img className="has-mask object-cover" src={_item.imageUrl} alt="menu"/>
+                          <img className="has-mask object-cover" src={_item.imageUrl} alt="menu" />
                         </div>
-                        <input type="file" className="hidden"/>
+                        <input type="file" className="hidden" />
                       </label>
                     </div>
                   </div>
                   {/* <p className="pb-4 text-sm text-gray-300">
                     <p className="float-right bg-blue-600 px-2 py-1 w-28 text-white rounded hover:cursor-pointer">Change Image</p>
                   </p> */}
-                  <label  htmlFor="title" className="text-sm font-bold text-gray-500 tracking-wide">Image Caption</label>
+                  <label htmlFor="title" className="text-sm font-bold text-gray-500 tracking-wide">Image Caption</label>
                   <div className="flex justify-between">
-                    <input className="text-base w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text" 
+                    <input className="text-base w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text"
                       value={_item.text}
                       onChange={(e) => {
                         const newText = e.target.value;
@@ -300,13 +304,13 @@ const AddImage = () => {
                         setImageMenu(updatedImageMenu);
 
                       }}
-                      placeholder="Image Caption"/>
+                      placeholder="Image Caption" />
                     <div className="flex">
                       <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-3 disabled:bg-gray-300"
                         onClick={() => {
                           setReload(!reload);
                         }}
-                        disabled={isCaptionTouched ? false : true} 
+                        disabled={isCaptionTouched ? false : true}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -314,9 +318,9 @@ const AddImage = () => {
                       </button>
                       <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded disabled:bg-gray-300"
                         onClick={() => {
-                          handleUpdateText(index+1)
+                          handleUpdateText(index + 1)
                         }}
-                        disabled={isCaptionTouched ? false : true} 
+                        disabled={isCaptionTouched ? false : true}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -325,15 +329,15 @@ const AddImage = () => {
                     </div>
                   </div>
                   <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    onChange={(e)=>{
-                      console.log(parseInt(e.target.value)+1)
-                      handleSwap(index+1, parseInt(e.target.value)+1)
+                    onChange={(e) => {
+                      console.log(parseInt(e.target.value) + 1)
+                      handleSwap(index + 1, parseInt(e.target.value) + 1)
                     }}
                   >
                     <option selected disabled>Swap with</option>
                     {
                       imageMenu?.map((_item, imageIndex) => (
-                        <option key={index} value={imageIndex} disabled={index == imageIndex}>{imageIndex+1}</option>
+                        <option key={index} value={imageIndex} disabled={index == imageIndex}>{imageIndex + 1}</option>
                       ))
                     }
                   </select>
@@ -347,7 +351,7 @@ const AddImage = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <p className="rounded-full bg-slate-300 px-4 py-2">
-                    <span className="text-sm font-bold text-gray-500 tracking-wide">{imageMenu.length+1}</span>
+                    <span className="text-sm font-bold text-gray-500 tracking-wide">{imageMenu.length + 1}</span>
                   </p>
                   {/* <p className="text-red-500 text-2xl mt-2">
                     <AiFillDelete />
@@ -358,22 +362,22 @@ const AddImage = () => {
                   <div className="flex items-center justify-center w-full">
                     <label className="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                       <div className="h-full w-full text-center flex flex-col items-center justify-center">
-                                    
+
                         <div className="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-                          <img className="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik"/>
+                          <img className="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik" />
                         </div>
                         <p className="pointer-none text-gray-500 "><p className="text-blue-600 hover:underline">select a file</p> from your computer</p>
                       </div>
-                      </label>
+                    </label>
 
-                      <input
-                        id="file-input"
-                        type="file" className="hidden"
-                        onChange={(e)=>{
-                          handleUpload(e.target.files[0])
-                        }}
-                        multiple={false}
-                      />
+                    <input
+                      id="file-input"
+                      type="file" className="hidden"
+                      onChange={(e) => {
+                        handleUpload(e.target.files[0])
+                      }}
+                      multiple={false}
+                    />
                   </div>
                 </div>
                 <p className="pb-4 text-sm text-gray-300">
@@ -381,7 +385,7 @@ const AddImage = () => {
                 </p>
                 <label htmlFor="title" className="text-sm font-bold text-gray-500 tracking-wide">Image Caption</label>
                 <div className="flex justify-between">
-                  <input className="text-base w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text" placeholder="Image Caption"/>
+                  <input className="text-base w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text" placeholder="Image Caption" />
                   <div className="flex">
                     <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-3">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
