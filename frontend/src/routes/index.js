@@ -5,7 +5,7 @@ import Dashboard from "../pages/Dashboard.jsx";
 import PropertyDetails from "../pages/PropertyDetails.jsx";
 import AddProperty from "../pages/AddProperty.jsx";
 import AddSubCategory from "../pages/AddSubCategory.jsx";
-import AddCategory from "../pages/AddCategory.jsx"; 
+import AddCategory from "../pages/AddCategory.jsx";
 import AddProduct from "../pages/AddProduct.jsx";
 import Profile from "../pages/Profile.jsx";
 import MyProperties from "../pages/MyProperties.jsx";
@@ -18,95 +18,104 @@ import CloudMenu from "../pages/CloudMenu.jsx";
 import RegistrationForm from "../pages/RegistrationForm.jsx";
 import LoginForm from "../pages/LoginForm.jsx";
 import TermsAndConditions from "../pages/TermsAndConditions.jsx";
+import PrivacyPolicy from "../pages/PrivacyPolicy.jsx";
+import RefundPolicy from "../pages/RefundPolicy.jsx";
 
 
-export default function Routes({scrollProp, setScrollProp}) {
+export default function Routes({ scrollProp, setScrollProp }) {
   return useRoutes([{
-    path:"/",
-    children:[
+    path: "/",
+    children: [
       {
-        path:"/",
-        element:<HomePage scrollProp={scrollProp} setScrollProp={setScrollProp}/>,
+        path: "/",
+        element: <HomePage scrollProp={scrollProp} setScrollProp={setScrollProp} />,
       },
       {
-        path:"contact-us",
-        element:<AddContact scrollProp={scrollProp}/>
+        path: "contact-us",
+        element: <AddContact scrollProp={scrollProp} />
       },
       {
-        path:"cloud-menu/:menuName",
-        element:<CloudMenu/>
+        path: "cloud-menu/:menuName",
+        element: <CloudMenu />
       },
       {
-        path:"signup",
-        element:<RegistrationForm/>
+        path: "signup",
+        element: <RegistrationForm />
       },
       {
-        path:"login",
-        element:<LoginForm/>
+        path: "login",
+        element: <LoginForm />
       },
       {
-        path:"dashboard",
-        element:<Dashboard/>,
-        children:[
+        path: "dashboard",
+        element: <Dashboard />,
+        children: [
           {
-            path:"profile",
-            element:<Profile />
+            path: "profile",
+            element: <Profile />
           },
           {
-            path:"properties",
-            element:<MyProperties />
+            path: "properties",
+            element: <MyProperties />
           },
           {
-            path:"propertydetails",
-            element:<PropertyDetails />
+            path: "propertydetails",
+            element: <PropertyDetails />
           },
           {
-            path:"addproperty",
-            element:<AddProperty/>
+            path: "addproperty",
+            element: <AddProperty />
           },
           {
-            path:"category",
-            element:<AddCategory  />
+            path: "category",
+            element: <AddCategory />
           },
           {
-            path:"subcategory",
-            element:<AddSubCategory />
+            path: "subcategory",
+            element: <AddSubCategory />
           },
           {
-            path:"product",
-            element:<AddProduct />
+            path: "product",
+            element: <AddProduct />
           },
           {
-            path:"image",
-            element:<AddImage />
+            path: "image",
+            element: <AddImage />
           },
-
         ]
       },
       {
-        path:"pricing",
-        element:<Pricing setScrollProp={setScrollProp}/>
+        path: "pricing",
+        element: <Pricing setScrollProp={setScrollProp} />
       },
       {
-        path:"about",
-        element:<AboutUs />
+        path: "about",
+        element: <AboutUs />
       },
       {
-        path:"hms",
-        element:<Hms />
+        path: "hms",
+        element: <Hms />
       },
       {
-        path:"rms",
-        element:<Hms />
+        path: "rms",
+        element: <Hms />
       },
       {
-        path:"cm",
-        element:<Hms />
+        path: "cm",
+        element: <Hms />
       },
       {
-        path:"termsandconditions",
-        element:<TermsAndConditions />
+        path: "termsandconditions",
+        element: <TermsAndConditions />
       },
+      {
+        path: "privacypolicy",
+        element: <PrivacyPolicy/>
+      },
+      {
+        path: "refundpolicy",
+        element: <RefundPolicy/>
+      }
     ]
   }]);
 }

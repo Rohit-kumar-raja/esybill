@@ -8,6 +8,7 @@ const FeatureCard = ({hoverText, title, img}) => {
          bg-no-repeat border-2 border-[#920592]">
           <img
             src={img}
+            style={{ objectFit: "contain" }}
             className='h-96'
             // class="max-w-xs"
             alt="Louvre" />

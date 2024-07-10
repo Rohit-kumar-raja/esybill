@@ -1,5 +1,6 @@
 import React from "react"
-import offer from "../../assets/homepage/offerImage.svg"
+// import offer from "../../assets/homepage/offerImage.svg"
+import offer from "../../assets/homepage/eazy.png"
 import { Link } from "react-router-dom"
 //import {  useNavigate } from "react-router-dom"
 

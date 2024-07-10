@@ -34,6 +34,8 @@ const Footer = () => {
             <p>Legal</p>
             <p className='font-light py-2'>
               <Link to='/termsandconditions'>Terms and Conditions</Link> </p>
+            <p className='font-light py-2'><Link to='/privacypolicy'>Privacy & Policy</Link></p>  
+            <p className='font-light py-2'><Link to='/refundpolicy'>Refund Policy</Link></p>
             {/* <p className='font-light py-2'>Privacy Policy</p>
             <p className='font-light py-2'>Support</p> */}
           </div>
