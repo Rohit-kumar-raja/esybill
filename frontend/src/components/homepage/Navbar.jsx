@@ -1,11 +1,11 @@
 import React, {  useState } from "react"
 import logo1 from "../../assets/homepage/logo1.png"
 //import logo2 from "../../assets/homepage/logo2.png"
-import { Link, useNavigate} from "react-router-dom";
-const Navbar = (props) => {
+import { Link } from "react-router-dom";
+const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
-  const [dropdown, setdropdown] = useState(false)
-  const navigate = useNavigate()
+  const [dropdown, setdropdown] = useState(false);
+  // const navigate = useNavigate();
   
   return (
     <>
@@ -91,14 +91,21 @@ const Navbar = (props) => {
                 <li className="text-[#5E5E5E] font-raleway font-medium text-[16px]  hover:text-[#5E5E5E]">
                   <Link to='/pricing'>Pricing</Link> 
                 </li>
-                           
-                <li className="text-[#5E5E5E] font-raleway font-medium text-[16px] cursor-pointer
-                 hover:text-[#5E5E5E]"  role="presentation" onClick={() => {
-                  props.setScrollProp(false)
-                  navigate("/contact-us") 
-                }} >
-                 Contact Us
+
+                <li className="text-[#5E5E5E] font-raleway font-medium text-[16px]  hover:text-[#5E5E5E]">
+                  <Link to='/contact-us'>Contact Us</Link> 
                 </li>
+                           
+                {/* <li
+                  className="text-[#5E5E5E] font-raleway font-medium text-[16px] cursor-pointer hover:text-[#5E5E5E]"
+                  role="presentation"
+                  onClick={() => {
+                    props.setScrollProp(false);
+                    navigate("/contact-us");
+                  }}
+                >
+                  Contact Us
+                </li> */}
               </ul>
  
                       
